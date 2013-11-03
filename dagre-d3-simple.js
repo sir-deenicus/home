@@ -166,9 +166,38 @@ function renderDagreObjsToD3(graphData, svgSelector) {
     svgGroup.attr("transform",
       "translate(" + d3.event.translate + ")" + " scale(" + d3.event.scale + ")");
   }));
-
+  
+  var ctrldown = false;
+  window.addEventListener("keyup", function(e){
+     if (e.keyCode === 17){ 
+	   ctrldown = false;}
+  })
+  window.addEventListener("keydown",function(e){
+     groot = document.getElementsByTagName("g")[0];
+	 locs = groot.getAttribute("transform").split(/\(|\)/)[1].split(",");
+	 locx = parseInt(locs[0]);
+	 locy = parseInt(locs[1]);	 
+     switch(e.keyCode) {
+	   case 17:  
+	     ctrldown = true;
+		 break;
+	   case 37: 
+	     groot.setAttribute("transform", "translate(" + (locx+30) + "," + locy + ") scale(1)")
+		 break;
+	   case 38:
+	     groot.setAttribute("transform", "translate(" + (locx) + "," + (locy+30) + ") scale(1)")
+		 break;
+	   case 39:
+	     groot.setAttribute("transform", "translate(" + (locx-30) + "," + locy + ") scale(1)")
+		 break;
+	   case 40:
+	     groot.setAttribute("transform", "translate(" + (locx) + "," + (locy-30) + ") scale(1)")
+		 break;
+	 }
+	 
+   },false)
   // Run the actual layout
-  dagre.layout()
+  dagre.layout() 
     .nodes(nodeData)
     .edges(edgeData)
     .run();
@@ -182,6 +211,33 @@ function renderDagreObjsToD3(graphData, svgSelector) {
     }
   });
 
+  nodes.each(function(n){
+   onclick=function(e){
+    if(e.target.nodeName === "DIV" && e.target.id != "pop")
+	{
+	   var ndiv = document.createElement('div');
+	   ndiv.style.position = "absolute";
+	   ndiv.style.left = e.pageX + "px";
+	   ndiv.style.top = e.pageY + "px";
+	   ndiv.innerHTML = e.target.innerHTML;
+	   ndiv.style.backgroundColor = "white";
+	   ndiv.style.width = 400;
+	   ndiv.style.borderWidth = "1px";
+	   ndiv.style.borderStyle = "solid";
+	   ndiv.style.borderColor = "gray";
+	   ndiv.style.padding = "2px";
+	   document.body.appendChild(ndiv);
+	   ndiv.id = "pop"
+	   ndiv.onclick = function(ei){
+	       if(ei.ctrlKey)document.body.removeChild(ei.target);};
+	}
+    if(e.target.nodeName === "rect" || e.target.nodeName === "tspan"){ 
+	 var op = 1.0;
+	 if(ctrldown === true){
+	   op = 0.1;
+	 } 
+	 e.target.style.opacity = op ; }}});
+   
   nodes
     .attr("transform", function (d) {
       return "translate(" + d.dagre.x + "," + d.dagre.y + ")";
