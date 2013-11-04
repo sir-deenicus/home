@@ -1,0 +1,35 @@
+<meta http-equiv='Content-Type' content='Type=text/html; charset=utf-8'><link rel="stylesheet" type="text/css" href="style.css"/>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<h1>Most popular Scifi</h1>
+
+<p>The most favored Scifi author according to ~535 guardian readers is Iain M. Banks and the most favored book is Dune (wtf, is fantasy not sci-fi ;). </p>
+
+<p>I was recently looking for some scifi books to read and stumbled upon <a href="http://www.theguardian.com/books/table/2011/may/26/best-science-fiction-books-recommendations">this link</a>. As is not useful, each individual recommendation is not as meaningful as knowing what people favored most. So I spent a few minutes writing a script to get a better idea of what was buried in the data.</p>
+
+<p>This wasn't completely straightforward because people have many different ways of spelling author and book names. For example, people have trouble spelling Ursula K le Guin's name - with 6 variations spotted:</p>
+
+<p><em>["ursula k le guin"; "ursula k leguin"; "ursula k mcguinn";
+    "ursula laguinn"; "ursula le guin"; "ursula leguin"]</em></p>
+
+<p>So had to write a heuristic to get around that for books and names. Here are a couple it spotted I was impressed by:</p>
+
+<p><em>["heinlein"; "heinlin?"; "ra heinlein"; "robert a. heinlein";
+    "robert a.heinlen"; "robert heinlein"]</em></p>
+
+<p><em>["evgenij zamjatin"; "yevgeny zamyatin"]</em></p>
+
+<p><em>["asimov"; "isaac asimov"; "isaac assimove"]</em></p>
+
+<p>The algorithm isn't perfect, I think it missed 2 or 3 equivalent names and maybe 2 books. There were about 6 spots where one of author or book name were missing, one where author and book were swapped and one interesting mention of Moby Dick by Herman Melville. But in aggregate, certainly not enough to affect stats. </p>
+
+<p>In order, the top 5 authors are: <strong>Iain M Banks, Philip K Dick, Frank Herbert, Isaac Asimov, Robert A. Heinlein</strong>.</p>
+
+<p>The top 10 books are: <strong>Dune, Player Of Games, The Star My Destination, Foundation, Left Hand Of Darkness, Lord Of Light, Ender's Game, Ubik, The Man In The High Castle, The Disposessed</strong>.</p>
+
+<p>From my poor intersection with this list I can see that my taste in sci-fi is very particular (hard) - of the top 20, I've only read from Asimov. Although, I have read other genre work of Zelanzy [Amber series] and Le Guin [Earthsea trilogy (best magic system other than Deathgate Cycle)] but those of course are fantasy. In terms of sci-fi I'd much rather read Vinge than Gibson, Egan than Heinlein  and Stross than Stephenson. </p>
+
+<p>But I think I'll pursue Iain's books, Diamond Age and Lord of Light - I liked Zelanzy other stuff, and the Culture books &amp; The Diamond age look quite interesting.</p>
+
+<p>The top books no doubt are biased from the Matthew Effect (rich get richer) so some other time I'll post an analysis of one of Stross threads where he asks for the most profound books (this one was raw text so had a trickier time - had to use Active learning to teach author and book names). </p>
+
+<p>You can read this post in its intended form here (with code) or peruse the full list of author by books here and books here:</p>
