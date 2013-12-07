@@ -4,7 +4,9 @@
 
 <p>Sunday, December 08, 2013 - 12:11 AM</p>
 
-<p><em>[tl;dr using GPU powered matrix factorization, my computer learns the relationship between words as well as the topics ranging the hundreds of pdfs on my computer: Part 1 - Motivation]</em> Although a system meant to amplify and aid a human doesn't have as stringent a requirement on performance as AI, it still needs a decent amount of intelligence to be of any use at all. </p>
+<p><img src = "g2.png"/></p>
+
+<p><em>[tl;dr using GPU powered matrix factorization, my computer learns the relationship between words as well as the topics ranging the hundreds of pdfs on my computer: Part 1 - Motivation. You can see a spanning tree over the word association graph in all its springly wiggly glory here: http://sir-deenicus.github.io/home/wordnodes.html]</em> Although a system meant to amplify and aid a human doesn't have as stringent a requirement on performance as AI, it still needs a decent amount of intelligence to be of any use at all. </p>
 
 <p>The criteria I have settled on for this iteration are: basic knowledge of grammar and parts of speech, basic understanding of entities, the ability to extract important keywords, the ability to work with different word forms without the need of stemming, very basic abduction and the ability to detect sentiment. It doesn't have to be perfect at any of those just good enough to significantly augment my ability to both traverse and prune search spaces.</p>
 
@@ -19,6 +21,8 @@
 <p>For the past couple of years I've been downloading any paper or book that even slight piqued my interest (some free, others not, my alignment is chaotic good fwiw) with the intention that they would eventually feed a knowledge management system. I have about 2GB worth of PDFs - 1500 books and papers on various topics. I have read at most 8% of that. So I set myself a simple goal. Figure out a way to read those papers without reading them. I don't know if its possible (shoot for the moon touch the skies yadayadaya) but in the last few days, as the project becomes ever more usable, I feel like the digital equivalent of having been cured from Alzheimer's.   </p>
 
 <h2>As this program is intended to run locally, performance is important. I can't rely on dozens of gigs of RAM nor computations which take days to run.  Most of the algorithms I prefer are O(n) worst-case, O(log n) or better Ideally. But Matrix factorization was too good to pass up.</h2>
+
+<p><img src = "g.png" /></p>
 
 <p><em>[tl;dr using GPU powered matrix factorization, my computer learns the relationship between words as well as the topics ranging the hundreds of pdfs on my computer: Part 2 - Details/Examples]</em>
 Matrix factorization is a way of breaking up a matrix (in this case, document by word) into two so that the two pieces/factors multiply into an approximation of the original and in such a way that latent features are captured. You provide the number of features to search and one matrix ends up representing the correspondence with each word and the features and the other, the correspondence between each document and features (well in this specific case, NMF is obviously more general). It is an optimization problem to find two such matrices. One algorithm in particular that works great with documents is optimizing a matrix generalization of the relative entropy between the target and current estimation matrices. </p>
