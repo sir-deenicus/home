@@ -1,0 +1,85 @@
+<style type="text/css">
+h1 { font-family:Georgia; border-left:10px solid #eee; padding:10px 20px; margin:30px 0; color:#BBB; }
+ul li { list-style-image: url("nested.png"); font-size:21px; }
+ul li ul li  { font-size:18px; }
+ul li ul li ul li { font-size:15px; }
+</style><h1>Mindtool</h1>
+
+<ul>
+<li>Today
+<ul>
+<li>RTF of text with bolded key as results
+<ul>
+<li>clean up text and get internal text search, ranking and grouping done</li>
+</ul></li>
+<li>fix random indexing</li>
+<li>make a document association dictionary with NMF
+<ul>
+<li>note that the advantage of minhash is that it is online. I can compute any document&#39;s hash and then try to find related one. Search too is good but relies on first figuring out the key words of the document. But bigram POS model with expansion via hashspelling algo and eventually random index should be good.</li>
+<li>for documents and words</li>
+</ul></li>
+</ul></li>
+<li>Done
+<ul>
+<li>get spelling trie sorted to protocol buffers
+<ul>
+<li>figure out if sizes cauing slow down
+<ul>
+<li>Sizes do matter but getting the tree order is tricky. But seems json ser lengths correlates well. For trie protocol buffers to complex so using &lt;string,string&gt; json.</li>
+</ul></li>
+</ul></li>
+<li>hash based gouping</li>
+<li>NMF GPU
+<ul>
+<li>Document matrix foreach document do counts of top k words and update a general index and count. take top N. For each row of array2d look up word in index arr.[r, index.[word]] &lt;- doccount.[word]</li>
+</ul></li>
+<li>compression based comparison
+<ul>
+<li>spanning tree</li>
+<li>allow path search</li>
+<li><strong>Much too slow</strong>. <em>Took 5 hours to run through a 500 item corpus</em></li>
+</ul></li>
+<li>make a graph of word meanings</li>
+<li>test matrices speeds
+<ul>
+<li>It seems to Math lib is faster for matrix multiplication but slower for mainly vector stuff as is the case for Logistic regression</li>
+</ul></li>
+<li>Hashbased clustering
+<ul>
+<li>part of speech keyword extraction
+<ul>
+<li>maybe not. top words may be good enough?
+<ul>
+<li>think so</li>
+</ul></li>
+</ul></li>
+<li>hashbased clustering is controlled by number of features which control granularity. Can use number of keys for NMF. Better i think than trying to think up number of clusters.</li>
+<li>experiment
+<ul>
+<li>use all words?
+<ul>
+<li>No remove stopwords and len &lt; 3</li>
+</ul></li>
+<li>use nouns?
+<ul>
+<li>No</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Search tool
+<ul>
+<li>Need to be able to load old trees</li>
+<li>load old searches and autocomplete</li>
+<li>edit trees using a more standard control</li>
+<li>delete 0kb searches</li>
+</ul></li>
+<li>Future
+<ul>
+<li>easily get related documents to current one.</li>
+<li>For search tool pdf results should be tabled and a way to pin important ones</li>
+<li>Two types of in text search. a regular one. and one that with each search creates a tree linking sections with intersecting keywords</li>
+<li>When you do a search and don&#39;t quite know what to find. you start with something and let that drive you. an automated search agent might do the search. find topwords and search those too.</li>
+<li>loading dot files</li>
+</ul></li>
+</ul>
