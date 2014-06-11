@@ -1,0 +1,584 @@
+<meta http-equiv='Content-Type' content='Type=text/html; charset=utf-8'><style>body{
+    margin: 0 auto;
+    font-family: Georgia, Palatino, serif;
+    color: #444444;
+    line-height: 1.2;
+    max-width: 1080px;
+    padding: 5px;
+}
+h1, h2, h3, h4 {
+    color: #111111;
+    font-weight: 400;
+}
+h1, h2, h3, h4, h5, p {
+    margin-bottom: 16px;
+    padding: 0;
+}
+h1 {
+    font-size: 28px;
+}
+h2 {
+    font-size: 22px;
+    margin: 20px 0 6px;
+}
+h3 {
+    font-size: 21px;
+}
+h4 {
+    font-size: 18px;
+}
+h5 {
+    font-size: 16px;
+}
+a {
+    color: #0099ff;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+a:hover {
+    text-decoration: none;
+    color: #ff6600;
+}
+a:visited {
+    color: purple;
+}
+ul, ol {
+    padding: 0;
+    margin: 0;
+}
+li {
+    line-height: 24px;
+    margin-left: 44px;
+}
+li ul, li ul {
+    margin-left: 24px;
+}
+p, ul, ol {
+    font-size: 14px;
+    line-height: 20px;
+    max-width: 540px;
+}
+pre {
+    padding: 0px 24px;
+    max-width: 800px;
+    white-space: pre-wrap;
+}
+code {
+    font-family: Consolas, Monaco, Andale Mono, monospace;
+    line-height: 1.5;
+    font-size: 13px;
+}
+aside {
+    display: block;
+    float: right;
+    width: 390px;
+}
+blockquote {
+    border-left:.5em solid #eee;
+    padding: 0 2em;
+    margin-left:0;
+    max-width: 476px;
+}
+blockquote  cite {
+    font-size:14px;
+    line-height:20px;
+    color:#bfbfbf;
+}
+blockquote cite:before {
+    content: '\2014 \00A0';
+}
+
+blockquote p {  
+    color: #666;
+    max-width: 460px;
+}
+hr {
+    width: 540px;
+    text-align: left;
+    margin: 0 auto 0 0;
+    color: #999;
+    padding: 1px
+}
+
+button,
+input,
+select,
+textarea {
+  font-size: 100%;
+  margin: 0;
+  vertical-align: baseline;
+  *vertical-align: middle;
+}
+button, input {
+  line-height: normal;
+  *overflow: visible;
+}
+
+input[type=checkbox], input[type=radio] {
+  cursor: pointer;
+}
+/* override default chrome & firefox settings */
+input:not([type="image"]), textarea {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
+
+input[type="search"] {
+  -webkit-appearance: textfield;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+label,
+input,
+select,
+textarea {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: normal;
+  margin-bottom: 18px;
+}
+input[type=checkbox], input[type=radio] {
+  cursor: pointer;
+  margin-bottom: 0;
+}
+input[type=text],
+input[type=password],
+textarea,
+select {
+  display: inline-block;
+  width: 210px;
+  padding: 4px;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 18px;
+  height: 18px;
+  color: #808080;
+  border: 1px solid #ccc;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+select, input[type=file] {
+  height: 27px;
+  line-height: 27px;
+}
+textarea {
+  height: auto;
+}
+
+/* grey out placeholders */
+:-moz-placeholder {
+  color: #bfbfbf;
+}
+::-webkit-input-placeholder {
+  color: #bfbfbf;
+}
+
+input[type=text],
+input[type=password],
+select,
+textarea {
+  -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+  -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+  transition: border linear 0.2s, box-shadow linear 0.2s;
+  -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+div {
+    font-size:medium;
+}
+
+.darken{
+    background-color:#F0F0F0
+}
+.vis { 
+    margin-bottom: 12px;
+    margin-top:12px;
+    padding-bottom: 8px;
+    border-bottom:dashed; 
+    line-height: 1.1;
+    border-width: 1px; 
+    margin-left: 8px;
+}
+/* CSS stylesheet is based on Kevin Burke's Markdown.css project (http://kevinburke.bitbucket.org/markdowncss) */
+#pup {
+  position:absolute;
+  z-index:200; /* aaaalways on top*/
+  padding: 3px;
+  margin-left: 10px;
+  margin-top: 5px;
+  width: 420px;
+  border-radius: 3px;
+  border: 1px solid black;
+  background-color: #777;
+  color: white;
+
+}</style><table><th>Word<i> (computer) </i><br><small>[visited 175 of 2239]</small></th><th>similarity</th>
+<tr><td>computer</td><td>1.0</td></tr>
+<tr><td>hint</td><td>0.8</td></tr>
+<tr><td>solution</td><td>0.77</td></tr>
+<tr><td>program</td><td>0.72</td></tr>
+<tr><td>person</td><td>0.72</td></tr>
+<tr><td>collection</td><td>0.71</td></tr>
+<tr><td>search</td><td>0.69</td></tr>
+<tr><td>mess</td><td>0.69</td></tr>
+<tr><td>single</td><td>0.69</td></tr>
+<tr><td>few</td><td>0.68</td></tr>
+<tr><td>man</td><td>0.66</td></tr>
+<tr><td>larger</td><td>0.65</td></tr>
+<tr><td>taxonomy</td><td>0.64</td></tr>
+<tr><td>table</td><td>0.63</td></tr>
+<tr><td>glance</td><td>0.63</td></tr>
+<tr><td>simple</td><td>0.62</td></tr>
+<tr><td>1940s</td><td>0.62</td></tr>
+<tr><td>certain</td><td>0.61</td></tr>
+<tr><td>programmer</td><td>0.6</td></tr>
+<tr><td>conceptual</td><td>0.6</td></tr>
+<tr><td>tools</td><td>0.57</td></tr></table><hr><br><table><th>Word<i> (computers) </i><br><small>[visited 270 of 2239]</small></th><th>similarity</th>
+<tr><td>computers</td><td>1.0</td></tr>
+<tr><td>need</td><td>0.74</td></tr>
+<tr><td>conducive</td><td>0.73</td></tr>
+<tr><td>data</td><td>0.7</td></tr>
+<tr><td>use</td><td>0.69</td></tr>
+<tr><td>able</td><td>0.67</td></tr>
+<tr><td>humans</td><td>0.62</td></tr>
+<tr><td>yahoo</td><td>0.62</td></tr>
+<tr><td>safe</td><td>0.61</td></tr>
+<tr><td>likely</td><td>0.6</td></tr>
+<tr><td>google</td><td>0.59</td></tr>
+<tr><td>manipulation</td><td>0.59</td></tr>
+<tr><td>search</td><td>0.58</td></tr>
+<tr><td>movements</td><td>0.57</td></tr>
+<tr><td>metadata</td><td>0.57</td></tr>
+<tr><td>classifications</td><td>0.57</td></tr>
+<tr><td>analysis</td><td>0.56</td></tr>
+<tr><td>question</td><td>0.55</td></tr>
+<tr><td>intelligence</td><td>0.54</td></tr>
+<tr><td>did</td><td>0.53</td></tr>
+<tr><td>judge</td><td>0.52</td></tr></table><hr><br><table><th>Word<i> (number) </i><br><small>[visited 195 of 2239]</small></th><th>similarity</th>
+<tr><td>number</td><td>1.0</td></tr>
+<tr><td>expansion</td><td>0.9</td></tr>
+<tr><td>limitations</td><td>0.88</td></tr>
+<tr><td>bureaucracy</td><td>0.87</td></tr>
+<tr><td>possibility</td><td>0.87</td></tr>
+<tr><td>classification</td><td>0.86</td></tr>
+<tr><td>absence</td><td>0.86</td></tr>
+<tr><td>topology</td><td>0.86</td></tr>
+<tr><td>quality</td><td>0.84</td></tr>
+<tr><td>construction</td><td>0.84</td></tr>
+<tr><td>occurrences</td><td>0.84</td></tr>
+<tr><td>impoverishment</td><td>0.83</td></tr>
+<tr><td>contents</td><td>0.82</td></tr>
+<tr><td>sorts</td><td>0.82</td></tr>
+<tr><td>shape</td><td>0.82</td></tr>
+<tr><td>realm</td><td>0.82</td></tr>
+<tr><td>path</td><td>0.81</td></tr>
+<tr><td>creation</td><td>0.8</td></tr>
+<tr><td>analysis</td><td>0.8</td></tr>
+<tr><td>rings</td><td>0.79</td></tr>
+<tr><td>approximation</td><td>0.78</td></tr></table><hr><br><table><th>Word<i> (world) </i><br><small>[visited 195 of 2239]</small></th><th>similarity</th>
+<tr><td>world</td><td>1.0</td></tr>
+<tr><td>shape</td><td>0.87</td></tr>
+<tr><td>topology</td><td>0.86</td></tr>
+<tr><td>problem</td><td>0.86</td></tr>
+<tr><td>web</td><td>0.86</td></tr>
+<tr><td>quality</td><td>0.84</td></tr>
+<tr><td>absence</td><td>0.84</td></tr>
+<tr><td>limitations</td><td>0.84</td></tr>
+<tr><td>sebaldâ€™s</td><td>0.83</td></tr>
+<tr><td>expansion</td><td>0.83</td></tr>
+<tr><td>possibility</td><td>0.82</td></tr>
+<tr><td>marketâ€”whether</td><td>0.82</td></tr>
+<tr><td>classification</td><td>0.81</td></tr>
+<tr><td>realm</td><td>0.8</td></tr>
+<tr><td>service</td><td>0.79</td></tr>
+<tr><td>blanks</td><td>0.78</td></tr>
+<tr><td>path</td><td>0.78</td></tr>
+<tr><td>bureaucracy</td><td>0.78</td></tr>
+<tr><td>impoverishment</td><td>0.78</td></tr>
+<tr><td>days</td><td>0.77</td></tr>
+<tr><td>rings</td><td>0.77</td></tr></table><hr><br><table><th>Word<i> (ontology) </i><br><small>[visited 127 of 2239]</small></th><th>similarity</th>
+<tr><td>ontology</td><td>1.0</td></tr>
+<tr><td>object</td><td>0.68</td></tr>
+<tr><td>form</td><td>0.59</td></tr>
+<tr><td>version</td><td>0.55</td></tr>
+<tr><td>analysis</td><td>0.52</td></tr></table><hr><br><table><th>Word<i> (web) </i><br><small>[visited 242 of 2239]</small></th><th>similarity</th>
+<tr><td>web</td><td>1.0</td></tr>
+<tr><td>problem</td><td>0.9</td></tr>
+<tr><td>equation</td><td>0.9</td></tr>
+<tr><td>shape</td><td>0.88</td></tr>
+<tr><td>topology</td><td>0.87</td></tr>
+<tr><td>concept</td><td>0.87</td></tr>
+<tr><td>limitations</td><td>0.86</td></tr>
+<tr><td>world</td><td>0.86</td></tr>
+<tr><td>expansion</td><td>0.85</td></tr>
+<tr><td>trio</td><td>0.84</td></tr>
+<tr><td>popularity</td><td>0.83</td></tr>
+<tr><td>absence</td><td>0.83</td></tr>
+<tr><td>realm</td><td>0.82</td></tr>
+<tr><td>sebaldâ€™s</td><td>0.82</td></tr>
+<tr><td>same</td><td>0.82</td></tr>
+<tr><td>invention</td><td>0.82</td></tr>
+<tr><td>classification</td><td>0.82</td></tr>
+<tr><td>bureaucracy</td><td>0.82</td></tr>
+<tr><td>rise</td><td>0.81</td></tr>
+<tr><td>rings</td><td>0.81</td></tr>
+<tr><td>genius</td><td>0.81</td></tr></table><hr><br><table><th>Word<i> (categories) </i><br><small>[visited 131 of 2239]</small></th><th>similarity</th>
+<tr><td>categories</td><td>1.0</td></tr>
+<tr><td>other</td><td>0.73</td></tr>
+<tr><td>information</td><td>0.66</td></tr>
+<tr><td>affairs</td><td>0.6</td></tr>
+<tr><td>sentence</td><td>0.59</td></tr>
+<tr><td>observed</td><td>0.54</td></tr>
+<tr><td>cost</td><td>0.54</td></tr>
+<tr><td>positivists</td><td>0.53</td></tr>
+<tr><td>symbolic</td><td>0.53</td></tr>
+<tr><td>nascent</td><td>0.51</td></tr>
+<tr><td>narrower</td><td>0.5</td></tr>
+<tr><td>value</td><td>0.5</td></tr></table><hr><br><table><th>Word<i> (search) </i><br><small>[visited 218 of 2239]</small></th><th>similarity</th>
+<tr><td>search</td><td>1.0</td></tr>
+<tr><td>computer</td><td>0.69</td></tr>
+<tr><td>had</td><td>0.65</td></tr>
+<tr><td>collection</td><td>0.64</td></tr>
+<tr><td>yahoo</td><td>0.62</td></tr>
+<tr><td>computers</td><td>0.58</td></tr>
+<tr><td>data</td><td>0.57</td></tr>
+<tr><td>page</td><td>0.57</td></tr>
+<tr><td>google</td><td>0.56</td></tr>
+<tr><td>work</td><td>0.56</td></tr>
+<tr><td>definition</td><td>0.55</td></tr>
+<tr><td>need</td><td>0.54</td></tr>
+<tr><td>circulation</td><td>0.53</td></tr>
+<tr><td>least</td><td>0.53</td></tr>
+<tr><td>question</td><td>0.52</td></tr>
+<tr><td>model</td><td>0.51</td></tr>
+<tr><td>conceptual</td><td>0.51</td></tr>
+<tr><td>contains</td><td>0.5</td></tr></table><hr><br><table><th>Word<i> (information) </i><br><small>[visited 241 of 2239]</small></th><th>similarity</th>
+<tr><td>information</td><td>1.0</td></tr>
+<tr><td>construction</td><td>0.74</td></tr>
+<tr><td>limitations</td><td>0.72</td></tr>
+<tr><td>expansion</td><td>0.72</td></tr>
+<tr><td>bureaucracy</td><td>0.71</td></tr>
+<tr><td>contents</td><td>0.71</td></tr>
+<tr><td>text</td><td>0.71</td></tr>
+<tr><td>creation</td><td>0.7</td></tr>
+<tr><td>realm</td><td>0.7</td></tr>
+<tr><td>point</td><td>0.7</td></tr>
+<tr><td>absence</td><td>0.69</td></tr>
+<tr><td>sorts</td><td>0.68</td></tr>
+<tr><td>shape</td><td>0.67</td></tr>
+<tr><td>topology</td><td>0.67</td></tr>
+<tr><td>categories</td><td>0.66</td></tr>
+<tr><td>proponents</td><td>0.65</td></tr>
+<tr><td>study</td><td>0.65</td></tr>
+<tr><td>problem</td><td>0.64</td></tr>
+<tr><td>none</td><td>0.64</td></tr>
+<tr><td>service</td><td>0.64</td></tr>
+<tr><td>process</td><td>0.63</td></tr></table><hr><br><table><th>Word<i> (data) </i><br><small>[visited 270 of 2239]</small></th><th>similarity</th>
+<tr><td>data</td><td>1.0</td></tr>
+<tr><td>quality</td><td>0.71</td></tr>
+<tr><td>computers</td><td>0.7</td></tr>
+<tr><td>metadata</td><td>0.69</td></tr>
+<tr><td>analysis</td><td>0.69</td></tr>
+<tr><td>yahoo</td><td>0.66</td></tr>
+<tr><td>occurrences</td><td>0.66</td></tr>
+<tr><td>text</td><td>0.64</td></tr>
+<tr><td>rules</td><td>0.62</td></tr>
+<tr><td>collection</td><td>0.62</td></tr>
+<tr><td>incapable</td><td>0.62</td></tr>
+<tr><td>way</td><td>0.62</td></tr>
+<tr><td>saturn</td><td>0.6</td></tr>
+<tr><td>kinds</td><td>0.6</td></tr>
+<tr><td>form</td><td>0.58</td></tr>
+<tr><td>success</td><td>0.58</td></tr>
+<tr><td>plenty</td><td>0.58</td></tr>
+<tr><td>google</td><td>0.58</td></tr>
+<tr><td>amounts</td><td>0.58</td></tr>
+<tr><td>intelligence</td><td>0.58</td></tr>
+<tr><td>congress</td><td>0.58</td></tr></table><hr><br><table><th>Word<i> (problem) </i><br><small>[visited 242 of 2239]</small></th><th>similarity</th>
+<tr><td>problem</td><td>1.0</td></tr>
+<tr><td>equation</td><td>0.93</td></tr>
+<tr><td>concept</td><td>0.92</td></tr>
+<tr><td>web</td><td>0.9</td></tr>
+<tr><td>topology</td><td>0.9</td></tr>
+<tr><td>expansion</td><td>0.89</td></tr>
+<tr><td>limitations</td><td>0.88</td></tr>
+<tr><td>shape</td><td>0.88</td></tr>
+<tr><td>world</td><td>0.86</td></tr>
+<tr><td>trio</td><td>0.85</td></tr>
+<tr><td>realm</td><td>0.85</td></tr>
+<tr><td>absence</td><td>0.85</td></tr>
+<tr><td>dissemination</td><td>0.84</td></tr>
+<tr><td>classification</td><td>0.84</td></tr>
+<tr><td>bureaucracy</td><td>0.84</td></tr>
+<tr><td>popularity</td><td>0.84</td></tr>
+<tr><td>genius</td><td>0.83</td></tr>
+<tr><td>rise</td><td>0.83</td></tr>
+<tr><td>importance</td><td>0.82</td></tr>
+<tr><td>context</td><td>0.82</td></tr>
+<tr><td>impoverishment</td><td>0.82</td></tr></table><hr><br><table><th>Word<i> (page) </i><br><small>[visited 189 of 2239]</small></th><th>similarity</th>
+<tr><td>page</td><td>1.0</td></tr>
+<tr><td>result</td><td>0.76</td></tr>
+<tr><td>person</td><td>0.74</td></tr>
+<tr><td>mess</td><td>0.71</td></tr>
+<tr><td>latest</td><td>0.71</td></tr>
+<tr><td>rhizome</td><td>0.67</td></tr>
+<tr><td>larger</td><td>0.67</td></tr>
+<tr><td>greatest</td><td>0.66</td></tr>
+<tr><td>hint</td><td>0.65</td></tr>
+<tr><td>reinvent</td><td>0.65</td></tr>
+<tr><td>certain</td><td>0.65</td></tr>
+<tr><td>collection</td><td>0.63</td></tr>
+<tr><td>screen</td><td>0.63</td></tr>
+<tr><td>solution</td><td>0.63</td></tr>
+<tr><td>way</td><td>0.62</td></tr>
+<tr><td>work</td><td>0.6</td></tr>
+<tr><td>possibilities</td><td>0.59</td></tr>
+<tr><td>tools</td><td>0.58</td></tr>
+<tr><td>describe</td><td>0.58</td></tr>
+<tr><td>jump</td><td>0.58</td></tr>
+<tr><td>blog</td><td>0.58</td></tr></table><hr><br><table><th>Word<i> (had) </i><br><small>[visited 181 of 2239]</small></th><th>similarity</th>
+<tr><td>had</td><td>1.0</td></tr>
+<tr><td>need</td><td>0.65</td></tr>
+<tr><td>search</td><td>0.65</td></tr>
+<tr><td>able</td><td>0.6</td></tr>
+<tr><td>judge</td><td>0.55</td></tr>
+<tr><td>randâ€</td><td>0.55</td></tr>
+<tr><td>collection</td><td>0.53</td></tr>
+<tr><td>question</td><td>0.53</td></tr>
+<tr><td>distract</td><td>0.51</td></tr>
+<tr><td>help</td><td>0.51</td></tr></table><hr><br><table><th>Word<i> (words) </i><br><small>[visited 113 of 2239]</small></th><th>similarity</th>
+<tr><td>words</td><td>1.0</td></tr>
+<tr><td>case</td><td>0.62</td></tr>
+<tr><td>list</td><td>0.62</td></tr>
+<tr><td>secondâ€”one</td><td>0.59</td></tr>
+<tr><td>end</td><td>0.57</td></tr>
+<tr><td>triumph</td><td>0.55</td></tr>
+<tr><td>ontologies</td><td>0.55</td></tr>
+<tr><td>layout</td><td>0.55</td></tr>
+<tr><td>basis</td><td>0.54</td></tr>
+<tr><td>word</td><td>0.54</td></tr>
+<tr><td>nature</td><td>0.54</td></tr>
+<tr><td>maps</td><td>0.53</td></tr>
+<tr><td>importance</td><td>0.52</td></tr>
+<tr><td>concepts</td><td>0.52</td></tr>
+<tr><td>death</td><td>0.52</td></tr>
+<tr><td>internet</td><td>0.51</td></tr>
+<tr><td>dissemination</td><td>0.51</td></tr>
+<tr><td>part</td><td>0.51</td></tr>
+<tr><td>library</td><td>0.5</td></tr>
+<tr><td>complexity</td><td>0.5</td></tr>
+<tr><td>lots</td><td>0.5</td></tr></table><hr><br><table><th>Word<i> (store) </i><br><small>[visited 113 of 2239]</small></th><th>similarity</th>
+<tr><td>store</td><td>1.0</td></tr>
+<tr><td>word</td><td>0.69</td></tr>
+<tr><td>full</td><td>0.69</td></tr>
+<tr><td>selfâ€”a</td><td>0.67</td></tr>
+<tr><td>secret</td><td>0.67</td></tr>
+<tr><td>genius</td><td>0.66</td></tr>
+<tr><td>end</td><td>0.65</td></tr>
+<tr><td>basis</td><td>0.64</td></tr>
+<tr><td>key</td><td>0.64</td></tr>
+<tr><td>importance</td><td>0.63</td></tr>
+<tr><td>death</td><td>0.63</td></tr>
+<tr><td>dissemination</td><td>0.62</td></tr>
+<tr><td>nature</td><td>0.6</td></tr>
+<tr><td>counts</td><td>0.59</td></tr>
+<tr><td>market</td><td>0.57</td></tr>
+<tr><td>fresh</td><td>0.57</td></tr>
+<tr><td>internet</td><td>0.56</td></tr>
+<tr><td>japanese</td><td>0.56</td></tr>
+<tr><td>company</td><td>0.56</td></tr>
+<tr><td>layout</td><td>0.54</td></tr>
+<tr><td>great</td><td>0.54</td></tr></table><hr><br><table><th>Word<i> (history) </i><br><small>[visited 134 of 2239]</small></th><th>similarity</th>
+<tr><td>history</td><td>1.0</td></tr>
+<tr><td>number</td><td>0.76</td></tr>
+<tr><td>invention</td><td>0.76</td></tr>
+<tr><td>fundamental</td><td>0.75</td></tr>
+<tr><td>popularity</td><td>0.75</td></tr>
+<tr><td>factors</td><td>0.74</td></tr>
+<tr><td>rise</td><td>0.74</td></tr>
+<tr><td>possibility</td><td>0.74</td></tr>
+<tr><td>haziness</td><td>0.73</td></tr>
+<tr><td>majority</td><td>0.72</td></tr>
+<tr><td>dream</td><td>0.71</td></tr>
+<tr><td>classification</td><td>0.71</td></tr>
+<tr><td>context</td><td>0.71</td></tr>
+<tr><td>trio</td><td>0.69</td></tr>
+<tr><td>equation</td><td>0.68</td></tr>
+<tr><td>task</td><td>0.68</td></tr>
+<tr><td>concept</td><td>0.67</td></tr>
+<tr><td>world</td><td>0.67</td></tr>
+<tr><td>formalist</td><td>0.66</td></tr>
+<tr><td>principles</td><td>0.66</td></tr>
+<tr><td>impoverishment</td><td>0.66</td></tr></table><hr><br><table><th>Word<i> (people) </i><br><small>[visited 195 of 2239]</small></th><th>similarity</th>
+<tr><td>people</td><td>1.0</td></tr>
+<tr><td>metadata</td><td>0.56</td></tr>
+<tr><td>did</td><td>0.54</td></tr>
+<tr><td>task</td><td>0.5</td></tr>
+<tr><td>new</td><td>0.5</td></tr></table><hr><br><table><th>Word<i> (facebook) </i><br><small>[visited 125 of 2239]</small></th><th>similarity</th>
+<tr><td>facebook</td><td>1.0</td></tr></table><hr><br><table><th>Word<i> (ontologies) </i><br><small>[visited 205 of 2239]</small></th><th>similarity</th>
+<tr><td>ontologies</td><td>1.0</td></tr>
+<tr><td>sorts</td><td>0.76</td></tr>
+<tr><td>lots</td><td>0.74</td></tr>
+<tr><td>incapable</td><td>0.68</td></tr>
+<tr><td>parts</td><td>0.66</td></tr>
+<tr><td>concepts</td><td>0.62</td></tr>
+<tr><td>nature</td><td>0.62</td></tr>
+<tr><td>analysis</td><td>0.62</td></tr>
+<tr><td>kinds</td><td>0.6</td></tr>
+<tr><td>occurrences</td><td>0.59</td></tr>
+<tr><td>signals</td><td>0.58</td></tr>
+<tr><td>secondâ€”one</td><td>0.57</td></tr>
+<tr><td>course</td><td>0.56</td></tr>
+<tr><td>manual</td><td>0.56</td></tr>
+<tr><td>amount</td><td>0.56</td></tr>
+<tr><td>words</td><td>0.55</td></tr>
+<tr><td>quality</td><td>0.55</td></tr>
+<tr><td>saturn</td><td>0.54</td></tr>
+<tr><td>labyrinth</td><td>0.54</td></tr>
+<tr><td>semantic</td><td>0.53</td></tr>
+<tr><td>absence</td><td>0.53</td></tr></table><hr><br><table><th>Word<i> (use) </i><br><small>[visited 222 of 2239]</small></th><th>similarity</th>
+<tr><td>use</td><td>1.0</td></tr>
+<tr><td>computers</td><td>0.69</td></tr>
+<tr><td>yahoo</td><td>0.64</td></tr>
+<tr><td>likely</td><td>0.61</td></tr>
+<tr><td>fatal</td><td>0.58</td></tr>
+<tr><td>creators</td><td>0.58</td></tr>
+<tr><td>exercise</td><td>0.58</td></tr>
+<tr><td>work</td><td>0.56</td></tr>
+<tr><td>conducive</td><td>0.55</td></tr>
+<tr><td>thing</td><td>0.54</td></tr>
+<tr><td>data</td><td>0.54</td></tr>
+<tr><td>information</td><td>0.53</td></tr>
+<tr><td>narrower</td><td>0.51</td></tr>
+<tr><td>edits</td><td>0.5</td></tr></table><hr><br><table><th>Word<i> (had) </i><br><small>[visited 181 of 2239]</small></th><th>similarity</th>
+<tr><td>had</td><td>1.0</td></tr>
+<tr><td>that</td><td>0.71</td></tr>
+<tr><td>out</td><td>0.7</td></tr>
+<tr><td>have</td><td>0.7</td></tr>
+<tr><td>need</td><td>0.65</td></tr>
+<tr><td>search</td><td>0.65</td></tr>
+<tr><td>to</td><td>0.65</td></tr>
+<tr><td>can</td><td>0.63</td></tr>
+<tr><td>are</td><td>0.63</td></tr>
+<tr><td>be</td><td>0.63</td></tr>
+<tr><td>the</td><td>0.61</td></tr>
+<tr><td>improve</td><td>0.61</td></tr>
+<tr><td>it</td><td>0.61</td></tr>
+<tr><td>able</td><td>0.6</td></tr>
+<tr><td>judge</td><td>0.55</td></tr>
+<tr><td>randâ€</td><td>0.55</td></tr>
+<tr><td>their</td><td>0.55</td></tr>
+<tr><td>happened</td><td>0.54</td></tr>
+<tr><td>collection</td><td>0.53</td></tr>
+<tr><td>understand</td><td>0.53</td></tr>
+<tr><td>question</td><td>0.53</td></tr></table>
