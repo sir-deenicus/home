@@ -1,0 +1,702 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta charset="utf-8" />
+    <title>graph test</title>
+
+    <style type="text/css">
+        html, body {
+            font: 10pt arial;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        #mynetwork {
+            width: 100%;
+            height: 95%;
+            border: 1px solid lightgray;
+        }
+    </style>
+
+    <script type="text/javascript" src="visjs/vis.js"></script>
+    <link href="visjs/vis.css" rel="stylesheet" type="text/css" />
+
+    <script type="text/javascript">
+
+        var nodes = new vis.DataSet();
+        var edges = new vis.DataSet();
+        function draw() {
+            // create some nodes
+            var nodesData = [
+			   {id:0,label: '1. The sequence of \nimplementation of the commitments \ndetailed in this Annex is \nspecified in Annex V to \nthe Joint Comprehensive Plan of Action (JCPOA).\n',title: '1. The sequence of \nimplementation of the commitments \ndetailed in this Annex is \nspecified in Annex V to \nthe Joint Comprehensive Plan of Action (JCPOA).\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:1,label: '67.3. Iran will increase the \nnumber of designated IAEA \ninspectors to the range of \n130–150 within 9 months \nfrom the date of \nthe implementation of the JCPOA, \nand will generally allow the \ndesignation of inspectors from \nnations that have diplomatic \nrelations with Iran, consistent \nwith its laws and regulations. \n',title: '67.3. Iran will increase the \nnumber of designated IAEA \ninspectors to the range of \n130–150 within 9 months \nfrom the date of \nthe implementation of the JCPOA, \nand will generally allow the \ndesignation of inspectors from \nnations that have diplomatic \nrelations with Iran, consistent \nwith its laws and regulations. \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:2,label: '37. Iran will continue \ntesting of the IR-6 \non single centrifuge machines and \nits intermediate cascades and will \ncommence testing of up to \n30 centrifuge machines from one \nand a half years \nbefore the end of year \n10. Iran will proceed \nfrom single centrifuge machines and \nsmall cascades to intermediate \ncascades in a logical sequence. \n',title: '37. Iran will continue \ntesting of the IR-6 \non single centrifuge machines and \nits intermediate cascades and will \ncommence testing of up to \n30 centrifuge machines from one \nand a half years \nbefore the end of year \n10. Iran will proceed \nfrom single centrifuge machines and \nsmall cascades to intermediate \ncascades in a logical sequence. \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:3,label: '24. For 15 years, Iran \nwill not engage in producing \nor acquiring plutonium or \nuranium metals or their alloys, \nor conducting R&D on plutonium \nor uranium (or their alloys) \nmetallurgy, or casting, forming, or \nmachining plutonium or uranium metal.\n',title: '24. For 15 years, Iran \nwill not engage in producing \nor acquiring plutonium or \nuranium metals or their alloys, \nor conducting R&D on plutonium \nor uranium (or their alloys) \nmetallurgy, or casting, forming, or \nmachining plutonium or uranium metal.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:4,label: '9. The redesigned reactor will \nuse up to 3.67 percent \nenriched uranium in the \nform of UO2 with \na mass of approximately 350 \nkg of UO2 in \na full core load, with \na fuel design to be \nreviewed and approved by the Joint Commission.\n',title: '9. The redesigned reactor will \nuse up to 3.67 percent \nenriched uranium in the \nform of UO2 with \na mass of approximately 350 \nkg of UO2 in \na full core load, with \na fuel design to be \nreviewed and approved by the Joint Commission.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:5,label: 'In redesigning and reconstructing \nof the modernized Arak \nheavy water research reactor, \nIran will maximise the \nuse of existing infrastructure \nalready installed at the \ncurrent Arak research reactor. \n',title: 'In redesigning and reconstructing \nof the modernized Arak \nheavy water research reactor, \nIran will maximise the \nuse of existing infrastructure \nalready installed at the \ncurrent Arak research reactor. \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:6,label: 'Iran will conduct all \nmechanical testing of centrifuges only \nat the PFEP and the Tehran Research Centre.\n',title: 'Iran will conduct all \nmechanical testing of centrifuges only \nat the PFEP and the Tehran Research Centre.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:7,label: 'The participants of the Working \nGroup will provide assistance \nneeded by Iran for redesigning \nand rebuilding the reactor, \nconsistent with their respective \nnational laws, in such \na manner as to \nenable the safe and \ntimely construction and commissioning \nof the modernised reactor. \n',title: 'The participants of the Working \nGroup will provide assistance \nneeded by Iran for redesigning \nand rebuilding the reactor, \nconsistent with their respective \nnational laws, in such \na manner as to \nenable the safe and \ntimely construction and commissioning \nof the modernised reactor. \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:8,label: '8. E3/EU+3 parties will also \nsupport and facilitate the \ntimely and safe construction \nof the modernized Arak \nreactor and its subsidiary laboratories, \nupon request by Iran, \nthrough IAEA technical cooperation if \nappropriate, including but not \nlimited to technical and financial \nassistance, supply of required \nmaterials and equipment, state-of-the-art instrumentation \nand control systems and equipment \nand support for licensing and authorization.\n',title: '8. E3/EU+3 parties will also \nsupport and facilitate the \ntimely and safe construction \nof the modernized Arak \nreactor and its subsidiary laboratories, \nupon request by Iran, \nthrough IAEA technical cooperation if \nappropriate, including but not \nlimited to technical and financial \nassistance, supply of required \nmaterials and equipment, state-of-the-art instrumentation \nand control systems and equipment \nand support for licensing and authorization.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:9,label: '18. For 15 years Iran \nwill not, and does \nnot intend to thereafter, engage \nin any spent fuel \nreprocessing or spent fuel reprocessing R&D activities.\n',title: '18. For 15 years Iran \nwill not, and does \nnot intend to thereafter, engage \nin any spent fuel \nreprocessing or spent fuel reprocessing R&D activities.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:10,label: '20. For 15 years \nIran will not, and does \nnot intend to thereafter, \ndevelop, acquire or build \nfacilities capable of separation \nof plutonium, uranium or \nneptunium from spent fuel or \nfrom fertile targets, other \nthan for production of radio-isotopes \nfor medical and peaceful industrial purposes.\n',title: '20. For 15 years \nIran will not, and does \nnot intend to thereafter, \ndevelop, acquire or build \nfacilities capable of separation \nof plutonium, uranium or \nneptunium from spent fuel or \nfrom fertile targets, other \nthan for production of radio-isotopes \nfor medical and peaceful industrial purposes.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:11,label: '28. Iran will keep its \nlevel of uranium enrichment \nat up to 3.67 \npercent for 15 years. \n',title: '28. Iran will keep its \nlevel of uranium enrichment \nat up to 3.67 \npercent for 15 years. \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:12,label: 'For 15 years, Iran \nwill develop, acquire, build, or \noperate hot cells (containing \na cell or interconnected cells), \nshielded cells or shielded glove \nboxes with dimensions beyond 6 \ncubic meters in volume and \nspecifications set out in \nAnnex I of the \nAdditional Protocol, only after \napproval by the Joint Commission. \n',title: 'For 15 years, Iran \nwill develop, acquire, build, or \noperate hot cells (containing \na cell or interconnected cells), \nshielded cells or shielded glove \nboxes with dimensions beyond 6 \ncubic meters in volume and \nspecifications set out in \nAnnex I of the \nAdditional Protocol, only after \napproval by the Joint Commission. \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:13,label: '19. For 15 years \nIran will not, and does \nnot intend to thereafter, \nreprocess spent fuel except for \nirradiated enriched uranium targets for \nproduction of radio-isotopes for medical \nand peaceful industrial purposes. \n',title: '19. For 15 years \nIran will not, and does \nnot intend to thereafter, \nreprocess spent fuel except for \nirradiated enriched uranium targets for \nproduction of radio-isotopes for medical \nand peaceful industrial purposes. \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:14,label: '48.1. remove all excess centrifuges \nand uranium enrichment related infrastructure\n',title: '48.1. remove all excess centrifuges \nand uranium enrichment related infrastructure\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:15,label: '69. Iran will provide \nthe IAEA with all necessary \ninformation such that the IAEA \nwill be able to \nverify the production of \nthe uranium ore concentrate \nand the inventory of uranium \nore concentrate produced in Iran \nor obtained from any \nother source for 25 years.\n',title: '69. Iran will provide \nthe IAEA with all necessary \ninformation such that the IAEA \nwill be able to \nverify the production of \nthe uranium ore concentrate \nand the inventory of uranium \nore concentrate produced in Iran \nor obtained from any \nother source for 25 years.\n', shape:'box', color:'rgba(225, 225, 225, .8)'},
+{id:16,label: '82. Iran will not \nengage in the following activities \nwhich could contribute to the \ndevelopment of a nuclear explosive device:\n',title: '82. Iran will not \nengage in the following activities \nwhich could contribute to the \ndevelopment of a nuclear explosive device:\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:17,label: 'For the full IR-1 \ncascade (No. 6), Iran will \nmodify associated infrastructure by \nremoving UF6 pipework, including sub-headers, \nvalves and pressure transducers at \ncascade level, and frequency inverters.\n',title: 'For the full IR-1 \ncascade (No. 6), Iran will \nmodify associated infrastructure by \nremoving UF6 pipework, including sub-headers, \nvalves and pressure transducers at \ncascade level, and frequency inverters.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:18,label: 'For any such project \nto proceed to a \nprototype stage for mechanical \ntesting within 10 years, \na full presentation to, and \napproval by, the Joint Commission is needed.\n',title: 'For any such project \nto proceed to a \nprototype stage for mechanical \ntesting within 10 years, \na full presentation to, and \napproval by, the Joint Commission is needed.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:19,label: '74. Requests for access \npursuant to provisions of this \nJCPOA will be made \nin good faith, with due \nobservance of the sovereign rights \nof Iran, and kept \nto the minimum necessary \nto effectively implement the \nverification responsibilities under this JCPOA. \n',title: '74. Requests for access \npursuant to provisions of this \nJCPOA will be made \nin good faith, with due \nobservance of the sovereign rights \nof Iran, and kept \nto the minimum necessary \nto effectively implement the \nverification responsibilities under this JCPOA. \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:20,label: 'E3/EU+3 parties will support the \npurchase by Iran, the transfer \nand supply of necessary materials, \nequipment, instrumentation and control \nsystems and technologies required for \nthe construction of the \nredesigned reactor, through the \nmechanism established by this JCPOA, \nas well as through exploration \nof relevant funding contributions. \n',title: 'E3/EU+3 parties will support the \npurchase by Iran, the transfer \nand supply of necessary materials, \nequipment, instrumentation and control \nsystems and technologies required for \nthe construction of the \nredesigned reactor, through the \nmechanism established by this JCPOA, \nas well as through exploration \nof relevant funding contributions. \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:21,label: '27. Iran will keep \nits enrichment capacity at no \nmore than 5060 IR-1 \ncentrifuge machines in no more \nthan 30 cascades in their \ncurrent configurations in currently operating \nunits at the Natanz \nFuel Enrichment Plant (FEP) for 10 years.\n',title: '27. Iran will keep \nits enrichment capacity at no \nmore than 5060 IR-1 \ncentrifuge machines in no more \nthan 30 cascades in their \ncurrent configurations in currently operating \nunits at the Natanz \nFuel Enrichment Plant (FEP) for 10 years.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:22,label: '73. Iran intends to apply \nnuclear export policies and practices \nin line with the internationally \nestablished standards for the \nexport of nuclear material, equipment and technology.\n',title: '73. Iran intends to apply \nnuclear export policies and practices \nin line with the internationally \nestablished standards for the \nexport of nuclear material, equipment and technology.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:23,label: '15. Iran will inform the \nIAEA about the inventory and \nthe production of the HWPP \nand will allow the IAEA \nto monitor the quantities \nof the heavy water stocks \nand the amount of heavy \nwater produced, including through \nIAEA visits, as requested, to the HWPP.\n',title: '15. Iran will inform the \nIAEA about the inventory and \nthe production of the HWPP \nand will allow the IAEA \nto monitor the quantities \nof the heavy water stocks \nand the amount of heavy \nwater produced, including through \nIAEA visits, as requested, to the HWPP.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:24,label: '41. For the purpose of \nadapting PFEP to the R&D \nactivities in the enrichment \nand enrichment R&D plan, Iran \nwill remove all centrifuges \nexcept those needed for \ntesting as described in \nthe relevant paragraphs above, except \nfor the IR-1 cascade \n(No. 1) as described below. \n',title: '41. For the purpose of \nadapting PFEP to the R&D \nactivities in the enrichment \nand enrichment R&D plan, Iran \nwill remove all centrifuges \nexcept those needed for \ntesting as described in \nthe relevant paragraphs above, except \nfor the IR-1 cascade \n(No. 1) as described below. \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:25,label: 'Destructive and non-destructive testing \nof this fuel including \nPost-Irradiation-Examination (PIE) will take \nplace in one of the \nparticipating countries outside of Iran \nand that country will work \nwith Iran to license \nthe subsequent fuel fabricated \nin Iran for the \nuse in the redesigned reactor under IAEA monitoring.\n',title: 'Destructive and non-destructive testing \nof this fuel including \nPost-Irradiation-Examination (PIE) will take \nplace in one of the \nparticipating countries outside of Iran \nand that country will work \nwith Iran to license \nthe subsequent fuel fabricated \nin Iran for the \nuse in the redesigned reactor under IAEA monitoring.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:26,label: '60. Iran will seek \nto enter into a commercial \ncontract with entities outside \nIran for the purchase \nof fuel for the \nTRR and enriched uranium targets.\n',title: '60. Iran will seek \nto enter into a commercial \ncontract with entities outside \nIran for the purchase \nof fuel for the \nTRR and enriched uranium targets.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:27,label: '64. Iran will notify \nthe IAEA of provisional application \nof the Additional Protocol to \nits Safeguards Agreement in accordance \nwith Article 17(b) of \nthe Additional Protocol pending its \nentry into force, and subsequently \nseek ratification and entry into \nforce, consistent with the \nrespective roles of the President \nand the Majlis (Parliament). \n',title: '64. Iran will notify \nthe IAEA of provisional application \nof the Additional Protocol to \nits Safeguards Agreement in accordance \nwith Article 17(b) of \nthe Additional Protocol pending its \nentry into force, and subsequently \nseek ratification and entry into \nforce, consistent with the \nrespective roles of the President \nand the Majlis (Parliament). \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:28,label: '66. Iran will complete \nall activities as set \nout in paragraphs 2, 4, \n5, and 6 of \nthe “Roadmap for Clarification of \nPast and Present Outstanding \nIssues”, as verified by \nthe IAEA in its regular \nupdates by the Director \nGeneral of the IAEA \non the implementation of this Roadmap.\n',title: '66. Iran will complete \nall activities as set \nout in paragraphs 2, 4, \n5, and 6 of \nthe “Roadmap for Clarification of \nPast and Present Outstanding \nIssues”, as verified by \nthe IAEA in its regular \nupdates by the Director \nGeneral of the IAEA \non the implementation of this Roadmap.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:29,label: '6. The IAEA will \nmonitor the construction and report \nto the Working Group \nfor confirmation that the \nconstruction of the modernised reactor \nis consistent with the approved final design.\n',title: '6. The IAEA will \nmonitor the construction and report \nto the Working Group \nfor confirmation that the \nconstruction of the modernised reactor \nis consistent with the approved final design.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:30,label: 'E3/EU+3 parties will, consistent with \ntheir national laws, take \nappropriate administrative, legal, technical, and \nregulatory measures to support co-operation.\n',title: 'E3/EU+3 parties will, consistent with \ntheir national laws, take \nappropriate administrative, legal, technical, and \nregulatory measures to support co-operation.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:31,label: '39. For 10 years, Iran, \nconsistent with the established \npractice, will recombine the enriched \nand depleted streams from the \nIR-6 and IR-8 cascades \nthrough the use of \nwelded pipework on withdrawal main \nheaders in a manner that \nprecludes the withdrawal of enriched \nand depleted uranium materials \nand verified by the IAEA. \n',title: '39. For 10 years, Iran, \nconsistent with the established \npractice, will recombine the enriched \nand depleted streams from the \nIR-6 and IR-8 cascades \nthrough the use of \nwelded pipework on withdrawal main \nheaders in a manner that \nprecludes the withdrawal of enriched \nand depleted uranium materials \nand verified by the IAEA. \n', shape:'box', color:'rgba(225, 225, 225, .8)'},
+{id:32,label: 'Attachment: Arak conceptual design \n',title: 'Attachment: Arak conceptual design \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:33,label: '42. Consistent with the activities \nin the enrichment and \nenrichment R&D plan, Iran \nwill maintain the cascade \ninfrastructure for testing of \nsingle centrifuges and small and \nintermediate cascades in two \nR&D lines (No. 2 and \nNo. 3) and will \nadapt two other lines \n(No. 4 and No. 5) \nwith infrastructure similar to \nthat for lines No. \n2 and No. 3 in \norder to enable future R&D \nactivities as specified in this JCPoA.\n',title: '42. Consistent with the activities \nin the enrichment and \nenrichment R&D plan, Iran \nwill maintain the cascade \ninfrastructure for testing of \nsingle centrifuges and small and \nintermediate cascades in two \nR&D lines (No. 2 and \nNo. 3) and will \nadapt two other lines \n(No. 4 and No. 5) \nwith infrastructure similar to \nthat for lines No. \n2 and No. 3 in \norder to enable future R&D \nactivities as specified in this JCPoA.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:34,label: 'The process of consultation \nwith, and any action \nby, the members of the \nJoint Commission would not exceed \n7 days, and Iran \nwould implement the necessary \nmeans within 3 additional days. \n',title: 'The process of consultation \nwith, and any action \nby, the members of the \nJoint Commission would not exceed \n7 days, and Iran \nwould implement the necessary \nmeans within 3 additional days. \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:35,label: 'Centrifuges and Development \n',title: 'Centrifuges and Development \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:36,label: '23. For 15 years, \nin addition to continuing current \nfuel testing activities at \nthe TRR, Iran will \nundertake non-destructive post irradiation examination \n(PIE) of fuel pins, \nfuel assembly prototypes and structural materials.\n',title: '23. For 15 years, \nin addition to continuing current \nfuel testing activities at \nthe TRR, Iran will \nundertake non-destructive post irradiation examination \n(PIE) of fuel pins, \nfuel assembly prototypes and structural materials.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:37,label: '38. Iran will commence, upon \nstart of implementation of \nthe JCPOA, testing of \nthe IR- 8 on \nsingle centrifuge machines and its \nintermediate cascades and will commence \nthe testing of up \nto 30 centrifuges machines from \none and a half \nyears before the end of \nyear 10. Iran will proceed \nfrom single centrifuges to small \ncascades to intermediate cascades \nin a logical sequence. \n',title: '38. Iran will commence, upon \nstart of implementation of \nthe JCPOA, testing of \nthe IR- 8 on \nsingle centrifuge machines and its \nintermediate cascades and will commence \nthe testing of up \nto 30 centrifuges machines from \none and a half \nyears before the end of \nyear 10. Iran will proceed \nfrom single centrifuges to small \ncascades to intermediate cascades \nin a logical sequence. \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:38,label: 'Transparency Related to Uranium Ore Concentrate (UOC)\n',title: 'Transparency Related to Uranium Ore Concentrate (UOC)\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:39,label: '44. The Fordow Fuel \nEnrichment Plant (FFEP) will \nbe converted into a \nnuclear, physics, and technology centre \nand international collaboration will \nbe encouraged in agreed areas of research.\n',title: '44. The Fordow Fuel \nEnrichment Plant (FFEP) will \nbe converted into a \nnuclear, physics, and technology centre \nand international collaboration will \nbe encouraged in agreed areas of research.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:40,label: '81. For 10 years, Iran’s \nuranium isotope separation-related research and \ndevelopment or production activities \nwill be exclusively based \non gaseous centrifuge technology. \n',title: '81. For 10 years, Iran’s \nuranium isotope separation-related research and \ndevelopment or production activities \nwill be exclusively based \non gaseous centrifuge technology. \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:41,label: '49. Centrifuges from the \nfour idle cascades may \nbe used for the \nreplacement of failed or \ndamaged centrifuges in stable \nisotope production at Fordow. \n',title: '49. Centrifuges from the \nfour idle cascades may \nbe used for the \nreplacement of failed or \ndamaged centrifuges in stable \nisotope production at Fordow. \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:42,label: '65. Iran will notify \nthe IAEA that it \nwill fully implement the \nModified Code 3.1 of \nthe Subsidiary Arrangement to \nIran’s Safeguards Agreement as long \nas the Safeguards Agreement remains in force.\n',title: '65. Iran will notify \nthe IAEA that it \nwill fully implement the \nModified Code 3.1 of \nthe Subsidiary Arrangement to \nIran’s Safeguards Agreement as long \nas the Safeguards Agreement remains in force.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:43,label: 'The Joint Commission will establish \na Technical Working Group \nwith the goal of enabling \nfuel to be fabricated in \nIran while adhering to \nthe agreed stockpile parameters \n(300 kg of up to \n3.67 % enriched UF6 \nor the equivalent in different chemical forms).\n',title: 'The Joint Commission will establish \na Technical Working Group \nwith the goal of enabling \nfuel to be fabricated in \nIran while adhering to \nthe agreed stockpile parameters \n(300 kg of up to \n3.67 % enriched UF6 \nor the equivalent in different chemical forms).\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:44,label: 'For 15 years, Iran will \nonly engage, including through export \nof any enrichment or \nenrichment related equipment and technology, \nwith any other country, \nor with any foreign \nentity in enrichment or \nenrichment related activities, including \nrelated research and development \nactivities, following approval by the Joint Commission.\n',title: 'For 15 years, Iran will \nonly engage, including through export \nof any enrichment or \nenrichment related equipment and technology, \nwith any other country, \nor with any foreign \nentity in enrichment or \nenrichment related activities, including \nrelated research and development \nactivities, following approval by the Joint Commission.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:45,label: '17. Iran intends to ship \nout all spent fuel \nfor all future and present \nnuclear power and research reactors, \nfor further treatment or \ndisposition as provided for \nin relevant contracts to be \nconcluded consistent with national \nlaws with the recipient party. \n',title: '17. Iran intends to ship \nout all spent fuel \nfor all future and present \nnuclear power and research reactors, \nfor further treatment or \ndisposition as provided for \nin relevant contracts to be \nconcluded consistent with national \nlaws with the recipient party. \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:46,label: 'Iran will store them \nat Natanz in an \nabove ground location, under \nIAEA continuous monitoring, until they \nare needed for final assembly \naccording to the enrichment \nand enrichment R&D plan. \n',title: 'Iran will store them \nat Natanz in an \nabove ground location, under \nIAEA continuous monitoring, until they \nare needed for final assembly \naccording to the enrichment \nand enrichment R&D plan. \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:47,label: 'Around 78 fuel assemblies in \na tight hexagonal grid spacing \nwith the following preliminary \ncharacteristics will be loaded. \n',title: 'Around 78 fuel assemblies in \na tight hexagonal grid spacing \nwith the following preliminary \ncharacteristics will be loaded. \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:48,label: 'Fordow Fuel Enrichment Plant \n',title: 'Fordow Fuel Enrichment Plant \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:49,label: 'Iran will permit the IAEA \nregular access, including daily as \nrequested by the IAEA, access \nto the FFEP in order \nto monitor Iran’s production \nof stable isotopes and \nthe absence of undeclared nuclear \nmaterial and activities at \nthe FFEP for 15 years. \n',title: 'Iran will permit the IAEA \nregular access, including daily as \nrequested by the IAEA, access \nto the FFEP in order \nto monitor Iran’s production \nof stable isotopes and \nthe absence of undeclared nuclear \nmaterial and activities at \nthe FFEP for 15 years. \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:50,label: 'In implementing this procedure as \nwell as other transparency measures, \nthe IAEA will be \nrequested to take every \nprecaution to protect commercial, technological \nand industrial secrets as well \nas other confidential information \ncoming to its knowledge. \n',title: 'In implementing this procedure as \nwell as other transparency measures, \nthe IAEA will be \nrequested to take every \nprecaution to protect commercial, technological \nand industrial secrets as well \nas other confidential information \ncoming to its knowledge. \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:51,label: '67.2. Iran will make \nthe necessary arrangements to \nallow for a long-term \nIAEA presence, including issuing \nlong-term visas, as well as \nproviding proper working space at \nnuclear sites and, with best \nefforts, at locations near nuclear \nsites in Iran for the \ndesignated IAEA inspectors for \nworking and keeping necessary equipment.\n',title: '67.2. Iran will make \nthe necessary arrangements to \nallow for a long-term \nIAEA presence, including issuing \nlong-term visas, as well as \nproviding proper working space at \nnuclear sites and, with best \nefforts, at locations near nuclear \nsites in Iran for the \ndesignated IAEA inspectors for \nworking and keeping necessary equipment.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:52,label: '71. Iran will permit \nthe IAEA regular access, \nincluding daily access as requested \nby the IAEA, to \nrelevant buildings at Natanz, \nincluding all parts of the \nFEP and PFEP, for 15 years.\n',title: '71. Iran will permit \nthe IAEA regular access, \nincluding daily access as requested \nby the IAEA, to \nrelevant buildings at Natanz, \nincluding all parts of the \nFEP and PFEP, for 15 years.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:53,label: 'Iran will enter into a \ncommercial contract with an \nentity outside Iran for the \npurchase and transfer of its \nenriched uranium stockpile in \nexcess of 300 kg \nUF6 in return for natural \nuranium delivered to Iran. \n',title: 'Iran will enter into a \ncommercial contract with an \nentity outside Iran for the \npurchase and transfer of its \nenriched uranium stockpile in \nexcess of 300 kg \nUF6 in return for natural \nuranium delivered to Iran. \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:54,label: 'The commercial transactions should \nbe structured to return \nan equivalent amount of natural uranium to Iran.\n',title: 'The commercial transactions should \nbe structured to return \nan equivalent amount of natural uranium to Iran.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:55,label: 'The design will be such \nas to minimise the production \nof plutonium and not \nto produce weapon-grade plutonium in normal operation.\n',title: 'The design will be such \nas to minimise the production \nof plutonium and not \nto produce weapon-grade plutonium in normal operation.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:56,label: 'Modernizing of the original \ndesign in order to be \na multi-purpose research reactor comprising \nradio-isotope production, structural materials and \nfuel (pins and assembly prototypes) \ntesting and able to conduct \nother neutronic experiments which demand \nhigh neutron fluxes (more than 10^14).\n',title: 'Modernizing of the original \ndesign in order to be \na multi-purpose research reactor comprising \nradio-isotope production, structural materials and \nfuel (pins and assembly prototypes) \ntesting and able to conduct \nother neutronic experiments which demand \nhigh neutron fluxes (more than 10^14).\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:57,label: '52. Iran will abide \nby its voluntary commitments \nas expressed in its own \nlong term enrichment and \nenrichment R&D plan to \nbe submitted as part \nof the initial declaration \ndescribed in Article 2 \nof the Additional Protocol. \n',title: '52. Iran will abide \nby its voluntary commitments \nas expressed in its own \nlong term enrichment and \nenrichment R&D plan to \nbe submitted as part \nof the initial declaration \ndescribed in Article 2 \nof the Additional Protocol. \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:58,label: '82.4. Designing, developing, fabricating, \nacquiring, or using explosively driven \nneutron sources or specialized \nmaterials for explosively driven neutron sources.\n',title: '82.4. Designing, developing, fabricating, \nacquiring, or using explosively driven \nneutron sources or specialized \nmaterials for explosively driven neutron sources.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:59,label: '25. Iran will not produce, \nseek, or acquire separated \nplutonium, highly enriched uranium \n(defined as 20% or \ngreater uranium-235), or uranium-233, \nor neptunium-237 (except for \nuse as laboratory standards or \nin instruments using neptunium-237) for 15 years.\n',title: '25. Iran will not produce, \nseek, or acquire separated \nplutonium, highly enriched uranium \n(defined as 20% or \ngreater uranium-235), or uranium-233, \nor neptunium-237 (except for \nuse as laboratory standards or \nin instruments using neptunium-237) for 15 years.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:60,label: 'The final design of the \nmodernised reactor and the \ndesign of the subsidiary \nlaboratories will be submitted to the Joint Commission.\n',title: 'The final design of the \nmodernised reactor and the \ndesign of the subsidiary \nlaboratories will be submitted to the Joint Commission.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:61,label: '80.1. Iran will provide \nthe IAEA with an \ninitial inventory of all existing \ncentrifuge rotor tubes and bellows \nand subsequent reports on changes \nin such inventory and \nwill permit the IAEA \nto verify the inventory by \nitem counting and numbering, and \nthrough containment and surveillance, of \nall rotor tubes and bellows, \nincluding in all existing \nand newly produced centrifuges. \n',title: '80.1. Iran will provide \nthe IAEA with an \ninitial inventory of all existing \ncentrifuge rotor tubes and bellows \nand subsequent reports on changes \nin such inventory and \nwill permit the IAEA \nto verify the inventory by \nitem counting and numbering, and \nthrough containment and surveillance, of \nall rotor tubes and bellows, \nincluding in all existing \nand newly produced centrifuges. \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:62,label: 'The IAEA will monitor the \nfuel fabrication process for \nany fuel produced in Iran \nto verify that the fuel \nand intermediate products comport \nwith the fuel fabrication \nprocess that was approved \nby the Technical Working Group.\n',title: 'The IAEA will monitor the \nfuel fabrication process for \nany fuel produced in Iran \nto verify that the fuel \nand intermediate products comport \nwith the fuel fabrication \nprocess that was approved \nby the Technical Working Group.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:63,label: 'For 15 years, Iran will \nnot build or operate facilities \nfor converting fuel plates \nor scrap back to UF6.\n',title: 'For 15 years, Iran will \nnot build or operate facilities \nfor converting fuel plates \nor scrap back to UF6.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:64,label: 'E3/EU+3 participants and Iran \nwill conclude an official document \nexpressing their strong commitments to \nthe Arak modernisation project in \nadvance of Implementation Day which \nwould provide an assured \npath forward to modernise \nthe reactor and would \ndefine the responsibilities assumed \nby the E3/EU+3 participants, and \nsubsequently contracts would be concluded.\n',title: 'E3/EU+3 participants and Iran \nwill conclude an official document \nexpressing their strong commitments to \nthe Arak modernisation project in \nadvance of Implementation Day which \nwould provide an assured \npath forward to modernise \nthe reactor and would \ndefine the responsibilities assumed \nby the E3/EU+3 participants, and \nsubsequently contracts would be concluded.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:65,label: 'The E3/EU+3 and Iran \nshare the understanding that the \nparameters in the conceptual \ndesign are subject to \npossible and necessary adjustments in \ndeveloping the final design \nwhile fully preserving the \nabove- mentioned purposes and principles of modernisation.\n',title: 'The E3/EU+3 and Iran \nshare the understanding that the \nparameters in the conceptual \ndesign are subject to \npossible and necessary adjustments in \ndeveloping the final design \nwhile fully preserving the \nabove- mentioned purposes and principles of modernisation.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:66,label: '50. Iran will limit its \nstable isotope production activities with \ngas centrifuges to the \nFFEP for 15 years and \nwill use no more than \n348 IR-1 centrifuges for these \nactivities at the FFEP. \n',title: '50. Iran will limit its \nstable isotope production activities with \ngas centrifuges to the \nFFEP for 15 years and \nwill use no more than \n348 IR-1 centrifuges for these \nactivities at the FFEP. \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:67,label: '80.2. Iran will declare all \nlocations and equipment, namely \nflow-forming machines, filament-winding machines \nand mandrels that are used \nfor production of centrifuge rotor \ntubes or bellows, and \nwill permit the IAEA \nto implement continuous monitoring, \nincluding through containment and \nsurveillance on this equipment, to \nverify that this equipment is \nbeing used to manufacture \ncentrifuges only for the activities \nspecified in this JCPOA. \n',title: '80.2. Iran will declare all \nlocations and equipment, namely \nflow-forming machines, filament-winding machines \nand mandrels that are used \nfor production of centrifuge rotor \ntubes or bellows, and \nwill permit the IAEA \nto implement continuous monitoring, \nincluding through containment and \nsurveillance on this equipment, to \nverify that this equipment is \nbeing used to manufacture \ncentrifuges only for the activities \nspecified in this JCPOA. \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:68,label: '22. The E3/EU+3 are ready \nto facilitate all of \nthe destructive and non-destructive examinations \non fuel elements and/or fuel \nassembly prototypes including PIE \nfor all fuel fabricated \nin or outside Iran \nand irradiated in Iran, \nusing their existing facilities outside Iran.\n',title: '22. The E3/EU+3 are ready \nto facilitate all of \nthe destructive and non-destructive examinations \non fuel elements and/or fuel \nassembly prototypes including PIE \nfor all fuel fabricated \nin or outside Iran \nand irradiated in Iran, \nusing their existing facilities outside Iran.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:69,label: 'Scrap plates will be transferred, \nbased on a commercial transaction, outside Iran.\n',title: 'Scrap plates will be transferred, \nbased on a commercial transaction, outside Iran.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:70,label: '33. Consistent with its plan, \nIran will continue working with \nthe 164-machine IR-2m cascade at \nPFEP in order to \ncomplete the necessary tests \nuntil 30 November 2015 or \nthe day of implementation \nof this JCPOA, whichever \ncomes later, and after that \nit will take these machines \nout of the PFEP \nand store them under IAEA \ncontinuous monitoring at Natanz \nin Hall B of FEP.\n',title: '33. Consistent with its plan, \nIran will continue working with \nthe 164-machine IR-2m cascade at \nPFEP in order to \ncomplete the necessary tests \nuntil 30 November 2015 or \nthe day of implementation \nof this JCPOA, whichever \ncomes later, and after that \nit will take these machines \nout of the PFEP \nand store them under IAEA \ncontinuous monitoring at Natanz \nin Hall B of FEP.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:71,label: '26. If Iran seeks \nto initiate R&D on \nuranium metal based TRR fuel \nin small agreed quantities after \n10 years and before 15 \nyears, Iran will present its \nplan to, and seek \napproval by, the Joint Commission.\n',title: '26. If Iran seeks \nto initiate R&D on \nuranium metal based TRR fuel \nin small agreed quantities after \n10 years and before 15 \nyears, Iran will present its \nplan to, and seek \napproval by, the Joint Commission.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:72,label: '70. For 15 years, \nIran will permit the \nIAEA to implement continuous monitoring, \nincluding through containment and \nsurveillance measures, as necessary, \nto verify that stored centrifuges \nand infrastructure remain in \nstorage, and are only \nused to replace failed \nor damaged centrifuges, as specified in this Annex.\n',title: '70. For 15 years, \nIran will permit the \nIAEA to implement continuous monitoring, \nincluding through containment and \nsurveillance measures, as necessary, \nto verify that stored centrifuges \nand infrastructure remain in \nstorage, and are only \nused to replace failed \nor damaged centrifuges, as specified in this Annex.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:73,label: 'However, the E3/EU+3 will make \navailable their facilities to \nconduct destructive testing with Iranian specialists, as agreed.\n',title: 'However, the E3/EU+3 will make \navailable their facilities to \nconduct destructive testing with Iranian specialists, as agreed.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:74,label: 'The transition to stable \nisotope production of these cascades \nat FFEP will be conducted \nin joint partnership between \nthe Russian Federation and Iran \non the basis of arrangements \nto be mutually agreed upon. \n',title: 'The transition to stable \nisotope production of these cascades \nat FFEP will be conducted \nin joint partnership between \nthe Russian Federation and Iran \non the basis of arrangements \nto be mutually agreed upon. \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:75,label: 'Iran will make the \nnecessary technical modifications to the \nnatural uranium fuel production \nprocess line that was \nintended to supply fuel \nfor the IR-40 reactor \ndesign, such that it \ncan be used for \nthe fabrication of the \nfuel reloads for the modernised Arak reactor.\n',title: 'Iran will make the \nnecessary technical modifications to the \nnatural uranium fuel production \nprocess line that was \nintended to supply fuel \nfor the IR-40 reactor \ndesign, such that it \ncan be used for \nthe fabrication of the \nfuel reloads for the modernised Arak reactor.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:76,label: '78. If the absence \nof undeclared nuclear materials and \nactivities or activities inconsistent \nwith the JCPOA cannot \nbe verified after the implementation \nof the alternative arrangements agreed \nby Iran and the \nIAEA, or if the two \nsides are unable to reach \nsatisfactory arrangements to verify the \nabsence of undeclared nuclear \nmaterials and activities or activities \ninconsistent with the JCPOA \nat the specified locations \nwithin 14 days of the \nIAEA’s original request for \naccess, Iran, in consultation \nwith the members of the \nJoint Commission, would resolve \nthe IAEA’s concerns through necessary \nmeans agreed between Iran and the IAEA.\n',title: '78. If the absence \nof undeclared nuclear materials and \nactivities or activities inconsistent \nwith the JCPOA cannot \nbe verified after the implementation \nof the alternative arrangements agreed \nby Iran and the \nIAEA, or if the two \nsides are unable to reach \nsatisfactory arrangements to verify the \nabsence of undeclared nuclear \nmaterials and activities or activities \ninconsistent with the JCPOA \nat the specified locations \nwithin 14 days of the \nIAEA’s original request for \naccess, Iran, in consultation \nwith the members of the \nJoint Commission, would resolve \nthe IAEA’s concerns through necessary \nmeans agreed between Iran and the IAEA.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:77,label: '72. For 15 years, the \nNatanz enrichment site will \nbe the sole location for \nall of Iran’s uranium \nenrichment related activities including safeguarded R&D.\n',title: '72. For 15 years, the \nNatanz enrichment site will \nbe the sole location for \nall of Iran’s uranium \nenrichment related activities including safeguarded R&D.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:78,label: 'The Working Group could be \nenlarged to include other countries \nby consensus of the \nparticipants of the Working Group and Iran.\n',title: 'The Working Group could be \nenlarged to include other countries \nby consensus of the \nparticipants of the Working Group and Iran.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:79,label: '51. The IAEA will \nestablish a baseline for the \namount of uranium legacy from \npast enrichment operations that will remain in Fordow.\n',title: '51. The IAEA will \nestablish a baseline for the \namount of uranium legacy from \npast enrichment operations that will remain in Fordow.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:80,label: '12. Iran will submit the \nDIQ of the redesigned \nreactor to the IAEA which \nwill include information on \nthe planned radio-isotope production and reactor operation programme.\n',title: '12. Iran will submit the \nDIQ of the redesigned \nreactor to the IAEA which \nwill include information on \nthe planned radio-isotope production and reactor operation programme.\n', shape:'box', color:'rgba(225, 225, 225, .8)'},
+{id:81,label: '75. In furtherance of \nimplementation of the JCPOA, \nif the IAEA has \nconcerns regarding undeclared nuclear \nmaterials or activities, or \nactivities inconsistent with the JCPOA, \nat locations that have \nnot been declared under \nthe comprehensive safeguards agreement \nor Additional Protocol, the \nIAEA will provide Iran the \nbasis for such concerns and request clarification.\n',title: '75. In furtherance of \nimplementation of the JCPOA, \nif the IAEA has \nconcerns regarding undeclared nuclear \nmaterials or activities, or \nactivities inconsistent with the JCPOA, \nat locations that have \nnot been declared under \nthe comprehensive safeguards agreement \nor Additional Protocol, the \nIAEA will provide Iran the \nbasis for such concerns and request clarification.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:82,label: 'These examinations will be \nexclusively at the Arak research reactor complex.\n',title: 'These examinations will be \nexclusively at the Arak research reactor complex.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:83,label: '59. Russian designed, fabricated \nand licensed fuel assemblies for \nuse in Russian- supplied \nreactors in Iran do \nnot count against the 300 \nkg UF6 stockpile limit. \n',title: '59. Russian designed, fabricated \nand licensed fuel assemblies for \nuse in Russian- supplied \nreactors in Iran do \nnot count against the 300 \nkg UF6 stockpile limit. \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:84,label: '43. Consistent with its \nplan and internationally established practices, \nIran intends to continue R&D \non new types of centrifuges \nthrough computer modelling and simulations, including at universities.\n',title: '43. Consistent with its \nplan and internationally established practices, \nIran intends to continue R&D \non new types of centrifuges \nthrough computer modelling and simulations, including at universities.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:85,label: 'Except for the Arak \nresearch reactor complex, Iran \nwill not develop, build, \nacquire or operate hot \ncells capable of performing \nPIE or seek to acquire \nequipment to build/develop such a \ncapability, for 15 years. \n',title: 'Except for the Arak \nresearch reactor complex, Iran \nwill not develop, build, \nacquire or operate hot \ncells capable of performing \nPIE or seek to acquire \nequipment to build/develop such a \ncapability, for 15 years. \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:86,label: 'Iran will facilitate automated collection \nof IAEA measurement recordings \nregistered by installed measurement devices \nand sending to IAEA \nworking space in individual nuclear sites.\n',title: 'Iran will facilitate automated collection \nof IAEA measurement recordings \nregistered by installed measurement devices \nand sending to IAEA \nworking space in individual nuclear sites.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:87,label: '36. Iran will test \na single IR-5 centrifuge machine for 10 years.\n',title: '36. Iran will test \na single IR-5 centrifuge machine for 10 years.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:88,label: 'Iran may choose to seek \nto sell excess enriched \nuranium to the IAEA \nfuel bank in Kazakhstan \nwhen the fuel bank becomes operational.\n',title: 'Iran may choose to seek \nto sell excess enriched \nuranium to the IAEA \nfuel bank in Kazakhstan \nwhen the fuel bank becomes operational.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:89,label: 'Consistent with relevant section of \nAnnex 1, sibsidiary laboratories \nare part of the modernization \nproject of the Arak Research Reactor.\n',title: 'Consistent with relevant section of \nAnnex 1, sibsidiary laboratories \nare part of the modernization \nproject of the Arak Research Reactor.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:90,label: 'Whenever during the 10 \nyear period from the \nstart of the implementation \nof the JCPOA, the level \nof stock of IR-1 \nmachines falls to 500 or \nbelow, Iran may maintain \nthis level of stock by \nresuming production of IR-1 \nmachines at a rate \nup to the average monthly \ncrash rate without exceeding \nthe stock of 500. \n',title: 'Whenever during the 10 \nyear period from the \nstart of the implementation \nof the JCPOA, the level \nof stock of IR-1 \nmachines falls to 500 or \nbelow, Iran may maintain \nthis level of stock by \nresuming production of IR-1 \nmachines at a rate \nup to the average monthly \ncrash rate without exceeding \nthe stock of 500. \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:91,label: 'Enriched uranium in fabricated \nfuel assemblies from other sources \noutside of Iran for use \nin Iran’s nuclear research \nand power reactors, including those \nwhich will be fabricated \noutside of Iran for \nthe initial fuel load of \nthe modernised Arak research reactor, \nwhich are certified by the \nfuel supplier and the appropriate \nIranian authority to meet \ninternational standards, will not count \nagainst the 300 kg UF6 stockpile limit.\n',title: 'Enriched uranium in fabricated \nfuel assemblies from other sources \noutside of Iran for use \nin Iran’s nuclear research \nand power reactors, including those \nwhich will be fabricated \noutside of Iran for \nthe initial fuel load of \nthe modernised Arak research reactor, \nwhich are certified by the \nfuel supplier and the appropriate \nIranian authority to meet \ninternational standards, will not count \nagainst the 300 kg UF6 stockpile limit.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:92,label: 'Other Reactors \n',title: 'Other Reactors \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:93,label: '63. Consistent with its \nplan, at the end of \nyear 8, Iran will \ncommence manufacturing of IR-6 and \nIR-8 centrifuges without rotors through \nyear 10 at a rate \nof up to 200 \ncentrifuges per year for each type.\n',title: '63. Consistent with its \nplan, at the end of \nyear 8, Iran will \ncommence manufacturing of IR-6 and \nIR-8 centrifuges without rotors through \nyear 10 at a rate \nof up to 200 \ncentrifuges per year for each type.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:94,label: 'The calandria will be made \ninoperable by filling any \nopenings in the calandria with \nconcrete such that the \nIAEA can verify that it \nwill not be usable for \na future nuclear application. \n',title: 'The calandria will be made \ninoperable by filling any \nopenings in the calandria with \nconcrete such that the \nIAEA can verify that it \nwill not be usable for \na future nuclear application. \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:95,label: 'If the Joint Commission does \nnot complete its review \nand endorsement within three \nmonths, Iran could raise the \nissue through the dispute resolution \nmechanism envisaged by this JCPOA.\n',title: 'If the Joint Commission does \nnot complete its review \nand endorsement within three \nmonths, Iran could raise the \nissue through the dispute resolution \nmechanism envisaged by this JCPOA.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:96,label: '68. Iran will permit the \nIAEA to monitor, through agreed \nmeasures that will include containment \nand surveillance measures, for 25 \nyears, that all uranium \nore concentrate produced in \nIran or obtained from \nany other source, is transferred \nto the uranium conversion \nfacility (UCF) in Esfahan or \nto any other future uranium \nconversion facility which Iran might \ndecide to build in Iran within this period.\n',title: '68. Iran will permit the \nIAEA to monitor, through agreed \nmeasures that will include containment \nand surveillance measures, for 25 \nyears, that all uranium \nore concentrate produced in \nIran or obtained from \nany other source, is transferred \nto the uranium conversion \nfacility (UCF) in Esfahan or \nto any other future uranium \nconversion facility which Iran might \ndecide to build in Iran within this period.\n', shape:'box', color:'rgba(225, 225, 225, .8)'},
+{id:97,label: '62. Consistent with its \nplan, Iran will use the \nstock of IR-1 centrifuge machines \nin storage, which are in \nexcess of the remaining 5060 \nIR-1 centrifuges in Natanz \nand the IR-1 centrifuges installed \nat Fordow, for the replacement \nof failed or damaged machines.\n',title: '62. Consistent with its \nplan, Iran will use the \nstock of IR-1 centrifuge machines \nin storage, which are in \nexcess of the remaining 5060 \nIR-1 centrifuges in Natanz \nand the IR-1 centrifuges installed \nat Fordow, for the replacement \nof failed or damaged machines.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:98,label: '4. Iran will take \nthe leadership role as \nthe owner and as \nthe project manager, and \nhave responsibility for overall \nimplementation of the Arak modernisation \nproject, with E3/EU+3 participants assuming \nresponsibilities regarding the modernisation \nof the Arak reactor as \ndescribed in this Annex. \n',title: '4. Iran will take \nthe leadership role as \nthe owner and as \nthe project manager, and \nhave responsibility for overall \nimplementation of the Arak modernisation \nproject, with E3/EU+3 participants assuming \nresponsibilities regarding the modernisation \nof the Arak reactor as \ndescribed in this Annex. \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:99,label: 'The E3/EU+3 will facilitate, \nas needed, the conclusion \nand implementation of this contract.\n',title: 'The E3/EU+3 will facilitate, \nas needed, the conclusion \nand implementation of this contract.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:100,label: '30. For the purpose of \nthis Annex, the IAEA \nwill confirm through the \nestablished practice the failed \nor damaged status of centrifuge machines before removal.\n',title: '30. For the purpose of \nthis Annex, the IAEA \nwill confirm through the \nestablished practice the failed \nor damaged status of centrifuge machines before removal.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:101,label: 'The following procedures are for \nthe purpose of JCPOA implementation \nbetween the E3/EU+3 and \nIran and are without \nprejudice to the safeguards \nagreement and the Additional Protocol thereto.\n',title: 'The following procedures are for \nthe purpose of JCPOA implementation \nbetween the E3/EU+3 and \nIran and are without \nprejudice to the safeguards \nagreement and the Additional Protocol thereto.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:102,label: '45. Iran will not conduct \nany uranium enrichment or \nany uranium enrichment related \nR&D and will have no \nnuclear material at the \nFordow Fuel Enrichment Plant (FFEP) for 15 years.\n',title: '45. Iran will not conduct \nany uranium enrichment or \nany uranium enrichment related \nR&D and will have no \nnuclear material at the \nFordow Fuel Enrichment Plant (FFEP) for 15 years.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:103,label: '67. For the purpose \nof increasing the efficiency of \nmonitoring for this JCPOA, for \n15 years or longer, for \nthe specified verification measures: \n',title: '67. For the purpose \nof increasing the efficiency of \nmonitoring for this JCPOA, for \n15 years or longer, for \nthe specified verification measures: \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:104,label: 'The needed equipment will be \nacquired through the procurement \nmechanism established by this JCPOA.\n',title: 'The needed equipment will be \nacquired through the procurement \nmechanism established by this JCPOA.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:105,label: 'Iran will redesign and \nrebuild the reactor, based on \nthe agreed conceptual design (as \nattached to this Annex) to \nsupport its peaceful nuclear \nresearch and production needs and \npurposes, including testing of \nfuel pins and assembly prototypes and structural materials.\n',title: 'Iran will redesign and \nrebuild the reactor, based on \nthe agreed conceptual design (as \nattached to this Annex) to \nsupport its peaceful nuclear \nresearch and production needs and \npurposes, including testing of \nfuel pins and assembly prototypes and structural materials.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:106,label: 'In the case of \nlack of conclusion of \na contract with a fuel \nsupplier, E3/EU+3 will supply a \nquantity of 19.75% enriched \nuranium oxide (U3O8) and deliver \nto Iran, exclusively for \nthe purpose of fabrication \nin Iran of fuel for \nthe TRR and enriched uranium \ntargets for the lifetime of the reactor.\n',title: 'In the case of \nlack of conclusion of \na contract with a fuel \nsupplier, E3/EU+3 will supply a \nquantity of 19.75% enriched \nuranium oxide (U3O8) and deliver \nto Iran, exclusively for \nthe purpose of fabrication \nin Iran of fuel for \nthe TRR and enriched uranium \ntargets for the lifetime of the reactor.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:107,label: '31. For 15 years, Iran \nwill install gas centrifuge \nmachines, or enrichment-related infrastructure, whether \nsuitable for uranium enrichment, research \nand development, or stable \nisotope enrichment, exclusively at \nthe locations and for the \nactivities specified under this JCPOA.\n',title: '31. For 15 years, Iran \nwill install gas centrifuge \nmachines, or enrichment-related infrastructure, whether \nsuitable for uranium enrichment, research \nand development, or stable \nisotope enrichment, exclusively at \nthe locations and for the \nactivities specified under this JCPOA.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:108,label: 'Adaptation will include modification \nof all UF6 pipework (including \nremoval of all sub headers \nexcept as agreed as \nneeded for the R&D programme) \nand associated instrumentation to \nbe compatible with single \ncentrifuges and small and \nintermediate cascade testing instead of full scale testing.\n',title: 'Adaptation will include modification \nof all UF6 pipework (including \nremoval of all sub headers \nexcept as agreed as \nneeded for the R&D programme) \nand associated instrumentation to \nbe compatible with single \ncentrifuges and small and \nintermediate cascade testing instead of full scale testing.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:109,label: '48.2. also subsequently remove cascade \nelectrical cabling, individual cascade control \ncabinets, vacuum pumps and centrifuge mounting blocks.\n',title: '48.2. also subsequently remove cascade \nelectrical cabling, individual cascade control \ncabinets, vacuum pumps and centrifuge mounting blocks.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:110,label: 'The associated R&D activities \nin Iran will occur \nat the FFEP and \nat Iran’s declared and \nmonitored centrifuge manufacturing facilities \nfor testing, modification and \nbalancing these IR-1 centrifuges. \n',title: 'The associated R&D activities \nin Iran will occur \nat the FFEP and \nat Iran’s declared and \nmonitored centrifuge manufacturing facilities \nfor testing, modification and \nbalancing these IR-1 centrifuges. \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:111,label: '56. Iran will maintain a \ntotal enriched uranium stockpile of \nno more than 300 kg \nof up to 3.67% \nenriched uranium hexafluoride (or \nthe equivalent in different chemical \nforms) for 15 years. \n',title: '56. Iran will maintain a \ntotal enriched uranium stockpile of \nno more than 300 kg \nof up to 3.67% \nenriched uranium hexafluoride (or \nthe equivalent in different chemical \nforms) for 15 years. \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:112,label: '11. All spent fuel from \nthe redesigned Arak reactor, regardless \nof its origin, for the \nlifetime of the reactor, \nwill be shipped out of \nIran to a mutually determined \nlocation in E3/EU+3 countries \nor third countries, for further \ntreatment or disposition as \nprovided for in relevant contracts \nto be concluded, consistent \nwith national laws, with the \nrecipient party, within one year \nfrom the unloading from the \nreactor or whenever deemed to \nbe safe for transfer \nby the recipient country. \n',title: '11. All spent fuel from \nthe redesigned Arak reactor, regardless \nof its origin, for the \nlifetime of the reactor, \nwill be shipped out of \nIran to a mutually determined \nlocation in E3/EU+3 countries \nor third countries, for further \ntreatment or disposition as \nprovided for in relevant contracts \nto be concluded, consistent \nwith national laws, with the \nrecipient party, within one year \nfrom the unloading from the \nreactor or whenever deemed to \nbe safe for transfer \nby the recipient country. \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:113,label: 'The highest tolerable pressure \nfor the first and second \nloop is 0.33 Mpa \n(at the interance of the reactor pit).\n',title: 'The highest tolerable pressure \nfor the first and second \nloop is 0.33 Mpa \n(at the interance of the reactor pit).\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:114,label: 'The power of the \nredesigned reactor will not exceed 20 MWth.\n',title: 'The power of the \nredesigned reactor will not exceed 20 MWth.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:115,label: '35. Iran will continue \nthe testing of a single \nIR-4 centrifuge machine and IR-4 \ncentrifuge cascade of up \nto 10 centrifuge machines for 10 years.\n',title: '35. Iran will continue \nthe testing of a single \nIR-4 centrifuge machine and IR-4 \ncentrifuge cascade of up \nto 10 centrifuge machines for 10 years.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:116,label: 'These will be co- \nlocated with the modernised Arak \nresearch reactor, the Tehran \nResearch Reactor, and radio-medicine production \ncomplexes, and only capable \nof the separation and \nprocessing of industrial or \nmedical isotopes and non-destructive PIE. \n',title: 'These will be co- \nlocated with the modernised Arak \nresearch reactor, the Tehran \nResearch Reactor, and radio-medicine production \ncomplexes, and only capable \nof the separation and \nprocessing of industrial or \nmedical isotopes and non-destructive PIE. \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:117,label: 'The international partnership will cooperate \nwith Iran, including through technical \nassistance, to fabricate, test \nand license fuel fabrication \ncapabilities in Iran for \nsubsequent fuel core reloads for \nfuture use with this reactor.\n',title: 'The international partnership will cooperate \nwith Iran, including through technical \nassistance, to fabricate, test \nand license fuel fabrication \ncapabilities in Iran for \nsubsequent fuel core reloads for \nfuture use with this reactor.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:118,label: '2. Iran will modernise the \nArak heavy water research \nreactor to support peaceful \nnuclear research and radioisotopes \nproduction for medical and industrial purposes.\n',title: '2. Iran will modernise the \nArak heavy water research \nreactor to support peaceful \nnuclear research and radioisotopes \nproduction for medical and industrial purposes.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:119,label: '54. An agreed template for \ndescribing different centrifuge types (IR-1, \nIR-2m, IR-4, IR-5, IR-6, \nIR-6s, IR-7, IR-8) and \nthe associated definitions need \nto be accomplished by implementation day.\n',title: '54. An agreed template for \ndescribing different centrifuge types (IR-1, \nIR-2m, IR-4, IR-5, IR-6, \nIR-6s, IR-7, IR-8) and \nthe associated definitions need \nto be accomplished by implementation day.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:120,label: '34. Consistent with its plan, \nIran will continue working \nwith the 164-machine IR-4 cascade \nat PFEP in order \nto complete the necessary tests \nuntil 30 November 2015 or \nthe day of implementation \nof this JCPOA, whichever \ncomes later, and after \nthat it will take \nthese machines out of the \nPFEP and store them under \nIAEA continuous monitoring at Natanz \nin Hall B of FEP. \n',title: '34. Consistent with its plan, \nIran will continue working \nwith the 164-machine IR-4 cascade \nat PFEP in order \nto complete the necessary tests \nuntil 30 November 2015 or \nthe day of implementation \nof this JCPOA, whichever \ncomes later, and after \nthat it will take \nthese machines out of the \nPFEP and store them under \nIAEA continuous monitoring at Natanz \nin Hall B of FEP. \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:121,label: 'After year 10, Iran \nwill produce complete centrifuges \nwith the same rate \nto meet its enrichment and enrichment R&D needs.\n',title: 'After year 10, Iran \nwill produce complete centrifuges \nwith the same rate \nto meet its enrichment and enrichment R&D needs.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:122,label: '58. All uranium oxide enriched \nto between 5% and 20% \nwill be fabricated into \nfuel plates for the \nTehran Research Reactor or \ntransferred, based on a \ncommercial transaction, outside of \nIran or diluted to \nan enrichment level of 3.67% or less.\n',title: '58. All uranium oxide enriched \nto between 5% and 20% \nwill be fabricated into \nfuel plates for the \nTehran Research Reactor or \ntransferred, based on a \ncommercial transaction, outside of \nIran or diluted to \nan enrichment level of 3.67% or less.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:123,label: '14. All excess heavy water \nwhich is beyond Iran’s \nneeds for the modernised \nArak research reactor, the \nZero power heavy water \nreactor, quantities needed for \nmedical research and production of \ndeuterate solutions and chemical \ncompounds including, where appropriate, contingency \nstocks, will be made available \nfor export to the \ninternational market based on \ninternational prices and delivered to \nthe international buyer for 15 years.\n',title: '14. All excess heavy water \nwhich is beyond Iran’s \nneeds for the modernised \nArak research reactor, the \nZero power heavy water \nreactor, quantities needed for \nmedical research and production of \ndeuterate solutions and chemical \ncompounds including, where appropriate, contingency \nstocks, will be made available \nfor export to the \ninternational market based on \ninternational prices and delivered to \nthe international buyer for 15 years.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:124,label: 'The Joint Commission will aim \nto complete its review and \nendorsement within three months after \nthe submission of the final design.\n',title: 'The Joint Commission will aim \nto complete its review and \nendorsement within three months after \nthe submission of the final design.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:125,label: '21. For 15 years, \nIran will only develop, \nacquire, build, or operate hot \ncells (containing a cell or \ninterconnected cells), shielded cells or \nshielded glove boxes with dimensions \nless than 6 cubic meters \nin volume compatible with \nthe specifications set out in \nAnnex I of the Additional Protocol.\n',title: '21. For 15 years, \nIran will only develop, \nacquire, build, or operate hot \ncells (containing a cell or \ninterconnected cells), shielded cells or \nshielded glove boxes with dimensions \nless than 6 cubic meters \nin volume compatible with \nthe specifications set out in \nAnnex I of the Additional Protocol.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:126,label: 'Centrifuge Component Manufacturing Transparency \n',title: 'Centrifuge Component Manufacturing Transparency \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:127,label: 'An international partnership composed \nof Iran and the \nWorking Group would implement \nthe Arak modernisation project. \n',title: 'An international partnership composed \nof Iran and the \nWorking Group would implement \nthe Arak modernisation project. \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:128,label: '48. Iran will: \n',title: '48. Iran will: \n', shape:'box', color:'rgba(225, 225, 225, .8)'},
+{id:129,label: '77. Iran may propose \nto the IAEA alternative \nmeans of resolving the IAEA’s \nconcerns that enable the \nIAEA to verify the \nabsence of undeclared nuclear materials \nand activities or activities \ninconsistent with the JCPOA \nat the location in \nquestion, which should be \ngiven due and prompt consideration. \n',title: '77. Iran may propose \nto the IAEA alternative \nmeans of resolving the IAEA’s \nconcerns that enable the \nIAEA to verify the \nabsence of undeclared nuclear materials \nand activities or activities \ninconsistent with the JCPOA \nat the location in \nquestion, which should be \ngiven due and prompt consideration. \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:130,label: 'The reactor will be operated under IAEA monitoring.\n',title: 'The reactor will be operated under IAEA monitoring.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:131,label: '67.1. Iran will permit \nthe IAEA the use of \non-line enrichment measurement and electronic \nseals which communicate their status \nwithin nuclear sites to IAEA \ninspectors, as well as \nother IAEA approved and certified \nmodern technologies in line \nwith internationally accepted IAEA practice. \n',title: '67.1. Iran will permit \nthe IAEA the use of \non-line enrichment measurement and electronic \nseals which communicate their status \nwithin nuclear sites to IAEA \ninspectors, as well as \nother IAEA approved and certified \nmodern technologies in line \nwith internationally accepted IAEA practice. \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:132,label: 'The IAEA will confirm on \nan annual basis, for the \nduration of the plan that \nthe nature and scope and \nscale of Iran’s enrichment and \nenrichment R&D activities are in \nline with this plan. \n',title: 'The IAEA will confirm on \nan annual basis, for the \nduration of the plan that \nthe nature and scope and \nscale of Iran’s enrichment and \nenrichment R&D activities are in \nline with this plan. \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:133,label: 'Other Uranium Isotope Separation Activities \n',title: 'Other Uranium Isotope Separation Activities \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:134,label: '57. All enriched uranium hexafluoride \nin excess of 300 \nkg of up to \n3.67% enriched UF6 (or the \nequivalent in different chemical forms) \nwill be down blended \nto natural uranium level or \nbe sold on the international \nmarket and delivered to the \ninternational buyer in return for \nnatural uranium delivered to Iran.\n',title: '57. All enriched uranium hexafluoride \nin excess of 300 \nkg of up to \n3.67% enriched UF6 (or the \nequivalent in different chemical forms) \nwill be down blended \nto natural uranium level or \nbe sold on the international \nmarket and delivered to the \ninternational buyer in return for \nnatural uranium delivered to Iran.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:135,label: 'The R&D space in \nline No. 6 will be \nleft empty until Iran needs \nto use it for its R&D programme.\n',title: 'The R&D space in \nline No. 6 will be \nleft empty until Iran needs \nto use it for its R&D programme.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:136,label: 'Stocks and Fuels \n',title: 'Stocks and Fuels \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:137,label: '5. Iran and the \nWorking Group will cooperate \nto develop the final design \nof the modernised reactor and \nthe design of the \nsubsidiary laboratories to be carried \nout by Iran, and \nreview conformity with international \nsafety standards, such that the \nreactor can be licensed \nby the relevant Iranian \nregulatory authority for commissioning and operation.\n',title: '5. Iran and the \nWorking Group will cooperate \nto develop the final design \nof the modernised reactor and \nthe design of the \nsubsidiary laboratories to be carried \nout by Iran, and \nreview conformity with international \nsafety standards, such that the \nreactor can be licensed \nby the relevant Iranian \nregulatory authority for commissioning and operation.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:138,label: '79. Iran and the \nIAEA will take the \nnecessary steps for containment \nand surveillance on centrifuge \nrotor tubes and bellows for 20 years.\n',title: '79. Iran and the \nIAEA will take the \nnecessary steps for containment \nand surveillance on centrifuge \nrotor tubes and bellows for 20 years.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:139,label: '10. Iran will not \nproduce or test natural \nuranium pellets, fuel pins or \nfuel assemblies, which are specifically \ndesigned for the support of \nthe originally designed Arak \nreactor, designated by the IAEA \nas IR-40. Iran will \nstore under IAEA continuous monitoring \nall existing natural uranium pellets \nand IR-40 fuel assemblies \nuntil the modernised Arak \nreactor becomes operational, at \nwhich point these natural \nuranium pellets and IR-40 \nfuel assemblies will be converted \nto UNH, or exchanged \nwith an equivalent quantity of natural uranium.\n',title: '10. Iran will not \nproduce or test natural \nuranium pellets, fuel pins or \nfuel assemblies, which are specifically \ndesigned for the support of \nthe originally designed Arak \nreactor, designated by the IAEA \nas IR-40. Iran will \nstore under IAEA continuous monitoring \nall existing natural uranium pellets \nand IR-40 fuel assemblies \nuntil the modernised Arak \nreactor becomes operational, at \nwhich point these natural \nuranium pellets and IR-40 \nfuel assemblies will be converted \nto UNH, or exchanged \nwith an equivalent quantity of natural uranium.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:140,label: 'Maximize use of the current \ninfrastructure of original design of \nArak research reactor, designated by \nthe IAEA as IR-40, according \nto their respective ratings. \n',title: 'Maximize use of the current \ninfrastructure of original design of \nArak research reactor, designated by \nthe IAEA as IR-40, according \nto their respective ratings. \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:141,label: 'A Working Group composed \nof E3/EU+3 participants will be \nestablished to facilitate the redesigning \nand rebuilding of the reactor.\n',title: 'A Working Group composed \nof E3/EU+3 participants will be \nestablished to facilitate the redesigning \nand rebuilding of the reactor.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:142,label: 'Mechanical testing on up to \ntwo single centrifuges for \neach type will be \ncarried out only on \nthe IR-2m, IR-4, IR-5, \nIR-6, IR-6s, IR-7 and \nIR-8. Iran will build \nor test, with or \nwithout uranium, only those \ngas centrifuges specified in this JCPOA.\n',title: 'Mechanical testing on up to \ntwo single centrifuges for \neach type will be \ncarried out only on \nthe IR-2m, IR-4, IR-5, \nIR-6, IR-6s, IR-7 and \nIR-8. Iran will build \nor test, with or \nwithout uranium, only those \ngas centrifuges specified in this JCPOA.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:143,label: '16. Consistent with its plan, \nIran will keep pace with \nthe trend of international technological \nadvancement in relying only \non light water for \nits future nuclear power \nand research reactors with enhanced \ninternational cooperation including assurances of \nsupply of necessary fuel. \n',title: '16. Consistent with its plan, \nIran will keep pace with \nthe trend of international technological \nadvancement in relying only \non light water for \nits future nuclear power \nand research reactors with enhanced \ninternational cooperation including assurances of \nsupply of necessary fuel. \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:144,label: '47. Iran will: \n',title: '47. Iran will: \n', shape:'box', color:'rgba(225, 225, 225, .8)'},
+{id:145,label: 'The international partnership with \nthe participation of Iran \nwill fabricate the initial fuel \ncore load for the reactor outside Iran.\n',title: 'The international partnership with \nthe participation of Iran \nwill fabricate the initial fuel \ncore load for the reactor outside Iran.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:146,label: 'Up to 3.67 percent enriched \nUO2, in the improved assembly \ndesign, will be used as fuel.\n',title: 'Up to 3.67 percent enriched \nUO2, in the improved assembly \ndesign, will be used as fuel.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:147,label: 'The Joint Commission will also \nsupport assistance to Iran including \nthrough IAEA technical cooperation as \nappropriate, in meeting international qualification \nstandards for nuclear fuel produced by Iran.\n',title: 'The Joint Commission will also \nsupport assistance to Iran including \nthrough IAEA technical cooperation as \nappropriate, in meeting international qualification \nstandards for nuclear fuel produced by Iran.\n', shape:'box', color:'rgba(225, 225, 225, .8)'},
+{id:148,label: '61. Consistent with its enrichment \nand enrichment R&D plan, \nIran will only engage in \nproduction of centrifuges, including centrifuge \nrotors suitable for isotope separation \nor any other centrifuge \ncomponents, to meet the \nenrichment and enrichment R&D \nrequirements of this Annex. \n',title: '61. Consistent with its enrichment \nand enrichment R&D plan, \nIran will only engage in \nproduction of centrifuges, including centrifuge \nrotors suitable for isotope separation \nor any other centrifuge \ncomponents, to meet the \nenrichment and enrichment R&D \nrequirements of this Annex. \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:149,label: 'Iran will notify the \nE3/EU+3 within 2 year before \nthe contingency of TRR \nfuel will be exhausted in \norder to have the uranium \noxide available 6 months before \nthe end of the 2 year period.\n',title: 'Iran will notify the \nE3/EU+3 within 2 year before \nthe contingency of TRR \nfuel will be exhausted in \norder to have the uranium \noxide available 6 months before \nthe end of the 2 year period.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:150,label: '53. Iran will start \nto install necessary infrastructure \nfor the IR-8 at Natanz \nin Hall B of \nFEP after year 10. \n',title: '53. Iran will start \nto install necessary infrastructure \nfor the IR-8 at Natanz \nin Hall B of \nFEP after year 10. \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:151,label: 'In the absence of \nan agreement, the members of \nthe Joint Commission, by consensus \nor by a vote of \n5 or more of \nits 8 members, would advise \non the necessary means to \nresolve the IAEA’s concerns. \n',title: 'In the absence of \nan agreement, the members of \nthe Joint Commission, by consensus \nor by a vote of \n5 or more of \nits 8 members, would advise \non the necessary means to \nresolve the IAEA’s concerns. \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:152,label: 'To prepare these two \ncascades for installation of \na new cascade architecture \nappropriate for stable isotope \nproduction by the joint partnership, \nIran will remove the connection \nto the UF6 feed \nmain header, and move \ncascade UF6 pipework (except for \nthe dump line in order \nto maintain vacuum) to \nstorage in Fordow under IAEA continuous monitoring.\n',title: 'To prepare these two \ncascades for installation of \na new cascade architecture \nappropriate for stable isotope \nproduction by the joint partnership, \nIran will remove the connection \nto the UF6 feed \nmain header, and move \ncascade UF6 pipework (except for \nthe dump line in order \nto maintain vacuum) to \nstorage in Fordow under IAEA continuous monitoring.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:153,label: '32. Iran will continue to \nconduct enrichment R&D in a \nmanner that does not accumulate enriched uranium.\n',title: '32. Iran will continue to \nconduct enrichment R&D in a \nmanner that does not accumulate enriched uranium.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:154,label: '13. Iran will operate \nthe Fuel Manufacturing Plant \nonly to produce fuel \nassemblies for light water reactors \nand reloads for the modernized Arak reactor.\n',title: '13. Iran will operate \nthe Fuel Manufacturing Plant \nonly to produce fuel \nassemblies for light water reactors \nand reloads for the modernized Arak reactor.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:155,label: '40. For 15 years, Iran \nwill conduct all testing \nof centrifuges with uranium \nonly at the PFEP. \n',title: '40. For 15 years, Iran \nwill conduct all testing \nof centrifuges with uranium \nonly at the PFEP. \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:156,label: 'In case of future \nsupply of 19.75% enriched uranium \noxide (U3O8) for TRR \nfuel plates fabrication, all scrap \noxide and other forms \nnot in plates that \ncannot be fabricated into \nTRR fuel plates, containing uranium \nenriched to between 5% \nand 20%, will be \ntransferred, based on a \ncommercial transaction, outside of Iran \nor diluted to an enrichment \nlevel of 3.67% or less \nwithin 6 months of its production.\n',title: 'In case of future \nsupply of 19.75% enriched uranium \noxide (U3O8) for TRR \nfuel plates fabrication, all scrap \noxide and other forms \nnot in plates that \ncannot be fabricated into \nTRR fuel plates, containing uranium \nenriched to between 5% \nand 20%, will be \ntransferred, based on a \ncommercial transaction, outside of Iran \nor diluted to an enrichment \nlevel of 3.67% or less \nwithin 6 months of its production.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:157,label: '29.1. All excess centrifuge machines, including IR-2m centrifuges.\n',title: '29.1. All excess centrifuge machines, including IR-2m centrifuges.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:158,label: '55. An agreed procedure \nfor measuring IR-1, IR-2m and \nIR-4 centrifuge performance data needs \nto be accomplished by implementation day.\n',title: '55. An agreed procedure \nfor measuring IR-1, IR-2m and \nIR-4 centrifuge performance data needs \nto be accomplished by implementation day.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:159,label: '29. Iran will remove the \nfollowing excess centrifuges and \ninfrastructure not associated with \n5060 IR-1 centrifuges in \nFEP, which will be \nstored at Natanz in \nHall B of FEP \nunder IAEA continuous monitoring: \n',title: '29. Iran will remove the \nfollowing excess centrifuges and \ninfrastructure not associated with \n5060 IR-1 centrifuges in \nFEP, which will be \nstored at Natanz in \nHall B of FEP \nunder IAEA continuous monitoring: \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:160,label: 'The Joint Commission will be \ninformed about the conceptual framework \nof stable isotope production at FFEP.\n',title: 'The Joint Commission will be \ninformed about the conceptual framework \nof stable isotope production at FFEP.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:161,label: 'For the purpose of \nthis annex, spent fuel \nincludes all types of irradiated fuel.\n',title: 'For the purpose of \nthis annex, spent fuel \nincludes all types of irradiated fuel.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:162,label: '7. As the project \nmanager, Iran will take \nresponsibility for the construction efforts. \n',title: '7. As the project \nmanager, Iran will take \nresponsibility for the construction efforts. \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:163,label: 'The IAEA will provide Iran \nthe reasons for access in \nwriting and will make available relevant information.\n',title: 'The IAEA will provide Iran \nthe reasons for access in \nwriting and will make available relevant information.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:164,label: 'Transparency Related to Enrichment \n',title: 'Transparency Related to Enrichment \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:165,label: 'The hot cells at \nthe Arak research reactor \nin which non- destructive PIE \nare performed will not \nbe physically interconnected to cells \nthat process or handle materials \nfor the production of \nmedical or industrial radioisotopes. \n',title: 'The hot cells at \nthe Arak research reactor \nin which non- destructive PIE \nare performed will not \nbe physically interconnected to cells \nthat process or handle materials \nfor the production of \nmedical or industrial radioisotopes. \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:166,label: '46. For 15 years, Iran \nwill maintain no more than \n1044 IR-1 centrifuge machines \nat one wing of the FFEP of which:\n',title: '46. For 15 years, Iran \nwill maintain no more than \n1044 IR-1 centrifuge machines \nat one wing of the FFEP of which:\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:167,label: '3. Iran will not \npursue construction at the existing \nunfinished reactor based on its \noriginal design and will remove \nthe existing calandria and retain it in Iran.\n',title: '3. Iran will not \npursue construction at the existing \nunfinished reactor based on its \noriginal design and will remove \nthe existing calandria and retain it in Iran.\n', shape:'box', color:'rgba(225, 225, 225, .8)'},
+{id:168,label: 'Excess IR-1 centrifuges will \nbe used for the \nreplacement of failed or \ndamaged centrifuges of the same \ntype on a one-for-one basis. \n',title: 'Excess IR-1 centrifuges will \nbe used for the \nreplacement of failed or \ndamaged centrifuges of the same \ntype on a one-for-one basis. \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:169,label: 'Spent Fuel Reprocessing Activities \n',title: 'Spent Fuel Reprocessing Activities \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:170,label: 'The IR-1 cascade (No. 1) \ncentrifuges will be kept \nbut made inoperable, as \nverified by the IAEA, \nthrough the removal of centrifuge \nrotors and the injection \nof epoxy resin into \nthe sub headers, feeding, \nproduct, and tails pipework, and \nthe removal of controls \nand electrical systems for \nvacuum, power and cooling. \n',title: 'The IR-1 cascade (No. 1) \ncentrifuges will be kept \nbut made inoperable, as \nverified by the IAEA, \nthrough the removal of centrifuge \nrotors and the injection \nof epoxy resin into \nthe sub headers, feeding, \nproduct, and tails pipework, and \nthe removal of controls \nand electrical systems for \nvacuum, power and cooling. \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:171,label: 'Centrifuge Manufacturing \n',title: 'Centrifuge Manufacturing \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:172,label: 'This will include removal of \nall centrifuges and UF6 pipework, \nincluding sub headers, valves and \npressure gauges and transducers, \nand frequency inverters and converters, \nand UF6 feed and withdrawal stations.\n',title: 'This will include removal of \nall centrifuges and UF6 pipework, \nincluding sub headers, valves and \npressure gauges and transducers, \nand frequency inverters and converters, \nand UF6 feed and withdrawal stations.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:173,label: 'Activities Which Could Contribute \nto the Design and Development \nof a Nuclear Device \n',title: 'Activities Which Could Contribute \nto the Design and Development \nof a Nuclear Device \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:174,label: '82.3. Designing, developing, fabricating, acquiring, \nor using explosive diagnostic systems \n(streak cameras, framing cameras and \nflash x-ray cameras) suitable \nfor the development of \na nuclear explosive device, unless \napproved by the Joint Commission \nfor non-nuclear purposes and subject to monitoring.\n',title: '82.3. Designing, developing, fabricating, acquiring, \nor using explosive diagnostic systems \n(streak cameras, framing cameras and \nflash x-ray cameras) suitable \nfor the development of \na nuclear explosive device, unless \napproved by the Joint Commission \nfor non-nuclear purposes and subject to monitoring.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:175,label: '76. If Iran’s explanations \ndo not resolve the IAEA’s \nconcerns, the Agency may \nrequest access to such locations \nfor the sole reason to \nverify the absence of \nundeclared nuclear materials and \nactivities or activities inconsistent \nwith the JCPOA at such locations.\n',title: '76. If Iran’s explanations \ndo not resolve the IAEA’s \nconcerns, the Agency may \nrequest access to such locations \nfor the sole reason to \nverify the absence of \nundeclared nuclear materials and \nactivities or activities inconsistent \nwith the JCPOA at such locations.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:176,label: 'Enrichment Capacity \n',title: 'Enrichment Capacity \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:177,label: 'Scrap oxide and other \nforms not in plates \nthat cannot be fabricated into \nTRR fuel plates will \nbe transferred, based on \na commercial transaction, outside \nof Iran or diluted to \nan enrichment level of 3.67% or less.\n',title: 'Scrap oxide and other \nforms not in plates \nthat cannot be fabricated into \nTRR fuel plates will \nbe transferred, based on \na commercial transaction, outside \nof Iran or diluted to \nan enrichment level of 3.67% or less.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:178,label: 'This Technical Working Group \nwill also, within one \nyear, work to develop objective \ntechnical criteria for assessing \nwhether fabricated fuel and \nits intermediate products can be \nreadily converted to UF6. \nEnriched uranium in fabricated fuel \nassemblies and its intermediate products \nmanufactured in Iran and \ncertified to meet international standards, \nincluding those for the modernised \nArak research reactor, will not \ncount against the 300 kg \nUF6 stockpile limit provided the \nTechnical Working Group of the \nJoint Commission approves that such \nfuel assemblies and their intermediate \nproducts cannot be readily \nreconverted into UF6. This could \nfor instance be achieved through \nimpurities (e.g. burnable poisons or \notherwise) contained in fuels \nor through the fuel \nbeing in a chemical \nform such that direct \nconversion back to UF6 would \nbe technically difficult without dissolution and purification.\n',title: 'This Technical Working Group \nwill also, within one \nyear, work to develop objective \ntechnical criteria for assessing \nwhether fabricated fuel and \nits intermediate products can be \nreadily converted to UF6. \nEnriched uranium in fabricated fuel \nassemblies and its intermediate products \nmanufactured in Iran and \ncertified to meet international standards, \nincluding those for the modernised \nArak research reactor, will not \ncount against the 300 kg \nUF6 stockpile limit provided the \nTechnical Working Group of the \nJoint Commission approves that such \nfuel assemblies and their intermediate \nproducts cannot be readily \nreconverted into UF6. This could \nfor instance be achieved through \nimpurities (e.g. burnable poisons or \notherwise) contained in fuels \nor through the fuel \nbeing in a chemical \nform such that direct \nconversion back to UF6 would \nbe technically difficult without dissolution and purification.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:179,label: 'Past and Present Issues of Concern\n',title: 'Past and Present Issues of Concern\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:180,label: 'This 19.75% enriched uranium \noxide (U3O8) will be supplied \nin increments no greater \nthan approximately 5 kg \nand each new increment will \nbe provided only when the \nprevious increment of this \nmaterial has been verified \nby the IAEA to \nhave been mixed with \naluminum to make fuel \nfor the TRR or fabricated \ninto enriched uranium targets. \n',title: 'This 19.75% enriched uranium \noxide (U3O8) will be supplied \nin increments no greater \nthan approximately 5 kg \nand each new increment will \nbe provided only when the \nprevious increment of this \nmaterial has been verified \nby the IAEA to \nhave been mixed with \naluminum to make fuel \nfor the TRR or fabricated \ninto enriched uranium targets. \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:181,label: 'all centrifuges and cascade UF6 \npipework, including sub headers, valves \nand pressure transducers at cascade \nlevel, and frequency inverters. \n',title: 'all centrifuges and cascade UF6 \npipework, including sub headers, valves \nand pressure transducers at cascade \nlevel, and frequency inverters. \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:182,label: 'All these excess centrifuges \nand infrastructure will be stored \nat Natanz in Hall B \nof FEP under IAEA continuous monitoring.\n',title: 'All these excess centrifuges \nand infrastructure will be stored \nat Natanz in Hall B \nof FEP under IAEA continuous monitoring.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:183,label: 'Excess centrifuges and infrastructure \nwill be stored at \nNatanz in Hall B \nof FEP under IAEA continuous monitoring.\n',title: 'Excess centrifuges and infrastructure \nwill be stored at \nNatanz in Hall B \nof FEP under IAEA continuous monitoring.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:184,label: 'For 10 years and consistent \nwith its enrichment R&D \nplan, Iran’s enrichment R&D \nwith uranium will only \ninclude IR-4, IR-5, IR-6 and IR-8 centrifuges.\n',title: 'For 10 years and consistent \nwith its enrichment R&D \nplan, Iran’s enrichment R&D \nwith uranium will only \ninclude IR-4, IR-5, IR-6 and IR-8 centrifuges.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:185,label: 'Other Aspects of Enrichment \n',title: 'Other Aspects of Enrichment \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:186,label: 'Iran’s needs, consistent with \nthe parameters above, are \nestimated to be 130 metric \ntonnes of nuclear grade \nheavy water or its equivalent \nin different enrichments prior \nto commissioning of the \nmodernised Arak research reactor, and \n90 metric tonnes after \nthe commissioning, including the \namount contained in the reactor.\n',title: 'Iran’s needs, consistent with \nthe parameters above, are \nestimated to be 130 metric \ntonnes of nuclear grade \nheavy water or its equivalent \nin different enrichments prior \nto commissioning of the \nmodernised Arak research reactor, and \n90 metric tonnes after \nthe commissioning, including the \namount contained in the reactor.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:187,label: 'Iran will permit IAEA access \nto verify that uranium isotope \nseparation production and R&D activities \nare consistent with this Annex.\n',title: 'Iran will permit IAEA access \nto verify that uranium isotope \nseparation production and R&D activities \nare consistent with this Annex.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:188,label: '29.2. UF6 pipework including sub \nheaders, valves and pressure \ntransducers at cascade level, \nand frequency inverters, and \nUF6 withdrawal equipment from \none of the withdrawal stations, \nwhich is currently not in \nservice, including its vacuum \npumps and chemical traps. \n',title: '29.2. UF6 pipework including sub \nheaders, valves and pressure \ntransducers at cascade level, \nand frequency inverters, and \nUF6 withdrawal equipment from \none of the withdrawal stations, \nwhich is currently not in \nservice, including its vacuum \npumps and chemical traps. \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:189,label: 'The E3/EU+3 will facilitate, where \napplicable, the conclusion and implementation of this contract.\n',title: 'The E3/EU+3 will facilitate, where \napplicable, the conclusion and implementation of this contract.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:190,label: '46.1. Two cascades that \nhave not experienced UF6 \nbefore will be modified for \nthe production of stable isotopes.\n',title: '46.1. Two cascades that \nhave not experienced UF6 \nbefore will be modified for \nthe production of stable isotopes.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:191,label: 'Modern Technologies and Long \nTerm Presence of IAEA \n',title: 'Modern Technologies and Long \nTerm Presence of IAEA \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:192,label: 'The other two cascades \nwill continue to spin \nuntil the transition to \nstable isotope production described \nin the previous subparagraph has been completed.\n',title: 'The other two cascades \nwill continue to spin \nuntil the transition to \nstable isotope production described \nin the previous subparagraph has been completed.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:193,label: 'Arak Heavy Water Research Reactor\n',title: 'Arak Heavy Water Research Reactor\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:194,label: 'In line with normal \ninternational safeguards practice, such requests \nwill not be aimed \nat interfering with Iranian military \nor other national security activities, \nbut will be exclusively \nfor resolving concerns regarding fulfilment \nof the JCPOA commitments and \nIran’s other non-proliferation and safeguards obligations.\n',title: 'In line with normal \ninternational safeguards practice, such requests \nwill not be aimed \nat interfering with Iranian military \nor other national security activities, \nbut will be exclusively \nfor resolving concerns regarding fulfilment \nof the JCPOA commitments and \nIran’s other non-proliferation and safeguards obligations.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:195,label: '46.2. For four cascades with \nall associated infrastructure remaining \nexcept for pipework that \nenables crossover tandem connections, \ntwo will be placed in \nan idle state, not spinning.\n',title: '46.2. For four cascades with \nall associated infrastructure remaining \nexcept for pipework that \nenables crossover tandem connections, \ntwo will be placed in \nan idle state, not spinning.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:196,label: 'Heavy Water Production Plant \n',title: 'Heavy Water Production Plant \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:197,label: 'Upon completion of the \ntransition to stable isotope \nproduction described in the \nprevious subparagraph, these two spinning \ncascades will be placed \nin an idle state, not spinning.\n',title: 'Upon completion of the \ntransition to stable isotope \nproduction described in the \nprevious subparagraph, these two spinning \ncascades will be placed \nin an idle state, not spinning.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:198,label: '82.2. Designing, developing, fabricating, acquiring, \nor using multi-point explosive \ndetonation systems suitable for \na nuclear explosive device, unless \napproved by the Joint Commission \nfor non-nuclear purposes and subject to monitoring.\n',title: '82.2. Designing, developing, fabricating, acquiring, \nor using multi-point explosive \ndetonation systems suitable for \na nuclear explosive device, unless \napproved by the Joint Commission \nfor non-nuclear purposes and subject to monitoring.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:199,label: 'The objective technical criteria \nwill guide the approval process \nof the Technical Working Group. \n',title: 'The objective technical criteria \nwill guide the approval process \nof the Technical Working Group. \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:200,label: '47.1. remove the other 2 \ncascades of IR-1 centrifuges \nfrom this wing, by removing \n',title: '47.1. remove the other 2 \ncascades of IR-1 centrifuges \nfrom this wing, by removing \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:201,label: '47.2. also subsequently remove cascade \nelectrical cabling, individual cascade control \ncabinets and vacuum pumps. \n',title: '47.2. also subsequently remove cascade \nelectrical cabling, individual cascade control \ncabinets and vacuum pumps. \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:202,label: 'Having one central channel \nin the center of \nthe new core with passive \ncooling system for the \npurpose of structural materials \nand fuel pins and assembly \nprototypes testing with neutron flux \nbeyond 2•10^14, twelve in-core irradiation \nchannels (IIC) inside the core \nand twelve lateral irradiation \nchennals (LIC) just next to \nthe outer ring of fuel assemblies.\n',title: 'Having one central channel \nin the center of \nthe new core with passive \ncooling system for the \npurpose of structural materials \nand fuel pins and assembly \nprototypes testing with neutron flux \nbeyond 2•10^14, twelve in-core irradiation \nchannels (IIC) inside the core \nand twelve lateral irradiation \nchennals (LIC) just next to \nthe outer ring of fuel assemblies.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:203,label: 'In Addition, Annex III reinforce \ndesign and construction of subsidiary laboratoties.\n',title: 'In Addition, Annex III reinforce \ndesign and construction of subsidiary laboratoties.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:204,label: 'The Joint Commission will be \ninformed in advance of the \nspecific projects that will be undertaken at Fordow.\n',title: 'The Joint Commission will be \ninformed in advance of the \nspecific projects that will be undertaken at Fordow.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:205,label: '82.1. Designing, developing, acquiring, \nor using computer models \nto simulate nuclear explosive devices. \n',title: '82.1. Designing, developing, acquiring, \nor using computer models \nto simulate nuclear explosive devices. \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:206,label: 'Unless otherwise specified, the \ndurations of the commitments \nin this Annex are from Implementation Day.\n',title: 'Unless otherwise specified, the \ndurations of the commitments \nin this Annex are from Implementation Day.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:207,label: 'FollowFollowing \n',title: 'FollowFollowing \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+			   ];
+
+            // create some edges
+            var edgesData = [
+			  {from: 0, to: 1, length:200, color:'#A2C5F5'},
+{from: 6, to: 0, length:200, color:'#A2C5F5'},
+{from: 206, to: 0, length:200, color:'#A2C5F5'},
+{from: 2, to: 1, length:200, color:'#A2C5F5'},
+{from: 5, to: 1, length:200, color:'#A2C5F5'},
+{from: 17, to: 1, length:200, color:'#A2C5F5'},
+{from: 1, to: 40, length:200, color:'#A2C5F5'},
+{from: 3, to: 2, length:200, color:'#A2C5F5'},
+{from: 2, to: 52, length:200, color:'#A2C5F5'},
+{from: 2, to: 57, length:200, color:'#A2C5F5'},
+{from: 2, to: 158, length:200, color:'#A2C5F5'},
+{from: 3, to: 4, length:200, color:'#A2C5F5'},
+{from: 154, to: 3, length:200, color:'#A2C5F5'},
+{from: 5, to: 11, length:200, color:'#A2C5F5'},
+{from: 5, to: 55, length:200, color:'#A2C5F5'},
+{from: 6, to: 7, length:200, color:'#A2C5F5'},
+{from: 6, to: 8, length:200, color:'#A2C5F5'},
+{from: 161, to: 6, length:200, color:'#A2C5F5'},
+{from: 9, to: 8, length:200, color:'#A2C5F5'},
+{from: 10, to: 8, length:200, color:'#A2C5F5'},
+{from: 69, to: 8, length:200, color:'#A2C5F5'},
+{from: 92, to: 8, length:200, color:'#A2C5F5'},
+{from: 114, to: 8, length:200, color:'#A2C5F5'},
+{from: 116, to: 8, length:200, color:'#A2C5F5'},
+{from: 9, to: 76, length:200, color:'#A2C5F5'},
+{from: 38, to: 10, length:200, color:'#A2C5F5'},
+{from: 12, to: 11, length:200, color:'#A2C5F5'},
+{from: 12, to: 13, length:200, color:'#A2C5F5'},
+{from: 13, to: 14, length:200, color:'#A2C5F5'},
+{from: 13, to: 28, length:200, color:'#A2C5F5'},
+{from: 14, to: 15, length:200, color:'#A2C5F5'},
+{from: 14, to: 16, length:200, color:'#A2C5F5'},
+{from: 37, to: 15, length:200, color:'#A2C5F5'},
+{from: 70, to: 16, length:200, color:'#A2C5F5'},
+{from: 18, to: 17, length:200, color:'#A2C5F5'},
+{from: 25, to: 17, length:200, color:'#A2C5F5'},
+{from: 17, to: 49, length:200, color:'#A2C5F5'},
+{from: 17, to: 53, length:200, color:'#A2C5F5'},
+{from: 17, to: 149, length:200, color:'#A2C5F5'},
+{from: 17, to: 153, length:200, color:'#A2C5F5'},
+{from: 17, to: 157, length:200, color:'#A2C5F5'},
+{from: 184, to: 17, length:200, color:'#A2C5F5'},
+{from: 18, to: 19, length:200, color:'#A2C5F5'},
+{from: 18, to: 20, length:200, color:'#A2C5F5'},
+{from: 18, to: 39, length:200, color:'#A2C5F5'},
+{from: 18, to: 54, length:200, color:'#A2C5F5'},
+{from: 21, to: 19, length:200, color:'#A2C5F5'},
+{from: 121, to: 19, length:200, color:'#A2C5F5'},
+{from: 102, to: 20, length:200, color:'#A2C5F5'},
+{from: 21, to: 22, length:200, color:'#A2C5F5'},
+{from: 23, to: 21, length:200, color:'#A2C5F5'},
+{from: 168, to: 21, length:200, color:'#A2C5F5'},
+{from: 24, to: 22, length:200, color:'#A2C5F5'},
+{from: 33, to: 22, length:200, color:'#A2C5F5'},
+{from: 191, to: 22, length:200, color:'#A2C5F5'},
+{from: 90, to: 23, length:200, color:'#A2C5F5'},
+{from: 24, to: 26, length:200, color:'#A2C5F5'},
+{from: 25, to: 123, length:200, color:'#A2C5F5'},
+{from: 26, to: 27, length:200, color:'#A2C5F5'},
+{from: 27, to: 103, length:200, color:'#A2C5F5'},
+{from: 29, to: 28, length:200, color:'#A2C5F5'},
+{from: 36, to: 28, length:200, color:'#A2C5F5'},
+{from: 65, to: 28, length:200, color:'#A2C5F5'},
+{from: 30, to: 29, length:200, color:'#A2C5F5'},
+{from: 31, to: 29, length:200, color:'orange'},
+{from: 29, to: 32, length:200, color:'#A2C5F5'},
+{from: 118, to: 32, length:200, color:'#A2C5F5'},
+{from: 34, to: 33, length:200, color:'#A2C5F5'},
+{from: 35, to: 33, length:200, color:'#A2C5F5'},
+{from: 33, to: 51, length:200, color:'#A2C5F5'},
+{from: 73, to: 34, length:200, color:'#A2C5F5'},
+{from: 91, to: 34, length:200, color:'#A2C5F5'},
+{from: 106, to: 34, length:200, color:'#A2C5F5'},
+{from: 34, to: 139, length:200, color:'#A2C5F5'},
+{from: 34, to: 140, length:200, color:'#A2C5F5'},
+{from: 151, to: 34, length:200, color:'#A2C5F5'},
+{from: 36, to: 202, length:200, color:'#A2C5F5'},
+{from: 180, to: 38, length:200, color:'#A2C5F5'},
+{from: 41, to: 40, length:200, color:'#A2C5F5'},
+{from: 42, to: 40, length:200, color:'#A2C5F5'},
+{from: 100, to: 40, length:200, color:'#A2C5F5'},
+{from: 192, to: 41, length:200, color:'#A2C5F5'},
+{from: 43, to: 42, length:200, color:'#A2C5F5'},
+{from: 44, to: 43, length:200, color:'#A2C5F5'},
+{from: 43, to: 47, length:200, color:'#A2C5F5'},
+{from: 43, to: 58, length:200, color:'#A2C5F5'},
+{from: 44, to: 45, length:200, color:'#A2C5F5'},
+{from: 44, to: 152, length:200, color:'#A2C5F5'},
+{from: 46, to: 45, length:200, color:'#A2C5F5'},
+{from: 48, to: 45, length:200, color:'#A2C5F5'},
+{from: 48, to: 128, length:200, color:'#A2C5F5'},
+{from: 48, to: 144, length:200, color:'#A2C5F5'},
+{from: 50, to: 49, length:200, color:'#A2C5F5'},
+{from: 49, to: 160, length:200, color:'#A2C5F5'},
+{from: 115, to: 52, length:200, color:'#A2C5F5'},
+{from: 55, to: 56, length:200, color:'#A2C5F5'},
+{from: 55, to: 117, length:200, color:'#A2C5F5'},
+{from: 59, to: 58, length:200, color:'#A2C5F5'},
+{from: 60, to: 58, length:200, color:'#A2C5F5'},
+{from: 205, to: 58, length:200, color:'#A2C5F5'},
+{from: 59, to: 61, length:200, color:'#A2C5F5'},
+{from: 141, to: 60, length:200, color:'#A2C5F5'},
+{from: 203, to: 60, length:200, color:'#A2C5F5'},
+{from: 62, to: 61, length:200, color:'#A2C5F5'},
+{from: 63, to: 61, length:200, color:'#A2C5F5'},
+{from: 62, to: 72, length:200, color:'#A2C5F5'},
+{from: 64, to: 63, length:200, color:'#A2C5F5'},
+{from: 64, to: 178, length:200, color:'#A2C5F5'},
+{from: 64, to: 189, length:200, color:'#A2C5F5'},
+{from: 65, to: 66, length:200, color:'#A2C5F5'},
+{from: 65, to: 67, length:200, color:'#A2C5F5'},
+{from: 65, to: 124, length:200, color:'#A2C5F5'},
+{from: 65, to: 131, length:200, color:'#A2C5F5'},
+{from: 65, to: 198, length:200, color:'#A2C5F5'},
+{from: 68, to: 67, length:200, color:'#A2C5F5'},
+{from: 127, to: 67, length:200, color:'#A2C5F5'},
+{from: 145, to: 67, length:200, color:'#A2C5F5'},
+{from: 71, to: 70, length:200, color:'#A2C5F5'},
+{from: 71, to: 120, length:200, color:'#A2C5F5'},
+{from: 125, to: 71, length:200, color:'#A2C5F5'},
+{from: 73, to: 74, length:200, color:'#A2C5F5'},
+{from: 73, to: 150, length:200, color:'#A2C5F5'},
+{from: 75, to: 74, length:200, color:'#A2C5F5'},
+{from: 75, to: 165, length:200, color:'#A2C5F5'},
+{from: 77, to: 76, length:200, color:'#A2C5F5'},
+{from: 78, to: 76, length:200, color:'#A2C5F5'},
+{from: 130, to: 76, length:200, color:'#A2C5F5'},
+{from: 194, to: 76, length:200, color:'#A2C5F5'},
+{from: 80, to: 77, length:200, color:'orange'},
+{from: 88, to: 77, length:200, color:'#A2C5F5'},
+{from: 164, to: 77, length:200, color:'#A2C5F5'},
+{from: 167, to: 77, length:200, color:'orange'},
+{from: 78, to: 79, length:200, color:'#A2C5F5'},
+{from: 78, to: 93, length:200, color:'#A2C5F5'},
+{from: 78, to: 110, length:200, color:'#A2C5F5'},
+{from: 80, to: 81, length:200, color:'orange'},
+{from: 82, to: 80, length:200, color:'#A2C5F5'},
+{from: 94, to: 80, length:200, color:'#A2C5F5'},
+{from: 84, to: 81, length:200, color:'#A2C5F5'},
+{from: 173, to: 81, length:200, color:'#A2C5F5'},
+{from: 82, to: 83, length:200, color:'#A2C5F5'},
+{from: 85, to: 82, length:200, color:'#A2C5F5'},
+{from: 83, to: 89, length:200, color:'#A2C5F5'},
+{from: 85, to: 86, length:200, color:'#A2C5F5'},
+{from: 86, to: 87, length:200, color:'#A2C5F5'},
+{from: 88, to: 142, length:200, color:'#A2C5F5'},
+{from: 126, to: 93, length:200, color:'#A2C5F5'},
+{from: 170, to: 93, length:200, color:'#A2C5F5'},
+{from: 95, to: 94, length:200, color:'#A2C5F5'},
+{from: 94, to: 96, length:200, color:'#A2C5F5'},
+{from: 97, to: 96, length:200, color:'#A2C5F5'},
+{from: 98, to: 96, length:200, color:'#A2C5F5'},
+{from: 99, to: 98, length:200, color:'#A2C5F5'},
+{from: 101, to: 100, length:200, color:'#A2C5F5'},
+{from: 104, to: 103, length:200, color:'#A2C5F5'},
+{from: 105, to: 103, length:200, color:'#A2C5F5'},
+{from: 187, to: 104, length:200, color:'#A2C5F5'},
+{from: 106, to: 107, length:200, color:'#A2C5F5'},
+{from: 106, to: 166, length:200, color:'#A2C5F5'},
+{from: 108, to: 107, length:200, color:'#A2C5F5'},
+{from: 108, to: 109, length:200, color:'#A2C5F5'},
+{from: 108, to: 188, length:200, color:'#A2C5F5'},
+{from: 108, to: 200, length:200, color:'#A2C5F5'},
+{from: 109, to: 181, length:200, color:'#A2C5F5'},
+{from: 110, to: 111, length:200, color:'#A2C5F5'},
+{from: 110, to: 119, length:200, color:'#A2C5F5'},
+{from: 112, to: 111, length:200, color:'#A2C5F5'},
+{from: 112, to: 113, length:200, color:'#A2C5F5'},
+{from: 193, to: 112, length:200, color:'#A2C5F5'},
+{from: 186, to: 113, length:200, color:'#A2C5F5'},
+{from: 196, to: 118, length:200, color:'#A2C5F5'},
+{from: 121, to: 122, length:200, color:'#A2C5F5'},
+{from: 124, to: 204, length:200, color:'#A2C5F5'},
+{from: 128, to: 129, length:200, color:'orange'},
+{from: 182, to: 130, length:200, color:'#A2C5F5'},
+{from: 183, to: 130, length:200, color:'#A2C5F5'},
+{from: 132, to: 131, length:200, color:'#A2C5F5'},
+{from: 133, to: 132, length:200, color:'#A2C5F5'},
+{from: 133, to: 134, length:200, color:'#A2C5F5'},
+{from: 135, to: 134, length:200, color:'#A2C5F5'},
+{from: 136, to: 134, length:200, color:'#A2C5F5'},
+{from: 136, to: 137, length:200, color:'#A2C5F5'},
+{from: 137, to: 138, length:200, color:'#A2C5F5'},
+{from: 177, to: 137, length:200, color:'#A2C5F5'},
+{from: 140, to: 146, length:200, color:'#A2C5F5'},
+{from: 142, to: 143, length:200, color:'#A2C5F5'},
+{from: 147, to: 146, length:200, color:'orange'},
+{from: 147, to: 148, length:200, color:'orange'},
+{from: 176, to: 148, length:200, color:'#A2C5F5'},
+{from: 154, to: 155, length:200, color:'#A2C5F5'},
+{from: 156, to: 155, length:200, color:'#A2C5F5'},
+{from: 159, to: 158, length:200, color:'#A2C5F5'},
+{from: 161, to: 162, length:200, color:'#A2C5F5'},
+{from: 161, to: 163, length:200, color:'#A2C5F5'},
+{from: 169, to: 163, length:200, color:'#A2C5F5'},
+{from: 171, to: 170, length:200, color:'#A2C5F5'},
+{from: 170, to: 172, length:200, color:'#A2C5F5'},
+{from: 173, to: 174, length:200, color:'#A2C5F5'},
+{from: 173, to: 175, length:200, color:'#A2C5F5'},
+{from: 179, to: 175, length:200, color:'#A2C5F5'},
+{from: 199, to: 178, length:200, color:'#A2C5F5'},
+{from: 190, to: 181, length:200, color:'#A2C5F5'},
+{from: 184, to: 185, length:200, color:'#A2C5F5'},
+{from: 190, to: 195, length:200, color:'#A2C5F5'},
+{from: 197, to: 195, length:200, color:'#A2C5F5'},
+{from: 200, to: 201, length:200, color:'#A2C5F5'},
+{from: 207, to: 207, length:200, color:'#A2C5F5'},
+			  ];
+
+            nodes.add(nodesData);
+            edges.add(edgesData);
+            // create a network
+            var container = document.getElementById('mynetwork');
+
+            var data = {
+                nodes: nodes,
+                edges: edges
+            };
+
+            var options = {
+                physics: {
+                    barnesHut: { enabled: false },
+                    repulsion: {
+                        nodeDistance: 150,
+                        springLength: 150,
+                        springConstant: 0.0,
+                        damping: 0.3
+                    }
+                },
+                smoothCurves: {
+                    dynamic: false,
+                    type: '1'
+                },
+                navigation: true,
+                keyboard: true,
+				nodes: {
+					inheritColor: "from"
+				},
+                edges: {
+                    width: 3.,
+                    inheritColor: "from"
+                }
+            };
+
+            var network = new vis.Network(container, data, options);
+			 
+            network.on("click", onClick);
+            network.on('select', function (properties) {
+                if (properties.nodes.length > 0) {
+                    var txt = nodesData[properties.nodes].label;
+                    document.getElementById('sel').innerHTML = 'selection: ' + txt + '<br>';
+                }
+                else { document.getElementById('sel').innerHTML = ''; }
+            }); 
+			
+			 network.once("stabilizationIterationsDone", function() {
+                document.getElementById('sel').innerHTML = ''; 
+            });
+			
+			network.on("stabilizationProgress", function(params) { 
+                var widthFactor = params.iterations/params.total; 
+                var dots = Array(10 * widthFactor + 1).join('.')
+				var spaces = Array(10 - 10 * widthFactor + 1).join('&nbsp;')
+                //document.getElementById('bar').style.width = width + 'px';
+                document.getElementById('sel').innerHTML = 'Please wait, Loading ' + dots + spaces +  "| " + Math.round(widthFactor*100) + '%';
+            });
+        }
+		
+		function filter(e){
+		  if(e.keyCode === 13){
+		    var nodesData = nodes.get({ returnType: "Object" });
+		    var search = document.getElementById('find').value.toLowerCase();
+			updateArray = []
+		    for(nodeId in nodesData) {
+			  if(nodesData[nodeId].label.toLowerCase().indexOf(search) > -1){
+			     nodesData[nodeId].clearFind = nodesData[nodeId].color
+				 nodesData[nodeId].clearShape = nodesData[nodeId].shape
+			     nodesData[nodeId].color = 'orange' 
+				 nodesData[nodeId].shape = 'box' 
+				 updateArray.push(nodesData[nodeId])
+				}
+			}
+			nodes.update(updateArray);
+		  } 
+		}
+		
+        function onClick(selectedItems) {
+            var nodeId;
+            var degrees = 2;
+            // we get all data from the dataset once to avoid updating multiple times.
+            var allNodes = nodes.get({ returnType: "Object" });
+            if (selectedItems.nodes.length == 0) {
+                // restore on unselect
+                for (nodeId in allNodes) {
+                    if (allNodes.hasOwnProperty(nodeId)) {
+                        allNodes[nodeId].color = undefined;
+                        if (allNodes[nodeId].oldLabel !== undefined) {
+                            allNodes[nodeId].label = allNodes[nodeId].oldLabel;
+                            allNodes[nodeId].oldLabel = undefined;
+                        }
+						
+						if(allNodes[nodeId].preColor !== undefined){
+						   allNodes[nodeId].color = allNodes[nodeId].preColor;
+						   allNodes[nodeId].preColor = undefined;
+						}
+                        allNodes[nodeId]['levelOfSeperation'] = undefined;
+                        allNodes[nodeId]['inConnectionList'] = undefined;
+                    }
+					if(allNodes[nodeId].clearFind !== undefined){
+					   allNodes[nodeId].color = allNodes[nodeId].clearFind;
+					   allNodes[nodeId].shape = allNodes[nodeId].clearShape;
+					   allNodes[nodeId].clearFind = undefined;
+					}
+                }
+            }
+            else {
+                var allEdges = edges.get();
+
+                // we clear the level of separation in all nodes.
+                clearLevelOfSeperation(allNodes);
+
+                // we will now start to collect all the connected nodes we want to highlight.
+                var connectedNodes = selectedItems.nodes;
+
+                // we can store them into levels of separation and we could then later use this to define a color per level
+                // any data can be added to a node, this is just stored in the nodeObject.
+                storeLevelOfSeperation(connectedNodes, 0, allNodes);
+                for (var i = 1; i < degrees + 1; i++) {
+                    appendConnectedNodes(connectedNodes, allEdges);
+                    storeLevelOfSeperation(connectedNodes, i, allNodes);
+                }
+                for (nodeId in allNodes) {
+                    if (allNodes.hasOwnProperty(nodeId)) {
+                        if (allNodes[nodeId]['inConnectionList'] == true) {
+                            if (allNodes[nodeId]['levelOfSeperation'] !== undefined) {
+                                if (allNodes[nodeId]['levelOfSeperation'] >= 2) {
+								    allNodes[nodeId].preColor = allNodes[nodeId].color;
+                                    allNodes[nodeId].color = 'rgba(150,150,150,0.75)';
+                                }
+                                else {
+                                    allNodes[nodeId].color = undefined;
+                                }
+                            }
+                            else {
+                                allNodes[nodeId].color = undefined;
+                            }
+                            if (allNodes[nodeId].oldLabel !== undefined) {
+                                allNodes[nodeId].label = allNodes[nodeId].oldLabel;
+                                allNodes[nodeId].oldLabel = undefined;
+                            }
+                        }
+                        else {
+						    allNodes[nodeId].preColor = allNodes[nodeId].color;
+                            allNodes[nodeId].color = 'rgba(200,200,200,0.5)';
+                            if (allNodes[nodeId].oldLabel === undefined) {
+                                allNodes[nodeId].oldLabel = allNodes[nodeId].label;
+                                allNodes[nodeId].label = "";
+                            }
+                        }
+                    }
+                }
+            }
+            var updateArray = [];
+            for (nodeId in allNodes) {
+                if (allNodes.hasOwnProperty(nodeId)) {
+                    updateArray.push(allNodes[nodeId]);
+                }
+            }
+            nodes.update(updateArray);
+        }
+
+        /**
+         * update the allNodes object with the level of separation.
+         * Arrays are passed by reference, we do not need to return them because we are working in the same object.
+         */
+        function storeLevelOfSeperation(connectedNodes, level, allNodes) {
+            for (var i = 0; i < connectedNodes.length; i++) {
+                var nodeId = connectedNodes[i];
+                if (allNodes[nodeId]['levelOfSeperation'] === undefined) {
+                    allNodes[nodeId]['levelOfSeperation'] = level;
+                }
+                allNodes[nodeId]['inConnectionList'] = true;
+            }
+        }
+
+        function clearLevelOfSeperation(allNodes) {
+            for (var nodeId in allNodes) {
+                if (allNodes.hasOwnProperty(nodeId)) {
+                    allNodes[nodeId]['levelOfSeperation'] = undefined;
+                    allNodes[nodeId]['inConnectionList'] = undefined;
+                }
+            }
+        }
+
+        /**
+         * Add the connected nodes to the list of nodes we already have
+         *
+         *
+         */
+        function appendConnectedNodes(sourceNodes, allEdges) {
+            var tempSourceNodes = [];
+            // first we make a copy of the nodes so we do not extend the array we loop over.
+            for (var i = 0; i < sourceNodes.length; i++) {
+                tempSourceNodes.push(sourceNodes[i])
+            }
+
+            for (var i = 0; i < tempSourceNodes.length; i++) {
+                var nodeId = tempSourceNodes[i];
+                if (sourceNodes.indexOf(nodeId) == -1) {
+                    sourceNodes.push(nodeId);
+                }
+                addUnique(getConnectedNodes(nodeId, allEdges), sourceNodes);
+            }
+            tempSourceNodes = null;
+        }
+
+        /**
+         * Join two arrays without duplicates
+         * @param fromArray
+         * @param toArray
+         */
+        function addUnique(fromArray, toArray) {
+            for (var i = 0; i < fromArray.length; i++) {
+                if (toArray.indexOf(fromArray[i]) == -1) {
+                    toArray.push(fromArray[i]);
+                }
+            }
+        }
+
+        /**
+         * Get a list of nodes that are connected to the supplied nodeId with edges.
+         * @param nodeId
+         * @returns {Array}
+         */
+        function getConnectedNodes(nodeId, allEdges) {
+            var edgesArray = allEdges;
+            var connectedNodes = [];
+
+            for (var i = 0; i < edgesArray.length; i++) {
+                var edge = edgesArray[i];
+                if (edge.to == nodeId) {
+                    connectedNodes.push(edge.from);
+                }
+                else if (edge.from == nodeId) {
+                    connectedNodes.push(edge.to)
+                }
+            }
+            return connectedNodes;
+        }
+    </script>
+</head>
+
+<body onload="draw()">
+    <div id="mynetwork"></div>
+    <div id="sel" style="background: white; position: absolute; width: 500px; top: 0; right: 0">Please wait.</div> 
+	<input style ="position:fixed; bottom:0; left:0" id="find" onkeyup="filter(event)"/>
+</body>
+</html>

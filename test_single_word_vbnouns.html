@@ -1,0 +1,1190 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta charset="utf-8" />
+    <title>wordnet</title>
+
+    <style type="text/css">
+        html, body {
+            font: 10pt arial;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        #mynetwork {
+            width: 100%;
+            height: 95%;
+            border: 1px solid lightgray;
+        }
+    </style>
+
+    <script type="text/javascript" src="visjs/vis.js"></script>
+    <link href="visjs/vis.css" rel="stylesheet" type="text/css" />
+
+    <script type="text/javascript">
+
+        var nodes = new vis.DataSet();
+        var edges = new vis.DataSet();
+        function draw() {
+            // create some nodes
+            var nodesData = [
+			   {id:0,label: '47.2.', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:1,label: 'continue', shape:'box', color:'rgba(225, 225, 225, .8)'},
+{id:2,label: 'document', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:3,label: 'provide', shape:'box', color:'rgba(225, 225, 225, .8)'},
+{id:4,label: 'consensus', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:5,label: 'detonation', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:6,label: 'mass', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:7,label: 'transparency', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:8,label: 'nature', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:9,label: 'verify', shape:'box', color:'rgba(225, 225, 225, .8)'},
+{id:10,label: 'plant', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:11,label: 'architecture', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:12,label: 'conclusion', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:13,label: 'total', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:14,label: 'chemical', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:15,label: 'installation', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:16,label: 'remove', shape:'box', color:'rgba(225, 225, 225, .8)'},
+{id:17,label: 'completion', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:18,label: 'mpa', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:19,label: 'stage', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:20,label: 'precaution', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:21,label: 'presence', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:22,label: 'monitor', shape:'box', color:'rgba(225, 225, 225, .8)'},
+{id:23,label: 'acquire', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:24,label: 'meet', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:25,label: 'number', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:26,label: 'trr', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:27,label: 'bank', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:28,label: 'flow', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:29,label: 'take', shape:'box', color:'rgba(225, 225, 225, .8)'},
+{id:30,label: 'november', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:31,label: 'reprocess', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:32,label: 'grid', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:33,label: 'redesign', shape:'box', color:'rgba(225, 225, 225, .8)'},
+{id:34,label: 'irradiation', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:35,label: 'laboratory', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:36,label: 'aim', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:37,label: 'furtherance', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:38,label: 'contract', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:39,label: 'crash', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:40,label: 'include', shape:'box', color:'rgba(225, 225, 225, .8)'},
+{id:41,label: 'general', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:42,label: 'stock', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:43,label: 'capacity', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:44,label: 'ir-1', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:45,label: 'store', shape:'box', color:'rgba(225, 225, 225, .8)'},
+{id:46,label: 'ore', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:47,label: 'intend', shape:'box', color:'rgba(225, 225, 225, .8)'},
+{id:48,label: 'plan', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:49,label: 'resolve', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:50,label: 'uranium', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:51,label: 'hexafluoride', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:52,label: 'level', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:53,label: 'rebuild', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:54,label: 'form', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:55,label: 'dump', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:56,label: 'zero', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:57,label: 'protect', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:58,label: 'reactor', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:59,label: 'annex', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:60,label: 'sell', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:61,label: 'ir-6', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:62,label: 'complex', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:63,label: 'decide', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:64,label: 'initiate', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:65,label: 'maximise', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:66,label: 'fep', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:67,label: 'count', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:68,label: 'processing', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:69,label: 'additional', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:70,label: 'recombine', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:71,label: 'pipework', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:72,label: 'engage', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:73,label: 'define', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:74,label: 'notify', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:75,label: 'kept', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:76,label: 'jcpoa', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:77,label: 'adapt', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:78,label: 'e3/eu+3', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:79,label: 'develop', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:80,label: 'review', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:81,label: 'prototype', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:82,label: 'metal', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:83,label: 'glove', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:84,label: 'assembly', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:85,label: 'location', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:86,label: 'raise', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:87,label: 'fuel', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:88,label: 'replace', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:89,label: 'implementation', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:90,label: 'retain', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:91,label: 'simulate', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:92,label: 'group', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:93,label: 'deliver', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:94,label: 'make', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:95,label: 'enable', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:96,label: 'pursue', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:97,label: 'manufacture', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:98,label: 'baseline', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:99,label: 'infrastructure', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:100,label: 'share', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:101,label: 'russian-', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:102,label: 'qualification', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:103,label: 'pace', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:104,label: 'fabricate', shape:'box', color:'rgba(225, 225, 225, .8)'},
+{id:105,label: 'declaration', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:106,label: 'range', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:107,label: 'legacy', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:108,label: 'replacement', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:109,label: 'need', shape:'box', color:'rgba(225, 225, 225, .8)'},
+{id:110,label: 'term', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:111,label: 'exploration', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:112,label: 'status', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:113,label: 'minimum', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:114,label: 'end', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:115,label: 'reinforce', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:116,label: 'machine', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:117,label: 'gas', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:118,label: 'parliament', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:119,label: 'beam', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:120,label: 'contribute', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:121,label: 'tehran', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:122,label: 'lack', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:123,label: 'natanz', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:124,label: 'ship', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:125,label: 'water', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:126,label: 'being', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:127,label: 'streak', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:128,label: 'allow', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:129,label: 'accumulate', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:130,label: 'injection', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:131,label: 'separation-related', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:132,label: 'fordow', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:133,label: '48.2.', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:134,label: 'joint', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:135,label: 'pending', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:136,label: 'research', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:137,label: 'declare', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:138,label: 'access', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:139,label: 'seek', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:140,label: 'handle', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:141,label: 'enter', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:142,label: 'complete', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:143,label: 'work', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:144,label: 'minimise', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:145,label: 'enrichment-related', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:146,label: 'implement', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:147,label: 'cell', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:148,label: 'kg', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:149,label: 'uranium-235', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:150,label: 'hall', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:151,label: 'produce', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:152,label: 'year', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:153,label: 'propose', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:154,label: 'process', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:155,label: 'undertake', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:156,label: 'made', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:157,label: 'iaea', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:158,label: 'confirm', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:159,label: 'permit', shape:'box', color:'rgba(225, 225, 225, .8)'},
+{id:160,label: 'path', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:161,label: 'point', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:162,label: 'frequency', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:163,label: 'amount', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:164,label: 'enrichment', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:165,label: 'proceed', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:166,label: 'non-', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:167,label: 'centrifuge', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:168,label: 'exceed', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:169,label: 'order', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:170,label: 'use', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:171,label: 'apply', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:172,label: 'move', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:173,label: 'transfer', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:174,label: 'install', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:175,label: 'isotope', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:176,label: 'establish', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:177,label: 'capability', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:178,label: 'code', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:179,label: 'load', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:180,label: 'inconsistent', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:181,label: 'undertaken', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:182,label: 'ground', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:183,label: 'subsidiary', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:184,label: 'information', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:185,label: 'spin', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:186,label: 'iran', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:187,label: 'operate', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:188,label: 'advise', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:189,label: 'sub', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:190,label: 'submission', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:191,label: 'x-ray', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:192,label: 'device', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:193,label: 'modernise', shape:'box', color:'rgba(225, 225, 225, .8)'},
+{id:194,label: 'faith', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:195,label: 'force', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:196,label: 'collaboration', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:197,label: 'examination', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:198,label: 'purchase', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:199,label: 'inform', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:200,label: 'submit', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:201,label: 'uo2', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:202,label: 'data', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:203,label: 'feed', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:204,label: 'endorsement', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:205,label: 'kazakhstan', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:206,label: 'left', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:207,label: 'material', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:208,label: 'demand', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:209,label: 'procurement', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:210,label: 'programme', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:211,label: 'test', shape:'box', color:'rgba(225, 225, 225, .8)'},
+{id:212,label: 'source', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:213,label: 'equivalent', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:214,label: 'conversion', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:215,label: 'maintain', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:216,label: 'facilitate', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:217,label: 'spent', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:218,label: 'sold', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:219,label: 'authority', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:220,label: 'disposition', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:221,label: 'vote', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:222,label: 'subject', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:223,label: 'oxide', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:224,label: 'storage', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:225,label: 'market', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:226,label: 'commence', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:227,label: 'line', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:228,label: 'conduct', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:229,label: 'keep', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:230,label: 'presentation', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:231,label: 'post-irradiation-examination', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:232,label: 'physics', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:233,label: 'observance', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:234,label: 'federation', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:235,label: 'prepare', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:236,label: 'responsibility', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:237,label: 'agreement', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:238,label: 'purpose', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:239,label: 'chennals', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:240,label: 'item', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:241,label: 'modernisation', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:242,label: 'issue', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:243,label: 'interance', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:244,label: 'ir-7', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:245,label: 'technology', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:246,label: 'request', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:247,label: 'past', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:248,label: 'approval', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:249,label: 'power', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:250,label: 'reason', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:251,label: 'comport', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:252,label: 'reach', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:253,label: 'site', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:254,label: 'ir-5', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:255,label: 'plutonium', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:256,label: 'question', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:257,label: 'uf6', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:258,label: 'containment', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:259,label: 'keeping', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:260,label: 'design', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:261,label: 'control', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:262,label: 'transaction', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:263,label: 'participation', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:264,label: 'thereafter', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:265,label: 'uranium-233', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:266,label: 'absence', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:267,label: 'manufacturing', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:268,label: 'ir-8.', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:269,label: 'protocol', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:270,label: 'instance', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:271,label: 'abide', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:272,label: 'percent', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:273,label: 'type', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:274,label: 'state', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:275,label: 'ratification', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:276,label: 'application', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:277,label: 'operation', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:278,label: 'surveillance', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:279,label: 'modification', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:280,label: 'modify', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:281,label: 'center', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:282,label: 'safety', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:283,label: 'buyer', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:284,label: 'removal', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:285,label: 'computer', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:286,label: 'set', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:287,label: 'aluminum', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:288,label: 'dissolution', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:289,label: 'iii', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:290,label: 'fulfilment', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:291,label: 'context', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:292,label: 'moderator', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:293,label: 'lic', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:294,label: 'efficiency', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:295,label: 'template', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:296,label: 'choose', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:297,label: 'arak', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:298,label: 'export', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:299,label: 'understanding', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:300,label: 'pressure', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:301,label: 'party', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:302,label: 'guide', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:303,label: 'adaptation', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:304,label: 'ir-2m', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:305,label: 'non-proliferation', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:306,label: 'supply', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:307,label: 'ffep', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:308,label: 'section', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:309,label: 'diq', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:310,label: 'advancement', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:311,label: 'grade', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:312,label: 'measurement', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:313,label: 'day', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:314,label: 'advance', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:315,label: 'cascade', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:316,label: 'hwpp', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:317,label: 'commission', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:318,label: 'following', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:319,label: 'occur', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:320,label: 'cooperation', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:321,label: 'president', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:322,label: 'origin', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:323,label: 'lifetime', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:324,label: 'build', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:325,label: 'production', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:326,label: 'meeting', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:327,label: 'cooperate', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:328,label: 'arrangement', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:329,label: 'owner', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:330,label: 'agency', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:331,label: 'conclude', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:332,label: 'channel', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:333,label: 'scrap', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:334,label: 'duration', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:335,label: 'concentrate', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:336,label: 'increment', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:337,label: 'coming', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:338,label: 'pie', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:339,label: 'entry', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:340,label: 'space', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:341,label: 'confirmation', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:342,label: 'accordance', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:343,label: 'regardless', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:344,label: 'period', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:345,label: 'scope', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:346,label: 'increase', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:347,label: 'inventory', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:348,label: 'header', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:349,label: 'contingency', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:350,label: 'quantity', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:351,label: 'support', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:352,label: 'ir-8', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:353,label: 'entity', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:354,label: 'neptunium', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:355,label: 'flux', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:356,label: 'iic', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:357,label: 'license', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:358,label: 'maximize', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:359,label: 'connection', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:360,label: 'communicate', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:361,label: 'wing', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:362,label: 'verification', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:363,label: 'u3o8', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:364,label: 'pfep', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:365,label: 'separation', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:366,label: 'centre', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:367,label: 'place', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:368,label: 'rotor', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:369,label: 'component', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:370,label: 'manner', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:371,label: 'trend', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:372,label: 'present', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:373,label: 'role', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:374,label: 'calandria', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:375,label: 'leadership', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:376,label: 'resin', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:377,label: 'basis', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:378,label: 'collection', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:379,label: 'remain', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:380,label: 'uoc', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:381,label: 'consultation', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:382,label: 'ring', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:383,label: 'system', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:384,label: 'addition', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:385,label: 'resolution', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:386,label: 'return', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:387,label: 'subparagraph', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:388,label: 'clarification', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:389,label: 'case', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:390,label: 'country', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:391,label: 'unh', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:392,label: 'director', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:393,label: 'concrete', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:394,label: 'uf6.', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:395,label: 'concern', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:396,label: 'above-', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:397,label: 'mechanism', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:398,label: 'part', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:399,label: 'action', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:400,label: 'rate', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:401,label: 'ir-40', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:402,label: 'assistance', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:403,label: 'prejudice', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:404,label: 'practice', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:405,label: 'edge', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:406,label: 'security', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:407,label: 'radio-isotope', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:408,label: 'attachment', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:409,label: 'designation', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:410,label: 'ir-4', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:411,label: 'conformity', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:412,label: 'ucf', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:413,label: 'neutron', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:414,label: 'fabrication', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:415,label: 'neptunium-237', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:416,label: 'facility', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:417,label: 'loop', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:418,label: 'pit', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:419,label: 'procedure', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:420,label: 'vacuum', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:421,label: 'instrumentation', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:422,label: 'outstanding', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:423,label: 'manager', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:424,label: 'framework', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:425,label: 'withdrawal', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:426,label: 'core', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:427,label: 'development', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:428,label: 'project', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:429,label: 'scale', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:430,label: 'modernization', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:431,label: 'dispute', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:432,label: 'supplier', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:433,label: 'start', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:434,label: 'ir-40.', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:435,label: 'construction', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:436,label: 'date', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:437,label: 'limit', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:438,label: 'report', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:439,label: 'equipment', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:440,label: 'post', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:441,label: 'majlis', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:442,label: 'product', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:443,label: 'roadmap', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:444,label: 'volume', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:445,label: 'partnership', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:446,label: 'service', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:447,label: 'treatment', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:448,label: 'transition', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:449,label: 'goal', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:450,label: 'ir-', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:451,label: 'sequence', shape:'text', color:'rgba(225, 225, 225, .8)'},
+			   ];
+
+            // create some edges
+            var edgesData = [
+			  {from: 0, to: 1, length:200, color:'#A2C5F5'},
+{from: 1, to: 2, length:200, color:'orange'},
+{from: 1, to: 5, length:200, color:'orange'},
+{from: 1, to: 13, length:200, color:'orange'},
+{from: 14, to: 1, length:200, color:'#A2C5F5'},
+{from: 1, to: 102, length:200, color:'orange'},
+{from: 119, to: 1, length:200, color:'#A2C5F5'},
+{from: 133, to: 1, length:200, color:'#A2C5F5'},
+{from: 1, to: 202, length:200, color:'orange'},
+{from: 248, to: 1, length:200, color:'#A2C5F5'},
+{from: 1, to: 274, length:200, color:'orange'},
+{from: 1, to: 294, length:200, color:'orange'},
+{from: 1, to: 308, length:200, color:'orange'},
+{from: 1, to: 320, length:200, color:'orange'},
+{from: 1, to: 321, length:200, color:'orange'},
+{from: 1, to: 329, length:200, color:'orange'},
+{from: 1, to: 338, length:200, color:'orange'},
+{from: 349, to: 1, length:200, color:'#A2C5F5'},
+{from: 1, to: 354, length:200, color:'orange'},
+{from: 1, to: 355, length:200, color:'orange'},
+{from: 369, to: 1, length:200, color:'#A2C5F5'},
+{from: 389, to: 1, length:200, color:'#A2C5F5'},
+{from: 396, to: 1, length:200, color:'#A2C5F5'},
+{from: 1, to: 405, length:200, color:'orange'},
+{from: 1, to: 426, length:200, color:'orange'},
+{from: 1, to: 448, length:200, color:'orange'},
+{from: 2, to: 3, length:200, color:'#A2C5F5'},
+{from: 4, to: 3, length:200, color:'#A2C5F5'},
+{from: 6, to: 3, length:200, color:'#A2C5F5'},
+{from: 3, to: 7, length:200, color:'orange'},
+{from: 8, to: 3, length:200, color:'#A2C5F5'},
+{from: 11, to: 3, length:200, color:'#A2C5F5'},
+{from: 15, to: 3, length:200, color:'#A2C5F5'},
+{from: 28, to: 3, length:200, color:'#A2C5F5'},
+{from: 132, to: 3, length:200, color:'#A2C5F5'},
+{from: 192, to: 3, length:200, color:'#A2C5F5'},
+{from: 204, to: 3, length:200, color:'#A2C5F5'},
+{from: 242, to: 3, length:200, color:'#A2C5F5'},
+{from: 251, to: 3, length:200, color:'#A2C5F5'},
+{from: 267, to: 3, length:200, color:'#A2C5F5'},
+{from: 292, to: 3, length:200, color:'#A2C5F5'},
+{from: 330, to: 3, length:200, color:'#A2C5F5'},
+{from: 3, to: 333, length:200, color:'orange'},
+{from: 3, to: 386, length:200, color:'orange'},
+{from: 388, to: 3, length:200, color:'#A2C5F5'},
+{from: 4, to: 9, length:200, color:'#A2C5F5'},
+{from: 10, to: 9, length:200, color:'#A2C5F5'},
+{from: 12, to: 9, length:200, color:'#A2C5F5'},
+{from: 121, to: 9, length:200, color:'#A2C5F5'},
+{from: 178, to: 9, length:200, color:'#A2C5F5'},
+{from: 189, to: 9, length:200, color:'#A2C5F5'},
+{from: 9, to: 191, length:200, color:'orange'},
+{from: 223, to: 9, length:200, color:'#A2C5F5'},
+{from: 244, to: 9, length:200, color:'#A2C5F5'},
+{from: 253, to: 9, length:200, color:'#A2C5F5'},
+{from: 283, to: 9, length:200, color:'#A2C5F5'},
+{from: 322, to: 9, length:200, color:'#A2C5F5'},
+{from: 345, to: 9, length:200, color:'#A2C5F5'},
+{from: 362, to: 9, length:200, color:'#A2C5F5'},
+{from: 380, to: 9, length:200, color:'#A2C5F5'},
+{from: 393, to: 9, length:200, color:'#A2C5F5'},
+{from: 417, to: 9, length:200, color:'#A2C5F5'},
+{from: 430, to: 9, length:200, color:'#A2C5F5'},
+{from: 15, to: 16, length:200, color:'#A2C5F5'},
+{from: 17, to: 16, length:200, color:'#A2C5F5'},
+{from: 18, to: 16, length:200, color:'#A2C5F5'},
+{from: 16, to: 19, length:200, color:'orange'},
+{from: 20, to: 16, length:200, color:'#A2C5F5'},
+{from: 21, to: 16, length:200, color:'#A2C5F5'},
+{from: 38, to: 16, length:200, color:'#A2C5F5'},
+{from: 68, to: 16, length:200, color:'#A2C5F5'},
+{from: 103, to: 16, length:200, color:'#A2C5F5'},
+{from: 116, to: 16, length:200, color:'#A2C5F5'},
+{from: 122, to: 16, length:200, color:'#A2C5F5'},
+{from: 182, to: 16, length:200, color:'#A2C5F5'},
+{from: 220, to: 16, length:200, color:'#A2C5F5'},
+{from: 16, to: 224, length:200, color:'orange'},
+{from: 225, to: 16, length:200, color:'#A2C5F5'},
+{from: 254, to: 16, length:200, color:'#A2C5F5'},
+{from: 16, to: 262, length:200, color:'orange'},
+{from: 16, to: 273, length:200, color:'orange'},
+{from: 281, to: 16, length:200, color:'#A2C5F5'},
+{from: 290, to: 16, length:200, color:'#A2C5F5'},
+{from: 293, to: 16, length:200, color:'#A2C5F5'},
+{from: 16, to: 299, length:200, color:'orange'},
+{from: 316, to: 16, length:200, color:'#A2C5F5'},
+{from: 334, to: 16, length:200, color:'#A2C5F5'},
+{from: 341, to: 16, length:200, color:'#A2C5F5'},
+{from: 367, to: 16, length:200, color:'#A2C5F5'},
+{from: 377, to: 16, length:200, color:'#A2C5F5'},
+{from: 378, to: 16, length:200, color:'#A2C5F5'},
+{from: 408, to: 16, length:200, color:'#A2C5F5'},
+{from: 16, to: 420, length:200, color:'orange'},
+{from: 422, to: 16, length:200, color:'#A2C5F5'},
+{from: 22, to: 18, length:200, color:'orange'},
+{from: 23, to: 22, length:200, color:'#A2C5F5'},
+{from: 22, to: 25, length:200, color:'orange'},
+{from: 27, to: 22, length:200, color:'#A2C5F5'},
+{from: 39, to: 22, length:200, color:'#A2C5F5'},
+{from: 22, to: 222, length:200, color:'orange'},
+{from: 22, to: 247, length:200, color:'orange'},
+{from: 22, to: 250, length:200, color:'orange'},
+{from: 258, to: 22, length:200, color:'#A2C5F5'},
+{from: 22, to: 275, length:200, color:'orange'},
+{from: 279, to: 22, length:200, color:'#A2C5F5'},
+{from: 289, to: 22, length:200, color:'#A2C5F5'},
+{from: 22, to: 295, length:200, color:'orange'},
+{from: 22, to: 305, length:200, color:'orange'},
+{from: 312, to: 22, length:200, color:'#A2C5F5'},
+{from: 22, to: 372, length:200, color:'orange'},
+{from: 22, to: 382, length:200, color:'orange'},
+{from: 22, to: 383, length:200, color:'orange'},
+{from: 402, to: 22, length:200, color:'#A2C5F5'},
+{from: 22, to: 403, length:200, color:'orange'},
+{from: 414, to: 22, length:200, color:'#A2C5F5'},
+{from: 423, to: 22, length:200, color:'#A2C5F5'},
+{from: 22, to: 428, length:200, color:'orange'},
+{from: 437, to: 22, length:200, color:'#A2C5F5'},
+{from: 23, to: 24, length:200, color:'#A2C5F5'},
+{from: 23, to: 36, length:200, color:'#A2C5F5'},
+{from: 23, to: 77, length:200, color:'#A2C5F5'},
+{from: 23, to: 218, length:200, color:'#A2C5F5'},
+{from: 23, to: 226, length:200, color:'#A2C5F5'},
+{from: 23, to: 235, length:200, color:'#A2C5F5'},
+{from: 24, to: 26, length:200, color:'#A2C5F5'},
+{from: 26, to: 155, length:200, color:'#A2C5F5'},
+{from: 206, to: 26, length:200, color:'#A2C5F5'},
+{from: 28, to: 29, length:200, color:'#A2C5F5'},
+{from: 30, to: 29, length:200, color:'#A2C5F5'},
+{from: 31, to: 29, length:200, color:'#A2C5F5'},
+{from: 32, to: 29, length:200, color:'#A2C5F5'},
+{from: 34, to: 29, length:200, color:'#A2C5F5'},
+{from: 69, to: 29, length:200, color:'#A2C5F5'},
+{from: 98, to: 29, length:200, color:'#A2C5F5'},
+{from: 101, to: 29, length:200, color:'#A2C5F5'},
+{from: 154, to: 29, length:200, color:'#A2C5F5'},
+{from: 236, to: 29, length:200, color:'#A2C5F5'},
+{from: 237, to: 29, length:200, color:'#A2C5F5'},
+{from: 29, to: 245, length:200, color:'orange'},
+{from: 303, to: 29, length:200, color:'#A2C5F5'},
+{from: 311, to: 29, length:200, color:'#A2C5F5'},
+{from: 336, to: 29, length:200, color:'#A2C5F5'},
+{from: 350, to: 29, length:200, color:'#A2C5F5'},
+{from: 366, to: 29, length:200, color:'#A2C5F5'},
+{from: 375, to: 29, length:200, color:'#A2C5F5'},
+{from: 441, to: 29, length:200, color:'#A2C5F5'},
+{from: 442, to: 29, length:200, color:'#A2C5F5'},
+{from: 33, to: 31, length:200, color:'orange'},
+{from: 35, to: 33, length:200, color:'#A2C5F5'},
+{from: 37, to: 33, length:200, color:'#A2C5F5'},
+{from: 99, to: 33, length:200, color:'#A2C5F5'},
+{from: 256, to: 33, length:200, color:'#A2C5F5'},
+{from: 268, to: 33, length:200, color:'#A2C5F5'},
+{from: 272, to: 33, length:200, color:'#A2C5F5'},
+{from: 314, to: 33, length:200, color:'#A2C5F5'},
+{from: 335, to: 33, length:200, color:'#A2C5F5'},
+{from: 33, to: 376, length:200, color:'orange'},
+{from: 397, to: 33, length:200, color:'#A2C5F5'},
+{from: 33, to: 444, length:200, color:'orange'},
+{from: 450, to: 33, length:200, color:'#A2C5F5'},
+{from: 39, to: 40, length:200, color:'#A2C5F5'},
+{from: 41, to: 40, length:200, color:'#A2C5F5'},
+{from: 40, to: 42, length:200, color:'orange'},
+{from: 43, to: 40, length:200, color:'#A2C5F5'},
+{from: 40, to: 44, length:200, color:'orange'},
+{from: 40, to: 56, length:200, color:'orange'},
+{from: 40, to: 184, length:200, color:'orange'},
+{from: 40, to: 205, length:200, color:'orange'},
+{from: 234, to: 40, length:200, color:'#A2C5F5'},
+{from: 40, to: 255, length:200, color:'orange'},
+{from: 287, to: 40, length:200, color:'#A2C5F5'},
+{from: 291, to: 40, length:200, color:'#A2C5F5'},
+{from: 307, to: 40, length:200, color:'#A2C5F5'},
+{from: 40, to: 363, length:200, color:'orange'},
+{from: 384, to: 40, length:200, color:'#A2C5F5'},
+{from: 40, to: 394, length:200, color:'orange'},
+{from: 40, to: 415, length:200, color:'orange'},
+{from: 40, to: 418, length:200, color:'orange'},
+{from: 40, to: 421, length:200, color:'orange'},
+{from: 40, to: 433, length:200, color:'orange'},
+{from: 44, to: 45, length:200, color:'#A2C5F5'},
+{from: 63, to: 44, length:200, color:'#A2C5F5'},
+{from: 199, to: 44, length:200, color:'#A2C5F5'},
+{from: 46, to: 45, length:200, color:'#A2C5F5'},
+{from: 51, to: 45, length:200, color:'#A2C5F5'},
+{from: 52, to: 45, length:200, color:'#A2C5F5'},
+{from: 54, to: 45, length:200, color:'#A2C5F5'},
+{from: 62, to: 45, length:200, color:'#A2C5F5'},
+{from: 117, to: 45, length:200, color:'#A2C5F5'},
+{from: 157, to: 45, length:200, color:'#A2C5F5'},
+{from: 203, to: 45, length:200, color:'#A2C5F5'},
+{from: 210, to: 45, length:200, color:'#A2C5F5'},
+{from: 276, to: 45, length:200, color:'#A2C5F5'},
+{from: 285, to: 45, length:200, color:'#A2C5F5'},
+{from: 309, to: 45, length:200, color:'#A2C5F5'},
+{from: 328, to: 45, length:200, color:'#A2C5F5'},
+{from: 364, to: 45, length:200, color:'#A2C5F5'},
+{from: 374, to: 45, length:200, color:'#A2C5F5'},
+{from: 45, to: 387, length:200, color:'orange'},
+{from: 390, to: 45, length:200, color:'#A2C5F5'},
+{from: 401, to: 45, length:200, color:'#A2C5F5'},
+{from: 427, to: 45, length:200, color:'#A2C5F5'},
+{from: 429, to: 45, length:200, color:'#A2C5F5'},
+{from: 445, to: 45, length:200, color:'#A2C5F5'},
+{from: 47, to: 46, length:200, color:'orange'},
+{from: 47, to: 48, length:200, color:'orange'},
+{from: 55, to: 47, length:200, color:'#A2C5F5'},
+{from: 47, to: 61, length:200, color:'orange'},
+{from: 177, to: 47, length:200, color:'#A2C5F5'},
+{from: 47, to: 179, length:200, color:'orange'},
+{from: 47, to: 190, length:200, color:'orange'},
+{from: 47, to: 201, length:200, color:'orange'},
+{from: 47, to: 209, length:200, color:'orange'},
+{from: 47, to: 221, length:200, color:'orange'},
+{from: 47, to: 233, length:200, color:'orange'},
+{from: 47, to: 269, length:200, color:'orange'},
+{from: 339, to: 47, length:200, color:'#A2C5F5'},
+{from: 47, to: 352, length:200, color:'orange'},
+{from: 47, to: 358, length:200, color:'orange'},
+{from: 47, to: 371, length:200, color:'orange'},
+{from: 47, to: 385, length:200, color:'orange'},
+{from: 47, to: 407, length:200, color:'orange'},
+{from: 409, to: 47, length:200, color:'#A2C5F5'},
+{from: 436, to: 47, length:200, color:'#A2C5F5'},
+{from: 47, to: 447, length:200, color:'orange'},
+{from: 48, to: 49, length:200, color:'#A2C5F5'},
+{from: 48, to: 53, length:200, color:'#A2C5F5'},
+{from: 259, to: 48, length:200, color:'#A2C5F5'},
+{from: 48, to: 379, length:200, color:'#A2C5F5'},
+{from: 49, to: 50, length:200, color:'#A2C5F5'},
+{from: 57, to: 50, length:200, color:'#A2C5F5'},
+{from: 65, to: 50, length:200, color:'#A2C5F5'},
+{from: 120, to: 52, length:200, color:'#A2C5F5'},
+{from: 52, to: 131, length:200, color:'#A2C5F5'},
+{from: 52, to: 280, length:200, color:'#A2C5F5'},
+{from: 57, to: 58, length:200, color:'#A2C5F5'},
+{from: 59, to: 57, length:200, color:'#A2C5F5'},
+{from: 147, to: 57, length:200, color:'#A2C5F5'},
+{from: 64, to: 58, length:200, color:'#A2C5F5'},
+{from: 79, to: 58, length:200, color:'#A2C5F5'},
+{from: 156, to: 58, length:200, color:'#A2C5F5'},
+{from: 59, to: 60, length:200, color:'#A2C5F5'},
+{from: 63, to: 257, length:200, color:'#A2C5F5'},
+{from: 66, to: 65, length:200, color:'#A2C5F5'},
+{from: 266, to: 65, length:200, color:'#A2C5F5'},
+{from: 67, to: 66, length:200, color:'#A2C5F5'},
+{from: 66, to: 264, length:200, color:'#A2C5F5'},
+{from: 69, to: 70, length:200, color:'#A2C5F5'},
+{from: 69, to: 72, length:200, color:'#A2C5F5'},
+{from: 69, to: 73, length:200, color:'#A2C5F5'},
+{from: 69, to: 302, length:200, color:'#A2C5F5'},
+{from: 71, to: 70, length:200, color:'#A2C5F5'},
+{from: 123, to: 70, length:200, color:'#A2C5F5'},
+{from: 317, to: 70, length:200, color:'#A2C5F5'},
+{from: 74, to: 71, length:200, color:'#A2C5F5'},
+{from: 75, to: 71, length:200, color:'#A2C5F5'},
+{from: 76, to: 75, length:200, color:'#A2C5F5'},
+{from: 77, to: 78, length:200, color:'#A2C5F5'},
+{from: 77, to: 148, length:200, color:'#A2C5F5'},
+{from: 78, to: 97, length:200, color:'#A2C5F5'},
+{from: 79, to: 80, length:200, color:'#A2C5F5'},
+{from: 79, to: 81, length:200, color:'#A2C5F5'},
+{from: 79, to: 82, length:200, color:'#A2C5F5'},
+{from: 79, to: 83, length:200, color:'#A2C5F5'},
+{from: 84, to: 79, length:200, color:'#A2C5F5'},
+{from: 79, to: 85, length:200, color:'#A2C5F5'},
+{from: 219, to: 79, length:200, color:'#A2C5F5'},
+{from: 79, to: 232, length:200, color:'#A2C5F5'},
+{from: 79, to: 241, length:200, color:'#A2C5F5'},
+{from: 79, to: 249, length:200, color:'#A2C5F5'},
+{from: 261, to: 79, length:200, color:'#A2C5F5'},
+{from: 79, to: 278, length:200, color:'#A2C5F5'},
+{from: 332, to: 79, length:200, color:'#A2C5F5'},
+{from: 79, to: 357, length:200, color:'#A2C5F5'},
+{from: 359, to: 79, length:200, color:'#A2C5F5'},
+{from: 79, to: 373, length:200, color:'#A2C5F5'},
+{from: 79, to: 400, length:200, color:'#A2C5F5'},
+{from: 79, to: 410, length:200, color:'#A2C5F5'},
+{from: 79, to: 413, length:200, color:'#A2C5F5'},
+{from: 79, to: 424, length:200, color:'#A2C5F5'},
+{from: 79, to: 438, length:200, color:'#A2C5F5'},
+{from: 79, to: 440, length:200, color:'#A2C5F5'},
+{from: 79, to: 446, length:200, color:'#A2C5F5'},
+{from: 84, to: 86, length:200, color:'#A2C5F5'},
+{from: 84, to: 88, length:200, color:'#A2C5F5'},
+{from: 87, to: 86, length:200, color:'#A2C5F5'},
+{from: 89, to: 88, length:200, color:'#A2C5F5'},
+{from: 207, to: 88, length:200, color:'#A2C5F5'},
+{from: 315, to: 88, length:200, color:'#A2C5F5'},
+{from: 89, to: 90, length:200, color:'#A2C5F5'},
+{from: 89, to: 91, length:200, color:'#A2C5F5'},
+{from: 95, to: 89, length:200, color:'#A2C5F5'},
+{from: 89, to: 96, length:200, color:'#A2C5F5'},
+{from: 146, to: 89, length:200, color:'#A2C5F5'},
+{from: 92, to: 91, length:200, color:'#A2C5F5'},
+{from: 246, to: 91, length:200, color:'#A2C5F5'},
+{from: 93, to: 92, length:200, color:'#A2C5F5'},
+{from: 92, to: 94, length:200, color:'#A2C5F5'},
+{from: 92, to: 185, length:200, color:'#A2C5F5'},
+{from: 180, to: 97, length:200, color:'#A2C5F5'},
+{from: 99, to: 100, length:200, color:'#A2C5F5'},
+{from: 104, to: 103, length:200, color:'orange'},
+{from: 105, to: 104, length:200, color:'#A2C5F5'},
+{from: 104, to: 106, length:200, color:'orange'},
+{from: 104, to: 107, length:200, color:'orange'},
+{from: 104, to: 108, length:200, color:'orange'},
+{from: 104, to: 112, length:200, color:'orange'},
+{from: 104, to: 115, length:200, color:'orange'},
+{from: 104, to: 130, length:200, color:'orange'},
+{from: 104, to: 149, length:200, color:'orange'},
+{from: 104, to: 150, length:200, color:'orange'},
+{from: 104, to: 198, length:200, color:'orange'},
+{from: 104, to: 230, length:200, color:'orange'},
+{from: 104, to: 231, length:200, color:'orange'},
+{from: 104, to: 238, length:200, color:'orange'},
+{from: 104, to: 240, length:200, color:'orange'},
+{from: 104, to: 243, length:200, color:'orange'},
+{from: 104, to: 300, length:200, color:'orange'},
+{from: 310, to: 104, length:200, color:'#A2C5F5'},
+{from: 104, to: 323, length:200, color:'orange'},
+{from: 104, to: 343, length:200, color:'orange'},
+{from: 104, to: 361, length:200, color:'orange'},
+{from: 104, to: 368, length:200, color:'orange'},
+{from: 381, to: 104, length:200, color:'#A2C5F5'},
+{from: 411, to: 104, length:200, color:'#A2C5F5'},
+{from: 104, to: 425, length:200, color:'orange'},
+{from: 104, to: 434, length:200, color:'orange'},
+{from: 439, to: 104, length:200, color:'#A2C5F5'},
+{from: 107, to: 109, length:200, color:'#A2C5F5'},
+{from: 109, to: 110, length:200, color:'orange'},
+{from: 111, to: 109, length:200, color:'#A2C5F5'},
+{from: 113, to: 109, length:200, color:'#A2C5F5'},
+{from: 114, to: 109, length:200, color:'#A2C5F5'},
+{from: 109, to: 118, length:200, color:'orange'},
+{from: 109, to: 263, length:200, color:'orange'},
+{from: 109, to: 265, length:200, color:'orange'},
+{from: 270, to: 109, length:200, color:'#A2C5F5'},
+{from: 288, to: 109, length:200, color:'#A2C5F5'},
+{from: 109, to: 301, length:200, color:'orange'},
+{from: 313, to: 109, length:200, color:'#A2C5F5'},
+{from: 347, to: 109, length:200, color:'#A2C5F5'},
+{from: 356, to: 109, length:200, color:'#A2C5F5'},
+{from: 109, to: 365, length:200, color:'orange'},
+{from: 109, to: 391, length:200, color:'orange'},
+{from: 392, to: 109, length:200, color:'#A2C5F5'},
+{from: 399, to: 109, length:200, color:'#A2C5F5'},
+{from: 431, to: 109, length:200, color:'#A2C5F5'},
+{from: 109, to: 432, length:200, color:'orange'},
+{from: 123, to: 124, length:200, color:'#A2C5F5'},
+{from: 128, to: 123, length:200, color:'#A2C5F5'},
+{from: 129, to: 123, length:200, color:'#A2C5F5'},
+{from: 123, to: 200, length:200, color:'#A2C5F5'},
+{from: 324, to: 123, length:200, color:'#A2C5F5'},
+{from: 124, to: 125, length:200, color:'#A2C5F5'},
+{from: 325, to: 124, length:200, color:'#A2C5F5'},
+{from: 126, to: 125, length:200, color:'#A2C5F5'},
+{from: 127, to: 125, length:200, color:'#A2C5F5'},
+{from: 129, to: 164, length:200, color:'#A2C5F5'},
+{from: 134, to: 131, length:200, color:'#A2C5F5'},
+{from: 134, to: 135, length:200, color:'#A2C5F5'},
+{from: 137, to: 134, length:200, color:'#A2C5F5'},
+{from: 135, to: 136, length:200, color:'#A2C5F5'},
+{from: 136, to: 139, length:200, color:'#A2C5F5'},
+{from: 140, to: 136, length:200, color:'#A2C5F5'},
+{from: 138, to: 137, length:200, color:'#A2C5F5'},
+{from: 138, to: 141, length:200, color:'#A2C5F5'},
+{from: 138, to: 142, length:200, color:'#A2C5F5'},
+{from: 138, to: 331, length:200, color:'#A2C5F5'},
+{from: 139, to: 143, length:200, color:'#A2C5F5'},
+{from: 139, to: 152, length:200, color:'#A2C5F5'},
+{from: 142, to: 227, length:200, color:'#A2C5F5'},
+{from: 144, to: 143, length:200, color:'#A2C5F5'},
+{from: 145, to: 143, length:200, color:'#A2C5F5'},
+{from: 150, to: 151, length:200, color:'#A2C5F5'},
+{from: 150, to: 215, length:200, color:'#A2C5F5'},
+{from: 153, to: 152, length:200, color:'#A2C5F5'},
+{from: 158, to: 157, length:200, color:'#A2C5F5'},
+{from: 157, to: 159, length:200, color:'#A2C5F5'},
+{from: 157, to: 346, length:200, color:'#A2C5F5'},
+{from: 160, to: 159, length:200, color:'#A2C5F5'},
+{from: 159, to: 161, length:200, color:'orange'},
+{from: 162, to: 159, length:200, color:'#A2C5F5'},
+{from: 163, to: 159, length:200, color:'#A2C5F5'},
+{from: 159, to: 183, length:200, color:'orange'},
+{from: 159, to: 284, length:200, color:'orange'},
+{from: 298, to: 159, length:200, color:'#A2C5F5'},
+{from: 304, to: 159, length:200, color:'#A2C5F5'},
+{from: 353, to: 159, length:200, color:'#A2C5F5'},
+{from: 370, to: 159, length:200, color:'#A2C5F5'},
+{from: 398, to: 159, length:200, color:'#A2C5F5'},
+{from: 159, to: 412, length:200, color:'orange'},
+{from: 159, to: 419, length:200, color:'orange'},
+{from: 435, to: 159, length:200, color:'#A2C5F5'},
+{from: 164, to: 165, length:200, color:'#A2C5F5'},
+{from: 164, to: 166, length:200, color:'#A2C5F5'},
+{from: 164, to: 174, length:200, color:'#A2C5F5'},
+{from: 360, to: 164, length:200, color:'#A2C5F5'},
+{from: 175, to: 165, length:200, color:'#A2C5F5'},
+{from: 167, to: 166, length:200, color:'#A2C5F5'},
+{from: 166, to: 169, length:200, color:'#A2C5F5'},
+{from: 166, to: 170, length:200, color:'#A2C5F5'},
+{from: 166, to: 173, length:200, color:'#A2C5F5'},
+{from: 167, to: 168, length:200, color:'#A2C5F5'},
+{from: 169, to: 351, length:200, color:'#A2C5F5'},
+{from: 171, to: 170, length:200, color:'#A2C5F5'},
+{from: 172, to: 170, length:200, color:'#A2C5F5'},
+{from: 176, to: 175, length:200, color:'#A2C5F5'},
+{from: 327, to: 175, length:200, color:'#A2C5F5'},
+{from: 180, to: 181, length:200, color:'#A2C5F5'},
+{from: 186, to: 185, length:200, color:'#A2C5F5'},
+{from: 186, to: 187, length:200, color:'#A2C5F5'},
+{from: 188, to: 186, length:200, color:'#A2C5F5'},
+{from: 296, to: 186, length:200, color:'#A2C5F5'},
+{from: 192, to: 193, length:200, color:'#A2C5F5'},
+{from: 194, to: 193, length:200, color:'#A2C5F5'},
+{from: 195, to: 193, length:200, color:'#A2C5F5'},
+{from: 196, to: 193, length:200, color:'#A2C5F5'},
+{from: 197, to: 193, length:200, color:'#A2C5F5'},
+{from: 193, to: 282, length:200, color:'orange'},
+{from: 193, to: 306, length:200, color:'orange'},
+{from: 193, to: 340, length:200, color:'orange'},
+{from: 348, to: 193, length:200, color:'#A2C5F5'},
+{from: 395, to: 193, length:200, color:'#A2C5F5'},
+{from: 193, to: 451, length:200, color:'orange'},
+{from: 211, to: 201, length:200, color:'orange'},
+{from: 208, to: 207, length:200, color:'#A2C5F5'},
+{from: 216, to: 207, length:200, color:'#A2C5F5'},
+{from: 207, to: 319, length:200, color:'#A2C5F5'},
+{from: 212, to: 211, length:200, color:'#A2C5F5'},
+{from: 213, to: 211, length:200, color:'#A2C5F5'},
+{from: 214, to: 211, length:200, color:'#A2C5F5'},
+{from: 239, to: 211, length:200, color:'#A2C5F5'},
+{from: 277, to: 211, length:200, color:'#A2C5F5'},
+{from: 342, to: 211, length:200, color:'#A2C5F5'},
+{from: 344, to: 211, length:200, color:'#A2C5F5'},
+{from: 404, to: 211, length:200, color:'#A2C5F5'},
+{from: 406, to: 211, length:200, color:'#A2C5F5'},
+{from: 416, to: 211, length:200, color:'#A2C5F5'},
+{from: 443, to: 211, length:200, color:'#A2C5F5'},
+{from: 449, to: 211, length:200, color:'#A2C5F5'},
+{from: 216, to: 217, length:200, color:'#A2C5F5'},
+{from: 286, to: 217, length:200, color:'#A2C5F5'},
+{from: 228, to: 227, length:200, color:'#A2C5F5'},
+{from: 229, to: 227, length:200, color:'#A2C5F5'},
+{from: 227, to: 252, length:200, color:'#A2C5F5'},
+{from: 260, to: 259, length:200, color:'#A2C5F5'},
+{from: 271, to: 260, length:200, color:'#A2C5F5'},
+{from: 297, to: 296, length:200, color:'#A2C5F5'},
+{from: 317, to: 318, length:200, color:'#A2C5F5'},
+{from: 337, to: 317, length:200, color:'#A2C5F5'},
+{from: 326, to: 325, length:200, color:'#A2C5F5'},
+			  ];
+
+            nodes.add(nodesData);
+            edges.add(edgesData);
+            // create a network
+            var container = document.getElementById('mynetwork');
+
+            var data = {
+                nodes: nodes,
+                edges: edges
+            };
+
+            var options = {
+                physics: {
+                    barnesHut: { enabled: false },
+                    repulsion: {
+                        nodeDistance: 150,
+                        springLength: 150,
+                        springConstant: 0.0,
+                        damping: 0.3
+                    }
+                },
+                smoothCurves: {
+                    dynamic: false,
+                    type: '1'
+                },
+                navigation: true,
+                keyboard: true,
+				nodes: {
+					inheritColor: "from"
+				},
+                edges: {
+                    width: 3.,
+                    inheritColor: "from"
+                }
+            };
+
+            var network = new vis.Network(container, data, options);
+			 
+            network.on("click", onClick);
+            network.on('select', function (properties) {
+                if (properties.nodes.length > 0) {
+                    var txt = nodesData[properties.nodes].label;
+                    document.getElementById('sel').innerHTML = 'selection: ' + txt + '<br>';
+                }
+                else { document.getElementById('sel').innerHTML = ''; }
+            }); 
+			
+			 network.once("stabilizationIterationsDone", function() {
+                document.getElementById('sel').innerHTML = ''; 
+            });
+			
+			network.on("stabilizationProgress", function(params) { 
+                var widthFactor = params.iterations/params.total; 
+                var dots = Array(10 * widthFactor + 1).join('.')
+				var spaces = Array(10 - 10 * widthFactor + 1).join('&nbsp;')
+                //document.getElementById('bar').style.width = width + 'px';
+                document.getElementById('sel').innerHTML = 'Please wait, Loading ' + dots + spaces +  "| " + Math.round(widthFactor*100) + '%';
+            });
+        }
+		
+		function filter(e){
+		  if(e.keyCode === 13){
+		    var nodesData = nodes.get({ returnType: "Object" });
+		    var search = document.getElementById('find').value.toLowerCase();
+			updateArray = []
+		    for(nodeId in nodesData) {
+			  if(nodesData[nodeId].label.toLowerCase().indexOf(search) > -1){
+			     nodesData[nodeId].clearFind = nodesData[nodeId].color
+				 nodesData[nodeId].clearShape = nodesData[nodeId].shape
+			     nodesData[nodeId].color = 'orange' 
+				 nodesData[nodeId].shape = 'box' 
+				 updateArray.push(nodesData[nodeId])
+				}
+			}
+			nodes.update(updateArray);
+		  } 
+		}
+		
+        function onClick(selectedItems) {
+            var nodeId;
+            var degrees = 2;
+            // we get all data from the dataset once to avoid updating multiple times.
+            var allNodes = nodes.get({ returnType: "Object" });
+            if (selectedItems.nodes.length == 0) {
+                // restore on unselect
+                for (nodeId in allNodes) {
+                    if (allNodes.hasOwnProperty(nodeId)) {
+                        allNodes[nodeId].color = undefined;
+                        if (allNodes[nodeId].oldLabel !== undefined) {
+                            allNodes[nodeId].label = allNodes[nodeId].oldLabel;
+                            allNodes[nodeId].oldLabel = undefined;
+                        }
+						
+						if(allNodes[nodeId].preColor !== undefined){
+						   allNodes[nodeId].color = allNodes[nodeId].preColor;
+						   allNodes[nodeId].preColor = undefined;
+						}
+                        allNodes[nodeId]['levelOfSeperation'] = undefined;
+                        allNodes[nodeId]['inConnectionList'] = undefined;
+                    }
+					if(allNodes[nodeId].clearFind !== undefined){
+					   allNodes[nodeId].color = allNodes[nodeId].clearFind;
+					   allNodes[nodeId].shape = allNodes[nodeId].clearShape;
+					   allNodes[nodeId].clearFind = undefined;
+					}
+                }
+            }
+            else {
+                var allEdges = edges.get();
+
+                // we clear the level of separation in all nodes.
+                clearLevelOfSeperation(allNodes);
+
+                // we will now start to collect all the connected nodes we want to highlight.
+                var connectedNodes = selectedItems.nodes;
+
+                // we can store them into levels of separation and we could then later use this to define a color per level
+                // any data can be added to a node, this is just stored in the nodeObject.
+                storeLevelOfSeperation(connectedNodes, 0, allNodes);
+                for (var i = 1; i < degrees + 1; i++) {
+                    appendConnectedNodes(connectedNodes, allEdges);
+                    storeLevelOfSeperation(connectedNodes, i, allNodes);
+                }
+                for (nodeId in allNodes) {
+                    if (allNodes.hasOwnProperty(nodeId)) {
+                        if (allNodes[nodeId]['inConnectionList'] == true) {
+                            if (allNodes[nodeId]['levelOfSeperation'] !== undefined) {
+                                if (allNodes[nodeId]['levelOfSeperation'] >= 2) {
+								    allNodes[nodeId].preColor = allNodes[nodeId].color;
+                                    allNodes[nodeId].color = 'rgba(150,150,150,0.75)';
+                                }
+                                else {
+                                    allNodes[nodeId].color = undefined;
+                                }
+                            }
+                            else {
+                                allNodes[nodeId].color = undefined;
+                            }
+                            if (allNodes[nodeId].oldLabel !== undefined) {
+                                allNodes[nodeId].label = allNodes[nodeId].oldLabel;
+                                allNodes[nodeId].oldLabel = undefined;
+                            }
+                        }
+                        else {
+						    allNodes[nodeId].preColor = allNodes[nodeId].color;
+                            allNodes[nodeId].color = 'rgba(200,200,200,0.5)';
+                            if (allNodes[nodeId].oldLabel === undefined) {
+                                allNodes[nodeId].oldLabel = allNodes[nodeId].label;
+                                allNodes[nodeId].label = "";
+                            }
+                        }
+                    }
+                }
+            }
+            var updateArray = [];
+            for (nodeId in allNodes) {
+                if (allNodes.hasOwnProperty(nodeId)) {
+                    updateArray.push(allNodes[nodeId]);
+                }
+            }
+            nodes.update(updateArray);
+        }
+
+        /**
+         * update the allNodes object with the level of separation.
+         * Arrays are passed by reference, we do not need to return them because we are working in the same object.
+         */
+        function storeLevelOfSeperation(connectedNodes, level, allNodes) {
+            for (var i = 0; i < connectedNodes.length; i++) {
+                var nodeId = connectedNodes[i];
+                if (allNodes[nodeId]['levelOfSeperation'] === undefined) {
+                    allNodes[nodeId]['levelOfSeperation'] = level;
+                }
+                allNodes[nodeId]['inConnectionList'] = true;
+            }
+        }
+
+        function clearLevelOfSeperation(allNodes) {
+            for (var nodeId in allNodes) {
+                if (allNodes.hasOwnProperty(nodeId)) {
+                    allNodes[nodeId]['levelOfSeperation'] = undefined;
+                    allNodes[nodeId]['inConnectionList'] = undefined;
+                }
+            }
+        }
+
+        /**
+         * Add the connected nodes to the list of nodes we already have
+         *
+         *
+         */
+        function appendConnectedNodes(sourceNodes, allEdges) {
+            var tempSourceNodes = [];
+            // first we make a copy of the nodes so we do not extend the array we loop over.
+            for (var i = 0; i < sourceNodes.length; i++) {
+                tempSourceNodes.push(sourceNodes[i])
+            }
+
+            for (var i = 0; i < tempSourceNodes.length; i++) {
+                var nodeId = tempSourceNodes[i];
+                if (sourceNodes.indexOf(nodeId) == -1) {
+                    sourceNodes.push(nodeId);
+                }
+                addUnique(getConnectedNodes(nodeId, allEdges), sourceNodes);
+            }
+            tempSourceNodes = null;
+        }
+
+        /**
+         * Join two arrays without duplicates
+         * @param fromArray
+         * @param toArray
+         */
+        function addUnique(fromArray, toArray) {
+            for (var i = 0; i < fromArray.length; i++) {
+                if (toArray.indexOf(fromArray[i]) == -1) {
+                    toArray.push(fromArray[i]);
+                }
+            }
+        }
+
+        /**
+         * Get a list of nodes that are connected to the supplied nodeId with edges.
+         * @param nodeId
+         * @returns {Array}
+         */
+        function getConnectedNodes(nodeId, allEdges) {
+            var edgesArray = allEdges;
+            var connectedNodes = [];
+
+            for (var i = 0; i < edgesArray.length; i++) {
+                var edge = edgesArray[i];
+                if (edge.to == nodeId) {
+                    connectedNodes.push(edge.from);
+                }
+                else if (edge.from == nodeId) {
+                    connectedNodes.push(edge.to)
+                }
+            }
+            return connectedNodes;
+        }
+    </script>
+</head>
+
+<body onload="draw()">
+    <div id="mynetwork"></div>
+    <div id="sel" style="background: white; position: absolute; width: 500px; top: 0; right: 0">Please wait.</div> 
+	<input style ="position:fixed; bottom:0; left:0" id="find" onkeyup="filter(event)"/>
+</body>
+</html>
