@@ -1,0 +1,403 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta charset="utf-8" />
+    <title>graph test</title>
+
+    <style type="text/css">
+        html, body {
+            font: 10pt arial;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        #mynetwork {
+            width: 100%;
+            height: 95%;
+            border: 1px solid lightgray;
+        }
+    </style>
+
+    <script type="text/javascript" src="../../dist/vis.js"></script>
+    <link href="../../dist/vis.css" rel="stylesheet" type="text/css" />
+
+    <script type="text/javascript">
+
+        var nodes = new vis.DataSet();
+        var edges = new vis.DataSet();
+        function draw() {
+            // create some nodes
+            var nodesData = [
+			   {id:0,label: 'Are crows the smartest animals of all?\n',title: 'Are crows the smartest animals of all?\n', shape:'box', color:'rgba(225, 225, 225, .8)'},
+{id:1,label: 'Corvids seem to understand \nthat other birds have \nminds like theirs, and their \ndecisions often take into account \nwhat others might know, want \nor intend, according to \nseveral studies of crows , ravens and jays.\n',title: 'Corvids seem to understand \nthat other birds have \nminds like theirs, and their \ndecisions often take into account \nwhat others might know, want \nor intend, according to \nseveral studies of crows , ravens and jays.\n', shape:'box', color:'rgba(225, 225, 225, .8)'},
+{id:2,label: 'The crows are especially careful \nwhen the risk of \nlosing their tools is greatest, \nsuch as when the birds \nforage in high branches. \n',title: 'The crows are especially careful \nwhen the risk of \nlosing their tools is greatest, \nsuch as when the birds \nforage in high branches. \n', shape:'box', color:'rgba(225, 225, 225, .8)'},
+{id:3,label: 'Crows and ravens often hide \nfood in caches and retrieve it later.\n',title: 'Crows and ravens often hide \nfood in caches and retrieve it later.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:4,label: 'In one set of \nexperiments , captive crows \nfigured out how to bend \nwires into hooks to retrieve \nfood from a tube. \n',title: 'In one set of \nexperiments , captive crows \nfigured out how to bend \nwires into hooks to retrieve \nfood from a tube. \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:5,label: 'Corvids use found objects \nas tools — ravens and \ncrows, for example, drop \nnuts onto flat rocks to \ncrack the shells — and \nnearly all corvids seem to \nhave a knack for solving physical problems.\n',title: 'Corvids use found objects \nas tools — ravens and \ncrows, for example, drop \nnuts onto flat rocks to \ncrack the shells — and \nnearly all corvids seem to \nhave a knack for solving physical problems.\n', shape:'box', color:'rgba(225, 225, 225, .8)'},
+{id:6,label: 'And captive rooks, close \nrelatives of crows and \nravens, have done the same thing.\n',title: 'And captive rooks, close \nrelatives of crows and \nravens, have done the same thing.\n', shape:'box', color:'rgba(225, 225, 225, .8)'},
+{id:7,label: 'Only four species are \nknown to actually make \ntools: humans, chimpanzees, orangutans \n— and New Caledonian crows. \n',title: 'Only four species are \nknown to actually make \ntools: humans, chimpanzees, orangutans \n— and New Caledonian crows. \n', shape:'box', color:'rgba(225, 225, 225, .8)'},
+{id:8,label: 'At that point, said Marzluff, \nwe may have “some \nof those answers” to the \nquestion of how smart crows really are.\n',title: 'At that point, said Marzluff, \nwe may have “some \nof those answers” to the \nquestion of how smart crows really are.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:9,label: '“There’s a lot of research \nthat has been done \nwith both ravens and \ncrows because they are such \nintelligent species,” said Margaret Innes, \nan assistant curator at \nthe Maryland Zoo in Baltimore. \n',title: '“There’s a lot of research \nthat has been done \nwith both ravens and \ncrows because they are such \nintelligent species,” said Margaret Innes, \nan assistant curator at \nthe Maryland Zoo in Baltimore. \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:10,label: 'Researches found that this \nspecies of crows can solve \na science puzzle about \nas well as the average 7-year-old kid.\n',title: 'Researches found that this \nspecies of crows can solve \na science puzzle about \nas well as the average 7-year-old kid.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:11,label: 'Crows and their fellow corvids \nare social animals, much like \nprimates, so theory of \nmind probably offers significant evolutionary advantages.\n',title: 'Crows and their fellow corvids \nare social animals, much like \nprimates, so theory of \nmind probably offers significant evolutionary advantages.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:12,label: 'Studies of several corvid species \nhave documented this re-caching, as \nit is called . \n',title: 'Studies of several corvid species \nhave documented this re-caching, as \nit is called . \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:13,label: 'Many scientists think that corvids \n— the family of \nbirds that includes crows, \nravens, rooks and jays — \nmay be among the most \nintelligent animals on Earth, based \non their ability to \nsolve problems, make tools \nand apparently consider both possible \nfuture events and other \nindividuals’ states of mind. \n',title: 'Many scientists think that corvids \n— the family of \nbirds that includes crows, \nravens, rooks and jays — \nmay be among the most \nintelligent animals on Earth, based \non their ability to \nsolve problems, make tools \nand apparently consider both possible \nfuture events and other \nindividuals’ states of mind. \n', shape:'box', color:'rgba(225, 225, 225, .8)'},
+{id:14,label: 'Crows and ravens are \nclever problem-solvers, expert toolmakers and \nadept social movers, but \nscientists haven’t reached a consensus \nabout how corvid minds \nhandle abstract thinking or how \nclosely their mental processes resemble those of humans.\n',title: 'Crows and ravens are \nclever problem-solvers, expert toolmakers and \nadept social movers, but \nscientists haven’t reached a consensus \nabout how corvid minds \nhandle abstract thinking or how \nclosely their mental processes resemble those of humans.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:15,label: 'Although other corvid species have \nlearned to make and use \ntools in labs, only \nthe crows found on \nthe Pacific island of \nNew Caledonia have been \nfound to actually make \ntools in the wild. \n',title: 'Although other corvid species have \nlearned to make and use \ntools in labs, only \nthe crows found on \nthe Pacific island of \nNew Caledonia have been \nfound to actually make \ntools in the wild. \n', shape:'box', color:'rgba(225, 225, 225, .8)'},
+{id:16,label: 'And he says that \nanother team of researchers, at \nthe University of California at \nDavis, is preparing to use \nthe same technique to \nstudy the brain activity of \nNew Caledonian crows, a \nspecies that makes sophisticated tools. \n',title: 'And he says that \nanother team of researchers, at \nthe University of California at \nDavis, is preparing to use \nthe same technique to \nstudy the brain activity of \nNew Caledonian crows, a \nspecies that makes sophisticated tools. \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:17,label: 'New Caledonian crows even \ntake steps to avoid \nlosing their carefully crafted tools. \n',title: 'New Caledonian crows even \ntake steps to avoid \nlosing their carefully crafted tools. \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:18,label: 'Researchers from the University \nof Iowa and Lomonosov \nMoscow State University in \nRussia reported early this \nyear that crows can \nuse analogies to match pairs of objects.\n',title: 'Researchers from the University \nof Iowa and Lomonosov \nMoscow State University in \nRussia reported early this \nyear that crows can \nuse analogies to match pairs of objects.\n', shape:'box', color:'rgba(225, 225, 225, .8)'},
+{id:19,label: 'To reach that conclusion, the \nscientists trained crows to recognize \nwhether two objects were \nidentical or different, which the \nbirds indicated by pressing one \nbutton when shown pictures \nof objects that matched and \na different button when \nthe objects didn’t match. \n',title: 'To reach that conclusion, the \nscientists trained crows to recognize \nwhether two objects were \nidentical or different, which the \nbirds indicated by pressing one \nbutton when shown pictures \nof objects that matched and \na different button when \nthe objects didn’t match. \n', shape:'box', color:'rgba(225, 225, 225, .8)'},
+{id:20,label: 'For instance, the crows in \nthe analogy test could \nhave simply chosen images \nwith similar characteristics, such \nas objects of the \nsame color, instead of reasoning \nabout the relationship between \nthe objects, to get the correct answer.\n',title: 'For instance, the crows in \nthe analogy test could \nhave simply chosen images \nwith similar characteristics, such \nas objects of the \nsame color, instead of reasoning \nabout the relationship between \nthe objects, to get the correct answer.\n', shape:'box', color:'rgba(225, 225, 225, .8)'},
+{id:21,label: 'In response, crows could press \nbuttons to choose between a \nmatched pair or a mismatched pair.\n',title: 'In response, crows could press \nbuttons to choose between a \nmatched pair or a mismatched pair.\n', shape:'box', color:'rgba(225, 225, 225, .8)'},
+{id:22,label: 'Some images depicted matched pairs, \nwhile others depicted two \nmismatched objects with different shapes or colors.\n',title: 'Some images depicted matched pairs, \nwhile others depicted two \nmismatched objects with different shapes or colors.\n', shape:'box', color:'rgba(225, 225, 225, .8)'},
+{id:23,label: 'For instance, a crow \nlooking at a mismatched \npair would then select the \nmismatched pair from their response choices.\n',title: 'For instance, a crow \nlooking at a mismatched \npair would then select the \nmismatched pair from their response choices.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:24,label: 'The researchers wanted to see \nif crows could figure out \nthe relationship between pairs \nof objects and then choose \na pair with the \nsame relationship: matched or mismatched. \n',title: 'The researchers wanted to see \nif crows could figure out \nthe relationship between pairs \nof objects and then choose \na pair with the \nsame relationship: matched or mismatched. \n', shape:'box', color:'rgba(225, 225, 225, .8)'},
+{id:25,label: 'According to the researchers, \nthe birds recognized that the \nrelationship between the two \npairs of objects was the same.\n',title: 'According to the researchers, \nthe birds recognized that the \nrelationship between the two \npairs of objects was the same.\n', shape:'box', color:'rgba(225, 225, 225, .8)'},
+{id:26,label: 'Once all the birds were \ngood at matching objects, researchers \nshowed the crows images \nof pairs of objects. \n',title: 'Once all the birds were \ngood at matching objects, researchers \nshowed the crows images \nof pairs of objects. \n', shape:'box', color:'rgba(225, 225, 225, .8)'},
+{id:27,label: 'The team hopes to actually \nsee the crows’ brains \nat work while they’re crafting tools.\n',title: 'The team hopes to actually \nsee the crows’ brains \nat work while they’re crafting tools.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:28,label: 'Even chimpanzees don’t craft their \ntools so meticulously, and some \nresearchers say that the \ncrows’ work is on \npar with very early human \ntools such as spears and sharpened digging sticks.\n',title: 'Even chimpanzees don’t craft their \ntools so meticulously, and some \nresearchers say that the \ncrows’ work is on \npar with very early human \ntools such as spears and sharpened digging sticks.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:29,label: 'Brain imaging studies could \nsettle the question, Marzluff \nsaid, because advanced cognition in \nall animals uses different \nareas of the brain \nthan simpler associative learning. \n',title: 'Brain imaging studies could \nsettle the question, Marzluff \nsaid, because advanced cognition in \nall animals uses different \nareas of the brain \nthan simpler associative learning. \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:30,label: '“All three of those animals \nhave very large forebrains \nrelative to the rest of \ntheir brains, for their particular group,” Marzluff said.\n',title: '“All three of those animals \nhave very large forebrains \nrelative to the rest of \ntheir brains, for their particular group,” Marzluff said.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:31,label: 'The aptitude for toolmaking \nis probably an instinct for \nmost corvids, as it is for humans.\n',title: 'The aptitude for toolmaking \nis probably an instinct for \nmost corvids, as it is for humans.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:32,label: 'It’s unsurprising that chimpanzees \nand orangutans share so \nmany abilities with humans, \nbecause they are very \nclosely related to us, \nbut it’s striking that corvids \nshare so many skills \nonce believed to set humans apart.\n',title: 'It’s unsurprising that chimpanzees \nand orangutans share so \nmany abilities with humans, \nbecause they are very \nclosely related to us, \nbut it’s striking that corvids \nshare so many skills \nonce believed to set humans apart.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:33,label: 'After all, birds and \nmammals have spent the \nlast 300 million years evolving \non different paths, which produced \nvery different brain structures and bodies.\n',title: 'After all, birds and \nmammals have spent the \nlast 300 million years evolving \non different paths, which produced \nvery different brain structures and bodies.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:34,label: 'The network of connections between \nareas of the brain \nlooks very similar in \ncorvids and primates, and one \nrecently published paper compared bird \nand primate brains to Apple and PC computers.\n',title: 'The network of connections between \nareas of the brain \nlooks very similar in \ncorvids and primates, and one \nrecently published paper compared bird \nand primate brains to Apple and PC computers.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:35,label: 'Parts of the brain that \nevolved earlier than 300 million \nyears ago, such as \nthe primitive structures in \nthe brainstem that control basic \nbodily functions, look the same \nin most animals, including primates and corvids.\n',title: 'Parts of the brain that \nevolved earlier than 300 million \nyears ago, such as \nthe primitive structures in \nthe brainstem that control basic \nbodily functions, look the same \nin most animals, including primates and corvids.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:36,label: 'Bird brains \n',title: 'Bird brains \n', shape:'box', color:'rgba(225, 225, 225, .8)'},
+{id:37,label: 'But structures that developed more \nrecently, like those involved \nin cognition, are organized \nvery differently in birds than \nare they are in mammals.\n',title: 'But structures that developed more \nrecently, like those involved \nin cognition, are organized \nvery differently in birds than \nare they are in mammals.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:38,label: 'In the bird brain, \na structure called the nidopallium \ncaudolaterale handles cognitive tasks, and \nit’s especially well developed in corvids.\n',title: 'In the bird brain, \na structure called the nidopallium \ncaudolaterale handles cognitive tasks, and \nit’s especially well developed in corvids.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:39,label: 'The cerebral cortex handles cognitive \ntasks, and it’s especially \nwell developed in humans and \nour fellow apes, as \nwell as other intelligent \nanimals such as dolphins and dogs.\n',title: 'The cerebral cortex handles cognitive \ntasks, and it’s especially \nwell developed in humans and \nour fellow apes, as \nwell as other intelligent \nanimals such as dolphins and dogs.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:40,label: 'Biologists call this convergent evolution, \nand it’s the same \nprocess by which birds \nand bats both evolved wings.\n',title: 'Biologists call this convergent evolution, \nand it’s the same \nprocess by which birds \nand bats both evolved wings.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:41,label: 'Convergent evolution may have led \nto similar wiring despite \nthe differences in physical \nstructure between bird and mammalian brains.\n',title: 'Convergent evolution may have led \nto similar wiring despite \nthe differences in physical \nstructure between bird and mammalian brains.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:42,label: 'Mammalian brains have evolved \nwith what is called \na laminar structure, in \nwhich brain cells are \norganized in six layers that \nmake up the cerebral cortex, or forebrain.\n',title: 'Mammalian brains have evolved \nwith what is called \na laminar structure, in \nwhich brain cells are \norganized in six layers that \nmake up the cerebral cortex, or forebrain.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:43,label: 'In birds’ brains, cells \nform clusters called nuclei instead of layers.\n',title: 'In birds’ brains, cells \nform clusters called nuclei instead of layers.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:44,label: 'national \n',title: 'national \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:45,label: 'Most Read National \n',title: 'Most Read National \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:46,label: 'Check your inbox for details. \n',title: 'Check your inbox for details. \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:47,label: 'Check your inbox. \n',title: 'Check your inbox. \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:48,label: 'Our daily newsletter in your inbox\n',title: 'Our daily newsletter in your inbox\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:49,label: 'Please enter a valid email address\n',title: 'Please enter a valid email address\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:50,label: 'Sign Up \n',title: 'Sign Up \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:51,label: 'Thank you for signing up\n',title: 'Thank you for signing up\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:52,label: 'SuperFan badge holders consistently post \nsmart, timely comments about \nWashington area sports and teams. \n',title: 'SuperFan badge holders consistently post \nsmart, timely comments about \nWashington area sports and teams. \n', shape:'box', color:'rgba(225, 225, 225, .8)'},
+{id:53,label: 'This commenter is a Washington Post contributor.\n',title: 'This commenter is a Washington Post contributor.\n', shape:'box', color:'rgba(225, 225, 225, .8)'},
+{id:54,label: 'This commenter is a Washington \nPost editor, reporter or producer.\n',title: 'This commenter is a Washington \nPost editor, reporter or producer.\n', shape:'box', color:'rgba(225, 225, 225, .8)'},
+{id:55,label: 'Post Contributor Badge \n',title: 'Post Contributor Badge \n', shape:'box', color:'rgba(225, 225, 225, .8)'},
+{id:56,label: 'All comments are posted \nin the All Comments tab.\n',title: 'All comments are posted \nin the All Comments tab.\n', shape:'box', color:'rgba(225, 225, 225, .8)'},
+{id:57,label: 'You must be logged in \nto report a comment. \n',title: 'You must be logged in \nto report a comment. \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:58,label: 'Comments our editors find \nparticularly useful or relevant are \ndisplayed in Top Comments, \nas are comments by \nusers with these badges: . \n',title: 'Comments our editors find \nparticularly useful or relevant are \ndisplayed in Top Comments, \nas are comments by \nusers with these badges: . \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:59,label: 'Post contributors aren’t staff, \nbut may write articles or columns.\n',title: 'Post contributors aren’t staff, \nbut may write articles or columns.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:60,label: 'Washington Post reporters or \neditors recommend this comment or reader post.\n',title: 'Washington Post reporters or \neditors recommend this comment or reader post.\n', shape:'box', color:'rgba(225, 225, 225, .8)'},
+{id:61,label: 'Post Forum Badge \n',title: 'Post Forum Badge \n', shape:'box', color:'rgba(225, 225, 225, .8)'},
+{id:62,label: 'A free 6-week digital subscription \n',title: 'A free 6-week digital subscription \n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+{id:63,label: 'We’ve sent an email explaining \nhow to set up an \naccount and activate your free digital subscription.\n',title: 'We’ve sent an email explaining \nhow to set up an \naccount and activate your free digital subscription.\n', shape:'text', color:'rgba(225, 225, 225, .8)'},
+			   ];
+
+            // create some edges
+            var edgesData = [
+			  {from: 0, to: 1, length:200, color:'orange'},
+{from: 5, to: 0, length:200, color:'orange'},
+{from: 0, to: 13, length:200, color:'orange'},
+{from: 2, to: 1, length:200, color:'orange'},
+{from: 3, to: 1, length:200, color:'#A2C5F5'},
+{from: 11, to: 1, length:200, color:'#A2C5F5'},
+{from: 16, to: 2, length:200, color:'#A2C5F5'},
+{from: 3, to: 4, length:200, color:'#A2C5F5'},
+{from: 6, to: 5, length:200, color:'orange'},
+{from: 5, to: 7, length:200, color:'orange'},
+{from: 6, to: 8, length:200, color:'orange'},
+{from: 6, to: 9, length:200, color:'orange'},
+{from: 7, to: 10, length:200, color:'orange'},
+{from: 15, to: 10, length:200, color:'orange'},
+{from: 11, to: 12, length:200, color:'#A2C5F5'},
+{from: 14, to: 13, length:200, color:'#A2C5F5'},
+{from: 16, to: 17, length:200, color:'#A2C5F5'},
+{from: 19, to: 18, length:200, color:'orange'},
+{from: 20, to: 19, length:200, color:'orange'},
+{from: 21, to: 19, length:200, color:'orange'},
+{from: 19, to: 24, length:200, color:'orange'},
+{from: 20, to: 22, length:200, color:'orange'},
+{from: 23, to: 22, length:200, color:'#A2C5F5'},
+{from: 25, to: 22, length:200, color:'orange'},
+{from: 23, to: 26, length:200, color:'#A2C5F5'},
+{from: 28, to: 27, length:200, color:'#A2C5F5'},
+{from: 29, to: 30, length:200, color:'#A2C5F5'},
+{from: 32, to: 31, length:200, color:'#A2C5F5'},
+{from: 33, to: 34, length:200, color:'#A2C5F5'},
+{from: 33, to: 35, length:200, color:'#A2C5F5'},
+{from: 33, to: 36, length:200, color:'#A2C5F5'},
+{from: 37, to: 36, length:200, color:'#A2C5F5'},
+{from: 38, to: 36, length:200, color:'#A2C5F5'},
+{from: 38, to: 39, length:200, color:'#A2C5F5'},
+{from: 40, to: 38, length:200, color:'#A2C5F5'},
+{from: 40, to: 41, length:200, color:'#A2C5F5'},
+{from: 43, to: 42, length:200, color:'#A2C5F5'},
+{from: 45, to: 44, length:200, color:'#A2C5F5'},
+{from: 46, to: 47, length:200, color:'#A2C5F5'},
+{from: 47, to: 48, length:200, color:'#A2C5F5'},
+{from: 49, to: 49, length:200, color:'#A2C5F5'},
+{from: 50, to: 51, length:200, color:'#A2C5F5'},
+{from: 52, to: 53, length:200, color:'orange'},
+{from: 52, to: 54, length:200, color:'orange'},
+{from: 55, to: 52, length:200, color:'orange'},
+{from: 56, to: 52, length:200, color:'orange'},
+{from: 52, to: 60, length:200, color:'orange'},
+{from: 61, to: 52, length:200, color:'orange'},
+{from: 59, to: 53, length:200, color:'#A2C5F5'},
+{from: 56, to: 57, length:200, color:'orange'},
+{from: 56, to: 58, length:200, color:'orange'},
+{from: 63, to: 62, length:200, color:'#A2C5F5'},
+			  ];
+
+            nodes.add(nodesData);
+            edges.add(edgesData);
+            // create a network
+            var container = document.getElementById('mynetwork');
+
+            var data = {
+                nodes: nodes,
+                edges: edges
+            };
+
+            var options = {
+                physics: {
+                    barnesHut: { enabled: false },
+                    repulsion: {
+                        nodeDistance: 150,
+                        springLength: 150,
+                        springConstant: 0.0,
+                        damping: 0.3
+                    }
+                },
+                smoothCurves: {
+                    dynamic: false,
+                    type: '1'
+                },
+                navigation: true,
+                keyboard: true,
+				nodes: {
+					inheritColor: "from"
+				},
+                edges: {
+                    width: 3.,
+                    inheritColor: "from"
+                }
+            };
+
+            var network = new vis.Network(container, data, options);
+			 
+            network.on("click", onClick);
+            network.on('select', function (properties) {
+                if (properties.nodes.length > 0) {
+                    var txt = nodesData[properties.nodes].label;
+                    document.getElementById('sel').innerHTML = 'selection: ' + txt + '<br>';
+                }
+                else { document.getElementById('sel').innerHTML = ''; }
+            }); 
+			
+			 network.once("stabilizationIterationsDone", function() {
+                document.getElementById('sel').innerHTML = ''; 
+            });
+			
+			network.on("stabilizationProgress", function(params) { 
+                var widthFactor = params.iterations/params.total; 
+                var dots = Array(10 * widthFactor + 1).join('.')
+				var spaces = Array(10 - 10 * widthFactor + 1).join('&nbsp;')
+                //document.getElementById('bar').style.width = width + 'px';
+                document.getElementById('sel').innerHTML = 'Please wait, Loading ' + dots + spaces +  "| " + Math.round(widthFactor*100) + '%';
+            });
+        }
+		
+		function filter(e){
+		  if(e.keyCode === 13){
+		    var nodesData = nodes.get({ returnType: "Object" });
+		    var search = document.getElementById('find').value.toLowerCase();
+			updateArray = []
+		    for(nodeId in nodesData) {
+			  if(nodesData[nodeId].label.toLowerCase().indexOf(search) > -1){
+			     nodesData[nodeId].clearFind = nodesData[nodeId].color
+				 nodesData[nodeId].clearShape = nodesData[nodeId].shape
+			     nodesData[nodeId].color = 'orange' 
+				 nodesData[nodeId].shape = 'box' 
+				 updateArray.push(nodesData[nodeId])
+				}
+			}
+			nodes.update(updateArray);
+		  } 
+		}
+		
+        function onClick(selectedItems) {
+            var nodeId;
+            var degrees = 2;
+            // we get all data from the dataset once to avoid updating multiple times.
+            var allNodes = nodes.get({ returnType: "Object" });
+            if (selectedItems.nodes.length == 0) {
+                // restore on unselect
+                for (nodeId in allNodes) {
+                    if (allNodes.hasOwnProperty(nodeId)) {
+                        allNodes[nodeId].color = undefined;
+                        if (allNodes[nodeId].oldLabel !== undefined) {
+                            allNodes[nodeId].label = allNodes[nodeId].oldLabel;
+                            allNodes[nodeId].oldLabel = undefined;
+                        }
+						
+						if(allNodes[nodeId].preColor !== undefined){
+						   allNodes[nodeId].color = allNodes[nodeId].preColor;
+						   allNodes[nodeId].preColor = undefined;
+						}
+                        allNodes[nodeId]['levelOfSeperation'] = undefined;
+                        allNodes[nodeId]['inConnectionList'] = undefined;
+                    }
+					if(allNodes[nodeId].clearFind !== undefined){
+					   allNodes[nodeId].color = allNodes[nodeId].clearFind;
+					   allNodes[nodeId].shape = allNodes[nodeId].clearShape;
+					   allNodes[nodeId].clearFind = undefined;
+					}
+                }
+            }
+            else {
+                var allEdges = edges.get();
+
+                // we clear the level of separation in all nodes.
+                clearLevelOfSeperation(allNodes);
+
+                // we will now start to collect all the connected nodes we want to highlight.
+                var connectedNodes = selectedItems.nodes;
+
+                // we can store them into levels of separation and we could then later use this to define a color per level
+                // any data can be added to a node, this is just stored in the nodeObject.
+                storeLevelOfSeperation(connectedNodes, 0, allNodes);
+                for (var i = 1; i < degrees + 1; i++) {
+                    appendConnectedNodes(connectedNodes, allEdges);
+                    storeLevelOfSeperation(connectedNodes, i, allNodes);
+                }
+                for (nodeId in allNodes) {
+                    if (allNodes.hasOwnProperty(nodeId)) {
+                        if (allNodes[nodeId]['inConnectionList'] == true) {
+                            if (allNodes[nodeId]['levelOfSeperation'] !== undefined) {
+                                if (allNodes[nodeId]['levelOfSeperation'] >= 2) {
+								    allNodes[nodeId].preColor = allNodes[nodeId].color;
+                                    allNodes[nodeId].color = 'rgba(150,150,150,0.75)';
+                                }
+                                else {
+                                    allNodes[nodeId].color = undefined;
+                                }
+                            }
+                            else {
+                                allNodes[nodeId].color = undefined;
+                            }
+                            if (allNodes[nodeId].oldLabel !== undefined) {
+                                allNodes[nodeId].label = allNodes[nodeId].oldLabel;
+                                allNodes[nodeId].oldLabel = undefined;
+                            }
+                        }
+                        else {
+						    allNodes[nodeId].preColor = allNodes[nodeId].color;
+                            allNodes[nodeId].color = 'rgba(200,200,200,0.5)';
+                            if (allNodes[nodeId].oldLabel === undefined) {
+                                allNodes[nodeId].oldLabel = allNodes[nodeId].label;
+                                allNodes[nodeId].label = "";
+                            }
+                        }
+                    }
+                }
+            }
+            var updateArray = [];
+            for (nodeId in allNodes) {
+                if (allNodes.hasOwnProperty(nodeId)) {
+                    updateArray.push(allNodes[nodeId]);
+                }
+            }
+            nodes.update(updateArray);
+        }
+
+        /**
+         * update the allNodes object with the level of separation.
+         * Arrays are passed by reference, we do not need to return them because we are working in the same object.
+         */
+        function storeLevelOfSeperation(connectedNodes, level, allNodes) {
+            for (var i = 0; i < connectedNodes.length; i++) {
+                var nodeId = connectedNodes[i];
+                if (allNodes[nodeId]['levelOfSeperation'] === undefined) {
+                    allNodes[nodeId]['levelOfSeperation'] = level;
+                }
+                allNodes[nodeId]['inConnectionList'] = true;
+            }
+        }
+
+        function clearLevelOfSeperation(allNodes) {
+            for (var nodeId in allNodes) {
+                if (allNodes.hasOwnProperty(nodeId)) {
+                    allNodes[nodeId]['levelOfSeperation'] = undefined;
+                    allNodes[nodeId]['inConnectionList'] = undefined;
+                }
+            }
+        }
+
+        /**
+         * Add the connected nodes to the list of nodes we already have
+         *
+         *
+         */
+        function appendConnectedNodes(sourceNodes, allEdges) {
+            var tempSourceNodes = [];
+            // first we make a copy of the nodes so we do not extend the array we loop over.
+            for (var i = 0; i < sourceNodes.length; i++) {
+                tempSourceNodes.push(sourceNodes[i])
+            }
+
+            for (var i = 0; i < tempSourceNodes.length; i++) {
+                var nodeId = tempSourceNodes[i];
+                if (sourceNodes.indexOf(nodeId) == -1) {
+                    sourceNodes.push(nodeId);
+                }
+                addUnique(getConnectedNodes(nodeId, allEdges), sourceNodes);
+            }
+            tempSourceNodes = null;
+        }
+
+        /**
+         * Join two arrays without duplicates
+         * @param fromArray
+         * @param toArray
+         */
+        function addUnique(fromArray, toArray) {
+            for (var i = 0; i < fromArray.length; i++) {
+                if (toArray.indexOf(fromArray[i]) == -1) {
+                    toArray.push(fromArray[i]);
+                }
+            }
+        }
+
+        /**
+         * Get a list of nodes that are connected to the supplied nodeId with edges.
+         * @param nodeId
+         * @returns {Array}
+         */
+        function getConnectedNodes(nodeId, allEdges) {
+            var edgesArray = allEdges;
+            var connectedNodes = [];
+
+            for (var i = 0; i < edgesArray.length; i++) {
+                var edge = edgesArray[i];
+                if (edge.to == nodeId) {
+                    connectedNodes.push(edge.from);
+                }
+                else if (edge.from == nodeId) {
+                    connectedNodes.push(edge.to)
+                }
+            }
+            return connectedNodes;
+        }
+    </script>
+</head>
+
+<body onload="draw()">
+    <div id="mynetwork"></div>
+    <div id="sel" style="background: white; position: absolute; width: 500px; top: 0; right: 0">Please wait.</div> 
+	<input style ="position:fixed; bottom:0; left:0" id="find" onkeyup="filter(event)"/>
+</body>
+</html>
