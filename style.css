@@ -95,9 +95,9 @@ hr {
 #main h1 { font-size: 26pt; margin:10px 0px 15px 0px; }
 #main h2 { font-size: 20pt; margin:20px 0px 0px 0px; }
 #main h3 { font-size: 14pt; margin:15px 0px 0px 0px; }
-#main p { font-size: 12pt; margin:5px 0px 15px 0px; }
-#main ul { font-size: 12pt; margin-top:10px; }
-#main li { font-size: 12pt; margin: 5px 0px 5px 0px; }
+#main p { font-size: 14pt; margin:5px 0px 15px 0px; }
+#main ul { font-size: 14pt; margin-top:10px; }
+#main li { font-size: 14pt; margin: 5px 0px 5px 0px; }
 pre, pre code {
   font: 9pt 'Droid Sans Mono', sans-serif;
   line-height:13pt;
@@ -131,15 +131,15 @@ body{
 }
 h1, h2, h3, h4 {
     color: #111111;
-    font-weight: 400;
-    max-width: 500px;
+    font-weight: 450;
+    max-width: 960px;
 }
 h1, h2, h3, h4, h5, p {
     margin-bottom: 16px;
     padding: 0;
 }
 h1 {
-    font-size: 28px;
+    font-size: 34px;
 }
 h2 {
     font-size: 22px;
@@ -180,12 +180,12 @@ li ul, li ul {
 }
 p, ul, ol {
     font-size: 16px;
-    line-height: 20px;
-    max-width: 540px;
+    line-height: 28px;
+    max-width: 960px;
 }
 pre {
     padding: 0px 24px;
-    max-width: 800px;
+    max-width: 900px;
     white-space: pre-wrap;
 }
 code {
@@ -203,7 +203,7 @@ blockquote {
     border-left:.5em solid #eee;
     padding: 0 2em;
     margin-left:0;
-    max-width: 476px;
+    max-width: 957px;
 }
 blockquote  cite {
     font-size:14px;
@@ -216,10 +216,10 @@ blockquote cite:before {
 
 blockquote p {  
     color: #666;
-    max-width: 460px;
+    max-width: 950px;
 }
 hr {
-    width: 540px;
+    width: 940px;
     text-align: left;
     margin: 0 auto 0 0;
     color: #999;
