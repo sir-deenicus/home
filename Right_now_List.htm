@@ -1,0 +1,213 @@
+<meta http-equiv='Content-Type' content='Type=text/html; charset=utf-8'>
+<title>Right Now List</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="dagre-d3-simple.css">
+<script src="d3.v3.min.js" charset="utf-8"></script>
+<script src="dagre-d3.js"></script> 
+
+<style id="css">
+
+.node rect {
+  stroke: #999;
+  fill: #fff;
+  stroke-width: 1.5px;
+}
+
+.edgePath path {
+  stroke: #333;
+  stroke-width: 1.5px;
+}
+</style>
+
+<svg id="svg-canvas" width=1960 height=600></svg>
+
+<h1>Right now List</h1>
+
+<script id="js">
+// Create the input graph
+var g = new dagreD3.graphlib.Graph()
+  .setGraph({nodesep: 70,
+    ranksep: 50,
+    
+    marginx: 20,
+    marginy: 20})
+  .setDefaultEdgeLabel(function() { return {}; });
+  
+ g.setNode("Chunking", {label:'Chunking', width:90, height:50});
+g.setNode("Comparisons", {label:'Comparisons', width:90, height:50});
+g.setNode("Contextual Bandit,Auto Clipping bot", {label:'Contextual Bandit\nAuto Clipping bot', width:90, height:50});
+g.setNode("Drills", {label:'Drills', width:90, height:50});
+g.setNode("Eigenvector, centrality", {label:'Eigenvector\n centrality', width:90, height:50});
+g.setNode("Graphs", {label:'Graphs', width:90, height:50});
+g.setNode("Random, Projection", {label:'Random\n Projection', width:90, height:50});
+g.setNode("Search", {label:'Search', width:90, height:50});
+g.setNode("Sentiment", {label:'Sentiment', width:90, height:50});
+g.setNode("Summarization", {label:'Summarization', width:90, height:50});
+g.setNode("Synopsis", {label:'Synopsis', width:90, height:50});
+g.setNode("Topic Extraction", {label:'Topic Extraction', width:90, height:50});
+g.setNode("chat", {label:'Chat interface', width:90, height:50});
+g.setNode("rri", {label:'online reflective\n random indexing', width:90, height:50});
+g.setNode("slackbot", {label:'slackbot', width:90, height:50});
+g.setNode("xmpp", {label:'xmpp', width:90, height:50});
+ 
+g.setEdge("Search", "Graphs")
+g.setEdge("Search", "Drills")
+g.setEdge("Search", "Synopsis")
+g.setEdge("Graphs", "Comparisons")
+g.setEdge("Synopsis", "Drills")
+g.setEdge("Synopsis", "chat")
+g.setEdge("Comparisons", "chat")
+g.setEdge("xmpp", "chat")
+g.setEdge("slackbot", "chat")
+g.setEdge("Sentiment", "Summarization")
+g.setEdge("rri", "Drills")
+g.setEdge("Drills", "Comparisons")
+g.setEdge("Comparisons", "Drills")
+g.setEdge("Chunking", "Topic Extraction")
+g.setEdge("Eigenvector, centrality", "Graphs")
+g.setEdge("Eigenvector, centrality", "Comparisons")
+g.setEdge("Chunking", "Contextual Bandit,Auto Clipping bot")
+g.setEdge("Random, Projection", "Summarization")
+g.setEdge("Random, Projection", "Graphs")
+g.setEdge("Chunking", "Summarization") 
+
+// Create the renderer
+var render = new dagreD3.render();
+
+// Set up an SVG group so that we can translate the final graph.
+var svg = d3.select("svg"),
+svgGroup = svg.append("g");
+
+var zoom = d3.behavior.zoom().on("zoom", function() {
+      svgGroup.attr("transform", "translate(" + d3.event.translate + ")" +
+                                  "scale(" + d3.event.scale + ")");
+    });
+svg.call(zoom);
+
+d3.select("body")
+  .on("keydown", function() {
+  var key = d3.event.key || d3.event.keyCode; // safari doesn't know .key
+    switch (key) {
+		case 'ArrowLeft':  
+			zoom.translate([zoom.translate()[0] - 25, zoom.translate()[1]]).event(svg);
+			break;
+		case 'ArrowRight': 
+			zoom.translate([zoom.translate()[0] + 25,zoom.translate()[1]]).event(svg);
+			break;
+		case 'ArrowUp': 
+			zoom.translate([zoom.translate()[0], zoom.translate()[1]-25]).event(svg);
+			break;
+		case 'ArrowDown': 
+			zoom.translate([zoom.translate()[0], zoom.translate()[1] + 25]).event(svg);
+			break;
+	}
+})
+
+// Run the renderer. This is what draws the final graph.
+render(d3.select("svg g"), g);
+
+// Center the graph
+var xCenterOffset = (svg.attr("width") - g.graph().width) / 2;
+svgGroup.attr("transform", "translate(" + xCenterOffset + ", 20)");
+svg.attr("height", g.graph().height + 40);
+</script>
+
+<ul>
+<li><strong>Title random indexing dim reduct tests</strong></li>
+<li><strong>MAKE RRI MORE ONLINE AND CUSTOM HASHES INTO INDEX</strong></li>
+<li>abstract databases
+<ul>
+<li>pubmed</li>
+<li>arxiv</li>
+</ul></li>
+<li>graph
+<ul>
+<li>docs
+<ul>
+<li>generalize to words, paras
+<ul>
+<li>restrict to ents and bigrams, hover with first mention</li>
+</ul></li>
+</ul></li>
+<li>draw graphs
+<ul>
+<li>edge labels</li>
+</ul></li>
+<li>construct from matrix</li>
+</ul></li>
+<li>comparisons, two searches what are most common?</li>
+<li><strong>interactive searches</strong>
+<ul>
+<li>mailbox agent for comms
+<ul>
+<li>need to receive data, for async output, on full completion
+<ul>
+<li><p>data type: Checkpoint | Done</p></li>
+</ul></li>
+<li>package summaries bigrams, vectors, spelling</li>
+</ul></li>
+<li>hook up question answering</li>
+<li>use browser for output
+<ul>
+<li>inject each new query result into page</li>
+</ul></li>
+<li>saving as json {query:string;response:string} and html</li>
+<li><s>is x a y response</s></li>
+</ul></li>
+<li>chat bots</li>
+<li><strong>CLIPPING</strong></li>
+<li>Collect word and sentence count stats across pages</li>
+<li><strong>Chunking</strong>
+<ul>
+<li>use instead of words for random vectors ?</li>
+<li>for abducing if then chains</li>
+<li>summaries</li>
+</ul></li>
+<li>go through all tabs, interactively learning what to automatically save
+<ul>
+<li>contextual bandit, scribe4- pdf</li>
+</ul></li>
+<li>wiki
+<ul>
+<li>learning drilling agent</li>
+<li>self directed exploration agent</li>
+</ul></li>
+<li>similar to with current window with hashing trick for titles, and vectors hamming dist of 1 into a matrix get nearest</li>
+<li>hover windows</li>
+<li>underscores in filename, titles, styles in thoughtbook</li>
+<li>sentiment</li>
+<li>tree
+<ul>
+<li>from bullet point</li>
+<li>dagre</li>
+</ul></li>
+<li>random vectors: 2 kinds. 
+1) user learned and 2) prebuilt from wordnet, thesaurus, NYtimes corpus</li>
+<li>timeline
+<ul>
+<li>build multigraph</li>
+<li>near search</li>
+<li>related search</li>
+</ul></li>
+<li>searching and indexing</li>
+<li>faster startup time</li>
+<li>markov chains<ul>
+<li>smoothing with hashing trick? Think</li>
+<li>context vectors for memory</li>
+<li>use novel not seen in training words via search LSH space</li>
+<li>approximate arbitrary n grams with on O(n^2) space</li>
+</ul></li>
+<li>deductive chains</li>
+<li>wordnet rindex  regular seach</li>
+<li>summarization
+<ul>
+<li>top nouns, sentiment, opinionated?, top nouns in verb phrases. top reduced chunks. Definitions (hover). Template based. Wordnet hypernmys. Disambiguation by using context words to build vectors, compared vs vectors of various defs. central words</li>
+</ul></li>
+<li>predicate vectors for abducing</li>
+<li>Should it automatically clip on pages with above average view time, interesting text, heuristic matches?</li>
+<li>Is GPU faster for NMF?
+<ul>
+<li>no, and too much mem limits on my machine, which is average</li>
+</ul></li>
+</ul>
+
