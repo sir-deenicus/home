@@ -6,16 +6,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 <link rel="stylesheet" href="../style.css">
- 
 <style type="text/css">
     /*!
 *
 * Twitter Bootstrap
 *
-*
-* Font Awesome
-*
-*//*!
+*/
+/*!
  *  Font Awesome 4.3.0 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
  */@font-face{font-family:'FontAwesome';src:url('../components/font-awesome/fonts/fontawesome-webfont.eot?v=4.3.0');src:url('../components/font-awesome/fonts/fontawesome-webfont.eot?#iefix&v=4.3.0') format('embedded-opentype'),url('../components/font-awesome/fonts/fontawesome-webfont.woff2?v=4.3.0') format('woff2'),url('../components/font-awesome/fonts/fontawesome-webfont.woff?v=4.3.0') format('woff'),url('../components/font-awesome/fonts/fontawesome-webfont.ttf?v=4.3.0') format('truetype'),url('../components/font-awesome/fonts/fontawesome-webfont.svg?v=4.3.0#fontawesomeregular') format('svg');font-weight:normal;font-style:normal}.fa{display:inline-block;font:normal normal normal 14px/1 FontAwesome;font-size:inherit;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;transform:translate(0, 0)}.fa-lg{font-size:1.33333333em;line-height:.75em;vertical-align:-15%}.fa-2x{font-size:2em}.fa-3x{font-size:3em}.fa-4x{font-size:4em}.fa-5x{font-size:5em}.fa-fw{width:1.28571429em;text-align:center}.fa-ul{padding-left:0;margin-left:2.14285714em;list-style-type:none}.fa-ul>li{position:relative}.fa-li{position:absolute;left:-2.14285714em;width:2.14285714em;top:.14285714em;text-align:center}.fa-li.fa-lg{left:-1.85714286em}.fa-border{padding:.2em .25em .15em;border:solid .08em #eee;border-radius:.1em}.pull-right{float:right}.pull-left{float:left}.fa.pull-left{margin-right:.3em}.fa.pull-right{margin-left:.3em}.fa-spin{-webkit-animation:fa-spin 2s infinite linear;animation:fa-spin 2s infinite linear}.fa-pulse{-webkit-animation:fa-spin 1s infinite steps(8);animation:fa-spin 1s infinite steps(8)}@-webkit-keyframes fa-spin{0%{-webkit-transform:rotate(0deg);transform:rotate(0deg)}100%{-webkit-transform:rotate(359deg);transform:rotate(359deg)}}@keyframes fa-spin{0%{-webkit-transform:rotate(0deg);transform:rotate(0deg)}100%{-webkit-transform:rotate(359deg);transform:rotate(359deg)}}.fa-rotate-90{filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=1);-webkit-transform:rotate(90deg);-ms-transform:rotate(90deg);transform:rotate(90deg)}.fa-rotate-180{filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=2);-webkit-transform:rotate(180deg);-ms-transform:rotate(180deg);transform:rotate(180deg)}.fa-rotate-270{filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=3);-webkit-transform:rotate(270deg);-ms-transform:rotate(270deg);transform:rotate(270deg)}.fa-flip-horizontal{filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1);-webkit-transform:scale(-1, 1);-ms-transform:scale(-1, 1);transform:scale(-1, 1)}.fa-flip-vertical{filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1);-webkit-transform:scale(1, -1);-ms-transform:scale(1, -1);transform:scale(1, -1)}:root .fa-rotate-90,:root .fa-rotate-180,:root .fa-rotate-270,:root .fa-flip-horizontal,:root .fa-flip-vertical{filter:none}.fa-stack{position:relative;display:inline-block;width:2em;height:2em;line-height:2em;vertical-align:middle}.fa-stack-1x,.fa-stack-2x{position:absolute;left:0;width:100%;text-align:center}.fa-stack-1x{line-height:inherit}.fa-stack-2x{font-size:2em}.fa-inverse{color:#fff}.fa-glass:before{content:"\f000"}.fa-music:before{content:"\f001"}.fa-search:before{content:"\f002"}.fa-envelope-o:before{content:"\f003"}.fa-heart:before{content:"\f004"}.fa-star:before{content:"\f005"}.fa-star-o:before{content:"\f006"}.fa-user:before{content:"\f007"}.fa-film:before{content:"\f008"}.fa-th-large:before{content:"\f009"}.fa-th:before{content:"\f00a"}.fa-th-list:before{content:"\f00b"}.fa-check:before{content:"\f00c"}.fa-remove:before,.fa-close:before,.fa-times:before{content:"\f00d"}.fa-search-plus:before{content:"\f00e"}.fa-search-minus:before{content:"\f010"}.fa-power-off:before{content:"\f011"}.fa-signal:before{content:"\f012"}.fa-gear:before,.fa-cog:before{content:"\f013"}.fa-trash-o:before{content:"\f014"}.fa-home:before{content:"\f015"}.fa-file-o:before{content:"\f016"}.fa-clock-o:before{content:"\f017"}.fa-road:before{content:"\f018"}.fa-download:before{content:"\f019"}.fa-arrow-circle-o-down:before{content:"\f01a"}.fa-arrow-circle-o-up:before{content:"\f01b"}.fa-inbox:before{content:"\f01c"}.fa-play-circle-o:before{content:"\f01d"}.fa-rotate-right:before,.fa-repeat:before{content:"\f01e"}.fa-refresh:before{content:"\f021"}.fa-list-alt:before{content:"\f022"}.fa-lock:before{content:"\f023"}.fa-flag:before{content:"\f024"}.fa-headphones:before{content:"\f025"}.fa-volume-off:before{content:"\f026"}.fa-volume-down:before{content:"\f027"}.fa-volume-up:before{content:"\f028"}.fa-qrcode:before{content:"\f029"}.fa-barcode:before{content:"\f02a"}.fa-tag:before{content:"\f02b"}.fa-tags:before{content:"\f02c"}.fa-book:before{content:"\f02d"}.fa-bookmark:before{content:"\f02e"}.fa-print:before{content:"\f02f"}.fa-camera:before{content:"\f030"}.fa-font:before{content:"\f031"}.fa-bold:before{content:"\f032"}.fa-italic:before{content:"\f033"}.fa-text-height:before{content:"\f034"}.fa-text-width:before{content:"\f035"}.fa-align-left:before{content:"\f036"}.fa-align-center:before{content:"\f037"}.fa-align-right:before{content:"\f038"}.fa-align-justify:before{content:"\f039"}.fa-list:before{content:"\f03a"}.fa-dedent:before,.fa-outdent:before{content:"\f03b"}.fa-indent:before{content:"\f03c"}.fa-video-camera:before{content:"\f03d"}.fa-photo:before,.fa-image:before,.fa-picture-o:before{content:"\f03e"}.fa-pencil:before{content:"\f040"}.fa-map-marker:before{content:"\f041"}.fa-adjust:before{content:"\f042"}.fa-tint:before{content:"\f043"}.fa-edit:before,.fa-pencil-square-o:before{content:"\f044"}.fa-share-square-o:before{content:"\f045"}.fa-check-square-o:before{content:"\f046"}.fa-arrows:before{content:"\f047"}.fa-step-backward:before{content:"\f048"}.fa-fast-backward:before{content:"\f049"}.fa-backward:before{content:"\f04a"}.fa-play:before{content:"\f04b"}.fa-pause:before{content:"\f04c"}.fa-stop:before{content:"\f04d"}.fa-forward:before{content:"\f04e"}.fa-fast-forward:before{content:"\f050"}.fa-step-forward:before{content:"\f051"}.fa-eject:before{content:"\f052"}.fa-chevron-left:before{content:"\f053"}.fa-chevron-right:before{content:"\f054"}.fa-plus-circle:before{content:"\f055"}.fa-minus-circle:before{content:"\f056"}.fa-times-circle:before{content:"\f057"}.fa-check-circle:before{content:"\f058"}.fa-question-circle:before{content:"\f059"}.fa-info-circle:before{content:"\f05a"}.fa-crosshairs:before{content:"\f05b"}.fa-times-circle-o:before{content:"\f05c"}.fa-check-circle-o:before{content:"\f05d"}.fa-ban:before{content:"\f05e"}.fa-arrow-left:before{content:"\f060"}.fa-arrow-right:before{content:"\f061"}.fa-arrow-up:before{content:"\f062"}.fa-arrow-down:before{content:"\f063"}.fa-mail-forward:before,.fa-share:before{content:"\f064"}.fa-expand:before{content:"\f065"}.fa-compress:before{content:"\f066"}.fa-plus:before{content:"\f067"}.fa-minus:before{content:"\f068"}.fa-asterisk:before{content:"\f069"}.fa-exclamation-circle:before{content:"\f06a"}.fa-gift:before{content:"\f06b"}.fa-leaf:before{content:"\f06c"}.fa-fire:before{content:"\f06d"}.fa-eye:before{content:"\f06e"}.fa-eye-slash:before{content:"\f070"}.fa-warning:before,.fa-exclamation-triangle:before{content:"\f071"}.fa-plane:before{content:"\f072"}.fa-calendar:before{content:"\f073"}.fa-random:before{content:"\f074"}.fa-comment:before{content:"\f075"}.fa-magnet:before{content:"\f076"}.fa-chevron-up:before{content:"\f077"}.fa-chevron-down:before{content:"\f078"}.fa-retweet:before{content:"\f079"}.fa-shopping-cart:before{content:"\f07a"}.fa-folder:before{content:"\f07b"}.fa-folder-open:before{content:"\f07c"}.fa-arrows-v:before{content:"\f07d"}.fa-arrows-h:before{content:"\f07e"}.fa-bar-chart-o:before,.fa-bar-chart:before{content:"\f080"}.fa-twitter-square:before{content:"\f081"}.fa-facebook-square:before{content:"\f082"}.fa-camera-retro:before{content:"\f083"}.fa-key:before{content:"\f084"}.fa-gears:before,.fa-cogs:before{content:"\f085"}.fa-comments:before{content:"\f086"}.fa-thumbs-o-up:before{content:"\f087"}.fa-thumbs-o-down:before{content:"\f088"}.fa-star-half:before{content:"\f089"}.fa-heart-o:before{content:"\f08a"}.fa-sign-out:before{content:"\f08b"}.fa-linkedin-square:before{content:"\f08c"}.fa-thumb-tack:before{content:"\f08d"}.fa-external-link:before{content:"\f08e"}.fa-sign-in:before{content:"\f090"}.fa-trophy:before{content:"\f091"}.fa-github-square:before{content:"\f092"}.fa-upload:before{content:"\f093"}.fa-lemon-o:before{content:"\f094"}.fa-phone:before{content:"\f095"}.fa-square-o:before{content:"\f096"}.fa-bookmark-o:before{content:"\f097"}.fa-phone-square:before{content:"\f098"}.fa-twitter:before{content:"\f099"}.fa-facebook-f:before,.fa-facebook:before{content:"\f09a"}.fa-github:before{content:"\f09b"}.fa-unlock:before{content:"\f09c"}.fa-credit-card:before{content:"\f09d"}.fa-rss:before{content:"\f09e"}.fa-hdd-o:before{content:"\f0a0"}.fa-bullhorn:before{content:"\f0a1"}.fa-bell:before{content:"\f0f3"}.fa-certificate:before{content:"\f0a3"}.fa-hand-o-right:before{content:"\f0a4"}.fa-hand-o-left:before{content:"\f0a5"}.fa-hand-o-up:before{content:"\f0a6"}.fa-hand-o-down:before{content:"\f0a7"}.fa-arrow-circle-left:before{content:"\f0a8"}.fa-arrow-circle-right:before{content:"\f0a9"}.fa-arrow-circle-up:before{content:"\f0aa"}.fa-arrow-circle-down:before{content:"\f0ab"}.fa-globe:before{content:"\f0ac"}.fa-wrench:before{content:"\f0ad"}.fa-tasks:before{content:"\f0ae"}.fa-filter:before{content:"\f0b0"}.fa-briefcase:before{content:"\f0b1"}.fa-arrows-alt:before{content:"\f0b2"}.fa-group:before,.fa-users:before{content:"\f0c0"}.fa-chain:before,.fa-link:before{content:"\f0c1"}.fa-cloud:before{content:"\f0c2"}.fa-flask:before{content:"\f0c3"}.fa-cut:before,.fa-scissors:before{content:"\f0c4"}.fa-copy:before,.fa-files-o:before{content:"\f0c5"}.fa-paperclip:before{content:"\f0c6"}.fa-save:before,.fa-floppy-o:before{content:"\f0c7"}.fa-square:before{content:"\f0c8"}.fa-navicon:before,.fa-reorder:before,.fa-bars:before{content:"\f0c9"}.fa-list-ul:before{content:"\f0ca"}.fa-list-ol:before{content:"\f0cb"}.fa-strikethrough:before{content:"\f0cc"}.fa-underline:before{content:"\f0cd"}.fa-table:before{content:"\f0ce"}.fa-magic:before{content:"\f0d0"}.fa-truck:before{content:"\f0d1"}.fa-pinterest:before{content:"\f0d2"}.fa-pinterest-square:before{content:"\f0d3"}.fa-google-plus-square:before{content:"\f0d4"}.fa-google-plus:before{content:"\f0d5"}.fa-money:before{content:"\f0d6"}.fa-caret-down:before{content:"\f0d7"}.fa-caret-up:before{content:"\f0d8"}.fa-caret-left:before{content:"\f0d9"}.fa-caret-right:before{content:"\f0da"}.fa-columns:before{content:"\f0db"}.fa-unsorted:before,.fa-sort:before{content:"\f0dc"}.fa-sort-down:before,.fa-sort-desc:before{content:"\f0dd"}.fa-sort-up:before,.fa-sort-asc:before{content:"\f0de"}.fa-envelope:before{content:"\f0e0"}.fa-linkedin:before{content:"\f0e1"}.fa-rotate-left:before,.fa-undo:before{content:"\f0e2"}.fa-legal:before,.fa-gavel:before{content:"\f0e3"}.fa-dashboard:before,.fa-tachometer:before{content:"\f0e4"}.fa-comment-o:before{content:"\f0e5"}.fa-comments-o:before{content:"\f0e6"}.fa-flash:before,.fa-bolt:before{content:"\f0e7"}.fa-sitemap:before{content:"\f0e8"}.fa-umbrella:before{content:"\f0e9"}.fa-paste:before,.fa-clipboard:before{content:"\f0ea"}.fa-lightbulb-o:before{content:"\f0eb"}.fa-exchange:before{content:"\f0ec"}.fa-cloud-download:before{content:"\f0ed"}.fa-cloud-upload:before{content:"\f0ee"}.fa-user-md:before{content:"\f0f0"}.fa-stethoscope:before{content:"\f0f1"}.fa-suitcase:before{content:"\f0f2"}.fa-bell-o:before{content:"\f0a2"}.fa-coffee:before{content:"\f0f4"}.fa-cutlery:before{content:"\f0f5"}.fa-file-text-o:before{content:"\f0f6"}.fa-building-o:before{content:"\f0f7"}.fa-hospital-o:before{content:"\f0f8"}.fa-ambulance:before{content:"\f0f9"}.fa-medkit:before{content:"\f0fa"}.fa-fighter-jet:before{content:"\f0fb"}.fa-beer:before{content:"\f0fc"}.fa-h-square:before{content:"\f0fd"}.fa-plus-square:before{content:"\f0fe"}.fa-angle-double-left:before{content:"\f100"}.fa-angle-double-right:before{content:"\f101"}.fa-angle-double-up:before{content:"\f102"}.fa-angle-double-down:before{content:"\f103"}.fa-angle-left:before{content:"\f104"}.fa-angle-right:before{content:"\f105"}.fa-angle-up:before{content:"\f106"}.fa-angle-down:before{content:"\f107"}.fa-desktop:before{content:"\f108"}.fa-laptop:before{content:"\f109"}.fa-tablet:before{content:"\f10a"}.fa-mobile-phone:before,.fa-mobile:before{content:"\f10b"}.fa-circle-o:before{content:"\f10c"}.fa-quote-left:before{content:"\f10d"}.fa-quote-right:before{content:"\f10e"}.fa-spinner:before{content:"\f110"}.fa-circle:before{content:"\f111"}.fa-mail-reply:before,.fa-reply:before{content:"\f112"}.fa-github-alt:before{content:"\f113"}.fa-folder-o:before{content:"\f114"}.fa-folder-open-o:before{content:"\f115"}.fa-smile-o:before{content:"\f118"}.fa-frown-o:before{content:"\f119"}.fa-meh-o:before{content:"\f11a"}.fa-gamepad:before{content:"\f11b"}.fa-keyboard-o:before{content:"\f11c"}.fa-flag-o:before{content:"\f11d"}.fa-flag-checkered:before{content:"\f11e"}.fa-terminal:before{content:"\f120"}.fa-code:before{content:"\f121"}.fa-mail-reply-all:before,.fa-reply-all:before{content:"\f122"}.fa-star-half-empty:before,.fa-star-half-full:before,.fa-star-half-o:before{content:"\f123"}.fa-location-arrow:before{content:"\f124"}.fa-crop:before{content:"\f125"}.fa-code-fork:before{content:"\f126"}.fa-unlink:before,.fa-chain-broken:before{content:"\f127"}.fa-question:before{content:"\f128"}.fa-info:before{content:"\f129"}.fa-exclamation:before{content:"\f12a"}.fa-superscript:before{content:"\f12b"}.fa-subscript:before{content:"\f12c"}.fa-eraser:before{content:"\f12d"}.fa-puzzle-piece:before{content:"\f12e"}.fa-microphone:before{content:"\f130"}.fa-microphone-slash:before{content:"\f131"}.fa-shield:before{content:"\f132"}.fa-calendar-o:before{content:"\f133"}.fa-fire-extinguisher:before{content:"\f134"}.fa-rocket:before{content:"\f135"}.fa-maxcdn:before{content:"\f136"}.fa-chevron-circle-left:before{content:"\f137"}.fa-chevron-circle-right:before{content:"\f138"}.fa-chevron-circle-up:before{content:"\f139"}.fa-chevron-circle-down:before{content:"\f13a"}.fa-html5:before{content:"\f13b"}.fa-css3:before{content:"\f13c"}.fa-anchor:before{content:"\f13d"}.fa-unlock-alt:before{content:"\f13e"}.fa-bullseye:before{content:"\f140"}.fa-ellipsis-h:before{content:"\f141"}.fa-ellipsis-v:before{content:"\f142"}.fa-rss-square:before{content:"\f143"}.fa-play-circle:before{content:"\f144"}.fa-ticket:before{content:"\f145"}.fa-minus-square:before{content:"\f146"}.fa-minus-square-o:before{content:"\f147"}.fa-level-up:before{content:"\f148"}.fa-level-down:before{content:"\f149"}.fa-check-square:before{content:"\f14a"}.fa-pencil-square:before{content:"\f14b"}.fa-external-link-square:before{content:"\f14c"}.fa-share-square:before{content:"\f14d"}.fa-compass:before{content:"\f14e"}.fa-toggle-down:before,.fa-caret-square-o-down:before{content:"\f150"}.fa-toggle-up:before,.fa-caret-square-o-up:before{content:"\f151"}.fa-toggle-right:before,.fa-caret-square-o-right:before{content:"\f152"}.fa-euro:before,.fa-eur:before{content:"\f153"}.fa-gbp:before{content:"\f154"}.fa-dollar:before,.fa-usd:before{content:"\f155"}.fa-rupee:before,.fa-inr:before{content:"\f156"}.fa-cny:before,.fa-rmb:before,.fa-yen:before,.fa-jpy:before{content:"\f157"}.fa-ruble:before,.fa-rouble:before,.fa-rub:before{content:"\f158"}.fa-won:before,.fa-krw:before{content:"\f159"}.fa-bitcoin:before,.fa-btc:before{content:"\f15a"}.fa-file:before{content:"\f15b"}.fa-file-text:before{content:"\f15c"}.fa-sort-alpha-asc:before{content:"\f15d"}.fa-sort-alpha-desc:before{content:"\f15e"}.fa-sort-amount-asc:before{content:"\f160"}.fa-sort-amount-desc:before{content:"\f161"}.fa-sort-numeric-asc:before{content:"\f162"}.fa-sort-numeric-desc:before{content:"\f163"}.fa-thumbs-up:before{content:"\f164"}.fa-thumbs-down:before{content:"\f165"}.fa-youtube-square:before{content:"\f166"}.fa-youtube:before{content:"\f167"}.fa-xing:before{content:"\f168"}.fa-xing-square:before{content:"\f169"}.fa-youtube-play:before{content:"\f16a"}.fa-dropbox:before{content:"\f16b"}.fa-stack-overflow:before{content:"\f16c"}.fa-instagram:before{content:"\f16d"}.fa-flickr:before{content:"\f16e"}.fa-adn:before{content:"\f170"}.fa-bitbucket:before{content:"\f171"}.fa-bitbucket-square:before{content:"\f172"}.fa-tumblr:before{content:"\f173"}.fa-tumblr-square:before{content:"\f174"}.fa-long-arrow-down:before{content:"\f175"}.fa-long-arrow-up:before{content:"\f176"}.fa-long-arrow-left:before{content:"\f177"}.fa-long-arrow-right:before{content:"\f178"}.fa-apple:before{content:"\f179"}.fa-windows:before{content:"\f17a"}.fa-android:before{content:"\f17b"}.fa-linux:before{content:"\f17c"}.fa-dribbble:before{content:"\f17d"}.fa-skype:before{content:"\f17e"}.fa-foursquare:before{content:"\f180"}.fa-trello:before{content:"\f181"}.fa-female:before{content:"\f182"}.fa-male:before{content:"\f183"}.fa-gittip:before,.fa-gratipay:before{content:"\f184"}.fa-sun-o:before{content:"\f185"}.fa-moon-o:before{content:"\f186"}.fa-archive:before{content:"\f187"}.fa-bug:before{content:"\f188"}.fa-vk:before{content:"\f189"}.fa-weibo:before{content:"\f18a"}.fa-renren:before{content:"\f18b"}.fa-pagelines:before{content:"\f18c"}.fa-stack-exchange:before{content:"\f18d"}.fa-arrow-circle-o-right:before{content:"\f18e"}.fa-arrow-circle-o-left:before{content:"\f190"}.fa-toggle-left:before,.fa-caret-square-o-left:before{content:"\f191"}.fa-dot-circle-o:before{content:"\f192"}.fa-wheelchair:before{content:"\f193"}.fa-vimeo-square:before{content:"\f194"}.fa-turkish-lira:before,.fa-try:before{content:"\f195"}.fa-plus-square-o:before{content:"\f196"}.fa-space-shuttle:before{content:"\f197"}.fa-slack:before{content:"\f198"}.fa-envelope-square:before{content:"\f199"}.fa-wordpress:before{content:"\f19a"}.fa-openid:before{content:"\f19b"}.fa-institution:before,.fa-bank:before,.fa-university:before{content:"\f19c"}.fa-mortar-board:before,.fa-graduation-cap:before{content:"\f19d"}.fa-yahoo:before{content:"\f19e"}.fa-google:before{content:"\f1a0"}.fa-reddit:before{content:"\f1a1"}.fa-reddit-square:before{content:"\f1a2"}.fa-stumbleupon-circle:before{content:"\f1a3"}.fa-stumbleupon:before{content:"\f1a4"}.fa-delicious:before{content:"\f1a5"}.fa-digg:before{content:"\f1a6"}.fa-pied-piper:before{content:"\f1a7"}.fa-pied-piper-alt:before{content:"\f1a8"}.fa-drupal:before{content:"\f1a9"}.fa-joomla:before{content:"\f1aa"}.fa-language:before{content:"\f1ab"}.fa-fax:before{content:"\f1ac"}.fa-building:before{content:"\f1ad"}.fa-child:before{content:"\f1ae"}.fa-paw:before{content:"\f1b0"}.fa-spoon:before{content:"\f1b1"}.fa-cube:before{content:"\f1b2"}.fa-cubes:before{content:"\f1b3"}.fa-behance:before{content:"\f1b4"}.fa-behance-square:before{content:"\f1b5"}.fa-steam:before{content:"\f1b6"}.fa-steam-square:before{content:"\f1b7"}.fa-recycle:before{content:"\f1b8"}.fa-automobile:before,.fa-car:before{content:"\f1b9"}.fa-cab:before,.fa-taxi:before{content:"\f1ba"}.fa-tree:before{content:"\f1bb"}.fa-spotify:before{content:"\f1bc"}.fa-deviantart:before{content:"\f1bd"}.fa-soundcloud:before{content:"\f1be"}.fa-database:before{content:"\f1c0"}.fa-file-pdf-o:before{content:"\f1c1"}.fa-file-word-o:before{content:"\f1c2"}.fa-file-excel-o:before{content:"\f1c3"}.fa-file-powerpoint-o:before{content:"\f1c4"}.fa-file-photo-o:before,.fa-file-picture-o:before,.fa-file-image-o:before{content:"\f1c5"}.fa-file-zip-o:before,.fa-file-archive-o:before{content:"\f1c6"}.fa-file-sound-o:before,.fa-file-audio-o:before{content:"\f1c7"}.fa-file-movie-o:before,.fa-file-video-o:before{content:"\f1c8"}.fa-file-code-o:before{content:"\f1c9"}.fa-vine:before{content:"\f1ca"}.fa-codepen:before{content:"\f1cb"}.fa-jsfiddle:before{content:"\f1cc"}.fa-life-bouy:before,.fa-life-buoy:before,.fa-life-saver:before,.fa-support:before,.fa-life-ring:before{content:"\f1cd"}.fa-circle-o-notch:before{content:"\f1ce"}.fa-ra:before,.fa-rebel:before{content:"\f1d0"}.fa-ge:before,.fa-empire:before{content:"\f1d1"}.fa-git-square:before{content:"\f1d2"}.fa-git:before{content:"\f1d3"}.fa-hacker-news:before{content:"\f1d4"}.fa-tencent-weibo:before{content:"\f1d5"}.fa-qq:before{content:"\f1d6"}.fa-wechat:before,.fa-weixin:before{content:"\f1d7"}.fa-send:before,.fa-paper-plane:before{content:"\f1d8"}.fa-send-o:before,.fa-paper-plane-o:before{content:"\f1d9"}.fa-history:before{content:"\f1da"}.fa-genderless:before,.fa-circle-thin:before{content:"\f1db"}.fa-header:before{content:"\f1dc"}.fa-paragraph:before{content:"\f1dd"}.fa-sliders:before{content:"\f1de"}.fa-share-alt:before{content:"\f1e0"}.fa-share-alt-square:before{content:"\f1e1"}.fa-bomb:before{content:"\f1e2"}.fa-soccer-ball-o:before,.fa-futbol-o:before{content:"\f1e3"}.fa-tty:before{content:"\f1e4"}.fa-binoculars:before{content:"\f1e5"}.fa-plug:before{content:"\f1e6"}.fa-slideshare:before{content:"\f1e7"}.fa-twitch:before{content:"\f1e8"}.fa-yelp:before{content:"\f1e9"}.fa-newspaper-o:before{content:"\f1ea"}.fa-wifi:before{content:"\f1eb"}.fa-calculator:before{content:"\f1ec"}.fa-paypal:before{content:"\f1ed"}.fa-google-wallet:before{content:"\f1ee"}.fa-cc-visa:before{content:"\f1f0"}.fa-cc-mastercard:before{content:"\f1f1"}.fa-cc-discover:before{content:"\f1f2"}.fa-cc-amex:before{content:"\f1f3"}.fa-cc-paypal:before{content:"\f1f4"}.fa-cc-stripe:before{content:"\f1f5"}.fa-bell-slash:before{content:"\f1f6"}.fa-bell-slash-o:before{content:"\f1f7"}.fa-trash:before{content:"\f1f8"}.fa-copyright:before{content:"\f1f9"}.fa-at:before{content:"\f1fa"}.fa-eyedropper:before{content:"\f1fb"}.fa-paint-brush:before{content:"\f1fc"}.fa-birthday-cake:before{content:"\f1fd"}.fa-area-chart:before{content:"\f1fe"}.fa-pie-chart:before{content:"\f200"}.fa-line-chart:before{content:"\f201"}.fa-lastfm:before{content:"\f202"}.fa-lastfm-square:before{content:"\f203"}.fa-toggle-off:before{content:"\f204"}.fa-toggle-on:before{content:"\f205"}.fa-bicycle:before{content:"\f206"}.fa-bus:before{content:"\f207"}.fa-ioxhost:before{content:"\f208"}.fa-angellist:before{content:"\f209"}.fa-cc:before{content:"\f20a"}.fa-shekel:before,.fa-sheqel:before,.fa-ils:before{content:"\f20b"}.fa-meanpath:before{content:"\f20c"}.fa-buysellads:before{content:"\f20d"}.fa-connectdevelop:before{content:"\f20e"}.fa-dashcube:before{content:"\f210"}.fa-forumbee:before{content:"\f211"}.fa-leanpub:before{content:"\f212"}.fa-sellsy:before{content:"\f213"}.fa-shirtsinbulk:before{content:"\f214"}.fa-simplybuilt:before{content:"\f215"}.fa-skyatlas:before{content:"\f216"}.fa-cart-plus:before{content:"\f217"}.fa-cart-arrow-down:before{content:"\f218"}.fa-diamond:before{content:"\f219"}.fa-ship:before{content:"\f21a"}.fa-user-secret:before{content:"\f21b"}.fa-motorcycle:before{content:"\f21c"}.fa-street-view:before{content:"\f21d"}.fa-heartbeat:before{content:"\f21e"}.fa-venus:before{content:"\f221"}.fa-mars:before{content:"\f222"}.fa-mercury:before{content:"\f223"}.fa-transgender:before{content:"\f224"}.fa-transgender-alt:before{content:"\f225"}.fa-venus-double:before{content:"\f226"}.fa-mars-double:before{content:"\f227"}.fa-venus-mars:before{content:"\f228"}.fa-mars-stroke:before{content:"\f229"}.fa-mars-stroke-v:before{content:"\f22a"}.fa-mars-stroke-h:before{content:"\f22b"}.fa-neuter:before{content:"\f22c"}.fa-facebook-official:before{content:"\f230"}.fa-pinterest-p:before{content:"\f231"}.fa-whatsapp:before{content:"\f232"}.fa-server:before{content:"\f233"}.fa-user-plus:before{content:"\f234"}.fa-user-times:before{content:"\f235"}.fa-hotel:before,.fa-bed:before{content:"\f236"}.fa-viacoin:before{content:"\f237"}.fa-train:before{content:"\f238"}.fa-subway:before{content:"\f239"}.fa-medium:before{content:"\f23a"}/*!
@@ -42,7 +39,7 @@
 *
 * IPython notebook webapp
 *
-*/@media (max-width:767px){.notebook_app{padding-left:0;padding-right:0}}#ipython-main-app{box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;height:100%}div#notebook_panel{margin:0;padding:0;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;height:100%}#notebook{font-size:14px;line-height:20px;overflow-y:hidden;overflow-x:auto;width:100%;padding-top:20px;margin:0;outline:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;min-height:100%}@media not print{}div.ui-widget-content{border:1px solid #ababab;outline:none}pre.dialog{background-color:#f7f7f7;border:1px solid #ddd;border-radius:2px;padding:.4em;padding-left:2em}p.dialog{padding:.2em}pre,code,kbd,samp{white-space:pre-wrap}#fonttest{font-family:monospace}p{margin-bottom:0}.end_space{min-height:100px;transition:height .2s ease}.notebook_app #header{-webkit-box-shadow:0 0 12px 1px rgba(87,87,87,0.2);box-shadow:0 0 12px 1px rgba(87,87,87,0.2)}@media not print{.notebook_app{background-color:#eee}}.celltoolbar{border:thin solid #cfcfcf;border-bottom:none;background:#eee;border-radius:2px 2px 0 0;width:100%;height:29px;padding-right:4px;display:-webkit-box;-webkit-box-orient:horizontal;-webkit-box-align:stretch;display:-moz-box;-moz-box-orient:horizontal;-moz-box-align:stretch;display:box;box-orient:horizontal;box-align:stretch;display:flex;flex-direction:row;align-items:stretch;-webkit-box-pack:end;-moz-box-pack:end;box-pack:end;justify-content:flex-end}@media print{.celltoolbar{display:none}}.ctb_hideshow{display:none;vertical-align:bottom}.ctb_global_show .ctb_show.ctb_hideshow{display:block}.ctb_global_show .ctb_show+.input_area,.ctb_global_show .ctb_show+div.text_cell_input,.ctb_global_show .ctb_show~div.text_cell_render{border-top-right-radius:0;border-top-left-radius:0}.ctb_global_show .ctb_show~div.text_cell_render{border:1px solid #cfcfcf}.celltoolbar{font-size:87%;padding-top:3px}.celltoolbar select{display:block;width:100%;height:32px;padding:6px 12px;font-size:13px;line-height:1.42857143;color:#555;background-color:#fff;background-image:none;border:1px solid #ccc;border-radius:2px;-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,0.075);box-shadow:inset 0 1px 1px rgba(0,0,0,0.075);-webkit-transition:border-color ease-in-out .15s, box-shadow ease-in-out .15s;-o-transition:border-color ease-in-out .15s, box-shadow ease-in-out .15s;transition:border-color ease-in-out .15s, box-shadow ease-in-out .15s;height:30px;padding:5px 10px;font-size:12px;line-height:1.5;border-radius:1px;width:inherit;font-size:inherit;height:22px;padding:0;display:inline-block}.celltoolbar select:focus{border-color:#66afe9;outline:0;-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);box-shadow:inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6)}.celltoolbar select::-moz-placeholder{color:#999;opacity:1}.celltoolbar select:-ms-input-placeholder{color:#999}.celltoolbar select::-webkit-input-placeholder{color:#999}.celltoolbar select[disabled],.celltoolbar select[readonly],fieldset[disabled] .celltoolbar select{cursor:not-allowed;background-color:#eee;opacity:1}textarea.celltoolbar select{height:auto}select.celltoolbar select{height:30px;line-height:30px}textarea.celltoolbar select,select[multiple].celltoolbar select{height:auto}.celltoolbar label{margin-left:5px;margin-right:5px}.completions{position:absolute;z-index:10;overflow:hidden;border:1px solid #ababab;border-radius:2px;-webkit-box-shadow:0 6px 10px -1px #adadad;box-shadow:0 6px 10px -1px #adadad}.completions select{background:white;outline:none;border:none;padding:0;margin:0;overflow:auto;font-family:monospace;font-size:110%;color:#000;width:auto}.completions select option.context{color:#286090}#kernel_logo_widget{float:right !important;float:right}#kernel_logo_widget .current_kernel_logo{display:none;margin-top:-1px;margin-bottom:-1px;width:32px;height:32px}#menubar{box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;margin-top:1px}#menubar .navbar{border-top:1px;border-radius:0 0 2px 2px;margin-bottom:0}#menubar .navbar-toggle{float:left;padding-top:7px;padding-bottom:7px;border:none}#menubar .navbar-collapse{clear:left}.nav-wrapper{border-bottom:1px solid #e7e7e7}i.menu-icon{padding-top:4px}ul#help_menu li a{overflow:hidden;padding-right:2.2em}ul#help_menu li a i{margin-right:-1.2em}.dropdown-submenu{position:relative}.dropdown-submenu>.dropdown-menu{top:0;left:100%;margin-top:-6px;margin-left:-1px}.dropdown-submenu:hover>.dropdown-menu{display:block}.dropdown-submenu>a:after{display:inline-block;font:normal normal normal 14px/1 FontAwesome;font-size:inherit;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;transform:translate(0, 0);display:block;content:"\f0da";float:right;color:#333;margin-top:2px;margin-right:-10px}.dropdown-submenu>a:after.pull-left{margin-right:.3em}.dropdown-submenu>a:after.pull-right{margin-left:.3em}.dropdown-submenu:hover>a:after{color:#262626}.dropdown-submenu.pull-left{float:none}.dropdown-submenu.pull-left>.dropdown-menu{left:-100%;margin-left:10px}#notification_area{float:right !important;float:right;z-index:10}.indicator_area{float:right !important;float:right;color:#777;margin-left:5px;margin-right:5px;width:11px;z-index:10;text-align:center;width:auto}#kernel_indicator{float:right !important;float:right;color:#777;margin-left:5px;margin-right:5px;width:11px;z-index:10;text-align:center;width:auto;border-left:1px solid}#kernel_indicator .kernel_indicator_name{padding-left:5px;padding-right:5px}#modal_indicator{float:right !important;float:right;color:#777;margin-left:5px;margin-right:5px;width:11px;z-index:10;text-align:center;width:auto}#readonly-indicator{float:right !important;float:right;color:#777;margin-left:5px;margin-right:5px;width:11px;z-index:10;text-align:center;width:auto;margin-top:2px;margin-bottom:0;margin-left:0;margin-right:0;display:none}.modal_indicator:before{width:1.28571429em;text-align:center}.edit_mode .modal_indicator:before{display:inline-block;font:normal normal normal 14px/1 FontAwesome;font-size:inherit;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;transform:translate(0, 0);content:"\f040"}.edit_mode .modal_indicator:before.pull-left{margin-right:.3em}.edit_mode .modal_indicator:before.pull-right{margin-left:.3em}.command_mode .modal_indicator:before{display:inline-block;font:normal normal normal 14px/1 FontAwesome;font-size:inherit;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;transform:translate(0, 0);content:' '}.command_mode .modal_indicator:before.pull-left{margin-right:.3em}.command_mode .modal_indicator:before.pull-right{margin-left:.3em}.kernel_idle_icon:before{display:inline-block;font:normal normal normal 14px/1 FontAwesome;font-size:inherit;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;transform:translate(0, 0);content:"\f10c"}.kernel_idle_icon:before.pull-left{margin-right:.3em}.kernel_idle_icon:before.pull-right{margin-left:.3em}.kernel_busy_icon:before{display:inline-block;font:normal normal normal 14px/1 FontAwesome;font-size:inherit;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;transform:translate(0, 0);content:"\f111"}.kernel_busy_icon:before.pull-left{margin-right:.3em}.kernel_busy_icon:before.pull-right{margin-left:.3em}.kernel_dead_icon:before{display:inline-block;font:normal normal normal 14px/1 FontAwesome;font-size:inherit;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;transform:translate(0, 0);content:"\f1e2"}.kernel_dead_icon:before.pull-left{margin-right:.3em}.kernel_dead_icon:before.pull-right{margin-left:.3em}.kernel_disconnected_icon:before{display:inline-block;font:normal normal normal 14px/1 FontAwesome;font-size:inherit;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;transform:translate(0, 0);content:"\f127"}.kernel_disconnected_icon:before.pull-left{margin-right:.3em}.kernel_disconnected_icon:before.pull-right{margin-left:.3em}.notification_widget{color:#777;z-index:10;background:rgba(240,240,240,0.5);margin-right:4px;color:#333;background-color:#fff;border-color:#ccc}.notification_widget:hover,.notification_widget:focus,.notification_widget.focus,.notification_widget:active,.notification_widget.active,.open>.dropdown-toggle.notification_widget{color:#333;background-color:#e6e6e6;border-color:#adadad}.notification_widget:active,.notification_widget.active,.open>.dropdown-toggle.notification_widget{background-image:none}.notification_widget.disabled,.notification_widget[disabled],fieldset[disabled] .notification_widget,.notification_widget.disabled:hover,.notification_widget[disabled]:hover,fieldset[disabled] .notification_widget:hover,.notification_widget.disabled:focus,.notification_widget[disabled]:focus,fieldset[disabled] .notification_widget:focus,.notification_widget.disabled.focus,.notification_widget[disabled].focus,fieldset[disabled] .notification_widget.focus,.notification_widget.disabled:active,.notification_widget[disabled]:active,fieldset[disabled] .notification_widget:active,.notification_widget.disabled.active,.notification_widget[disabled].active,fieldset[disabled] .notification_widget.active{background-color:#fff;border-color:#ccc}.notification_widget .badge{color:#fff;background-color:#333}.notification_widget.warning{color:#fff;background-color:#f0ad4e;border-color:#eea236}.notification_widget.warning:hover,.notification_widget.warning:focus,.notification_widget.warning.focus,.notification_widget.warning:active,.notification_widget.warning.active,.open>.dropdown-toggle.notification_widget.warning{color:#fff;background-color:#ec971f;border-color:#d58512}.notification_widget.warning:active,.notification_widget.warning.active,.open>.dropdown-toggle.notification_widget.warning{background-image:none}.notification_widget.warning.disabled,.notification_widget.warning[disabled],fieldset[disabled] .notification_widget.warning,.notification_widget.warning.disabled:hover,.notification_widget.warning[disabled]:hover,fieldset[disabled] .notification_widget.warning:hover,.notification_widget.warning.disabled:focus,.notification_widget.warning[disabled]:focus,fieldset[disabled] .notification_widget.warning:focus,.notification_widget.warning.disabled.focus,.notification_widget.warning[disabled].focus,fieldset[disabled] .notification_widget.warning.focus,.notification_widget.warning.disabled:active,.notification_widget.warning[disabled]:active,fieldset[disabled] .notification_widget.warning:active,.notification_widget.warning.disabled.active,.notification_widget.warning[disabled].active,fieldset[disabled] .notification_widget.warning.active{background-color:#f0ad4e;border-color:#eea236}.notification_widget.warning .badge{color:#f0ad4e;background-color:#fff}.notification_widget.success{color:#fff;background-color:#5cb85c;border-color:#4cae4c}.notification_widget.success:hover,.notification_widget.success:focus,.notification_widget.success.focus,.notification_widget.success:active,.notification_widget.success.active,.open>.dropdown-toggle.notification_widget.success{color:#fff;background-color:#449d44;border-color:#398439}.notification_widget.success:active,.notification_widget.success.active,.open>.dropdown-toggle.notification_widget.success{background-image:none}.notification_widget.success.disabled,.notification_widget.success[disabled],fieldset[disabled] .notification_widget.success,.notification_widget.success.disabled:hover,.notification_widget.success[disabled]:hover,fieldset[disabled] .notification_widget.success:hover,.notification_widget.success.disabled:focus,.notification_widget.success[disabled]:focus,fieldset[disabled] .notification_widget.success:focus,.notification_widget.success.disabled.focus,.notification_widget.success[disabled].focus,fieldset[disabled] .notification_widget.success.focus,.notification_widget.success.disabled:active,.notification_widget.success[disabled]:active,fieldset[disabled] .notification_widget.success:active,.notification_widget.success.disabled.active,.notification_widget.success[disabled].active,fieldset[disabled] .notification_widget.success.active{background-color:#5cb85c;border-color:#4cae4c}.notification_widget.success .badge{color:#5cb85c;background-color:#fff}.notification_widget.info{color:#fff;background-color:#5bc0de;border-color:#46b8da}.notification_widget.info:hover,.notification_widget.info:focus,.notification_widget.info.focus,.notification_widget.info:active,.notification_widget.info.active,.open>.dropdown-toggle.notification_widget.info{color:#fff;background-color:#31b0d5;border-color:#269abc}.notification_widget.info:active,.notification_widget.info.active,.open>.dropdown-toggle.notification_widget.info{background-image:none}.notification_widget.info.disabled,.notification_widget.info[disabled],fieldset[disabled] .notification_widget.info,.notification_widget.info.disabled:hover,.notification_widget.info[disabled]:hover,fieldset[disabled] .notification_widget.info:hover,.notification_widget.info.disabled:focus,.notification_widget.info[disabled]:focus,fieldset[disabled] .notification_widget.info:focus,.notification_widget.info.disabled.focus,.notification_widget.info[disabled].focus,fieldset[disabled] .notification_widget.info.focus,.notification_widget.info.disabled:active,.notification_widget.info[disabled]:active,fieldset[disabled] .notification_widget.info:active,.notification_widget.info.disabled.active,.notification_widget.info[disabled].active,fieldset[disabled] .notification_widget.info.active{background-color:#5bc0de;border-color:#46b8da}.notification_widget.info .badge{color:#5bc0de;background-color:#fff}.notification_widget.danger{color:#fff;background-color:#d9534f;border-color:#d43f3a}.notification_widget.danger:hover,.notification_widget.danger:focus,.notification_widget.danger.focus,.notification_widget.danger:active,.notification_widget.danger.active,.open>.dropdown-toggle.notification_widget.danger{color:#fff;background-color:#c9302c;border-color:#ac2925}.notification_widget.danger:active,.notification_widget.danger.active,.open>.dropdown-toggle.notification_widget.danger{background-image:none}.notification_widget.danger.disabled,.notification_widget.danger[disabled],fieldset[disabled] .notification_widget.danger,.notification_widget.danger.disabled:hover,.notification_widget.danger[disabled]:hover,fieldset[disabled] .notification_widget.danger:hover,.notification_widget.danger.disabled:focus,.notification_widget.danger[disabled]:focus,fieldset[disabled] .notification_widget.danger:focus,.notification_widget.danger.disabled.focus,.notification_widget.danger[disabled].focus,fieldset[disabled] .notification_widget.danger.focus,.notification_widget.danger.disabled:active,.notification_widget.danger[disabled]:active,fieldset[disabled] .notification_widget.danger:active,.notification_widget.danger.disabled.active,.notification_widget.danger[disabled].active,fieldset[disabled] .notification_widget.danger.active{background-color:#d9534f;border-color:#d43f3a}.notification_widget.danger .badge{color:#d9534f;background-color:#fff}div#pager{background-color:#fff;font-size:14px;line-height:20px;overflow:hidden;display:none;position:fixed;bottom:0;width:100%;max-height:50%;padding-top:8px;-webkit-box-shadow:0 0 12px 1px rgba(87,87,87,0.2);box-shadow:0 0 12px 1px rgba(87,87,87,0.2);z-index:100;top:auto !important}div#pager pre{line-height:1.21429em;color:#000;background-color:#f7f7f7;padding:.4em}div#pager #pager-button-area{position:absolute;top:8px;right:20px}div#pager #pager-contents{position:relative;overflow:auto;width:100%;height:100%}div#pager #pager-contents #pager-container{position:relative;padding:15px 0;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box}div#pager .ui-resizable-handle{top:0;height:8px;background:#f7f7f7;border-top:1px solid #cfcfcf;border-bottom:1px solid #cfcfcf}div#pager .ui-resizable-handle::after{content:'';top:2px;left:50%;height:3px;width:30px;margin-left:-15px;position:absolute;border-top:1px solid #cfcfcf}.quickhelp{display:-webkit-box;-webkit-box-orient:horizontal;-webkit-box-align:stretch;display:-moz-box;-moz-box-orient:horizontal;-moz-box-align:stretch;display:box;box-orient:horizontal;box-align:stretch;display:flex;flex-direction:row;align-items:stretch}.shortcut_key{display:inline-block;width:20ex;text-align:right;font-family:monospace}.shortcut_descr{display:inline-block;-webkit-box-flex:1;-moz-box-flex:1;box-flex:1;flex:1}span.save_widget{margin-top:6px}span.save_widget span.filename{height:1em;line-height:1em;padding:3px;margin-left:16px;border:none;font-size:146.5%;border-radius:2px}span.save_widget span.filename:hover{background-color:#e6e6e6}span.checkpoint_status,span.autosave_status{font-size:small}@media (max-width:767px){span.save_widget{font-size:small}span.checkpoint_status,span.autosave_status{display:none}}@media (min-width:768px) and (max-width:991px){span.checkpoint_status{display:none}span.autosave_status{font-size:x-small}}.toolbar{padding:0;margin-left:-5px;margin-top:2px;margin-bottom:5px;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box}.toolbar select,.toolbar label{width:auto;vertical-align:middle;margin-right:2px;margin-bottom:0;display:inline;font-size:92%;margin-left:.3em;margin-right:.3em;padding:0;padding-top:3px}.toolbar .btn{padding:2px 8px}.toolbar .btn-group{margin-top:0;margin-left:5px}#maintoolbar{margin-bottom:-3px;margin-top:-8px;border:0;min-height:27px;margin-left:0;padding-top:11px;padding-bottom:3px}#maintoolbar .navbar-text{float:none;vertical-align:middle;text-align:right;margin-left:5px;margin-right:0;margin-top:0}.select-xs{height:24px}@-moz-keyframes fadeOut{from{opacity:1}to{opacity:0}}@-webkit-keyframes fadeOut{from{opacity:1}to{opacity:0}}@-moz-keyframes fadeIn{from{opacity:0}to{opacity:1}}@-webkit-keyframes fadeIn{from{opacity:0}to{opacity:1}}.bigtooltip{overflow:auto;height:200px;-webkit-transition-property:height;-webkit-transition-duration:500ms;-moz-transition-property:height;-moz-transition-duration:500ms;transition-property:height;transition-duration:500ms}.smalltooltip{-webkit-transition-property:height;-webkit-transition-duration:500ms;-moz-transition-property:height;-moz-transition-duration:500ms;transition-property:height;transition-duration:500ms;text-overflow:ellipsis;overflow:hidden;height:80px}.tooltipbuttons{position:absolute;padding-right:15px;top:0;right:0}.tooltiptext{padding-right:30px}.ipython_tooltip{max-width:700px;-webkit-animation:fadeOut 400ms;-moz-animation:fadeOut 400ms;animation:fadeOut 400ms;-webkit-animation:fadeIn 400ms;-moz-animation:fadeIn 400ms;animation:fadeIn 400ms;vertical-align:middle;background-color:#f7f7f7;overflow:visible;border:#ababab 1px solid;outline:none;padding:3px;margin:0;padding-left:7px;font-family:monospace;min-height:50px;-moz-box-shadow:0 6px 10px -1px #adadad;-webkit-box-shadow:0 6px 10px -1px #adadad;box-shadow:0 6px 10px -1px #adadad;border-radius:2px;position:absolute;z-index:1000}.ipython_tooltip a{float:right}.ipython_tooltip .tooltiptext pre{border:0;border-radius:0;font-size:100%;background-color:#f7f7f7}.pretooltiparrow{left:0;margin:0;top:-16px;width:40px;height:16px;overflow:hidden;position:absolute}.pretooltiparrow:before{background-color:#f7f7f7;border:1px #ababab solid;z-index:11;content:"";position:absolute;left:15px;top:10px;width:25px;height:25px;-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-ms-transform:rotate(45deg);-o-transform:rotate(45deg)}.terminal-app{background:#eee}.terminal-app #header{background:#fff;-webkit-box-shadow:0 0 12px 1px rgba(87,87,87,0.2);box-shadow:0 0 12px 1px rgba(87,87,87,0.2)}.terminal-app .terminal{float:left;font-family:monospace;color:white;background:black;padding:.4em;border-radius:2px;-webkit-box-shadow:0 0 12px 1px rgba(87,87,87,0.4);box-shadow:0 0 12px 1px rgba(87,87,87,0.4)}.terminal-app .terminal,.terminal-app .terminal dummy-screen{line-height:1em;font-size:14px}.terminal-app .terminal-cursor{color:black;background:white}.terminal-app #terminado-container{margin-top:20px}/*# sourceMappingURL=style.min.css.map */
+*/@media (max-width:767px){.notebook_app{padding-left:0;padding-right:0}}#ipython-main-app{box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;height:100%}div#notebook_panel{margin:0;padding:0;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;height:100%}#notebook{font-size:14px;line-height:20px;overflow-y:hidden;overflow-x:auto;width:100%;padding-top:20px;margin:0;outline:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;min-height:100%}@media not print{#notebook-container{padding:15px;background-color:#fff;min-height:0;-webkit-box-shadow:0 0 12px 1px rgba(87,87,87,0.2);box-shadow:0 0 12px 1px rgba(87,87,87,0.2)}}div.ui-widget-content{border:1px solid #ababab;outline:none}pre.dialog{background-color:#f7f7f7;border:1px solid #ddd;border-radius:2px;padding:.4em;padding-left:2em}p.dialog{padding:.2em}pre,code,kbd,samp{white-space:pre-wrap}#fonttest{font-family:monospace}p{margin-bottom:0}.end_space{min-height:100px;transition:height .2s ease}.notebook_app #header{-webkit-box-shadow:0 0 12px 1px rgba(87,87,87,0.2);box-shadow:0 0 12px 1px rgba(87,87,87,0.2)}@media not print{.notebook_app{background-color:#eee}}.celltoolbar{border:thin solid #cfcfcf;border-bottom:none;background:#eee;border-radius:2px 2px 0 0;width:100%;height:29px;padding-right:4px;display:-webkit-box;-webkit-box-orient:horizontal;-webkit-box-align:stretch;display:-moz-box;-moz-box-orient:horizontal;-moz-box-align:stretch;display:box;box-orient:horizontal;box-align:stretch;display:flex;flex-direction:row;align-items:stretch;-webkit-box-pack:end;-moz-box-pack:end;box-pack:end;justify-content:flex-end}@media print{.celltoolbar{display:none}}.ctb_hideshow{display:none;vertical-align:bottom}.ctb_global_show .ctb_show.ctb_hideshow{display:block}.ctb_global_show .ctb_show+.input_area,.ctb_global_show .ctb_show+div.text_cell_input,.ctb_global_show .ctb_show~div.text_cell_render{border-top-right-radius:0;border-top-left-radius:0}.ctb_global_show .ctb_show~div.text_cell_render{border:1px solid #cfcfcf}.celltoolbar{font-size:87%;padding-top:3px}.celltoolbar select{display:block;width:100%;height:32px;padding:6px 12px;font-size:13px;line-height:1.42857143;color:#555;background-color:#fff;background-image:none;border:1px solid #ccc;border-radius:2px;-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,0.075);box-shadow:inset 0 1px 1px rgba(0,0,0,0.075);-webkit-transition:border-color ease-in-out .15s, box-shadow ease-in-out .15s;-o-transition:border-color ease-in-out .15s, box-shadow ease-in-out .15s;transition:border-color ease-in-out .15s, box-shadow ease-in-out .15s;height:30px;padding:5px 10px;font-size:12px;line-height:1.5;border-radius:1px;width:inherit;font-size:inherit;height:22px;padding:0;display:inline-block}.celltoolbar select:focus{border-color:#66afe9;outline:0;-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);box-shadow:inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6)}.celltoolbar select::-moz-placeholder{color:#999;opacity:1}.celltoolbar select:-ms-input-placeholder{color:#999}.celltoolbar select::-webkit-input-placeholder{color:#999}.celltoolbar select[disabled],.celltoolbar select[readonly],fieldset[disabled] .celltoolbar select{cursor:not-allowed;background-color:#eee;opacity:1}textarea.celltoolbar select{height:auto}select.celltoolbar select{height:30px;line-height:30px}textarea.celltoolbar select,select[multiple].celltoolbar select{height:auto}.celltoolbar label{margin-left:5px;margin-right:5px}.completions{position:absolute;z-index:10;overflow:hidden;border:1px solid #ababab;border-radius:2px;-webkit-box-shadow:0 6px 10px -1px #adadad;box-shadow:0 6px 10px -1px #adadad}.completions select{background:white;outline:none;border:none;padding:0;margin:0;overflow:auto;font-family:monospace;font-size:110%;color:#000;width:auto}.completions select option.context{color:#286090}#kernel_logo_widget{float:right !important;float:right}#kernel_logo_widget .current_kernel_logo{display:none;margin-top:-1px;margin-bottom:-1px;width:32px;height:32px}#menubar{box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;margin-top:1px}#menubar .navbar{border-top:1px;border-radius:0 0 2px 2px;margin-bottom:0}#menubar .navbar-toggle{float:left;padding-top:7px;padding-bottom:7px;border:none}#menubar .navbar-collapse{clear:left}.nav-wrapper{border-bottom:1px solid #e7e7e7}i.menu-icon{padding-top:4px}ul#help_menu li a{overflow:hidden;padding-right:2.2em}ul#help_menu li a i{margin-right:-1.2em}.dropdown-submenu{position:relative}.dropdown-submenu>.dropdown-menu{top:0;left:100%;margin-top:-6px;margin-left:-1px}.dropdown-submenu:hover>.dropdown-menu{display:block}.dropdown-submenu>a:after{display:inline-block;font:normal normal normal 14px/1 FontAwesome;font-size:inherit;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;transform:translate(0, 0);display:block;content:"\f0da";float:right;color:#333;margin-top:2px;margin-right:-10px}.dropdown-submenu>a:after.pull-left{margin-right:.3em}.dropdown-submenu>a:after.pull-right{margin-left:.3em}.dropdown-submenu:hover>a:after{color:#262626}.dropdown-submenu.pull-left{float:none}.dropdown-submenu.pull-left>.dropdown-menu{left:-100%;margin-left:10px}#notification_area{float:right !important;float:right;z-index:10}.indicator_area{float:right !important;float:right;color:#777;margin-left:5px;margin-right:5px;width:11px;z-index:10;text-align:center;width:auto}#kernel_indicator{float:right !important;float:right;color:#777;margin-left:5px;margin-right:5px;width:11px;z-index:10;text-align:center;width:auto;border-left:1px solid}#kernel_indicator .kernel_indicator_name{padding-left:5px;padding-right:5px}#modal_indicator{float:right !important;float:right;color:#777;margin-left:5px;margin-right:5px;width:11px;z-index:10;text-align:center;width:auto}#readonly-indicator{float:right !important;float:right;color:#777;margin-left:5px;margin-right:5px;width:11px;z-index:10;text-align:center;width:auto;margin-top:2px;margin-bottom:0;margin-left:0;margin-right:0;display:none}.modal_indicator:before{width:1.28571429em;text-align:center}.edit_mode .modal_indicator:before{display:inline-block;font:normal normal normal 14px/1 FontAwesome;font-size:inherit;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;transform:translate(0, 0);content:"\f040"}.edit_mode .modal_indicator:before.pull-left{margin-right:.3em}.edit_mode .modal_indicator:before.pull-right{margin-left:.3em}.command_mode .modal_indicator:before{display:inline-block;font:normal normal normal 14px/1 FontAwesome;font-size:inherit;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;transform:translate(0, 0);content:' '}.command_mode .modal_indicator:before.pull-left{margin-right:.3em}.command_mode .modal_indicator:before.pull-right{margin-left:.3em}.kernel_idle_icon:before{display:inline-block;font:normal normal normal 14px/1 FontAwesome;font-size:inherit;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;transform:translate(0, 0);content:"\f10c"}.kernel_idle_icon:before.pull-left{margin-right:.3em}.kernel_idle_icon:before.pull-right{margin-left:.3em}.kernel_busy_icon:before{display:inline-block;font:normal normal normal 14px/1 FontAwesome;font-size:inherit;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;transform:translate(0, 0);content:"\f111"}.kernel_busy_icon:before.pull-left{margin-right:.3em}.kernel_busy_icon:before.pull-right{margin-left:.3em}.kernel_dead_icon:before{display:inline-block;font:normal normal normal 14px/1 FontAwesome;font-size:inherit;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;transform:translate(0, 0);content:"\f1e2"}.kernel_dead_icon:before.pull-left{margin-right:.3em}.kernel_dead_icon:before.pull-right{margin-left:.3em}.kernel_disconnected_icon:before{display:inline-block;font:normal normal normal 14px/1 FontAwesome;font-size:inherit;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;transform:translate(0, 0);content:"\f127"}.kernel_disconnected_icon:before.pull-left{margin-right:.3em}.kernel_disconnected_icon:before.pull-right{margin-left:.3em}.notification_widget{color:#777;z-index:10;background:rgba(240,240,240,0.5);margin-right:4px;color:#333;background-color:#fff;border-color:#ccc}.notification_widget:hover,.notification_widget:focus,.notification_widget.focus,.notification_widget:active,.notification_widget.active,.open>.dropdown-toggle.notification_widget{color:#333;background-color:#e6e6e6;border-color:#adadad}.notification_widget:active,.notification_widget.active,.open>.dropdown-toggle.notification_widget{background-image:none}.notification_widget.disabled,.notification_widget[disabled],fieldset[disabled] .notification_widget,.notification_widget.disabled:hover,.notification_widget[disabled]:hover,fieldset[disabled] .notification_widget:hover,.notification_widget.disabled:focus,.notification_widget[disabled]:focus,fieldset[disabled] .notification_widget:focus,.notification_widget.disabled.focus,.notification_widget[disabled].focus,fieldset[disabled] .notification_widget.focus,.notification_widget.disabled:active,.notification_widget[disabled]:active,fieldset[disabled] .notification_widget:active,.notification_widget.disabled.active,.notification_widget[disabled].active,fieldset[disabled] .notification_widget.active{background-color:#fff;border-color:#ccc}.notification_widget .badge{color:#fff;background-color:#333}.notification_widget.warning{color:#fff;background-color:#f0ad4e;border-color:#eea236}.notification_widget.warning:hover,.notification_widget.warning:focus,.notification_widget.warning.focus,.notification_widget.warning:active,.notification_widget.warning.active,.open>.dropdown-toggle.notification_widget.warning{color:#fff;background-color:#ec971f;border-color:#d58512}.notification_widget.warning:active,.notification_widget.warning.active,.open>.dropdown-toggle.notification_widget.warning{background-image:none}.notification_widget.warning.disabled,.notification_widget.warning[disabled],fieldset[disabled] .notification_widget.warning,.notification_widget.warning.disabled:hover,.notification_widget.warning[disabled]:hover,fieldset[disabled] .notification_widget.warning:hover,.notification_widget.warning.disabled:focus,.notification_widget.warning[disabled]:focus,fieldset[disabled] .notification_widget.warning:focus,.notification_widget.warning.disabled.focus,.notification_widget.warning[disabled].focus,fieldset[disabled] .notification_widget.warning.focus,.notification_widget.warning.disabled:active,.notification_widget.warning[disabled]:active,fieldset[disabled] .notification_widget.warning:active,.notification_widget.warning.disabled.active,.notification_widget.warning[disabled].active,fieldset[disabled] .notification_widget.warning.active{background-color:#f0ad4e;border-color:#eea236}.notification_widget.warning .badge{color:#f0ad4e;background-color:#fff}.notification_widget.success{color:#fff;background-color:#5cb85c;border-color:#4cae4c}.notification_widget.success:hover,.notification_widget.success:focus,.notification_widget.success.focus,.notification_widget.success:active,.notification_widget.success.active,.open>.dropdown-toggle.notification_widget.success{color:#fff;background-color:#449d44;border-color:#398439}.notification_widget.success:active,.notification_widget.success.active,.open>.dropdown-toggle.notification_widget.success{background-image:none}.notification_widget.success.disabled,.notification_widget.success[disabled],fieldset[disabled] .notification_widget.success,.notification_widget.success.disabled:hover,.notification_widget.success[disabled]:hover,fieldset[disabled] .notification_widget.success:hover,.notification_widget.success.disabled:focus,.notification_widget.success[disabled]:focus,fieldset[disabled] .notification_widget.success:focus,.notification_widget.success.disabled.focus,.notification_widget.success[disabled].focus,fieldset[disabled] .notification_widget.success.focus,.notification_widget.success.disabled:active,.notification_widget.success[disabled]:active,fieldset[disabled] .notification_widget.success:active,.notification_widget.success.disabled.active,.notification_widget.success[disabled].active,fieldset[disabled] .notification_widget.success.active{background-color:#5cb85c;border-color:#4cae4c}.notification_widget.success .badge{color:#5cb85c;background-color:#fff}.notification_widget.info{color:#fff;background-color:#5bc0de;border-color:#46b8da}.notification_widget.info:hover,.notification_widget.info:focus,.notification_widget.info.focus,.notification_widget.info:active,.notification_widget.info.active,.open>.dropdown-toggle.notification_widget.info{color:#fff;background-color:#31b0d5;border-color:#269abc}.notification_widget.info:active,.notification_widget.info.active,.open>.dropdown-toggle.notification_widget.info{background-image:none}.notification_widget.info.disabled,.notification_widget.info[disabled],fieldset[disabled] .notification_widget.info,.notification_widget.info.disabled:hover,.notification_widget.info[disabled]:hover,fieldset[disabled] .notification_widget.info:hover,.notification_widget.info.disabled:focus,.notification_widget.info[disabled]:focus,fieldset[disabled] .notification_widget.info:focus,.notification_widget.info.disabled.focus,.notification_widget.info[disabled].focus,fieldset[disabled] .notification_widget.info.focus,.notification_widget.info.disabled:active,.notification_widget.info[disabled]:active,fieldset[disabled] .notification_widget.info:active,.notification_widget.info.disabled.active,.notification_widget.info[disabled].active,fieldset[disabled] .notification_widget.info.active{background-color:#5bc0de;border-color:#46b8da}.notification_widget.info .badge{color:#5bc0de;background-color:#fff}.notification_widget.danger{color:#fff;background-color:#d9534f;border-color:#d43f3a}.notification_widget.danger:hover,.notification_widget.danger:focus,.notification_widget.danger.focus,.notification_widget.danger:active,.notification_widget.danger.active,.open>.dropdown-toggle.notification_widget.danger{color:#fff;background-color:#c9302c;border-color:#ac2925}.notification_widget.danger:active,.notification_widget.danger.active,.open>.dropdown-toggle.notification_widget.danger{background-image:none}.notification_widget.danger.disabled,.notification_widget.danger[disabled],fieldset[disabled] .notification_widget.danger,.notification_widget.danger.disabled:hover,.notification_widget.danger[disabled]:hover,fieldset[disabled] .notification_widget.danger:hover,.notification_widget.danger.disabled:focus,.notification_widget.danger[disabled]:focus,fieldset[disabled] .notification_widget.danger:focus,.notification_widget.danger.disabled.focus,.notification_widget.danger[disabled].focus,fieldset[disabled] .notification_widget.danger.focus,.notification_widget.danger.disabled:active,.notification_widget.danger[disabled]:active,fieldset[disabled] .notification_widget.danger:active,.notification_widget.danger.disabled.active,.notification_widget.danger[disabled].active,fieldset[disabled] .notification_widget.danger.active{background-color:#d9534f;border-color:#d43f3a}.notification_widget.danger .badge{color:#d9534f;background-color:#fff}div#pager{background-color:#fff;font-size:14px;line-height:20px;overflow:hidden;display:none;position:fixed;bottom:0;width:100%;max-height:50%;padding-top:8px;-webkit-box-shadow:0 0 12px 1px rgba(87,87,87,0.2);box-shadow:0 0 12px 1px rgba(87,87,87,0.2);z-index:100;top:auto !important}div#pager pre{line-height:1.21429em;color:#000;background-color:#f7f7f7;padding:.4em}div#pager #pager-button-area{position:absolute;top:8px;right:20px}div#pager #pager-contents{position:relative;overflow:auto;width:100%;height:100%}div#pager #pager-contents #pager-container{position:relative;padding:15px 0;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box}div#pager .ui-resizable-handle{top:0;height:8px;background:#f7f7f7;border-top:1px solid #cfcfcf;border-bottom:1px solid #cfcfcf}div#pager .ui-resizable-handle::after{content:'';top:2px;left:50%;height:3px;width:30px;margin-left:-15px;position:absolute;border-top:1px solid #cfcfcf}.quickhelp{display:-webkit-box;-webkit-box-orient:horizontal;-webkit-box-align:stretch;display:-moz-box;-moz-box-orient:horizontal;-moz-box-align:stretch;display:box;box-orient:horizontal;box-align:stretch;display:flex;flex-direction:row;align-items:stretch}.shortcut_key{display:inline-block;width:20ex;text-align:right;font-family:monospace}.shortcut_descr{display:inline-block;-webkit-box-flex:1;-moz-box-flex:1;box-flex:1;flex:1}span.save_widget{margin-top:6px}span.save_widget span.filename{height:1em;line-height:1em;padding:3px;margin-left:16px;border:none;font-size:146.5%;border-radius:2px}span.save_widget span.filename:hover{background-color:#e6e6e6}span.checkpoint_status,span.autosave_status{font-size:small}@media (max-width:767px){span.save_widget{font-size:small}span.checkpoint_status,span.autosave_status{display:none}}@media (min-width:768px) and (max-width:991px){span.checkpoint_status{display:none}span.autosave_status{font-size:x-small}}.toolbar{padding:0;margin-left:-5px;margin-top:2px;margin-bottom:5px;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box}.toolbar select,.toolbar label{width:auto;vertical-align:middle;margin-right:2px;margin-bottom:0;display:inline;font-size:92%;margin-left:.3em;margin-right:.3em;padding:0;padding-top:3px}.toolbar .btn{padding:2px 8px}.toolbar .btn-group{margin-top:0;margin-left:5px}#maintoolbar{margin-bottom:-3px;margin-top:-8px;border:0;min-height:27px;margin-left:0;padding-top:11px;padding-bottom:3px}#maintoolbar .navbar-text{float:none;vertical-align:middle;text-align:right;margin-left:5px;margin-right:0;margin-top:0}.select-xs{height:24px}@-moz-keyframes fadeOut{from{opacity:1}to{opacity:0}}@-webkit-keyframes fadeOut{from{opacity:1}to{opacity:0}}@-moz-keyframes fadeIn{from{opacity:0}to{opacity:1}}@-webkit-keyframes fadeIn{from{opacity:0}to{opacity:1}}.bigtooltip{overflow:auto;height:200px;-webkit-transition-property:height;-webkit-transition-duration:500ms;-moz-transition-property:height;-moz-transition-duration:500ms;transition-property:height;transition-duration:500ms}.smalltooltip{-webkit-transition-property:height;-webkit-transition-duration:500ms;-moz-transition-property:height;-moz-transition-duration:500ms;transition-property:height;transition-duration:500ms;text-overflow:ellipsis;overflow:hidden;height:80px}.tooltipbuttons{position:absolute;padding-right:15px;top:0;right:0}.tooltiptext{padding-right:30px}.ipython_tooltip{max-width:700px;-webkit-animation:fadeOut 400ms;-moz-animation:fadeOut 400ms;animation:fadeOut 400ms;-webkit-animation:fadeIn 400ms;-moz-animation:fadeIn 400ms;animation:fadeIn 400ms;vertical-align:middle;background-color:#f7f7f7;overflow:visible;border:#ababab 1px solid;outline:none;padding:3px;margin:0;padding-left:7px;font-family:monospace;min-height:50px;-moz-box-shadow:0 6px 10px -1px #adadad;-webkit-box-shadow:0 6px 10px -1px #adadad;box-shadow:0 6px 10px -1px #adadad;border-radius:2px;position:absolute;z-index:1000}.ipython_tooltip a{float:right}.ipython_tooltip .tooltiptext pre{border:0;border-radius:0;font-size:100%;background-color:#f7f7f7}.pretooltiparrow{left:0;margin:0;top:-16px;width:40px;height:16px;overflow:hidden;position:absolute}.pretooltiparrow:before{background-color:#f7f7f7;border:1px #ababab solid;z-index:11;content:"";position:absolute;left:15px;top:10px;width:25px;height:25px;-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-ms-transform:rotate(45deg);-o-transform:rotate(45deg)}.terminal-app{background:#eee}.terminal-app #header{background:#fff;-webkit-box-shadow:0 0 12px 1px rgba(87,87,87,0.2);box-shadow:0 0 12px 1px rgba(87,87,87,0.2)}.terminal-app .terminal{float:left;font-family:monospace;color:white;background:black;padding:.4em;border-radius:2px;-webkit-box-shadow:0 0 12px 1px rgba(87,87,87,0.4);box-shadow:0 0 12px 1px rgba(87,87,87,0.4)}.terminal-app .terminal,.terminal-app .terminal dummy-screen{line-height:1em;font-size:14px}.terminal-app .terminal-cursor{color:black;background:white}.terminal-app #terminado-container{margin-top:20px}/*# sourceMappingURL=style.min.css.map */
     </style>
 <style type="text/css">
     .highlight .hll { background-color: #ffffcc }
@@ -187,7 +184,7 @@ function toggleHeader(div) {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Fields-as-Curried-Functions">Fields as Curried Functions<a class="anchor-link" href="#Fields-as-Curried-Functions">&#182;</a></h1>
+<h1 id="1.-Fields-as-Curried-Functions">1. Fields as Curried Functions<a class="anchor-link" href="#1.-Fields-as-Curried-Functions">&#182;</a></h1>
 </div>
 </div>
 </div>
@@ -207,19 +204,23 @@ function toggleHeader(div) {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Table-of-Contents">Table of Contents<a class="anchor-link" href="#Table-of-Contents">&#182;</a></h2><ul>
-<li><a href="#Fields-as-Curried-Functions">Fields as Curried Functions</a></li>
-<li><a href="#Gravity">Gravity</a><ul>
-<li><a href="#Graphing-the-near-Earth-Gravitational-Pull">Graphing the near Earth Gravitational Pull</a></li>
-<li><a href="#Not-Falling-is-Unnatural">Not Falling is Unnatural</a></li>
+<li><a href="#1.-Fields-as-Curried-Functions">1. Fields as Curried Functions</a></li>
+<li><a href="#2.-Gravity">2. Gravity</a><ul>
+<li><a href="#2.1-Graphing-the-near-Earth-Gravitational-Pull">2.1 Graphing the near Earth Gravitational Pull</a></li>
+<li><a href="#2.2-Not-Falling-is-Unnatural">2.2 Not Falling is Unnatural</a></li>
 </ul>
 </li>
-<li><a href="#Vector-Fields">Vector Fields</a><ul>
-<li><a href="#Finally,-On-Currying-vs-Fields">Finally, On Currying vs Fields</a><ul>
-<li><a href="#A-quick-note-on-Observables">A quick note on Observables</a></li>
-<li><a href="#Quantum-Field-Theory">Quantum Field Theory</a></li>
+<li><a href="#3.-Vector-Fields">3. Vector Fields</a><ul>
+<li><a href="#3.1-Finally,-On-Currying-vs-Fields">3.1 Finally, On Currying vs Fields</a><ul>
+<li><a href="#3.1.1-A-quick-note-on-Observables">3.1.1 A quick note on Observables</a></li>
+<li><a href="#3.1.2-Quantum-Field-Theory">3.1.2 Quantum Field Theory</a></li>
+<li><a href="#3.1.3-Speculations-or,-Here-be-Dragons">3.1.3 Speculations or, Here be Dragons</a></li>
 </ul>
 </li>
-<li><a href="#Examples-by-Visualizations-of-and-Interacting-with-Static-Fields">Examples by Visualizations of and Interacting with Static Fields</a></li>
+</ul>
+</li>
+<li><a href="#4.-Examples-by-Visualizations-of-and-Interacting-with-Static-Fields">4. Examples by Visualizations of and Interacting with Static Fields</a><ul>
+<li><a href="#4.1-Generalizing-to-Static-Fields">4.1 Generalizing to Static Fields</a></li>
 </ul>
 </li>
 </ul>
@@ -232,7 +233,7 @@ function toggleHeader(div) {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Gravity">Gravity<a class="anchor-link" href="#Gravity">&#182;</a></h1>
+<h1 id="2.-Gravity">2. Gravity<a class="anchor-link" href="#2.-Gravity">&#182;</a></h1>
 </div>
 </div>
 </div>
@@ -241,11 +242,12 @@ function toggleHeader(div) {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>First some definitions:</p>
+<p>First, some definitions:</p>
 
 </div>
 </div>
 </div>
+
 
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -284,7 +286,7 @@ function toggleHeader(div) {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class="highlight hl-fsharp"><pre><span class="k">let</span> <span class="nv">grav_force</span> <span class="o">(</span><span class="n">m1</span><span class="o">:</span><span class="kt">float</span><span class="o">&lt;</span> <span class="n">kg</span><span class="o">&gt;)</span> <span class="o">(</span><span class="n">r</span><span class="o">:</span><span class="kt">float</span><span class="o">&lt;</span><span class="n">m</span><span class="o">&gt;)</span> <span class="o">(</span><span class="n">m2</span><span class="o">:</span><span class="kt">float</span><span class="o">&lt;</span><span class="n">kg</span><span class="o">&gt;)</span> <span class="o">=</span>        
@@ -300,7 +302,7 @@ function toggleHeader(div) {
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[6]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[4]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -361,7 +363,7 @@ new function: int &#10233; int which takes a number and returns 5 + that number.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class="highlight hl-fsharp"><pre><span class="k">let</span> <span class="nv">earth_mass</span> <span class="o">=</span> <span class="mi">5</span><span class="o">.</span><span class="mi">96</span><span class="n">e24</span><span class="o">&lt;</span><span class="n">kg</span><span class="o">&gt;</span>
@@ -377,7 +379,7 @@ new function: int &#10233; int which takes a number and returns 5 + that number.
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[7]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[5]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -405,7 +407,7 @@ val earth_grav &#8712; (float&lt;m&gt; &#10233; float&lt;kg&gt; &#10233; float&l
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class="highlight hl-fsharp"><pre><span class="k">let</span> <span class="nv">flip</span> <span class="n">f</span> <span class="n">a</span> <span class="n">b</span> <span class="o">=</span> <span class="n">f</span> <span class="n">b</span> <span class="n">a</span>
@@ -420,7 +422,7 @@ val earth_grav &#8712; (float&lt;m&gt; &#10233; float&lt;kg&gt; &#10233; float&l
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[8]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[6]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -509,7 +511,7 @@ weaker than on the surface.</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[41]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class="highlight hl-fsharp"><pre><span class="k">let</span> <span class="nv">mass_moon</span> <span class="o">=</span> <span class="mi">7</span><span class="o">.</span><span class="mi">3459</span><span class="n">e22</span><span class="o">&lt;</span><span class="n">kg</span><span class="o">&gt;</span>
@@ -532,7 +534,7 @@ weaker than on the surface.</div>
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[41]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[6]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -556,7 +558,7 @@ val it &#8712; float&lt;N&gt; &#10799; float&lt;N&gt; &#10799; float&lt;N&gt; =
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Graphing-the-near-Earth-Gravitational-Pull">Graphing the near Earth Gravitational Pull<a class="anchor-link" href="#Graphing-the-near-Earth-Gravitational-Pull">&#182;</a></h2>
+<h2 id="2.1-Graphing-the-near-Earth-Gravitational-Pull">2.1 Graphing the near Earth Gravitational Pull<a class="anchor-link" href="#2.1-Graphing-the-near-Earth-Gravitational-Pull">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -570,10 +572,9 @@ val it &#8712; float&lt;N&gt; &#10799; float&lt;N&gt; &#10799; float&lt;N&gt; =
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[291]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class="highlight hl-fsharp"><pre><span class="k">let</span> <span class="nv">pois</span> <span class="o">=</span> <span class="o">[|</span><span class="s">&quot;~Low Earth Orbit Min&quot;</span><span class="o">,</span>   <span class="mi">160</span><span class="o">.&lt;</span><span class="n">m</span><span class="o">&gt;</span>  
@@ -598,7 +599,7 @@ val it &#8712; float&lt;N&gt; &#10799; float&lt;N&gt; &#10799; float&lt;N&gt; =
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[291]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[8]:</div>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <table><tbody><tr><th>Location</th>
@@ -755,7 +756,7 @@ $("#placeholder").append("<div style='position:absolute;left:" + (lpos.left + 4)
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Not-Falling-is-Unnatural">Not Falling is Unnatural<a class="anchor-link" href="#Not-Falling-is-Unnatural">&#182;</a></h2>
+<h2 id="2.2-Not-Falling-is-Unnatural">2.2 Not Falling is Unnatural<a class="anchor-link" href="#2.2-Not-Falling-is-Unnatural">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -804,7 +805,7 @@ is weight as in the force exerted by participating in a gravitational field
 and there is the everyday notion of weight
 we feel. They're related since our weight comes from being party to a gravitational field 
 while something else pushes
-back just as hard as the Earth is pulling.
+back just as hard as the Earth is pulling.<br><br>
 The problem arises when we combine our notion of fall (downwards) with the idea that weight 
 has to feel like
 something. But in fact, just being in a (uniform) gravitational field is 
@@ -843,7 +844,7 @@ and miss the ground by accident.</div>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Vector-Fields">Vector Fields<a class="anchor-link" href="#Vector-Fields">&#182;</a></h1>
+<h1 id="3.-Vector-Fields">3. Vector Fields<a class="anchor-link" href="#3.-Vector-Fields">&#182;</a></h1>
 </div>
 </div>
 </div>
@@ -860,7 +861,7 @@ and miss the ground by accident.</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="collheader" style="background-color:gray;cursor:pointer;margin-left:83.5px;color:white;font-weight:bold;font-size:18px" onclick="toggleHeader(this)" info="vector helpers">Expand vector helpers</div><div class="input" style="display: none;">
-<div class="prompt input_prompt">In&nbsp;[153]:</div>
+<div class="prompt input_prompt">In&nbsp;[174]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class="highlight hl-fsharp"><pre><span class="c1">//COLLAPSIBLENOOUTPUT [[vector helpers]]</span>
@@ -886,7 +887,7 @@ and miss the ground by accident.</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[88]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class="highlight hl-fsharp"><pre><span class="k">let</span> <span class="nv">grav_field</span> <span class="o">(</span><span class="n">m1</span><span class="o">:</span><span class="kt">float</span><span class="o">&lt;</span><span class="n">kg</span><span class="o">&gt;)</span> <span class="o">(</span><span class="n">r</span><span class="o">:</span><span class="kt">float</span><span class="o">&lt;</span><span class="n">m</span><span class="o">&gt;</span> <span class="bp">[]</span><span class="o">)</span> <span class="o">(</span><span class="n">m2</span><span class="o">:</span><span class="kt">float</span><span class="o">&lt;</span><span class="n">kg</span><span class="o">&gt;)</span> <span class="o">=</span>        
@@ -903,7 +904,7 @@ and miss the ground by accident.</div>
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[88]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[11]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -964,7 +965,7 @@ and miss the ground by accident.</div>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Finally,-On-Currying-vs-Fields">Finally, On Currying vs Fields<a class="anchor-link" href="#Finally,-On-Currying-vs-Fields">&#182;</a></h2>
+<h2 id="3.1-Finally,-On-Currying-vs-Fields">3.1 Finally, On Currying vs Fields<a class="anchor-link" href="#3.1-Finally,-On-Currying-vs-Fields">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -984,7 +985,7 @@ and miss the ground by accident.</div>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="A-quick-note-on-Observables">A quick note on Observables<a class="anchor-link" href="#A-quick-note-on-Observables">&#182;</a></h3>
+<h3 id="3.1.1-A-quick-note-on-Observables">3.1.1 A quick note on Observables<a class="anchor-link" href="#3.1.1-A-quick-note-on-Observables">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -1003,7 +1004,7 @@ and miss the ground by accident.</div>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Quantum-Field-Theory">Quantum Field Theory<a class="anchor-link" href="#Quantum-Field-Theory">&#182;</a></h3>
+<h3 id="3.1.2-Quantum-Field-Theory">3.1.2 Quantum Field Theory<a class="anchor-link" href="#3.1.2-Quantum-Field-Theory">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -1014,8 +1015,8 @@ and miss the ground by accident.</div>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Quantum Field Theory further muddies our picture because there, people talk about fields as if they were a real thing and particles as excitations in this field. If fields are actually curried functions with specializations obtained through partial application, what does it mean for a function to be excited? However, it's worth remembering that at the bottom of it all, there is a computation that's carried out; a fluctuating field suggests that there's a computation unfolding&#8212;in other words, evaluating the field gives different values over time. This is also suggestive of another curiosity&#8212;fields in physics are actually two different things. There is the field as function and then there is the underlying computation that is eventually evaluated (or calculation or phenomenon*, the 'real' thing).</p>
 <p>In the classical world, measurement yields simple things like vectors, in the quantum realm we get probability distributions. There exist computations whose outputs are also probability distributions: probabilistic programs. Putting all these together, when a physicist says fields are interacting or oscillating, we can think of a probabilistic program (on noncommuting random variables) whose inputs are curried functions and, in some sense, mutually recursive with other 'fields', all of which unfolds some computation (over time).</p>
-<p>*<em>If for whatever reason, you do not like the idea of a computable reality, at the least our only interface with it through testable predictions must be</em></p>
-
+<p>*<em>If for whatever reason, you do not like the idea of a computable reality, at the least our only interface with it through testable predictions must be.</em></p>
+<h3 id="3.1.3-Speculations-or,-Here-be-Dragons">3.1.3 Speculations or, Here be Dragons<a class="anchor-link" href="#3.1.3-Speculations-or,-Here-be-Dragons">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -1024,11 +1025,10 @@ and miss the ground by accident.</div>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Examples-by-Visualizations-of-and-Interacting-with-Static-Fields">Examples by Visualizations of and Interacting with Static Fields<a class="anchor-link" href="#Examples-by-Visualizations-of-and-Interacting-with-Static-Fields">&#182;</a></h2>
+<h1 id="4.-Examples-by-Visualizations-of-and-Interacting-with-Static-Fields">4. Examples by Visualizations of and Interacting with Static Fields<a class="anchor-link" href="#4.-Examples-by-Visualizations-of-and-Interacting-with-Static-Fields">&#182;</a></h1>
 </div>
 </div>
 </div>
-
 <div class="cell border-box-sizing code_cell rendered">
 
 
@@ -1056,11 +1056,11 @@ function rangeArray(start,step,end){
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="collheader" style="background-color:gray;cursor:pointer;margin-left:83.5px;color:white;font-weight:bold;font-size:18px" onclick="toggleHeader(this)" info="Visualize Fields">Expand Visualize Fields</div><div class="input" style="display: none;">
-<div class="prompt input_prompt">In&nbsp;[271]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class="highlight hl-fsharp"><pre><span class="c1">//COLLAPSIBLE [[Visualize Fields]]</span>
-<span class="o">[&lt;</span><span class="n">JSEmitInlineAttribute</span><span class="o">(</span><span class="s">&quot;rangeArray({0}, {1},{2})&quot;</span><span class="o">)&gt;]</span>
+<span class="o">[&lt;</span><span class="n">JSEmitInlineAttribute</span><span class="o">(</span><span class="s">&quot;rangeArray({0},{1},{2})&quot;</span><span class="o">)&gt;]</span>
 <span class="k">let</span> <span class="nv">inline</span> <span class="n">rangeArray</span> <span class="n">x</span> <span class="n">y</span> <span class="n">z</span> <span class="o">=</span> <span class="o">[||]</span>
 
 <span class="o">[&lt;</span><span class="n">JSEmitInlineAttribute</span><span class="o">(</span><span class="s">&quot;6.674e-11&quot;</span><span class="o">)&gt;]</span>
@@ -1116,10 +1116,10 @@ function rangeArray(start,step,end){
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[271]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[13]:</div>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
-<script>var TupleDouble______Double______Double______Double______Double_____, FSI_0420__main$, FSI_0420__grav_force$, Array__ZeroCreate$Double___Double___, Array__ZeroCreate$Double_Double, Array__Initialize$Double___Double___, Array__Initialize$Double_Double, Array__Create$Double_Double, Array__Copy$Double_Double, Array__BoxedLength$;
+<script>var TupleDouble______Double______Double______Double______Double_____, FSI_0018__main$, FSI_0018__grav_force$, Array__ZeroCreate$Double___Double___, Array__ZeroCreate$Double_Double, Array__Initialize$Double___Double___, Array__Initialize$Double_Double, Array__Create$Double_Double, Array__Copy$Double_Double, Array__BoxedLength$;
   Array__BoxedLength$ = (function (xs)
   {
     return xs.length;;
@@ -1166,7 +1166,7 @@ function rangeArray(start,step,end){
   {
     return new Array(size);;
   });
-  FSI_0420__grav_force$ = (function (m1, r, m2)
+  FSI_0018__grav_force$ = (function (m1, r, m2)
   {
     if ((r == 0.000000)) 
     {
@@ -1177,7 +1177,7 @@ function rangeArray(start,step,end){
       return (((m1 * m2) * 6.674e-11) / (r * r));
     };
   });
-  FSI_0420__main$ = (function (unitVar0)
+  FSI_0018__main$ = (function (unitVar0)
   {
     var mass_moon = 73459000000000000000000.000000;
     var rad_moon = (1737.500000 * 1000.000000);
@@ -1187,7 +1187,7 @@ function rangeArray(start,step,end){
     {
       return (function (m2)
       {
-        return FSI_0420__grav_force$(m1, r, m2);
+        return FSI_0018__grav_force$(m1, r, m2);
       });
     });
     var earth_grav = _6;
@@ -1198,13 +1198,13 @@ function rangeArray(start,step,end){
     {
       return (function (m2)
       {
-        return FSI_0420__grav_force$(_m1, r, m2);
+        return FSI_0018__grav_force$(_m1, r, m2);
       });
     });
     var jupiter_grav = _23;
     var jupiter_rad = 69173000.000000;
-    var masses = rangeArray(10, 1000,100000);
-    var radii = rangeArray(0, 1000,100000);
+    var masses = rangeArray(10,1000,100000);
+    var radii = rangeArray(0,1000,100000);
     var xss = Array__Initialize$Double___Double___(Array__BoxedLength$(masses), (function (_arg1)
     {
       return Array__Copy$Double_Double(radii);
@@ -1231,7 +1231,7 @@ function rangeArray(start,step,end){
     {
       return Array__Initialize$Double_Double(Array__BoxedLength$(radii), (function (y)
       {
-        return FSI_0420__grav_force$(mass_moon, ((xss[x][y] * 1000.000000) + rad_moon), yss[x][y]);
+        return FSI_0018__grav_force$(mass_moon, ((xss[x][y] * 1000.000000) + rad_moon), yss[x][y]);
       }));
     }));
     return (new TupleDouble______Double______Double______Double______Double_____(xss, yss, zss, zss2, zss3));
@@ -1359,7 +1359,7 @@ function rangeArray(start,step,end){
       };
     };
   });
-  var patternInput = FSI_0420__main$();
+  var patternInput = FSI_0018__main$();
   var zss3 = patternInput.Items[4.000000];
   var zss2 = patternInput.Items[3.000000];
   var zss = patternInput.Items[2.000000];
@@ -1447,12 +1447,80 @@ function rangeArray(start,step,end){
 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
+
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt"></div>
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<p style="border-width:1px;border:solid;border-color:gray;padding:10px">
+The graph above is a visualization of a portion of the Moon's, Earth's and Jupiter's gravitational fields. 
+It's not the clearest but stacked like this, we can compare them by zooming in and rotating. 
+The <b>X</b> axis is the distance from the surface, ranging from <b>0-100,000km</b>. 
+The <b>Y's</b> are masses, ranging from <b>10kg - 100,000kg</b>. 
+And the <b>Z</b> axis consists of forces felt in <i>Newtons</i>. 
+Graphed like this, we can sort of get an idea the shape of the different fields.</p>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt"></div>
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<p style="font-size:smaller">The graphing package I used (Elegans), didn't make it 
+obvious how to label or format axes and I didn't want to waste time hunting for them. Apologies
+for unclear labelling.</p>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="4.1-Generalizing-to-Static-Fields">4.1 Generalizing to Static Fields<a class="anchor-link" href="#4.1-Generalizing-to-Static-Fields">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Looking at the types for a gravitational and electrostatic field makes it clear that both fields can be represented by a single function parameterized by some <em>Constant</em>! By looking at the types, the similarity between the two fields is really brought into focus (more so than the similarity between the equations IMO) because the ability to specify both fields with a single function really forces one to take notice of the equivalence.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[132]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class="highlight hl-fsharp"><pre><span class="o">[&lt;</span><span class="nn">FunScript</span><span class="p">.</span><span class="n">JS</span><span class="o">&gt;]</span>
-<span class="k">let</span> <span class="nv">static_field</span> <span class="n">constant</span> <span class="o">(</span><span class="n">m1</span><span class="o">:</span><span class="kt">float</span><span class="o">&lt;</span><span class="k">'</span><span class="n">v</span><span class="o">&gt;)</span> <span class="o">(</span><span class="n">r</span><span class="o">:</span><span class="kt">float</span><span class="o">&lt;</span><span class="n">m</span><span class="o">&gt;</span> <span class="bp">[]</span><span class="o">)</span> <span class="o">(</span><span class="n">m2</span><span class="o">:</span><span class="kt">float</span><span class="o">&lt;</span><span class="k">'</span><span class="n">v</span><span class="o">&gt;)</span> <span class="o">=</span>        
+<span class="k">let</span> <span class="nv">static_field</span> <span class="o">(</span><span class="n">constant</span><span class="o">:</span><span class="kt">float</span><span class="o">&lt;</span><span class="k">'</span><span class="n">some_constant</span><span class="o">&gt;)</span>
+                 <span class="o">(</span><span class="n">m1</span><span class="o">:</span><span class="kt">float</span><span class="o">&lt;</span><span class="k">'</span><span class="n">some_quantity</span><span class="o">&gt;)</span> 
+                 <span class="o">(</span><span class="n">r</span><span class="o">:</span><span class="kt">float</span><span class="o">&lt;</span><span class="n">m</span><span class="o">&gt;</span> <span class="bp">[]</span><span class="o">)</span> 
+                 <span class="o">(</span><span class="n">m2</span><span class="o">:</span><span class="kt">float</span><span class="o">&lt;</span><span class="k">'</span><span class="n">some_quantity</span><span class="o">&gt;)</span> <span class="o">=</span>        
     <span class="k">let</span> <span class="nv">mag</span> <span class="o">=</span> <span class="n">vec_mag</span> <span class="n">r</span> <span class="o">*</span> <span class="mi">1</span><span class="o">.&lt;</span><span class="n">m</span><span class="o">&gt;</span>  
     <span class="k">let</span> <span class="nv">scale</span> <span class="o">=</span> <span class="o">(</span><span class="n">constant</span> <span class="o">*</span> <span class="n">m1</span> <span class="o">*</span> <span class="n">m2</span><span class="o">)</span> <span class="o">/</span> <span class="n">cube</span> <span class="n">mag</span>
     <span class="n">r</span> <span class="o">|&gt;</span> <span class="nn">Array</span><span class="p">.</span><span class="n">map</span> <span class="o">((</span> <span class="o">*</span> <span class="o">)</span> <span class="n">scale</span><span class="o">)</span>
@@ -1466,13 +1534,16 @@ function rangeArray(start,step,end){
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[132]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[17]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
 <pre>val static_field &#8712;
-  constant:float&lt;'u&gt; &#10233;
-    m1:float&lt;'v&gt; &#10233; r:float&lt;m&gt; [] &#10233; m2:float&lt;'v&gt; &#10233; float&lt;'u 'v&#178;/m&#178;&gt; []</pre>
+  constant:float&lt;'some_constant&gt; &#10233;
+    m1:float&lt;'some_quantity&gt; &#10233;
+      r:float&lt;m&gt; [] &#10233;
+        m2:float&lt;'some_quantity&gt; &#10233;
+          float&lt;'some_constant 'some_quantity&#178;/m&#178;&gt; []</pre>
 </div>
 
 </div>
@@ -1480,15 +1551,25 @@ function rangeArray(start,step,end){
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The type tells us that essentially, a static field is <em>'some_constant * 'some_quantity&#178;/m&#178;</em>, capturing the inverse square aspect of the relationship. We can then write the gravitational field in terms of static field and all the types work out and the function works as it should:</p>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[91]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class="highlight hl-fsharp"><pre><span class="k">let</span> <span class="nv">gravitational_field</span> <span class="o">(</span><span class="n">m</span><span class="o">:</span><span class="kt">float</span><span class="o">&lt;</span><span class="n">kg</span><span class="o">&gt;)</span> <span class="o">(</span><span class="n">r</span><span class="o">:</span><span class="kt">float</span><span class="o">&lt;</span><span class="n">m</span><span class="o">&gt;</span> <span class="bp">[]</span><span class="o">)</span> <span class="o">(</span><span class="n">m2</span><span class="o">:</span><span class="kt">float</span><span class="o">&lt;</span><span class="n">kg</span><span class="o">&gt;)</span> <span class="o">=</span> <span class="n">static_field</span> <span class="o">-</span><span class="n">G</span> <span class="n">m</span> <span class="n">r</span> <span class="n">m2</span>
 
-<span class="n">gravitational_field</span> <span class="n">earth_mass</span> <span class="o">[|</span><span class="mi">1</span><span class="o">.&lt;</span><span class="n">m</span><span class="o">&gt;;</span> <span class="mi">0</span><span class="o">.&lt;</span><span class="n">m</span><span class="o">&gt;;</span> <span class="n">earth_rad</span><span class="o">|]</span> <span class="mi">68</span><span class="o">.&lt;</span><span class="n">kg</span><span class="o">&gt;</span>
+<span class="n">gravitational_field</span> <span class="n">earth_mass</span> <span class="o">[|</span><span class="mi">10</span><span class="o">.&lt;</span><span class="n">m</span><span class="o">&gt;;</span> <span class="mi">5</span><span class="o">.&lt;</span><span class="n">m</span><span class="o">&gt;;</span><span class="n">earth_rad</span><span class="o">|]</span> <span class="mi">1</span><span class="o">.&lt;</span><span class="n">kg</span><span class="o">&gt;</span>
 </pre></div>
 
 </div>
@@ -1499,13 +1580,13 @@ function rangeArray(start,step,end){
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[91]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[18]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
 <pre>val gravitational_field &#8712;
   m&#8712;float&lt;kg&gt; &#10233; r&#8712;float&lt;m&gt; [] &#10233; m2&#8712;float&lt;kg&gt; &#10233; float&lt;N&gt; []
-val it &#8712; float&lt;N&gt; [] = [|-0.0001046461073; 0.0; -666.5957035|]
+val it &#8712; float&lt;N&gt; [] = [|-1.538913343e-05; -7.694566713e-06; -9.802877992|]
 </pre>
 </div>
 
@@ -1517,7 +1598,7 @@ val it &#8712; float&lt;N&gt; [] = [|-0.0001046461073; 0.0; -666.5957035|]
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[136]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class="highlight hl-fsharp"><pre><span class="o">[&lt;</span><span class="n">Measure</span><span class="o">&gt;]</span> <span class="k">type</span> <span class="nc">C</span>
@@ -1537,7 +1618,7 @@ val it &#8712; float&lt;N&gt; [] = [|-0.0001046461073; 0.0; -666.5957035|]
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[136]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[19]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -1553,63 +1634,12 @@ val it &#8712; bool = true
 </div>
 
 </div>
-
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[175]:</div>
+<div class="prompt input_prompt">In&nbsp;[70]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class="highlight hl-fsharp"><pre><span class="c1">//Electrostatic fields</span>
-<span class="o">[&lt;</span><span class="nn">FunScript</span><span class="p">.</span><span class="n">JS</span><span class="o">&gt;]</span>
-<span class="k">module</span> <span class="nn">ElectorstaticFields</span> <span class="o">=</span> 
-    <span class="k">let</span> <span class="nv">electric_field</span> <span class="o">(</span><span class="n">q</span><span class="o">:</span><span class="kt">float</span><span class="o">&lt;</span><span class="n">C</span><span class="o">&gt;)</span> <span class="o">(</span><span class="n">r</span><span class="o">:</span><span class="kt">float</span><span class="o">&lt;</span><span class="n">m</span><span class="o">&gt;</span> <span class="bp">[]</span><span class="o">)</span> <span class="o">(</span><span class="n">q2</span><span class="o">:</span><span class="kt">float</span><span class="o">&lt;</span><span class="n">C</span><span class="o">&gt;)</span> <span class="o">=</span> <span class="n">static_field</span> <span class="n">k</span> <span class="n">q</span> <span class="n">r</span> <span class="n">q2</span>
-
-    <span class="k">let</span> <span class="nv">electric_field_at_r</span> <span class="n">r</span> <span class="o">(</span><span class="n">r'</span><span class="o">,</span> <span class="n">q'</span><span class="o">)</span> <span class="o">=</span> <span class="n">electric_field</span> <span class="o">(</span><span class="mi">1</span> <span class="o">|&gt;</span> <span class="n">micro_coulombs</span><span class="o">)</span> <span class="o">(</span><span class="n">sub</span> <span class="n">r</span> <span class="n">r'</span><span class="o">)</span> <span class="n">q'</span>  
-
-    <span class="k">let</span> <span class="nv">electric_field_sum</span> <span class="n">qs</span> <span class="n">r</span> <span class="o">=</span> <span class="n">qs</span> <span class="o">|&gt;</span> <span class="nn">Array</span><span class="p">.</span><span class="n">map</span> <span class="o">(</span><span class="n">electric_field_at_r</span> <span class="n">r</span><span class="o">)</span> <span class="o">|&gt;</span> <span class="n">sum_force_vecs</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight hl-fsharp"><pre><span class="k">let</span> <span class="nv">eforce_on_q</span> <span class="o">(</span><span class="n">r</span><span class="o">,</span><span class="n">q</span><span class="o">)</span> <span class="o">(</span><span class="n">r'</span><span class="o">,</span> <span class="n">q'</span><span class="o">)</span> <span class="o">=</span> <span class="n">electric_field</span> <span class="n">q</span> <span class="o">(</span><span class="n">sub</span> <span class="n">r</span> <span class="n">r'</span><span class="o">)</span> <span class="n">q'</span>
- 
-<span class="k">let</span> <span class="nv">total_efield_force</span> <span class="n">charge</span> <span class="n">qs</span> <span class="o">=</span> <span class="n">qs</span> <span class="o">|&gt;</span> <span class="nn">Array</span><span class="p">.</span><span class="n">map</span> <span class="o">(</span><span class="n">eforce_on_q</span> <span class="n">charge</span><span class="o">)</span> <span class="o">|&gt;</span> <span class="n">sum_force_vecs</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[164]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight hl-fsharp"><pre><span class="c1">//</span>
-<span class="k">open</span> <span class="nn">VecHelp</span>
-<span class="k">open</span> <span class="nn">ElectorstaticFields</span>
-
-<span class="n">electric_field</span> <span class="o">(</span><span class="n">nano_coulombs</span> <span class="o">-</span><span class="mi">6</span><span class="o">.</span><span class="mi">25</span><span class="o">&lt;</span><span class="n">C</span><span class="o">&gt;)</span> <span class="o">[|</span><span class="n">to_cm</span> <span class="mi">61</span><span class="o">.</span><span class="mi">7</span><span class="o">&lt;</span><span class="n">m</span><span class="o">&gt;|]</span> <span class="o">(</span><span class="n">nano_coulombs</span> <span class="o">-</span><span class="mi">6</span><span class="o">.</span><span class="mi">25</span><span class="o">&lt;</span><span class="n">C</span><span class="o">&gt;)</span>
-
-<span class="n">electric_field</span> <span class="o">(</span><span class="n">micro_coulombs</span> <span class="mi">3</span><span class="o">)</span> <span class="o">(</span><span class="n">cm_list</span> <span class="o">([|</span><span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">;</span> <span class="mi">0</span><span class="o">.|]</span> <span class="o">&lt;/</span><span class="n">sub</span><span class="o">/&gt;</span> <span class="o">[|</span><span class="mi">0</span><span class="o">.;</span> <span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">|]))</span> <span class="o">(</span><span class="n">micro_coulombs</span> <span class="mi">3</span><span class="o">)</span>
-
-
-<span class="k">let</span> <span class="nv">charge_density</span> <span class="o">=</span> <span class="o">[|[|</span><span class="mi">0</span><span class="o">.;</span><span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">|],</span> <span class="o">-</span><span class="mi">3</span><span class="o">.;</span> <span class="o">[|</span><span class="mi">0</span><span class="o">.;</span> <span class="mi">0</span><span class="o">.|],</span><span class="mi">3</span><span class="o">.;</span> <span class="o">[|</span><span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">;</span><span class="mi">0</span><span class="o">.|],-</span><span class="mi">3</span><span class="o">.|]</span> 
-                      <span class="o">|&gt;</span> <span class="nn">Array</span><span class="p">.</span><span class="n">map</span> <span class="o">(</span><span class="k">fun</span> <span class="o">(</span><span class="n">v</span><span class="o">,</span><span class="n">q</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="n">cm_list</span> <span class="n">v</span><span class="o">,</span> <span class="n">micro_coulombs</span> <span class="n">q</span><span class="o">)</span>
-
-
-<span class="k">let</span> <span class="nv">qf</span> <span class="o">=</span> <span class="n">charge_density</span> <span class="o">|&gt;</span> <span class="n">total_efield_force</span> <span class="o">(</span><span class="n">cm_list</span> <span class="o">[|</span><span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">&lt;</span><span class="n">m</span><span class="o">&gt;;</span> <span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">&lt;</span><span class="n">m</span><span class="o">&gt;|],</span> <span class="n">micro_coulombs</span> <span class="mi">3</span><span class="o">)</span> 
-
-<span class="n">qf</span> <span class="o">|&gt;</span> <span class="n">vec_mag</span>
+<div class="highlight hl-fsharp"><pre><span class="n">G</span><span class="o">,</span><span class="n">k</span><span class="o">,</span> <span class="n">log10</span> <span class="o">(</span><span class="kt">float</span> <span class="n">k</span><span class="o">)</span> <span class="o">-</span> <span class="n">log10</span> <span class="o">(</span><span class="kt">float</span> <span class="n">G</span><span class="o">)</span>
 </pre></div>
 
 </div>
@@ -1620,21 +1650,202 @@ val it &#8712; bool = true
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[164]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[70]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>val eforce_on_q &#8712;
-  r&#8712;float&lt;m&gt; [] &#10799; q&#8712;float&lt;C&gt; &#10233; r'&#8712;float&lt;m&gt; [] &#10799; q'&#8712;float&lt;C&gt; &#10233; float&lt;N&gt; []
-val electric_field_at_r &#8712;
-  r&#8712;float&lt;m&gt; [] &#10233; r'&#8712;float&lt;m&gt; [] &#10799; q'&#8712;float&lt;C&gt; &#10233; float&lt;N&gt; []
-val charge_density &#8712; (float&lt;m&gt; [] &#10799; float&lt;C&gt;) [] =
-  [|([|0.0; 0.025|], -3e-06); ([|0.0; 0.0|], 3e-06); ([|0.025; 0.0|], -3e-06)|]
-val total_efield_force &#8712;
-  float&lt;m&gt; [] &#10799; float&lt;C&gt; &#10233; qs&#8712;(float&lt;m&gt; [] &#10799; float&lt;C&gt;) [] &#10233; float&lt;N&gt; []
-val electric_field_sum &#8712;
-  qs&#8712;(float&lt;m&gt; [] &#10799; float&lt;C&gt;) [] &#10233; r&#8712;float&lt;m&gt; [] &#10233; float&lt;N&gt; []
-val qf &#8712; float&lt;N&gt; [] = [|-83.77948058; -83.77948058|]
+<pre>val it &#8712; float&lt;N m&#178;/kg&#178;&gt; &#10799; float&lt;N m&#178;/C&#178;&gt; &#10799; float =
+  (6.674e-11, 9000000000.0, 20.12985631)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can define electric fields in the same manner. From that, it's clear that mass and charge are similar abstractions. The difference between the two fields is that 1) the applied constants have opposite signs and differ by some 20 orders of magnitude, 2) charges are like masses that are allowed to go negative. That opposite attracts is a mere fact of arithmetic, what is more fundamental is that charges are less restricted in that they can be negative.</p>
+
+</div>
+</div>
+</div>
+
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[252]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-fsharp"><pre><span class="c1">//Electrostatic fields</span>
+<span class="o">[&lt;</span><span class="nn">FunScript</span><span class="p">.</span><span class="n">JS</span><span class="o">&gt;]</span>
+<span class="k">module</span> <span class="nn">ElectorstaticFields</span> <span class="o">=</span> 
+    <span class="k">let</span> <span class="nv">electric_field</span> <span class="o">(</span><span class="n">q</span><span class="o">:</span><span class="kt">float</span><span class="o">&lt;</span><span class="n">C</span><span class="o">&gt;)</span> <span class="o">(</span><span class="n">r</span><span class="o">:</span><span class="kt">float</span><span class="o">&lt;</span><span class="n">m</span><span class="o">&gt;</span> <span class="bp">[]</span><span class="o">)</span> <span class="o">(</span><span class="n">q2</span><span class="o">:</span><span class="kt">float</span><span class="o">&lt;</span><span class="n">C</span><span class="o">&gt;)</span> <span class="o">=</span> <span class="n">static_field</span> <span class="n">k</span> <span class="n">q</span> <span class="n">r</span> <span class="n">q2</span>
+    
+    <span class="k">let</span> <span class="nv">eforce_on_q</span> <span class="o">(</span><span class="n">r</span><span class="o">,</span><span class="n">q</span><span class="o">)</span> <span class="o">(</span><span class="n">r'</span><span class="o">,</span> <span class="n">q'</span><span class="o">)</span> <span class="o">=</span> <span class="n">electric_field</span> <span class="n">q</span> <span class="o">(</span><span class="n">sub</span> <span class="n">r</span> <span class="n">r'</span><span class="o">)</span> <span class="n">q'</span>
+ 
+    <span class="k">let</span> <span class="nv">efield_force</span> <span class="n">charge</span> <span class="n">qs</span> <span class="o">=</span> <span class="n">qs</span> <span class="o">|&gt;</span> <span class="nn">Array</span><span class="p">.</span><span class="n">map</span> <span class="o">(</span><span class="n">eforce_on_q</span> <span class="n">charge</span><span class="o">)</span> <span class="o">|&gt;</span> <span class="n">sum_force_vecs</span>
+    
+    <span class="k">let</span> <span class="nv">efield_sum</span> <span class="n">qs</span> <span class="n">r</span> <span class="o">=</span> <span class="n">total_efield_force</span> <span class="o">(</span><span class="n">r</span><span class="o">,</span><span class="mi">1</span><span class="o">.</span><span class="mi">0</span><span class="o">&lt;</span><span class="n">C</span><span class="o">&gt;)</span> <span class="n">qs</span> <span class="o">|&gt;</span> <span class="nn">Array</span><span class="p">.</span><span class="n">map</span> <span class="o">(</span><span class="n">flip</span> <span class="o">(/)</span> <span class="mi">1</span><span class="o">.&lt;</span><span class="n">C</span><span class="o">&gt;)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[252]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>  val electric_field &#8712;
+    q&#8712;float&lt;C&gt; &#10233; r&#8712;float&lt;m&gt; [] &#10233; q2&#8712;float&lt;C&gt; &#10233; float&lt;N&gt; []
+  val eforce_on_q &#8712;
+    r&#8712;float&lt;m&gt; [] &#10799; q&#8712;float&lt;C&gt; &#10233; r'&#8712;float&lt;m&gt; [] &#10799; q'&#8712;float&lt;C&gt; &#10233; float&lt;N&gt; []
+  val efield_force &#8712;
+    float&lt;m&gt; [] &#10799; float&lt;C&gt; &#10233; qs&#8712;(float&lt;m&gt; [] &#10799; float&lt;C&gt;) [] &#10233; float&lt;N&gt; []
+  val efield_sum &#8712;
+    qs:(float&lt;m&gt; [] &#10799; float&lt;C&gt;) [] &#10233; r:float&lt;m&gt; [] &#10233; float&lt;N/C&gt; []
+end</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>At this point, it's instructive to highlight an example of the unnecessary obtuseness that abounds in physics equations. Given some test charge q, and a set of discrete charges, the electric field felt by q is given by: $$F(r) = q \cdot k \sum\limits_{i=1}^n {q_i\frac{r-r_i}{|r-r_i|^3}}$$</p>
+<p>The problem of course, is that the Equation does not make clear that the function $F$ should take a pair of variables: the charge and its vector. It's assumed implicity, and thus one more thing to be confused about. The same function is given by <code>efield_force</code> where the type makes it clear that the field is parameterized by both a position vector <em>and</em> a charge.</p>
+
+</div>
+</div>
+</div>
+
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="click-field">click field<a class="anchor-link" href="#click-field">&#182;</a></h1><p>animate gravity
+electric and grav of proton
+negative mass</p>
+<p>discrete probability
+conjugate
+information being
+information geometry
+oscillators,gliders, computation model not reality</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[113]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-fsharp"><pre><span class="k">let</span> <span class="nv">mass_inf</span><span class="o">,</span> <span class="n">c_inf</span> <span class="o">=</span> <span class="n">queryWolfram</span> <span class="s">&quot;mass of proton to kg&quot;</span><span class="o">,</span> <span class="n">queryWolfram</span> <span class="s">&quot;charge of proton in Coulombs&quot;</span>
+<span class="n">mass_inf</span><span class="o">.[</span><span class="s">&quot;Result&quot;</span><span class="o">],</span> <span class="n">c_inf</span><span class="o">.[</span><span class="s">&quot;Result&quot;</span><span class="o">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[113]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>val mass_inf &#8712; Map&lt;string,string []&gt; =
+  map
+    [(&quot;Additional conversion&quot;, [|&quot;1.672622&#215;10^-24 grams&quot;|]);
+     (&quot;Comparisons as mass&quot;,
+      [|&quot; &#8776; 0.5 &#215; deuteron mass (&#8776; 3.3&#215;10^-27 kg )&quot;;
+        &quot; &#8776; 0.53 &#215; tau particle mass (&#8776; 1777 MeV/c^2 )&quot;;
+        &quot; &#8776; 1.007 &#215; unified atomic mass unit ( 1.660539&#215;10^-27 kg )&quot;|]);
+     (&quot;Corresponding quantities&quot;,
+      [|&quot;Relativistic energy E from E&#63449;mc^2&#8712;
+  | 938 MeV  (megaelectronvolts)&quot;;
+        &quot;Characteristic length L from L&#63449;h/(mc)&#8712;
+  | 1.3 fm  (femtometers)&quot;;
+        &quot;Thermal de Broglie wavelength at 100 K from &#955;&#63449;h/(2&#960;mkT)^(1/2)&quot;+[26 chars];
+        &quot;Characteristic time T from T&#63449;h/(mc^2)&#8712;
+  | 4.4&#215;10^-24 seconds&quot;;
+        &quot;Thermodynamic temperature T from kT&#63449;mc^2&#8712;
+  | 1.089&#215;10^13 K  (kelvins)&quot;;
+        &quot;Compton frequency &#957; from &#957;&#63449;mc^2/h&#8712;
+  | 2.269&#215;10^23 Hz  (hertz)&quot;|]);
+     (&quot;Input interpretation&quot;, [|&quot;convert p  (proton) | mass to kilograms&quot;|]);
+     (&quot;Result&quot;, [|&quot;1.672622&#215;10^-27 kg  (kilograms)&quot;|])]
+val c_inf &#8712; Map&lt;string,string []&gt; =
+  map
+    [(&quot;Additional conversions&quot;,
+      [|&quot;0.16021766 aC  (attocoulombs)&quot;;
+        &quot;1.6021766&#215;10^-20 abC  (abcoulombs)
+ (unit officially deprecated)&quot;;
+        &quot;4.803205&#215;10^-10 statC  (statcoulombs)
+ (unit officially deprecated)&quot;;
+        &quot;4.803205&#215;10^-10 Fr  (franklins)&quot;;
+        &quot;4.803205&#215;10^-10 esus of charge
+ (unit officially deprecated)&quot;|]);
+     (&quot;Comparison as electric charge&quot;,
+      [|&quot; &#8776; (0.001 to 0.01) &#215; typical year 2005 CMOS charge under the &quot;+[22 chars]|]);
+     (&quot;Corresponding quantities&quot;,
+      [|&quot;Current I caused by the charge flowing in one second from I&#63449;Q&quot;+[31 chars];
+        &quot;Force F between like charges 1 cm apart from F&#63449;Q^2/(4&#960;&#1013;_0r^2)&quot;+[29 chars]|]);
+     (&quot;Input interpretation&quot;,
+      [|&quot;convert p  (proton) | electric charge  (q) to coulombs&quot;|]);
+     (&quot;Result&quot;, [|&quot;1.6021766&#215;10^-19 C  (coulombs)&quot;|])]
+val it &#8712; string [] &#10799; string [] =
+  ([|&quot;1.672622&#215;10^-27 kg  (kilograms)&quot;|], [|&quot;1.6021766&#215;10^-19 C  (coulombs)&quot;|])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[255]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight hl-fsharp"><pre><span class="k">open</span> <span class="nn">ElectorstaticFields</span>
+
+<span class="n">efield_sum</span> <span class="n">charge_density</span> <span class="o">(</span><span class="n">cm_list</span> <span class="o">[|</span><span class="mi">1</span><span class="o">.;</span> <span class="n">sqrt</span> <span class="mi">3</span><span class="o">.|])</span> <span class="c1">//|&gt; Array.map ((*) (-2. |&gt; nano_coulombs))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[255]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>val it &#8712; float&lt;N/C&gt; [] = [|0.0; 38971.14317|]
 </pre>
 </div>
 
@@ -1646,12 +1857,14 @@ val qf &#8712; float&lt;N&gt; [] = [|-83.77948058; -83.77948058|]
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[141]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class="highlight hl-fsharp"><pre><span class="o">[</span><span class="k">for</span> <span class="n">x</span> <span class="k">in</span> <span class="mi">0</span><span class="o">.</span><span class="mi">0</span><span class="o">..</span><span class="mi">9</span><span class="o">.</span> <span class="k">do</span>
+<div class="highlight hl-fsharp"><pre><span class="k">open</span> <span class="nn">ElectorstaticFields</span>
+<span class="o">[</span><span class="k">for</span> <span class="n">x</span> <span class="k">in</span> <span class="mi">0</span><span class="o">.</span><span class="mi">0</span><span class="o">..</span><span class="mi">9</span><span class="o">.</span> <span class="k">do</span>
  <span class="k">for</span> <span class="n">y</span> <span class="k">in</span> <span class="mi">0</span><span class="o">.</span><span class="mi">0</span><span class="o">..</span><span class="mi">9</span><span class="o">.</span> <span class="o">-&gt;</span>
-   <span class="n">vec_mag</span> <span class="o">[|</span><span class="n">x</span><span class="o">;</span><span class="n">y</span><span class="o">|],</span> <span class="n">electric_field_sum</span> <span class="n">charge_density</span> <span class="o">(</span><span class="n">cm_list</span> <span class="o">[|</span><span class="n">x</span><span class="o">;</span> <span class="n">y</span><span class="o">|])</span> <span class="o">|&gt;</span> <span class="n">vec_mag</span><span class="o">]</span>
+    <span class="nn">Array</span><span class="p">.</span><span class="n">append</span> <span class="o">[|</span><span class="kt">string</span> <span class="n">x</span><span class="o">;</span> <span class="kt">string</span> <span class="n">y</span><span class="o">|]</span> <span class="o">(</span><span class="n">efield_sum</span> <span class="n">charge_density</span> <span class="o">(</span><span class="n">cm_list</span> <span class="o">[|</span><span class="n">x</span><span class="o">;</span> <span class="n">y</span><span class="o">|])</span> <span class="o">|&gt;</span> <span class="nn">Array</span><span class="p">.</span><span class="n">map</span> <span class="kt">string</span><span class="o">)]</span>
+ <span class="o">|&gt;</span> <span class="n">tohtmlTable</span> <span class="bp">[]</span>
 </pre></div>
 
 </div>
@@ -1662,55 +1875,10 @@ val qf &#8712; float&lt;N&gt; [] = [|-83.77948058; -83.77948058|]
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[141]:</div>
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>val it &#8712; (float &#10799; float) list =
-  [(0.0, nan); (1.0, 377.7547637); (2.0, 1131.231639); (3.0, 1063.661686);
-   (4.0, 113.5975243); (5.0, 40.31345111); (6.0, 20.58702099);
-   (7.0, 12.53354649); (8.0, 8.453427581); (9.0, 6.095391728);
-   (1.0, 377.7547637); (1.414213562, 167.5854501); (2.236067977, 180.7195679);
-   (3.16227766, 196.9692771); (4.123105626, 77.05310444);
-   (5.099019514, 35.04656679); (6.08276253, 19.42998174);
-   (7.071067812, 12.24124603); (8.062257748, 8.389184343);
-   (9.055385138, 6.096978787); (2.0, 1131.231639); (2.236067977, 180.7195679);
-   (2.828427125, 31.6212254); (3.605551275, 52.70604661);
-   (4.472135955, 40.25260689); (5.385164807, 25.52607955);
-   (6.32455532, 16.39198358); (7.280109889, 11.08622555);
-   (8.246211251, 7.888666814); (9.219544457, 5.857850374); (3.0, 1063.661686);
-   (3.16227766, 196.9692771); (3.605551275, 52.70604661);
-   (4.242640687, 32.50444048); (5.0, 25.21564804); (5.830951895, 18.49060115);
-   (6.708203932, 13.24582278); (7.615773106, 9.601980657);
-   (8.544003745, 7.136502011); (9.486832981, 5.449913746); (4.0, 113.5975243);
-   (4.123105626, 77.05310444); (4.472135955, 40.25260689); (5.0, 25.21564804);
-   (5.656854249, 18.49937111); (6.403124237, 14.05785902);
-   (7.211102551, 10.68243273); (8.062257748, 8.155197407);
-   (8.94427191, 6.304099204); (9.848857802, 4.954278417); (5.0, 40.31345111);
-   (5.099019514, 35.04656679); (5.385164807, 25.52607955);
-   (5.830951895, 18.49060115); (6.403124237, 14.05785902);
-   (7.071067812, 10.99324739); (7.810249676, 8.673658765);
-   (8.602325267, 6.877785201); (9.433981132, 5.494268792);
-   (10.29563014, 4.434017948); (6.0, 20.58702099); (6.08276253, 19.42998174);
-   (6.32455532, 16.39198358); (6.708203932, 13.24582278);
-   (7.211102551, 10.68243273); (7.810249676, 8.673658765);
-   (8.485281374, 7.073217619); (9.219544457, 5.785840958); (10.0, 4.752900265);
-   (10.81665383, 3.928464197); (7.0, 12.53354649); (7.071067812, 12.24124603);
-   (7.280109889, 11.08622555); (7.615773106, 9.601980657);
-   (8.062257748, 8.155197407); (8.602325267, 6.877785201);
-   (9.219544457, 5.785840958); (9.899494937, 4.86475697);
-   (10.63014581, 4.095586425); (11.40175425, 3.458745497); (8.0, 8.453427581);
-   (8.062257748, 8.389184343); (8.246211251, 7.888666814);
-   (8.544003745, 7.136502011); (8.94427191, 6.304099204);
-   (9.433981132, 5.494268792); (10.0, 4.752900265); (10.63014581, 4.095586425);
-   (11.3137085, 3.524283172); (12.04159458, 3.03455051); (9.0, 6.095391728);
-   (9.055385138, 6.096978787); (9.219544457, 5.857850374);
-   (9.486832981, 5.449913746); (9.848857802, 4.954278417);
-   (10.29563014, 4.434017948); (10.81665383, 3.928464197);
-   (11.40175425, 3.458745497); (12.04159458, 3.03455051);
-   (12.72792206, 2.658771104)]</pre>
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>input.fsx(1,6): error FS0039: The namespace or module 'ElectorstaticFields' is not defined</pre>
 </div>
-
 </div>
 
 </div>
