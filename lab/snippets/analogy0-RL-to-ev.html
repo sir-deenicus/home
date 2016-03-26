@@ -1,0 +1,871 @@
+<meta charset="UTF-8">
+   <script src = 'popup.js'></script>
+   <style type="text/css">
+  
+/* CSS stylesheet is based on Kevin Burke's Markdown.css project (http://kevinburke.bitbucket.org/markdowncss) */
+#pup {
+  position:absolute;
+  z-index:200; /* aaaalways on top*/
+  padding: 3px;
+  margin-left: 10px;
+  margin-top: 5px;
+  width: 420px;
+  border-radius: 3px;
+  border: 1px solid black;
+  background-color: #777;
+  color: white;
+
+}
+.vis {
+    border-bottom:dashed; 
+    line-height: 1.5;
+    border-width: 1px; 
+}
+   .table {
+   width: 100%
+   border: 1px solid #B0B0B0;
+   }
+   .table tbody {
+   /* Kind of irrelevant unless your .css is alreadt doing something else */
+   margin: 0;
+   padding: 0;
+   border: 0;
+   outline: 0;
+   font-size: 100%;
+   vertical-align: baseline;
+   background: transparent;
+   }
+   table thead {
+   text-align: left;
+   }
+   table thead th {
+   background: -moz-linear-gradient(top, #F0F0F0 0, #DBDBDB 100%);
+   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #F0F0F0), color-stop(100%, #DBDBDB));
+   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F0F0F0', endColorstr='#DBDBDB', GradientType=0);
+   border: 1px solid #B0B0B0;
+   color: #444;
+   font-size: 16px;
+   font-weight: bold;
+   padding: 3px 10px;
+   }
+   table td {
+   padding: 3px 15px;
+   line-height: 1.5;
+   }
+   table tr:nth-child(even) {
+   background: #F2F2F2;
+   }
+   body{
+    margin: 0 auto;
+    font-family: Georgia, Palatino, serif;
+    color: #444444;
+    line-height: 1.2;
+    max-width: 1080px;
+    padding: 5px;}
+   </style>
+   <title>Reinforcement Learning => Evolution</title><h1>Reinforcement Learning => Evolution</h1><a href ='#8cedba535913fe17'>learning</a> | <a href ='#c877cfa35f50fac4'>policy</a> | <a href ='#559e780e1d34f3b4'>methods</a> | <a href ='#1515b6ec17b397a3'>function</a> | <a href ='#fd34d3b725329e82'>reinforcement</a> | <a href ='#d869290d166b4b71'>agent</a> | <a href ='#2731730c4e459b71'>state</a> | <a href ='#7fb2b66c94bed771'>algorithms</a> | <a href ='#12b2bc1ae1925061'>problem</a> | <a href ='#7e323fc6cf925061'>problems</a> | <a href ='#72c833ad8e222950'>actions</a> | <a href ='#9878cf49c178db2f'>reward</a> | <a href ='#d48930f00a32a1f'>MDPs</a> | <a href ='#b61fb037d9c070ce'>action</a> | <a href ='#5d817e5d21281eed'>theory</a> | <a href ='#3e6140a0ef50f0cc'>time</a> | <a href ='#455bc3739bf622ab'>based</a> | <a href ='#7396920390902d79'>performance</a> | <a href ='#f5cf8fd54d12bf58'>return</a> | <a href ='#33309bba264f9137'>search</a> | <a href ='#1d9a23cc968f4315'>used</a> | <a href ='#7aaf2a05190b1c05'>case</a> | <a href ='#4254adf6d3645c05'>Reinforcement</a> | <a href ='#e7c39af20e5f40f4'>approximation</a> | <a href ='#6c91784dbe040de4'>difference</a> | <a href ='#75832758588ea6d3'>environment</a> | <a href ='#90732ef106d9bfc3'>issue</a> | <a href ='#935477b7a9d431a1'>Learning</a> | <a href ='#87c039c7640731a1'>algorithm</a> | <a href ='#3f0e0a42ea8b4a91'>exploration</a><br/><h3><a name = '8cedba535913fe17'>learning</a></h3><table><th>Name</th>
+<th>Sim</th><tr><td>mechanisms</td>
+<td>0.8854677</td></tr>
+<tr><td>features</td>
+<td>0.4985913</td></tr>
+<tr><td>means</td>
+<td>0.4802381</td></tr>
+<tr><td>theory</td>
+<td>0.4703625</td></tr>
+<tr><td>components</td>
+<td>0.43674</td></tr>
+<tr><td>basis</td>
+<td>0.4356353</td></tr>
+<tr><td>consequence</td>
+<td>0.4340355</td></tr>
+<tr><td>Examples</td>
+<td>0.4248641</td></tr>
+<tr><td>rate</td>
+<td>0.4216192</td></tr>
+<tr><td>area</td>
+<td>0.4174038</td></tr>
+<tr><td>Emergence</td>
+<td>0.4165389</td></tr>
+<tr><td>effects</td>
+<td>0.4165358</td></tr>
+<tr><td>frequency</td>
+<td>0.4160421</td></tr>
+<tr><td>Types</td>
+<td>0.4145348</td></tr>
+<tr><td>development</td>
+<td>0.4130309</td></tr></table>
+<br/><h3><a name = 'c877cfa35f50fac4'>policy</a></h3><table><th>Name</th>
+<th>Sim</th><tr><td>principle</td>
+<td>0.7587531</td></tr>
+<tr><td>environment</td>
+<td>0.6828024</td></tr>
+<tr><td>genome</td>
+<td>0.6437317</td></tr>
+<tr><td>use</td>
+<td>0.6415154</td></tr>
+<tr><td>frequency</td>
+<td>0.6349194</td></tr>
+<tr><td>Survival</td>
+<td>0.6347309</td></tr>
+<tr><td>cornerstones</td>
+<td>0.623005</td></tr>
+<tr><td>finches</td>
+<td>0.6178862</td></tr>
+<tr><td>absence</td>
+<td>0.6167086</td></tr>
+<tr><td>theory</td>
+<td>0.6151403</td></tr>
+<tr><td>champions</td>
+<td>0.6026574</td></tr>
+<tr><td>benefit</td>
+<td>0.6025191</td></tr>
+<tr><td>maintenance</td>
+<td>0.6001605</td></tr>
+<tr><td>idea</td>
+<td>0.5996776</td></tr>
+<tr><td>level</td>
+<td>0.5989275</td></tr></table>
+<br/><h3><a name = '559e780e1d34f3b4'>methods</a></h3><table><th>Name</th>
+<th>Sim</th><tr><td>environment</td>
+<td>0.5029998</td></tr>
+<tr><td>capacity</td>
+<td>0.4647823</td></tr>
+<tr><td>adaptation</td>
+<td>0.4534817</td></tr>
+<tr><td>genes</td>
+<td>0.4316537</td></tr>
+<tr><td>increase</td>
+<td>0.4192913</td></tr>
+<tr><td>species</td>
+<td>0.411372</td></tr>
+<tr><td>biology</td>
+<td>0.4087574</td></tr>
+<tr><td>gene</td>
+<td>0.4017304</td></tr>
+<tr><td>resistance</td>
+<td>0.3943928</td></tr>
+<tr><td>exposure</td>
+<td>0.3943211</td></tr>
+<tr><td>health</td>
+<td>0.3905675</td></tr>
+<tr><td>use</td>
+<td>0.3899908</td></tr>
+<tr><td>time</td>
+<td>0.3883186</td></tr>
+<tr><td>trait</td>
+<td>0.3772649</td></tr>
+<tr><td>genotype</td>
+<td>0.3708334</td></tr></table>
+<br/><h3><a name = '1515b6ec17b397a3'>function</a></h3><table><th>Name</th>
+<th>Sim</th><tr><td>hypothesis</td>
+<td>0.8965073</td></tr>
+<tr><td>idea</td>
+<td>0.6085385</td></tr>
+<tr><td>point</td>
+<td>0.6083175</td></tr>
+<tr><td>observations</td>
+<td>0.5337663</td></tr>
+<tr><td>sense</td>
+<td>0.5288706</td></tr>
+<tr><td>traits</td>
+<td>0.5157127</td></tr>
+<tr><td>Factors</td>
+<td>0.5043432</td></tr>
+<tr><td>populations</td>
+<td>0.5008048</td></tr>
+<tr><td>Traits</td>
+<td>0.4800579</td></tr>
+<tr><td>phenotype</td>
+<td>0.4798126</td></tr>
+<tr><td>development</td>
+<td>0.4452494</td></tr>
+<tr><td>study</td>
+<td>0.442598</td></tr>
+<tr><td>frequency</td>
+<td>0.4338054</td></tr>
+<tr><td>opposite</td>
+<td>0.4337809</td></tr>
+<tr><td>individuals</td>
+<td>0.4322432</td></tr></table>
+<br/><h3><a name = 'fd34d3b725329e82'>reinforcement</a></h3><table><th>Name</th>
+<th>Sim</th><tr><td>rate</td>
+<td>0.7192512</td></tr>
+<tr><td>Impact</td>
+<td>0.6673931</td></tr>
+<tr><td>X-ray</td>
+<td>0.6604666</td></tr>
+<tr><td>use</td>
+<td>0.6594576</td></tr>
+<tr><td>finches</td>
+<td>0.6448642</td></tr>
+<tr><td>parts</td>
+<td>0.6307189</td></tr>
+<tr><td>maintenance</td>
+<td>0.627802</td></tr>
+<tr><td>basis</td>
+<td>0.6162197</td></tr>
+<tr><td>benefit</td>
+<td>0.6138752</td></tr>
+<tr><td>champions</td>
+<td>0.6110846</td></tr>
+<tr><td>variants</td>
+<td>0.6089101</td></tr>
+<tr><td>Symposium</td>
+<td>0.6076398</td></tr>
+<tr><td>mutation</td>
+<td>0.6041942</td></tr>
+<tr><td>Survival</td>
+<td>0.6021264</td></tr>
+<tr><td>members</td>
+<td>0.5998299</td></tr></table>
+<br/><h3><a name = 'd869290d166b4b71'>agent</a></h3><table><th>Name</th>
+<th>Sim</th><tr><td>capacity</td>
+<td>0.4922481</td></tr>
+<tr><td>exposure</td>
+<td>0.4780218</td></tr>
+<tr><td>Resistance</td>
+<td>0.4774867</td></tr>
+<tr><td>rise</td>
+<td>0.4272438</td></tr>
+<tr><td>'Room</td>
+<td>0.4153322</td></tr>
+<tr><td>proximity</td>
+<td>0.4051598</td></tr>
+<tr><td>corresponds</td>
+<td>0.4048986</td></tr>
+<tr><td>habits</td>
+<td>0.3931094</td></tr>
+<tr><td>degree</td>
+<td>0.3883165</td></tr>
+<tr><td>evolve</td>
+<td>0.372921</td></tr>
+<tr><td>parent</td>
+<td>0.3721481</td></tr>
+<tr><td>invulnerability</td>
+<td>0.3649976</td></tr>
+<tr><td>use</td>
+<td>0.3648087</td></tr>
+<tr><td>adaptions</td>
+<td>0.3629041</td></tr>
+<tr><td>analogy</td>
+<td>0.361367</td></tr></table>
+<br/><h3><a name = '2731730c4e459b71'>state</a></h3><table><th>Name</th>
+<th>Sim</th><tr><td>subgroups</td>
+<td>0.8303382</td></tr>
+<tr><td>alleles</td>
+<td>0.3902708</td></tr>
+<tr><td>phenotype</td>
+<td>0.3520605</td></tr>
+<tr><td>changes</td>
+<td>0.3277773</td></tr>
+<tr><td>estimates</td>
+<td>0.3239728</td></tr>
+<tr><td>sequence</td>
+<td>0.3227749</td></tr>
+<tr><td>configurations</td>
+<td>0.3219698</td></tr>
+<tr><td>Spencer</td>
+<td>0.3161879</td></tr>
+<tr><td>parts</td>
+<td>0.3094209</td></tr>
+<tr><td>chapter</td>
+<td>0.3089613</td></tr>
+<tr><td>chance</td>
+<td>0.3088683</td></tr>
+<tr><td>claim</td>
+<td>0.307358</td></tr>
+<tr><td>individuals</td>
+<td>0.3071092</td></tr>
+<tr><td>survival</td>
+<td>0.3053984</td></tr>
+<tr><td>experience</td>
+<td>0.3052139</td></tr></table>
+<br/><h3><a name = '7fb2b66c94bed771'>algorithms</a></h3><table><th>Name</th>
+<th>Sim</th><tr><td>exposure</td>
+<td>0.4337555</td></tr>
+<tr><td>ones</td>
+<td>0.3694328</td></tr>
+<tr><td>adaptation</td>
+<td>0.3687772</td></tr>
+<tr><td>phenotypic</td>
+<td>0.3554866</td></tr>
+<tr><td>evolution</td>
+<td>0.350685</td></tr>
+<tr><td>organisms</td>
+<td>0.3433285</td></tr>
+<tr><td>chance</td>
+<td>0.3399738</td></tr>
+<tr><td>species</td>
+<td>0.3397322</td></tr>
+<tr><td>individuals</td>
+<td>0.3363797</td></tr>
+<tr><td>alleles</td>
+<td>0.3327492</td></tr>
+<tr><td>resistance</td>
+<td>0.3308963</td></tr>
+<tr><td>sex</td>
+<td>0.330661</td></tr>
+<tr><td>writing</td>
+<td>0.3264278</td></tr>
+<tr><td>type</td>
+<td>0.32485</td></tr>
+<tr><td>Noam</td>
+<td>0.3208711</td></tr></table>
+<br/><h3><a name = '12b2bc1ae1925061'>problem</a></h3><table><th>Name</th>
+<th>Sim</th><tr><td>components</td>
+<td>0.411638</td></tr>
+<tr><td>Types</td>
+<td>0.3887248</td></tr>
+<tr><td>action</td>
+<td>0.3713675</td></tr>
+<tr><td>periods</td>
+<td>0.3440143</td></tr>
+<tr><td>means</td>
+<td>0.3433278</td></tr>
+<tr><td>course</td>
+<td>0.3326566</td></tr>
+<tr><td>radicalism</td>
+<td>0.3324461</td></tr>
+<tr><td>concept</td>
+<td>0.3290752</td></tr>
+<tr><td>Emergence</td>
+<td>0.3276045</td></tr>
+<tr><td>result</td>
+<td>0.3258166</td></tr>
+<tr><td>types</td>
+<td>0.3252611</td></tr>
+<tr><td>cost</td>
+<td>0.3224278</td></tr>
+<tr><td>scale</td>
+<td>0.3111989</td></tr>
+<tr><td>prevalence</td>
+<td>0.3102226</td></tr>
+<tr><td>unit</td>
+<td>0.310129</td></tr></table>
+<br/><h3><a name = '7e323fc6cf925061'>problems</a></h3><table><th>Name</th>
+<th>Sim</th><tr><td>process</td>
+<td>0.8887448</td></tr>
+<tr><td>survival</td>
+<td>0.4448414</td></tr>
+<tr><td>population</td>
+<td>0.4126807</td></tr>
+<tr><td>activity</td>
+<td>0.375945</td></tr>
+<tr><td>maintenance</td>
+<td>0.3751639</td></tr>
+<tr><td>none</td>
+<td>0.3704666</td></tr>
+<tr><td>finches</td>
+<td>0.3704437</td></tr>
+<tr><td>mechanism</td>
+<td>0.3699049</td></tr>
+<tr><td>number</td>
+<td>0.3691936</td></tr>
+<tr><td>theory</td>
+<td>0.3656923</td></tr>
+<tr><td>use</td>
+<td>0.3650325</td></tr>
+<tr><td>block</td>
+<td>0.3617786</td></tr>
+<tr><td>discovery</td>
+<td>0.35714</td></tr>
+<tr><td>co-originator</td>
+<td>0.3542052</td></tr>
+<tr><td>claim</td>
+<td>0.3527884</td></tr></table>
+<br/><h3><a name = '72c833ad8e222950'>actions</a></h3><table><th>Name</th>
+<th>Sim</th><tr><td>citation</td>
+<td>0.7785147</td></tr></table>
+<br/><h3><a name = '9878cf49c178db2f'>reward</a></h3><table><th>Name</th>
+<th>Sim</th><tr><td>result</td>
+<td>0.9098348</td></tr>
+<tr><td>spread</td>
+<td>0.7171993</td></tr>
+<tr><td>basis</td>
+<td>0.6921402</td></tr>
+<tr><td>concept</td>
+<td>0.6873146</td></tr>
+<tr><td>parts</td>
+<td>0.6868567</td></tr>
+<tr><td>function</td>
+<td>0.6828882</td></tr>
+<tr><td>absence</td>
+<td>0.6811547</td></tr>
+<tr><td>opposite</td>
+<td>0.6726829</td></tr>
+<tr><td>presence</td>
+<td>0.6691686</td></tr>
+<tr><td>role</td>
+<td>0.661853</td></tr>
+<tr><td>sake</td>
+<td>0.6611922</td></tr>
+<tr><td>use</td>
+<td>0.6605202</td></tr>
+<tr><td>results</td>
+<td>0.6566047</td></tr>
+<tr><td>frequencies</td>
+<td>0.6565495</td></tr>
+<tr><td>development</td>
+<td>0.6549454</td></tr></table>
+<br/><h3><a name = 'd48930f00a32a1f'>MDPs</a></h3><table><th>Name</th>
+<th>Sim</th><tr><td>age</td>
+<td>0.8431594</td></tr>
+<tr><td>component</td>
+<td>0.428595</td></tr>
+<tr><td>advantage</td>
+<td>0.4044118</td></tr>
+<tr><td>phase</td>
+<td>0.3997297</td></tr>
+<tr><td>form</td>
+<td>0.3889276</td></tr>
+<tr><td>thinkers</td>
+<td>0.3705273</td></tr>
+<tr><td>fishes</td>
+<td>0.3627121</td></tr>
+<tr><td>level</td>
+<td>0.3602505</td></tr>
+<tr><td>Wikipedia®</td>
+<td>0.3556468</td></tr>
+<tr><td>example</td>
+<td>0.3488817</td></tr>
+<tr><td>hypothesis</td>
+<td>0.3382936</td></tr>
+<tr><td>preservation</td>
+<td>0.3353857</td></tr>
+<tr><td>access</td>
+<td>0.3331887</td></tr>
+<tr><td>Pinker</td>
+<td>0.3309555</td></tr>
+<tr><td>genetics</td>
+<td>0.3271829</td></tr></table>
+<br/><h3><a name = 'b61fb037d9c070ce'>action</a></h3><table><th>Name</th>
+<th>Sim</th><tr><td>citation</td>
+<td>0.7785147</td></tr></table>
+<br/><h3><a name = '5d817e5d21281eed'>theory</a></h3><table><th>Name</th>
+<th>Sim</th><tr><td>terms</td>
+<td>0.8093448</td></tr>
+<tr><td>individuals</td>
+<td>0.5909773</td></tr>
+<tr><td>survival</td>
+<td>0.5896685</td></tr>
+<tr><td>members</td>
+<td>0.5835337</td></tr>
+<tr><td>availability</td>
+<td>0.5630932</td></tr>
+<tr><td>work</td>
+<td>0.5621027</td></tr>
+<tr><td>champions</td>
+<td>0.5590822</td></tr>
+<tr><td>Survival</td>
+<td>0.5561296</td></tr>
+<tr><td>benefit</td>
+<td>0.5504757</td></tr>
+<tr><td>parts</td>
+<td>0.5503964</td></tr>
+<tr><td>level</td>
+<td>0.5498697</td></tr>
+<tr><td>rate</td>
+<td>0.5488613</td></tr>
+<tr><td>Impact</td>
+<td>0.5386544</td></tr>
+<tr><td>arrangement</td>
+<td>0.534273</td></tr>
+<tr><td>maintenance</td>
+<td>0.5337377</td></tr></table>
+<br/><h3><a name = '3e6140a0ef50f0cc'>time</a></h3><table><th>Name</th>
+<th>Sim</th><tr><td>theory</td>
+<td>0.8799454</td></tr>
+<tr><td>frequency</td>
+<td>0.6907048</td></tr>
+<tr><td>Survival</td>
+<td>0.6810593</td></tr>
+<tr><td>use</td>
+<td>0.680899</td></tr>
+<tr><td>cost</td>
+<td>0.6741162</td></tr>
+<tr><td>Origin</td>
+<td>0.6721848</td></tr>
+<tr><td>cornerstones</td>
+<td>0.6636071</td></tr>
+<tr><td>opposite</td>
+<td>0.6553361</td></tr>
+<tr><td>Tendency</td>
+<td>0.6538657</td></tr>
+<tr><td>presence</td>
+<td>0.6499673</td></tr>
+<tr><td>antlers</td>
+<td>0.6497849</td></tr>
+<tr><td>ideology</td>
+<td>0.6458915</td></tr>
+<tr><td>absence</td>
+<td>0.6458344</td></tr>
+<tr><td>basis</td>
+<td>0.6412228</td></tr>
+<tr><td>development</td>
+<td>0.6377643</td></tr></table>
+<br/><h3><a name = '455bc3739bf622ab'>based</a></h3><table><th>Name</th>
+<th>Sim</th><tr><td>Resistance</td>
+<td>0.7611995</td></tr>
+<tr><td>exposure</td>
+<td>0.6962991</td></tr>
+<tr><td>analogy</td>
+<td>0.6532913</td></tr>
+<tr><td>rise</td>
+<td>0.6524608</td></tr>
+<tr><td>impediment</td>
+<td>0.5744098</td></tr>
+<tr><td>avoidance</td>
+<td>0.5716222</td></tr>
+<tr><td>corresponds</td>
+<td>0.5682783</td></tr>
+<tr><td>sons</td>
+<td>0.5641606</td></tr>
+<tr><td>adaptation</td>
+<td>0.5563768</td></tr>
+<tr><td>habits</td>
+<td>0.5373315</td></tr>
+<tr><td>degree</td>
+<td>0.5352488</td></tr>
+<tr><td>precursor</td>
+<td>0.5346826</td></tr>
+<tr><td>capacity</td>
+<td>0.5161312</td></tr>
+<tr><td>proximity</td>
+<td>0.5138115</td></tr>
+<tr><td>letter</td>
+<td>0.4929599</td></tr></table>
+<br/><h3><a name = '7396920390902d79'>performance</a></h3><table><th>Name</th>
+<th>Sim</th><tr><td>presence</td>
+<td>0.9100617</td></tr>
+<tr><td>absence</td>
+<td>0.8519275</td></tr>
+<tr><td>development</td>
+<td>0.8325063</td></tr>
+<tr><td>frequency</td>
+<td>0.8260079</td></tr>
+<tr><td>relations</td>
+<td>0.8253051</td></tr>
+<tr><td>cost</td>
+<td>0.8222567</td></tr>
+<tr><td>opposite</td>
+<td>0.8205036</td></tr>
+<tr><td>cornerstones</td>
+<td>0.8175287</td></tr>
+<tr><td>basis</td>
+<td>0.8160602</td></tr>
+<tr><td>Origin</td>
+<td>0.8060549</td></tr>
+<tr><td>study</td>
+<td>0.8058208</td></tr>
+<tr><td>Survival</td>
+<td>0.8032323</td></tr>
+<tr><td>publication</td>
+<td>0.8000081</td></tr>
+<tr><td>sake</td>
+<td>0.7966415</td></tr>
+<tr><td>understanding</td>
+<td>0.7946609</td></tr></table>
+<br/><h3><a name = 'f5cf8fd54d12bf58'>return</a></h3><table><th>Name</th>
+<th>Sim</th><tr><td>resistance</td>
+<td>0.8709437</td></tr>
+<tr><td>result</td>
+<td>0.560484</td></tr>
+<tr><td>Organism</td>
+<td>0.5491598</td></tr>
+<tr><td>results</td>
+<td>0.5337796</td></tr>
+<tr><td>environment</td>
+<td>0.5301331</td></tr>
+<tr><td>spread</td>
+<td>0.4976156</td></tr>
+<tr><td>biology</td>
+<td>0.4848299</td></tr>
+<tr><td>behaviour</td>
+<td>0.4747902</td></tr>
+<tr><td>frequencies</td>
+<td>0.4707783</td></tr>
+<tr><td>arises</td>
+<td>0.4659099</td></tr>
+<tr><td>use</td>
+<td>0.4610574</td></tr>
+<tr><td>genome</td>
+<td>0.4532863</td></tr>
+<tr><td>changes</td>
+<td>0.4447531</td></tr>
+<tr><td>strength</td>
+<td>0.4337796</td></tr>
+<tr><td>mankind</td>
+<td>0.4329171</td></tr></table>
+<br/><h3><a name = '33309bba264f9137'>search</a></h3><table><th>Name</th>
+<th>Sim</th><tr><td>capacities</td>
+<td>0.8895157</td></tr>
+<tr><td>adaptation</td>
+<td>0.3436576</td></tr>
+<tr><td>resistance</td>
+<td>0.3180118</td></tr>
+<tr><td>genomes</td>
+<td>0.3178798</td></tr>
+<tr><td>use</td>
+<td>0.3113992</td></tr>
+<tr><td>genome</td>
+<td>0.3082954</td></tr>
+<tr><td>ideology</td>
+<td>0.3046637</td></tr></table>
+<br/><h3><a name = '1d9a23cc968f4315'>used</a></h3><table><th>Name</th>
+<th>Sim</th><tr><td>use</td>
+<td>0.7683135</td></tr>
+<tr><td>development</td>
+<td>0.6544383</td></tr>
+<tr><td>publication</td>
+<td>0.6541834</td></tr>
+<tr><td>opposite</td>
+<td>0.6516687</td></tr>
+<tr><td>presence</td>
+<td>0.651284</td></tr>
+<tr><td>formation</td>
+<td>0.6371282</td></tr>
+<tr><td>frequency</td>
+<td>0.6368895</td></tr>
+<tr><td>Origin</td>
+<td>0.6363387</td></tr>
+<tr><td>champions</td>
+<td>0.6353439</td></tr>
+<tr><td>benefit</td>
+<td>0.6342784</td></tr>
+<tr><td>Survival</td>
+<td>0.6327392</td></tr>
+<tr><td>idea</td>
+<td>0.6323723</td></tr>
+<tr><td>finches</td>
+<td>0.6308241</td></tr>
+<tr><td>definition</td>
+<td>0.6272675</td></tr>
+<tr><td>Perpetuation</td>
+<td>0.6233419</td></tr></table>
+<br/><h3><a name = '7aaf2a05190b1c05'>case</a></h3><table><th>Name</th>
+<th>Sim</th><tr><td>karyotype</td>
+<td>0.4736703</td></tr>
+<tr><td>necessity</td>
+<td>0.4633404</td></tr>
+<tr><td>decades</td>
+<td>0.4458797</td></tr>
+<tr><td>competition</td>
+<td>0.4244279</td></tr>
+<tr><td>graph</td>
+<td>0.3965488</td></tr>
+<tr><td>shares</td>
+<td>0.3895248</td></tr>
+<tr><td>share</td>
+<td>0.3890516</td></tr>
+<tr><td>economist</td>
+<td>0.3872627</td></tr>
+<tr><td>maximise</td>
+<td>0.3850853</td></tr>
+<tr><td>Systematics</td>
+<td>0.3690573</td></tr>
+<tr><td>structure</td>
+<td>0.3575917</td></tr>
+<tr><td>time</td>
+<td>0.3535077</td></tr>
+<tr><td>Cell</td>
+<td>0.3515812</td></tr>
+<tr><td>Genetics</td>
+<td>0.3471211</td></tr>
+<tr><td>successor</td>
+<td>0.3399175</td></tr></table>
+<br/><h3><a name = '4254adf6d3645c05'>Reinforcement</a></h3><table><th>Name</th>
+<th>Sim</th><tr><td>breeding</td>
+<td>0.8513785</td></tr>
+<tr><td>phenomena</td>
+<td>0.4419433</td></tr>
+<tr><td>existence</td>
+<td>0.3918329</td></tr>
+<tr><td>mates</td>
+<td>0.3611719</td></tr>
+<tr><td>resources</td>
+<td>0.3530649</td></tr>
+<tr><td>sweep</td>
+<td>0.3440199</td></tr>
+<tr><td>pressure</td>
+<td>0.3120416</td></tr></table>
+<br/><h3><a name = 'e7c39af20e5f40f4'>approximation</a></h3><table><th>Name</th>
+<th>Sim</th><tr><td>fecundity</td>
+<td>0.4068654</td></tr>
+<tr><td>Background</td>
+<td>0.400347</td></tr>
+<tr><td>background</td>
+<td>0.3651787</td></tr>
+<tr><td>group</td>
+<td>0.3641386</td></tr>
+<tr><td>fertility</td>
+<td>0.3171485</td></tr>
+<tr><td>evolve</td>
+<td>0.3017356</td></tr>
+<tr><td>compatibility</td>
+<td>0.3016509</td></tr></table>
+<br/><h3><a name = '6c91784dbe040de4'>difference</a></h3><table><th>Name</th>
+<th>Sim</th><tr><td>environment</td>
+<td>0.4738395</td></tr>
+<tr><td>phenotypes</td>
+<td>0.4370122</td></tr>
+<tr><td>result</td>
+<td>0.4201639</td></tr>
+<tr><td>elimination</td>
+<td>0.4184833</td></tr>
+<tr><td>survival</td>
+<td>0.4119</td></tr>
+<tr><td>use</td>
+<td>0.4099911</td></tr>
+<tr><td>Information</td>
+<td>0.4085255</td></tr>
+<tr><td>MacArthur</td>
+<td>0.4015727</td></tr>
+<tr><td>time</td>
+<td>0.3989318</td></tr>
+<tr><td>mankind</td>
+<td>0.3972484</td></tr>
+<tr><td>parts</td>
+<td>0.396276</td></tr>
+<tr><td>variants</td>
+<td>0.3903697</td></tr>
+<tr><td>success</td>
+<td>0.3894812</td></tr>
+<tr><td>naturalists</td>
+<td>0.3882692</td></tr>
+<tr><td>frequencies</td>
+<td>0.3875722</td></tr></table>
+<br/><h3><a name = '75832758588ea6d3'>environment</a></h3><table><th>Name</th>
+<th>Sim</th><tr><td>results</td>
+<td>0.6107896</td></tr>
+<tr><td>data</td>
+<td>0.5659713</td></tr>
+<tr><td>Changes</td>
+<td>0.563457</td></tr>
+<tr><td>advances</td>
+<td>0.5518262</td></tr>
+<tr><td>result</td>
+<td>0.5401897</td></tr>
+<tr><td>colours</td>
+<td>0.5295109</td></tr>
+<tr><td>Matthew</td>
+<td>0.5103961</td></tr>
+<tr><td>changes</td>
+<td>0.5064033</td></tr>
+<tr><td>distributions</td>
+<td>0.5007066</td></tr>
+<tr><td>arises</td>
+<td>0.4995561</td></tr>
+<tr><td>differences</td>
+<td>0.4866297</td></tr>
+<tr><td>Holland</td>
+<td>0.4823649</td></tr>
+<tr><td>topic</td>
+<td>0.4771512</td></tr>
+<tr><td>possibility</td>
+<td>0.4670392</td></tr>
+<tr><td>variation</td>
+<td>0.4657289</td></tr></table>
+<br/><h3><a name = '90732ef106d9bfc3'>issue</a></h3><table><th>Name</th>
+<th>Sim</th><tr><td>explanation</td>
+<td>0.4188809</td></tr>
+<tr><td>heredity</td>
+<td>0.4113344</td></tr>
+<tr><td>selection</td>
+<td>0.3875868</td></tr>
+<tr><td>competition</td>
+<td>0.3875642</td></tr>
+<tr><td>struggle</td>
+<td>0.3700048</td></tr>
+<tr><td>justification</td>
+<td>0.3621859</td></tr>
+<tr><td>prerequisite</td>
+<td>0.3591364</td></tr>
+<tr><td>explanations</td>
+<td>0.3343273</td></tr>
+<tr><td>regards</td>
+<td>0.3291902</td></tr>
+<tr><td>Samoa</td>
+<td>0.3212987</td></tr>
+<tr><td>influence</td>
+<td>0.3212342</td></tr>
+<tr><td>genetics</td>
+<td>0.3188754</td></tr>
+<tr><td>Gregor</td>
+<td>0.314956</td></tr>
+<tr><td>selects</td>
+<td>0.3099919</td></tr>
+<tr><td>fathers</td>
+<td>0.3094221</td></tr></table>
+<br/><h3><a name = '935477b7a9d431a1'>Learning</a></h3><table><th>Name</th>
+<th>Sim</th><tr><td>capacity</td>
+<td>0.5897301</td></tr>
+<tr><td>rise</td>
+<td>0.5768112</td></tr>
+<tr><td>exposure</td>
+<td>0.5646917</td></tr>
+<tr><td>Resistance</td>
+<td>0.5555867</td></tr>
+<tr><td>corresponds</td>
+<td>0.509756</td></tr>
+<tr><td>degree</td>
+<td>0.5030112</td></tr>
+<tr><td>use</td>
+<td>0.4927516</td></tr>
+<tr><td>impediment</td>
+<td>0.4847883</td></tr>
+<tr><td>sons</td>
+<td>0.4804983</td></tr>
+<tr><td>'Room</td>
+<td>0.4703464</td></tr>
+<tr><td>analogy</td>
+<td>0.4349838</td></tr>
+<tr><td>spread</td>
+<td>0.428206</td></tr>
+<tr><td>habits</td>
+<td>0.4216756</td></tr>
+<tr><td>invulnerability</td>
+<td>0.420999</td></tr>
+<tr><td>adaptation</td>
+<td>0.4146829</td></tr></table>
+<br/><h3><a name = '87c039c7640731a1'>algorithm</a></h3><table><th>Name</th>
+<th>Sim</th><tr><td>contexts</td>
+<td>0.8189403</td></tr>
+<tr><td>alleles</td>
+<td>0.369202</td></tr>
+<tr><td>generation</td>
+<td>0.3555816</td></tr>
+<tr><td>mutations</td>
+<td>0.3529111</td></tr>
+<tr><td>neighbours</td>
+<td>0.3057931</td></tr></table>
+<br/><h3><a name = '3f0e0a42ea8b4a91'>exploration</a></h3><table><th>Name</th>
+<th>Sim</th><tr><td>population</td>
+<td>0.5130424</td></tr>
+<tr><td>factor</td>
+<td>0.4795267</td></tr>
+<tr><td>superbug</td>
+<td>0.4738161</td></tr>
+<tr><td>trait</td>
+<td>0.461101</td></tr>
+<tr><td>Fisherian</td>
+<td>0.4456913</td></tr>
+<tr><td>series</td>
+<td>0.4405343</td></tr>
+<tr><td>phenomenon</td>
+<td>0.4351119</td></tr>
+<tr><td>continuum</td>
+<td>0.4282241</td></tr>
+<tr><td>block</td>
+<td>0.4277484</td></tr>
+<tr><td>region</td>
+<td>0.4247076</td></tr>
+<tr><td>period</td>
+<td>0.4192121</td></tr>
+<tr><td>system</td>
+<td>0.4166473</td></tr>
+<tr><td>reshuffle</td>
+<td>0.3984083</td></tr>
+<tr><td>founder</td>
+<td>0.3684935</td></tr>
+<tr><td>class</td>
+<td>0.3559901</td></tr></table> 

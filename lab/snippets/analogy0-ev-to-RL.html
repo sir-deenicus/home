@@ -1,0 +1,614 @@
+<meta charset="UTF-8">
+   <script src = 'popup.js'></script>
+   <style type="text/css">
+  
+/* CSS stylesheet is based on Kevin Burke's Markdown.css project (http://kevinburke.bitbucket.org/markdowncss) */
+#pup {
+  position:absolute;
+  z-index:200; /* aaaalways on top*/
+  padding: 3px;
+  margin-left: 10px;
+  margin-top: 5px;
+  width: 420px;
+  border-radius: 3px;
+  border: 1px solid black;
+  background-color: #777;
+  color: white;
+
+}
+.vis {
+    border-bottom:dashed; 
+    line-height: 1.5;
+    border-width: 1px; 
+}
+   .table {
+   width: 100%
+   border: 1px solid #B0B0B0;
+   }
+   .table tbody {
+   /* Kind of irrelevant unless your .css is alreadt doing something else */
+   margin: 0;
+   padding: 0;
+   border: 0;
+   outline: 0;
+   font-size: 100%;
+   vertical-align: baseline;
+   background: transparent;
+   }
+   table thead {
+   text-align: left;
+   }
+   table thead th {
+   background: -moz-linear-gradient(top, #F0F0F0 0, #DBDBDB 100%);
+   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #F0F0F0), color-stop(100%, #DBDBDB));
+   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F0F0F0', endColorstr='#DBDBDB', GradientType=0);
+   border: 1px solid #B0B0B0;
+   color: #444;
+   font-size: 16px;
+   font-weight: bold;
+   padding: 3px 10px;
+   }
+   table td {
+   padding: 3px 15px;
+   line-height: 1.5;
+   }
+   table tr:nth-child(even) {
+   background: #F2F2F2;
+   }
+   body{
+    margin: 0 auto;
+    font-family: Georgia, Palatino, serif;
+    color: #444444;
+    line-height: 1.2;
+    max-width: 1080px;
+    padding: 5px;}
+   </style>
+   <title>Evolution => Reinforcement Learning</title><h1>Evolution => Reinforcement Learning</h1><a href ='#78b1aaee7bc8de2a'>selection</a> | <a href ='#e370bcfea4a8b71a'>population</a> | <a href ='#e212b22d52c6371a'>result</a> | <a href ='#1ebbf8644a489009'>variation</a> | <a href ='#2451bd9ef2a7f3c7'>individuals</a> | <a href ='#bc51c849a827f3c7'>species</a> | <a href ='#135a50a5393664b6'>fitness</a> | <a href ='#a8a1429e18a7ccb6'>evolution</a> | <a href ='#1864e5d3a8b03da6'>theory</a> | <a href ='#6cb089cfa1bdca15'>traits</a> | <a href ='#5cd7bb655a31695'>Darwin</a> | <a href ='#fd104bb5e5035785'>trait</a> | <a href ='#8c434a69d3043785'>allele</a> | <a href ='#c328c309d4d75785'>acts</a> | <a href ='#7a2083cefca75785'>alleles</a> | <a href ='#1f5de1bb02075785'>competition</a> | <a href ='#eb21f09601d75785'>phenotype</a> | <a href ='#63568a104a6ab074'>effect</a> | <a href ='#18849fb83435b074'>occur</a> | <a href ='#f6980b661326f4a3'>environment</a> | <a href ='#1526df5acbd3cc53'>genes</a> | <a href ='#1852a55ac7c7b253'>organism</a> | <a href ='#978157536820ba53'>Selection</a> | <a href ='#5a04376d26dcbb42'>example</a> | <a href ='#7b83f7060c5cab42'>idea</a> | <a href ='#bae0cf7e1926bb42'>known</a> | <a href ='#667b65d49a066632'>survival</a><br/><h3><a name = '78b1aaee7bc8de2a'>selection</a></h3><table><th>Name</th>
+<th>Sim</th><tr><td>search</td>
+<td>0.8981257</td></tr>
+<tr><td>gradient</td>
+<td>0.6247143</td></tr>
+<tr><td>iteration</td>
+<td>0.5935746</td></tr>
+<tr><td>space</td>
+<td>0.5407002</td></tr>
+<tr><td>class</td>
+<td>0.5152223</td></tr>
+<tr><td>improvement</td>
+<td>0.5064664</td></tr>
+<tr><td>subject</td>
+<td>0.5013453</td></tr>
+<tr><td>domain</td>
+<td>0.4983077</td></tr>
+<tr><td>limitations</td>
+<td>0.4941466</td></tr>
+<tr><td>University</td>
+<td>0.4874509</td></tr>
+<tr><td>set</td>
+<td>0.4844316</td></tr>
+<tr><td>Terms</td>
+<td>0.4745715</td></tr>
+<tr><td>lack</td>
+<td>0.4743565</td></tr>
+<tr><td>description</td>
+<td>0.4724443</td></tr>
+<tr><td>context</td>
+<td>0.4699394</td></tr></table>
+<br/><h3><a name = 'e370bcfea4a8b71a'>population</a></h3><table><th>Name</th>
+<th>Sim</th><tr><td>papers</td>
+<td>0.7115148</td></tr>
+<tr><td>work</td>
+<td>0.3472771</td></tr>
+<tr><td>lab</td>
+<td>0.3286832</td></tr></table>
+<br/><h3><a name = 'e212b22d52c6371a'>result</a></h3><table><th>Name</th>
+<th>Sim</th><tr><td>reward</td>
+<td>0.6568288</td></tr>
+<tr><td>environment</td>
+<td>0.4382887</td></tr>
+<tr><td>MDP</td>
+<td>0.4327439</td></tr>
+<tr><td>agent</td>
+<td>0.3916572</td></tr>
+<tr><td>return</td>
+<td>0.3899092</td></tr>
+<tr><td>memory</td>
+<td>0.3879594</td></tr>
+<tr><td>trajectory</td>
+<td>0.3793651</td></tr>
+<tr><td>action-value</td>
+<td>0.3689895</td></tr>
+<tr><td>transition</td>
+<td>0.3595108</td></tr>
+<tr><td>equations</td>
+<td>0.3592877</td></tr>
+<tr><td>CDC</td>
+<td>0.3540046</td></tr>
+<tr><td>problem</td>
+<td>0.3539149</td></tr>
+<tr><td>action-values</td>
+<td>0.3528997</td></tr>
+<tr><td>field</td>
+<td>0.3503801</td></tr>
+<tr><td>brain</td>
+<td>0.3462811</td></tr></table>
+<br/><h3><a name = '1ebbf8644a489009'>variation</a></h3><table><th>Name</th>
+<th>Sim</th><tr><td>values</td>
+<td>0.7858629</td></tr>
+<tr><td>description</td>
+<td>0.6086629</td></tr>
+<tr><td>expectation</td>
+<td>0.6003303</td></tr>
+<tr><td>estimate</td>
+<td>0.5927179</td></tr>
+<tr><td>history</td>
+<td>0.5802544</td></tr>
+<tr><td>limitations</td>
+<td>0.579297</td></tr>
+<tr><td>lack</td>
+<td>0.5744846</td></tr>
+<tr><td>set</td>
+<td>0.5609266</td></tr>
+<tr><td>returns</td>
+<td>0.5576687</td></tr>
+<tr><td>domain</td>
+<td>0.5510968</td></tr>
+<tr><td>Terms</td>
+<td>0.5441204</td></tr>
+<tr><td>advantages</td>
+<td>0.5380769</td></tr>
+<tr><td>class</td>
+<td>0.5371734</td></tr>
+<tr><td>Mathematics</td>
+<td>0.5365287</td></tr>
+<tr><td>space</td>
+<td>0.5289286</td></tr></table>
+<br/><h3><a name = '2451bd9ef2a7f3c7'>individuals</a></h3><table><th>Name</th>
+<th>Sim</th><tr><td>goal</td>
+<td>0.8455055</td></tr>
+<tr><td>problem</td>
+<td>0.6691934</td></tr>
+<tr><td>environment</td>
+<td>0.65746</td></tr>
+<tr><td>theory</td>
+<td>0.6526953</td></tr>
+<tr><td>lack</td>
+<td>0.6380593</td></tr>
+<tr><td>Terms</td>
+<td>0.6320302</td></tr>
+<tr><td>class</td>
+<td>0.6207885</td></tr>
+<tr><td>set</td>
+<td>0.617059</td></tr>
+<tr><td>agent</td>
+<td>0.6169381</td></tr>
+<tr><td>trajectory</td>
+<td>0.608593</td></tr>
+<tr><td>policy</td>
+<td>0.5958771</td></tr>
+<tr><td>subject</td>
+<td>0.5825099</td></tr>
+<tr><td>description</td>
+<td>0.5789656</td></tr>
+<tr><td>estimate</td>
+<td>0.5776244</td></tr>
+<tr><td>model</td>
+<td>0.575559</td></tr></table>
+<br/><h3><a name = 'bc51c849a827f3c7'>species</a></h3><table><th>Name</th>
+<th>Sim</th><tr><td>skill</td>
+<td>0.8292091</td></tr>
+<tr><td>relation</td>
+<td>0.3969173</td></tr>
+<tr><td>information</td>
+<td>0.3655939</td></tr>
+<tr><td>model</td>
+<td>0.3645822</td></tr>
+<tr><td>machine</td>
+<td>0.3543242</td></tr>
+<tr><td>reinforcement</td>
+<td>0.3410274</td></tr>
+<tr><td>environment</td>
+<td>0.3395395</td></tr>
+<tr><td>return</td>
+<td>0.3355018</td></tr>
+<tr><td>policy</td>
+<td>0.3323809</td></tr>
+<tr><td>Attribution-ShareAlike</td>
+<td>0.3296985</td></tr>
+<tr><td>brain</td>
+<td>0.3223118</td></tr>
+<tr><td>ratio</td>
+<td>0.3201016</td></tr>
+<tr><td>case</td>
+<td>0.3195933</td></tr>
+<tr><td>states</td>
+<td>0.3166377</td></tr>
+<tr><td>state</td>
+<td>0.3151791</td></tr></table>
+<br/><h3><a name = '135a50a5393664b6'>fitness</a></h3><table><th>Name</th>
+<th>Sim</th><tr><td>order</td>
+<td>0.3984825</td></tr>
+<tr><td>rise</td>
+<td>0.3965718</td></tr>
+<tr><td>Thanks</td>
+<td>0.3937598</td></tr>
+<tr><td>nigra</td>
+<td>0.3780903</td></tr>
+<tr><td>way</td>
+<td>0.3436937</td></tr>
+<tr><td>respect</td>
+<td>0.3386178</td></tr>
+<tr><td>refers</td>
+<td>0.3327017</td></tr>
+<tr><td>help</td>
+<td>0.3320809</td></tr>
+<tr><td>relation</td>
+<td>0.3074326</td></tr>
+<tr><td>behavior</td>
+<td>0.3009523</td></tr></table>
+<br/><h3><a name = 'a8a1429e18a7ccb6'>evolution</a></h3><table><th>Name</th>
+<th>Sim</th><tr><td>equations</td>
+<td>0.4007742</td></tr>
+<tr><td>transition</td>
+<td>0.3719048</td></tr>
+<tr><td>reward</td>
+<td>0.3620797</td></tr>
+<tr><td>ADPRL</td>
+<td>0.3586247</td></tr>
+<tr><td>time</td>
+<td>0.3583149</td></tr>
+<tr><td>limit</td>
+<td>0.3535296</td></tr>
+<tr><td>conference</td>
+<td>0.3293243</td></tr>
+<tr><td>performance</td>
+<td>0.323773</td></tr>
+<tr><td>policy</td>
+<td>0.3187703</td></tr>
+<tr><td>history</td>
+<td>0.3169913</td></tr>
+<tr><td>return</td>
+<td>0.3149596</td></tr></table>
+<br/><h3><a name = '1864e5d3a8b03da6'>theory</a></h3><table><th>Name</th>
+<th>Sim</th><tr><td>time</td>
+<td>0.6715404</td></tr>
+<tr><td>model</td>
+<td>0.4432419</td></tr>
+<tr><td>history</td>
+<td>0.4349</td></tr>
+<tr><td>estimate</td>
+<td>0.4192001</td></tr>
+<tr><td>transition</td>
+<td>0.4119901</td></tr>
+<tr><td>policy</td>
+<td>0.409603</td></tr>
+<tr><td>state</td>
+<td>0.4080862</td></tr>
+<tr><td>Operation</td>
+<td>0.3999761</td></tr>
+<tr><td>example</td>
+<td>0.3917762</td></tr>
+<tr><td>computation</td>
+<td>0.3812796</td></tr>
+<tr><td>agent</td>
+<td>0.3799571</td></tr>
+<tr><td>problem</td>
+<td>0.3733258</td></tr>
+<tr><td>advantages</td>
+<td>0.3705833</td></tr>
+<tr><td>problems</td>
+<td>0.367799</td></tr>
+<tr><td>information</td>
+<td>0.3616558</td></tr></table>
+<br/><h3><a name = '6cb089cfa1bdca15'>traits</a></h3><table><th>Name</th>
+<th>Sim</th><tr><td>transition</td>
+<td>0.8054087</td></tr>
+<tr><td>MDP</td>
+<td>0.5260143</td></tr>
+<tr><td>beginning</td>
+<td>0.5102137</td></tr>
+<tr><td>environment</td>
+<td>0.4963543</td></tr>
+<tr><td>agent</td>
+<td>0.4888184</td></tr>
+<tr><td>returns</td>
+<td>0.4808869</td></tr>
+<tr><td>policy</td>
+<td>0.4766888</td></tr>
+<tr><td>book</td>
+<td>0.4564071</td></tr>
+<tr><td>memory</td>
+<td>0.4351374</td></tr>
+<tr><td>CDC</td>
+<td>0.4343908</td></tr>
+<tr><td>return</td>
+<td>0.4330139</td></tr>
+<tr><td>problem</td>
+<td>0.4284088</td></tr>
+<tr><td>trajectory</td>
+<td>0.4055882</td></tr>
+<tr><td>observation</td>
+<td>0.4022061</td></tr>
+<tr><td>trajectories</td>
+<td>0.4020893</td></tr></table>
+<br/><h3><a name = '5cd7bb655a31695'>Darwin</a></h3><table><th>Name</th>
+<th>Sim</th><tr><td>Andrew</td>
+<td>0.9008101</td></tr>
+<tr><td>ALT</td>
+<td>0.4670515</td></tr>
+<tr><td>Softmax</td>
+<td>0.4533544</td></tr>
+<tr><td>efficiency</td>
+<td>0.4321213</td></tr>
+<tr><td>ACC</td>
+<td>0.3839762</td></tr>
+<tr><td>Barto</td>
+<td>0.3402177</td></tr>
+<tr><td>experiment</td>
+<td>0.3215471</td></tr>
+<tr><td>Privacy</td>
+<td>0.3127722</td></tr></table>
+<br/><h3><a name = 'fd104bb5e5035785'>trait</a></h3><table><th>Name</th>
+<th>Sim</th><tr><td>trajectory</td>
+<td>0.7758095</td></tr>
+<tr><td>agent</td>
+<td>0.5631067</td></tr>
+<tr><td>environment</td>
+<td>0.5629352</td></tr>
+<tr><td>MDP</td>
+<td>0.5235051</td></tr>
+<tr><td>action-values</td>
+<td>0.521398</td></tr>
+<tr><td>memory</td>
+<td>0.518889</td></tr>
+<tr><td>Wikipedia®</td>
+<td>0.5039627</td></tr>
+<tr><td>goal</td>
+<td>0.4953613</td></tr>
+<tr><td>exploration</td>
+<td>0.4728051</td></tr>
+<tr><td>gradient</td>
+<td>0.4389758</td></tr>
+<tr><td>policy</td>
+<td>0.4283625</td></tr>
+<tr><td>Text</td>
+<td>0.4235523</td></tr>
+<tr><td>problem</td>
+<td>0.4216554</td></tr>
+<tr><td>BURLAP</td>
+<td>0.4167672</td></tr>
+<tr><td>transition</td>
+<td>0.4086005</td></tr></table>
+<br/><h3><a name = '8c434a69d3043785'>allele</a></h3><table><th>Name</th>
+<th>Sim</th><tr><td>Machine</td>
+<td>0.7742839</td></tr>
+<tr><td>Reinforcement</td>
+<td>0.4056329</td></tr></table>
+<br/><h3><a name = 'c328c309d4d75785'>acts</a></h3><table><th>Name</th>
+<th>Sim</th><tr><td>Java</td>
+<td>0.7578945</td></tr>
+<tr><td>Mathematics</td>
+<td>0.3001986</td></tr></table>
+<br/><h3><a name = '7a2083cefca75785'>alleles</a></h3><table><th>Name</th>
+<th>Sim</th><tr><td>Maja</td>
+<td>0.7936621</td></tr>
+<tr><td>JMLR</td>
+<td>0.4043975</td></tr>
+<tr><td>problem</td>
+<td>0.3738457</td></tr>
+<tr><td>MDP</td>
+<td>0.3160857</td></tr>
+<tr><td>interaction</td>
+<td>0.3112594</td></tr>
+<tr><td>agent</td>
+<td>0.3049448</td></tr>
+<tr><td>track</td>
+<td>0.3034215</td></tr></table>
+<br/><h3><a name = '1f5de1bb02075785'>competition</a></h3><table><th>Name</th>
+<th>Sim</th><tr><td>case</td>
+<td>0.3709105</td></tr>
+<tr><td>transition</td>
+<td>0.3339104</td></tr>
+<tr><td>influence</td>
+<td>0.3260186</td></tr>
+<tr><td>theory</td>
+<td>0.3157637</td></tr>
+<tr><td>change</td>
+<td>0.302831</td></tr></table>
+<br/><h3><a name = 'eb21f09601d75785'>phenotype</a></h3><table><th>Name</th>
+<th>Sim</th><tr><td>operations</td>
+<td>0.7755527</td></tr>
+<tr><td>MDP</td>
+<td>0.3326373</td></tr>
+<tr><td>Operation</td>
+<td>0.3320265</td></tr>
+<tr><td>policy</td>
+<td>0.3263997</td></tr>
+<tr><td>Bradtke</td>
+<td>0.3147601</td></tr></table>
+<br/><h3><a name = '63568a104a6ab074'>effect</a></h3><table><th>Name</th>
+<th>Sim</th><tr><td>citations</td>
+<td>0.834811</td></tr></table>
+<br/><h3><a name = '18849fb83435b074'>occur</a></h3><table><th>Name</th>
+<th>Sim</th><tr><td>memory</td>
+<td>0.8495343</td></tr>
+<tr><td>track</td>
+<td>0.6194269</td></tr>
+<tr><td>MDP</td>
+<td>0.6158888</td></tr>
+<tr><td>agent</td>
+<td>0.6155564</td></tr>
+<tr><td>brain</td>
+<td>0.6019614</td></tr>
+<tr><td>environment</td>
+<td>0.5759077</td></tr>
+<tr><td>book</td>
+<td>0.5676547</td></tr>
+<tr><td>returns</td>
+<td>0.5538428</td></tr>
+<tr><td>transition</td>
+<td>0.5303129</td></tr>
+<tr><td>problem</td>
+<td>0.5197735</td></tr>
+<tr><td>existence</td>
+<td>0.5135544</td></tr>
+<tr><td>trajectory</td>
+<td>0.5117436</td></tr>
+<tr><td>CDC</td>
+<td>0.5104983</td></tr>
+<tr><td>limitations</td>
+<td>0.508783</td></tr>
+<tr><td>Mathematics</td>
+<td>0.5012559</td></tr></table>
+<br/><h3><a name = 'f6980b661326f4a3'>environment</a></h3><table><th>Name</th>
+<th>Sim</th><tr><td>computation</td>
+<td>0.7960652</td></tr>
+<tr><td>returns</td>
+<td>0.6553637</td></tr>
+<tr><td>expectation</td>
+<td>0.6453677</td></tr>
+<tr><td>description</td>
+<td>0.6420931</td></tr>
+<tr><td>Terms</td>
+<td>0.6317768</td></tr>
+<tr><td>domain</td>
+<td>0.6306817</td></tr>
+<tr><td>limitations</td>
+<td>0.626668</td></tr>
+<tr><td>lack</td>
+<td>0.6122383</td></tr>
+<tr><td>existence</td>
+<td>0.6035421</td></tr>
+<tr><td>Mathematics</td>
+<td>0.6021073</td></tr>
+<tr><td>book</td>
+<td>0.6021028</td></tr>
+<tr><td>values</td>
+<td>0.6006865</td></tr>
+<tr><td>set</td>
+<td>0.5995324</td></tr>
+<tr><td>class</td>
+<td>0.5931407</td></tr>
+<tr><td>subject</td>
+<td>0.5810841</td></tr></table>
+<br/><h3><a name = '1526df5acbd3cc53'>genes</a></h3><table><th>Name</th>
+<th>Sim</th><tr><td>evaluation</td>
+<td>0.8176638</td></tr>
+<tr><td>improvement</td>
+<td>0.6841024</td></tr>
+<tr><td>space</td>
+<td>0.531643</td></tr>
+<tr><td>iteration</td>
+<td>0.5159272</td></tr>
+<tr><td>search</td>
+<td>0.4944299</td></tr>
+<tr><td>refers</td>
+<td>0.4379056</td></tr>
+<tr><td>history</td>
+<td>0.4256648</td></tr>
+<tr><td>states</td>
+<td>0.4159577</td></tr>
+<tr><td>returns</td>
+<td>0.3910187</td></tr>
+<tr><td>performance</td>
+<td>0.3860036</td></tr>
+<tr><td>reward</td>
+<td>0.3822457</td></tr>
+<tr><td>gradient</td>
+<td>0.3817165</td></tr>
+<tr><td>estimate</td>
+<td>0.3806835</td></tr>
+<tr><td>amongst</td>
+<td>0.3636747</td></tr>
+<tr><td>couple</td>
+<td>0.3581825</td></tr></table>
+<br/><h3><a name = '1852a55ac7c7b253'>organism</a></h3><table><th>Name</th>
+<th>Sim</th><tr><td>Thanks</td>
+<td>0.4058427</td></tr>
+<tr><td>nigra</td>
+<td>0.3416491</td></tr>
+<tr><td>well-understood</td>
+<td>0.3292945</td></tr>
+<tr><td>computation</td>
+<td>0.3157868</td></tr>
+<tr><td>expectation</td>
+<td>0.3146085</td></tr>
+<tr><td>University</td>
+<td>0.3010629</td></tr>
+<tr><td>set</td>
+<td>0.3005801</td></tr></table>
+<br/><h3><a name = '978157536820ba53'>Selection</a></h3><table><th>Name</th>
+<th>Sim</th><tr><td>Foundation</td>
+<td>0.8806078</td></tr></table>
+<br/><h3><a name = '5a04376d26dcbb42'>example</a></h3><table><th>Name</th>
+<th>Sim</th><tr><td>conditions</td>
+<td>0.7921916</td></tr>
+<tr><td>generality</td>
+<td>0.4725943</td></tr>
+<tr><td>actions</td>
+<td>0.4525441</td></tr>
+<tr><td>states</td>
+<td>0.4156573</td></tr>
+<tr><td>cases</td>
+<td>0.3722357</td></tr>
+<tr><td>bandit</td>
+<td>0.3554499</td></tr>
+<tr><td>regret</td>
+<td>0.3294751</td></tr>
+<tr><td>acquisition</td>
+<td>0.309317</td></tr></table>
+<br/><h3><a name = '7b83f7060c5cab42'>idea</a></h3><table><th>Name</th>
+<th>Sim</th><tr><td>functions</td>
+<td>0.7413885</td></tr>
+<tr><td>Orange</td>
+<td>0.3250202</td></tr>
+<tr><td>distribution</td>
+<td>0.3229595</td></tr>
+<tr><td>algorithms</td>
+<td>0.3021199</td></tr></table>
+<br/><h3><a name = 'bae0cf7e1926bb42'>known</a></h3><table><th>Name</th>
+<th>Sim</th><tr><td>change</td>
+<td>0.6208495</td></tr>
+<tr><td>influence</td>
+<td>0.5301828</td></tr>
+<tr><td>increase</td>
+<td>0.4058631</td></tr>
+<tr><td>school</td>
+<td>0.3300378</td></tr>
+<tr><td>conditions</td>
+<td>0.3168122</td></tr>
+<tr><td>TD</td>
+<td>0.3055294</td></tr>
+<tr><td>machine</td>
+<td>0.3017489</td></tr></table>
+<br/><h3><a name = '667b65d49a066632'>survival</a></h3><table><th>Name</th>
+<th>Sim</th><tr><td>states</td>
+<td>0.7466534</td></tr>
+<tr><td>actions</td>
+<td>0.5527546</td></tr>
+<tr><td>estimate</td>
+<td>0.4115055</td></tr>
+<tr><td>policy</td>
+<td>0.4054236</td></tr>
+<tr><td>policies</td>
+<td>0.4006413</td></tr>
+<tr><td>space</td>
+<td>0.3885596</td></tr>
+<tr><td>bandit</td>
+<td>0.3852864</td></tr>
+<tr><td>model</td>
+<td>0.3808877</td></tr>
+<tr><td>knowledge</td>
+<td>0.3768895</td></tr>
+<tr><td>variance</td>
+<td>0.3759209</td></tr>
+<tr><td>problems</td>
+<td>0.3757803</td></tr>
+<tr><td>regret</td>
+<td>0.36167</td></tr>
+<tr><td>nigra</td>
+<td>0.3582735</td></tr>
+<tr><td>cases</td>
+<td>0.3575609</td></tr>
+<tr><td>values</td>
+<td>0.3574284</td></tr></table> 

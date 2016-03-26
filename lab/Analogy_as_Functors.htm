@@ -1,0 +1,524 @@
+<meta http-equiv='Content-Type' content='Type=text/html; charset=utf-8'>
+                             <script type='text/javascript' async src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML'></script>
+                             <title>Analogy as Functors</title>
+                             <link rel='stylesheet' type='text/css' href='style.css'>
+<h1>Analogy as Functors</h1>
+
+<p>What does intelligence mean? I've for some time been thinking about a framework within which one could treat questions on intelligence—whether of human or AI or corporation or evolution—in the spirit of Leibniz. Instead of rambling discussions where everyone brings lots of extravagant baggage, I wish to some day be able to think through (even if not calculate) answers under the framework and ask, do you have something better? (This is not rhetorical, if you do then I can stop wasting my time right away).</p>
+
+<p>The framework starts from intuition, guided by experience of what framing is most fruitful when the task is principled generation of hypotheses. The framework is also grounded mathematically—I achieve this by starting from computational principles and working backwards to what basic math adequately expresses the concepts of interest.  Although the framework is broad; based on computing theory and the link between information theory/thermodynamics, I'll zoom in and focus this article on analogy because I was able to perform an experiment around it.</p>
+
+<h2>Analogical Reasoning</h2>
+
+<p>One of the most important aspects of intelligence is analogical reasoning. Analogical reasoning is when concepts from one space are mapped to concepts in another space.  For example, I might ask: what is the biological construct most similar to this physics concept? Or, I might say: what do I know that is like this new thing I am seeing?</p>
+
+<p>By noticing how one thing is similar to another thing, I accomplish two things: first is that I pave the way towards being able to code both concepts in terms of something more general and thus achieving a better compression of both. Second is that by leveraging knowledge of the known structure, I can more quickly learn, probe and design experiments to better understand the new structure. The most creative individuals are really good at exploiting connections between things. Analogies do have the downside that, if the structure is not actually shared across the full space, you end up with a worse understanding of the new space than if you had not tried to accelerate by leveraging analogy.</p>
+
+<h3>Analogies as Functors</h3>
+
+<p>Thinking about analogy, the most obvious representation is that it's a structure preserving map from one space to another (although in reality, either in the brain or practically in an AI, I doubt it is ever so direct). In category theoretic language, an analogy can be thought of as a Functor from one category to another. If you know <em>A</em> and wish to learn about <em>B</em>, then you must first learn <em>F</em>, a functor from <span class="math">\(A \to B\)</span>  and then using knowledge about <em>A</em>, and your guesses about the structure of <em>F</em>, you design experiments with <em>F(A)</em> to further learn about <em>F</em> and <em>B</em> (and how <em>B</em> diverges from <em>A</em>).</p>
+
+<p>From this inspiration, I considered a simpler scenario for a computable experiment. Instead of functors and categories, which I have only a rudimentary understanding of, I use vector spaces and linear transformations. Then we can consider, suppose you have a vector space model <strong>A</strong>, of one topic and you learn a model <strong>B</strong> for another topic, then what you want is a some <strong>X</strong> such that <strong>AX=B</strong>. In this model scenario, the linear transformation <strong>X</strong> is the analogical mapping/functor and can be solved for easily enough using QR factorization. The problem now is how to construct said spaces and then testing if <strong>X</strong> really is an analogical mapping.</p>
+
+<p>This too is easily done, there are a multitude of vector space models: Latent semantic indexing, random indexing, GloVe, Holographic Reduced Representations and word2vec. For my own purposes; across the requirements of speed, memory use, data requirements, online (learning cleanly on the go) and accuracy, random indexing dominates all other choices. The curious thing about random projections is that they are "anti-fragile", they actually turn the curse of dimensionality into a boon. There are even some neuroscience models that hypothesize the brain makes extensive use of random projections. In our case, because random vectors in high dimensions are almost orthogonal to each other, even small nudges are enough to get useful results. In the case of small data this is useful.</p>
+
+<h3>Digression: When word2vec analogies are not useful</h3>
+
+<p>You might have heard of word2vec, a shallow neural network based method that approximately "reduces/factorizes" point wise mutual information on words, using co-occurrence stats; its ability to handle analogies using vector math seems impressive at first but upon closer inspection, is found out as ultimately a narrow gimmick with limited applicability.</p>
+
+<p>The word2vec analogies fail quite often beyond well represented examples e.g. king:man :: woman:... vs baseball : sabermetrics::basketball:.... They work best for obvious i.e. 1 step analogies on single words which in general, is not useful. Those analogies are too simple and limted to serve as a demonstration of analogies as mappings across (sub)spaces.</p>
+
+<p>(<em>Aside: All vector space models based on context cannot learn to distinguish antonyms from synonyms</em>.)</p>
+
+<h3>Digression 2: When Big Data is worse than Small Data</h3>
+
+<p>Big data is not always best—for example, when I wish to narrowly focus on two topics, I do not care for vectors that have been trained on the entirety of Wikipedia. They will fail to surface the connections I am most interested in. Consider the case when I want to find analogies between learning and evolution, even when I simplify the problem to cute SAT style analogies, the results I get are completely useless.</p>
+
+<h2>Space</h2>
+
+<p>The analogies I build are based on mapping from one space to another space. The source of the vectors can be anything (including word2vec, my criticism is for the analogy demos not the quality of generated "concept vectors") but I use random indexing vectors since, as previously stated, they are pareto-optimal for my requirements (e.g. speed). For this demonstration, I proceed by extracting and building vector space models of the wikipedia page for evolution and reinforcement learning separately.  The vectors have dimensionality 250. After this, I now 'solve' for the analogy <em>F</em> from reinforcement learning to evolution which is represented by a 250x250 matrix.</p>
+
+<p>Because the vector dimensionality is 250, I need at least 250 sample vectors in order that the equation not be underspecified. Then, if I want to look at concepts in evolution in terms of reinforcement learning or vice versa, I simply multiply the vectors by the appropriate solved for Matrix. To my surprise, it worked (why was I surprised? because I generated a matrix randomly filled with 1,0 and -1s, performed a slipshod approximation of sparse matrix multiplication against co-occurrence frequencies,  ran QR factorization on that, multiplied the solved for matrix with my random matrix and it worked out interesting analogies! As I will emphasize again and again, "Human unique" Intelligence is over-estimated). You can scroll to the bottom to see some examples or check the full results <a href="snippets/analogy0-ev-to-RL.html">here</a> and <a href="snippets/analogy0-RL-to-ev.html">here</a>—it's almost all interesting.</p>
+
+<p>There are a couple impressive examples I'd like to highlight. Selection (from natural selection) is mapped to search, iteration, improvement, gradient and evaluation. Those all are extremely on point! Survival is mapped to states, actions, regret and moves. One of those is a non-trivial insight as it was a link only recently suggested (more in part 2). It also maps survival to non-episodic, this is correct and a link I'd never made before. Genes too are well mapped, with history a low scoring (appropriate that it should be a low) match.</p>
+
+<p>In the other direction, from reinforcement to evolution, the map is also has some stand out samples. Policy in particular is another observation I've never considered before. Policies are what an RL agent learns in order to behave optimally at each particular state. What's the most appropriate match? The genome and the phenotype of course—alleles, survival and gene are also all linked and pretty good matches. Reinforcement is matched with breeding, existence and elimination; learning to adapted and surviving; exploration to species, individuals, population and mutation.</p>
+
+<p>Function too, is a curious one and highlights what I mean by advantages of small data. <em>F</em>(function) is judged as very close to hypothesis, idea and observations. In reinforcement learning function is in the sense of <em>value function</em> or <em>action value function</em>, and indeed value functions are much closer to hypothesis and observations than to <em>purpose</em>, <em>graph</em> or <em>chart</em>—which is what something based on more data would have reckoned.</p>
+
+<p>These are all rather impressive and together, especially when one considers cosine similarity values and vector dimensionality, virtually impossible to have all occurred by chance.</p>
+
+<h2>Conclusion</h2>
+
+<p>So what am I to make of this? Haphazardly multiplying co-occurrence counts from a couple wiki pages with a random matrix is enough to make associations that would give many humans trouble. Why? I hypothesize two reasons working in conjunction. Text is not random, and is structured for the purpose passing along information—I wonder if a concept as Potential Intelligence inspired by potential energy is appropriate. The other, I think, is that this is another instance of the moravec paradox. If you list the things that you intuitively would think requires the most computational power and intelligence, you'd probably have written that list upside down with respect to the correct order. If you want to understand intelligence—in animals, in humans and in AI, you would do well to take a look at Moravec's Paradox. After you've done that tell me if you think the conventional presentation of the "Clever Hans Effect" makes even a tiny bit of sense.</p>
+
+<h3>What's Next</h3>
+
+<p>In this post I explicitly computed an "analogy" as a map between two spaces. But although—to my surprise—the method worked, I doubt that such a map is ever explicitly made in the brain. In Project Int.Aug, this method is not used, it's too rigid, it works only on two concepts when, usually I'm considering multiple concepts at a time. Secondly, although the map works alright, especially for well represented words, it outputs nonsense in many instances. In a future post I'll show the practical method in use, including various ways of constructing subspaces and also composition, that go beyond single words and two concepts at a time while also possessing increased accuracy.</p>
+
+<p>In my next post I talk about how AI and intelligence amplification differ in their treatment of A,F and B. I'll go over my choice of these two topics (and why not others? Well, one aspect is that a recurring theme in my writing is evolution is as learning and so I'm usually trying to amplify my understanding of related topics by e.g., mapping between reinforcement learning <=> regret <=> evolution).</p>
+
+<p><em>Meta</em>: I hope that if before, you had not a clear idea of reinforcement learning but had knowledge of evolution (which is more widely known), the analogies (not mine!) have put some of the concepts in context.</p>
+
+<h2>Examples</h2>
+
+<p>In the below, the words in all caps are the source (evolution) and the table following are the target (RL) nearest neighbors—remember, the word vectors have been learned <em>completely</em> separately and are being linked using the matrix <em>F</em>.</p>
+
+<p>SELECTION</p>
+
+<table>
+<thead>
+<tr class="header">
+<th><p>Name</p></th>
+<th><p>Sim</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><p>search</p></td>
+<td><p>0.9078385</p></td>
+</tr>
+<tr class="even">
+<td><p>iteration</p></td>
+<td><p>0.5983979</p></td>
+</tr>
+<tr class="odd">
+<td><p>improvement</p></td>
+<td><p>0.5010358</p></td>
+</tr>
+<tr class="even">
+<td><p>gradient</p></td>
+<td><p>0.4711323</p></td>
+</tr>
+<tr class="odd">
+<td><p>evaluation</p></td>
+<td><p>0.434157</p></td>
+</tr>
+</tbody>
+</table>
+
+
+<p>EVOLUTION</p>
+
+<table>
+<thead>
+<tr class="header">
+<th><p>Name</p></th>
+<th><p>Sim</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><p>computing</p></td>
+<td><p>0.8000988</p></td>
+</tr>
+<tr class="even">
+<td><p>maintaining</p></td>
+<td><p>0.4766024</p></td>
+</tr>
+<tr class="odd">
+<td><p>finding</p></td>
+<td><p>0.4171107</p></td>
+</tr>
+</tbody>
+</table>
+
+
+<p>SURVIVAL</p>
+
+<table>
+<thead>
+<tr class="header">
+<th><p>Name</p></th>
+<th><p>Sim</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><p>states</p></td>
+<td><p>0.7352338</p></td>
+</tr>
+<tr class="even">
+<td><p>actions</p></td>
+<td><p>0.4152263</p></td>
+</tr>
+<tr class="odd">
+<td><p>non-episodic</p></td>
+<td><p>0.4131915</p></td>
+</tr>
+<tr class="even">
+<td><p>samples</p></td>
+<td><p>0.4096077</p></td>
+</tr>
+<tr class="odd">
+<td><p><em></em>regret</p></td>
+<td><p>0.4069343<em></em></p></td>
+</tr>
+<tr class="even">
+<td><p>moves</p></td>
+<td><p>0.3897748</p></td>
+</tr>
+</tbody>
+</table>
+
+
+<p>KNOWN</p>
+
+<table>
+<thead>
+<tr class="header">
+<th><p>Name</p></th>
+<th><p>Sim</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><p>improve</p></td>
+<td><p>0.8170525</p></td>
+</tr>
+<tr class="even">
+<td><p>demonstrate</p></td>
+<td><p>0.6549885</p></td>
+</tr>
+<tr class="odd">
+<td><p>address</p></td>
+<td><p>0.6359063</p></td>
+</tr>
+<tr class="even">
+<td><p>change</p></td>
+<td><p>0.6319368</p></td>
+</tr>
+<tr class="odd">
+<td><p>observe</p></td>
+<td><p>0.6311502</p></td>
+</tr>
+<tr class="even">
+<td><p>compute</p></td>
+<td><p>0.6282258</p></td>
+</tr>
+<tr class="odd">
+<td><p>unify</p></td>
+<td><p>0.619693</p></td>
+</tr>
+</tbody>
+</table>
+
+
+<p>GENES</p>
+
+<table>
+<thead>
+<tr class="header">
+<th><p>Name</p></th>
+<th><p>Sim</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><p>evaluation</p></td>
+<td><p>0.8402829</p></td>
+</tr>
+<tr class="even">
+<td><p>improvement</p></td>
+<td><p>0.6233622</p></td>
+</tr>
+<tr class="odd">
+<td><p>space</p></td>
+<td><p>0.4338689</p></td>
+</tr>
+<tr class="even">
+<td><p>iteration</p></td>
+<td><p>0.4281315</p></td>
+</tr>
+<tr class="odd">
+<td><p>search</p></td>
+<td><p>0.407939</p></td>
+</tr>
+<tr class="even">
+<td><p>gradient</p></td>
+<td><p>0.3085533</p></td>
+</tr>
+<tr class="odd">
+<td><p>history</p></td>
+<td><p>0.3024744</p></td>
+</tr>
+</tbody>
+</table>
+
+
+<p>ENVIRONMENT</p>
+
+<table>
+<thead>
+<tr class="header">
+<th><p>Name</p></th>
+<th><p>Sim</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><p>computation</p></td>
+<td><p>0.8335705</p></td>
+</tr>
+<tr class="even">
+<td><p>domain</p></td>
+<td><p>0.6284672</p></td>
+</tr>
+<tr class="odd">
+<td><p>expectation</p></td>
+<td><p>0.6255608</p></td>
+</tr>
+<tr class="even">
+<td><p>class</p></td>
+<td><p>0.6169248</p></td>
+</tr>
+<tr class="odd">
+<td><p>set</p></td>
+<td><p>0.6092064</p></td>
+</tr>
+<tr class="even">
+<td><p>description</p></td>
+<td><p>0.6053985</p></td>
+</tr>
+</tbody>
+</table>
+
+
+<hr />
+
+<p>The examples in the other direction, from RL to evolution:</p>
+
+<p><strong>POLICY</strong></p>
+
+<table>
+<thead>
+<tr class="header">
+<th><p>Name</p></th>
+<th><p>Sim</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><p>principle</p></td>
+<td><p>0.8019225</p></td>
+</tr>
+<tr class="even">
+<td><p>environment</p></td>
+<td><p>0.5997837</p></td>
+</tr>
+<tr class="odd">
+<td><p>phenotype</p></td>
+<td><p>0.5960799</p></td>
+</tr>
+<tr class="even">
+<td><p>Survival</p></td>
+<td><p>0.5955663</p></td>
+</tr>
+<tr class="odd">
+<td><p>genome</p></td>
+<td><p>0.5697417</p></td>
+</tr>
+<tr class="even">
+<td><p>gene</p></td>
+<td><p>0.5480887</p></td>
+</tr>
+<tr class="odd">
+<td><p>alleles</p></td>
+<td><p>0.5475575</p></td>
+</tr>
+</tbody>
+</table>
+
+
+<p><strong>METHODS</strong></p>
+
+<table>
+<thead>
+<tr class="header">
+<th><p>Name</p></th>
+<th><p>Sim</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><p>offspring</p></td>
+<td><p>0.8382673</p></td>
+</tr>
+<tr class="even">
+<td><p>genes</p></td>
+<td><p>0.4183966</p></td>
+</tr>
+<tr class="odd">
+<td><p>mutations</p></td>
+<td><p>0.4166025</p></td>
+</tr>
+<tr class="even">
+<td><p>produce</p></td>
+<td><p>0.3901573</p></td>
+</tr>
+<tr class="odd">
+<td><p>individuals</p></td>
+<td><p>0.3897389</p></td>
+</tr>
+</tbody>
+</table>
+
+
+<p>BASED</p>
+
+<table>
+<thead>
+<tr class="header">
+<th><p>Name</p></th>
+<th><p>Sim</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><p>According</p></td>
+<td><p>0.880974</p></td>
+</tr>
+<tr class="even">
+<td><p>Due</p></td>
+<td><p>0.7900774</p></td>
+</tr>
+<tr class="odd">
+<td><p>due</p></td>
+<td><p>0.7368965</p></td>
+</tr>
+<tr class="even">
+<td><p>appears</p></td>
+<td><p>0.7197356</p></td>
+</tr>
+</tbody>
+</table>
+
+
+<p>REINFORCEMENT</p>
+
+<table>
+<thead>
+<tr class="header">
+<th><p>Name</p></th>
+<th><p>Sim</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><p>breeding</p></td>
+<td><p>0.8270694</p></td>
+</tr>
+<tr class="even">
+<td><p>policies</p></td>
+<td><p>0.5013691</p></td>
+</tr>
+<tr class="odd">
+<td><p>existence</p></td>
+<td><p>0.4515101</p></td>
+</tr>
+<tr class="even">
+<td><p>elimination</p></td>
+<td><p>0.4443123</p></td>
+</tr>
+<tr class="odd">
+<td><p>mates</p></td>
+<td><p>0.4295801</p></td>
+</tr>
+</tbody>
+</table>
+
+
+<p>LEARNING</p>
+
+<table>
+<thead>
+<tr class="header">
+<th><p>Name</p></th>
+<th><p>Sim</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><p>adapted</p></td>
+<td><p>0.8522058</p></td>
+</tr>
+<tr class="even">
+<td><p>adaptation</p></td>
+<td><p>0.4814506</p></td>
+</tr>
+<tr class="odd">
+<td><p>applied</p></td>
+<td><p>0.480039</p></td>
+</tr>
+<tr class="even">
+<td><p>surviving</p></td>
+<td><p>0.4398851</p></td>
+</tr>
+</tbody>
+</table>
+
+
+<p>EXPLORATION</p>
+
+<table>
+<thead>
+<tr class="header">
+<th><p>Name</p></th>
+<th><p>Sim</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><p>species</p></td>
+<td><p>0.4411014</p></td>
+</tr>
+<tr class="even">
+<td><p>vestigial</p></td>
+<td><p>0.4271055</p></td>
+</tr>
+<tr class="odd">
+<td><p>sexually</p></td>
+<td><p>0.4088307</p></td>
+</tr>
+<tr class="even">
+<td><p>region</p></td>
+<td><p>0.3941363</p></td>
+</tr>
+<tr class="odd">
+<td><p>genes</p></td>
+<td><p>0.3930252</p></td>
+</tr>
+<tr class="even">
+<td><p>individuals</p></td>
+<td><p>0.3822998</p></td>
+</tr>
+<tr class="odd">
+<td><p>population</p></td>
+<td><p>0.375715</p></td>
+</tr>
+<tr class="even">
+<td><p>mutations</p></td>
+<td><p>0.3743682</p></td>
+</tr>
+</tbody>
+</table>
+
+
+<h2>Addendum: Intelligence Amplification vs Intelligence Augmentation vs Artificial Intelligence</h2>
+
+<p>Intelligence Amplification is not the same as Intelligence Augmentation. Why did I select the examples I did? Reinforcement learning and evolution? As I stated before, analogies only make sense when a structure preserving mapping is admissible; if not, the sign flips and you're doing negative learning (while appropriate analogies accelerate, no analogies is slower but preferable to negative learning—i.e. unlearning is required).</p>
+
+<p>I picked those two topics because I knew ahead of time they would be extremely similar, thus looking at the mapping would be productive. To contrast augmentation with amplification, amplification is like multiplication, it amplifies what is already there (and so does nothing if you know nothing). Augmentation is additional, although I write about this tool under Int.Aug, it is actually an amplification tool. It takes weak knowledge or associations and amplifies them. Whilst augmentation is apart, amplification is symbiotic. With augmentation the tool acts separately and the human is not part of the process, in fact Augmentation is essentially AI doing all the work but made subservient or rather narrow.</p>
+
+<h3>Artificial intelligence vs Intelligence Amplification</h3>
+
+<p>Consider the building of an analogy <em>F</em>, from <strong>A -> B</strong>. In AI, the agent must have some idea of the structure of both <strong>A</strong> and <strong>B</strong>, after which it can attempt to build <em>F</em>. In the case of amplification, a human needs only weak knowledge that <strong>A</strong> and <strong>B</strong> might be linked after which the program can attempt to build <strong>F</strong>. The process is symbiotic in that neither the human nor the AI is most useful.</p>
+
+<p>Let us take the case of Alpha Go (I'm glad I now have an example to can point to when discussing ideas in AI), it has a very large search space to traverse. The first idea, of generating many scenarios and focusing on branches that resulted in the least regret made headway but was not enough. It was only when a reinforcement learned policy was in use to guide which branches will be most promising ahead of time that search could be pushed to top human levels.</p>
+
+<p>In the case of amplification the machine serves a similar purpose as tree search and the human at the core serves a similar purpose as the policy, guiding towards promising avenues. Of course, the human is vastly more sophisticated as a guide because it can adapt to new information and improve itself on the go. It's symbiotic because the machine generates possibilities and focuses on some areas of promise. This cuts the search space when compared to manually and trying to extract where to focus on. The human analyzes suggestions and in so doing is able to improve its ability to guide the search. Afterwards, it can now bound the search, downweighting and upweighting appropriately and the process continues recursively. In this way, the weak knowledge is amplified much more quickly—the advantage of working memory (reading all the materials and holding it in your head long enough to begin making connections) is reduced and replaced with the simpler requirement of curiosity.</p>
+
+<p>AI needs to be correct but most also avoid getting trapped in valleys (humans often get trapped) by automatically pruning "unlikely" scenarios without consideration.</p>
+
+<p>Balance between being random (creativity) and having direction (dont wander aimlessly—ooh, in writing this I just realized this describes evolution)<br />
+Feedback, extension and speed.</p>
