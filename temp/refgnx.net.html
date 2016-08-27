@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Test Graph</title>
+    
+    <script type="text/javascript" src="vivagraph.js"></script>
+    <script type="text/javascript">
+        function decodeHtml(html) {
+            var txt = document.createElement("textarea");
+            txt.innerHTML = html;
+            return txt.value;
+        }
+        //rosetta
+        function wrap(text, limit) {
+            if (text.length > limit) {
+                // find the last space within limit
+                var edge = text.slice(0, limit).lastIndexOf(' ');
+                if (edge > 0) {
+                    var line = text.slice(0, edge);
+                    var remainder = text.slice(edge + 1);
+                    var arr = wrap(remainder, limit)
+                    arr.push(line)
+                    return arr
+                }
+            }
+
+            return [text];
+        }
+
+        function main() {
+            // Step 1. Create a graph:
+            var graph = Viva.Graph.graph();
+            nodeSize = 24
+            var n = 0
+
+            var layout = Viva.Graph.Layout.forceDirected(graph, {
+                springLength: 1000,
+                springCoeff: 0.0004,
+                dragCoeff: 0.05,
+                gravity: -290,
+                theta: 0.5,
+                stableThreshold: 1.5
+            });
+
+            // Step 2. Add graph content.
+            //  graph.addNode(nodeId, yourCustomData) method lets you add new
+            //  nodes to the graph and associate them with custom data. In this
+            //  case we are associating GitHub user profiles with their Gravatar's images:
+            graph.addNode(' According to MSF, obstacles placed by EU governments included &quot;not providing any alternative to a deadly sea crossing, erecting razor wire fences, continuously changing administrative and registration procedures, committing acts of violence at sea and at land borders, and providing completely inadequate reception conditions in Italy and Greece&quot;.');
+graph.addNode('crisis');
+graph.addNode('migrant');
+graph.addNode('plans');
+graph.addNode('response');
+graph.addNode(' Additionally, he said that the EU&#39;s Schengen agreement on open borders had failed and warned that Islamists could exploit the situation and enter Europe in large numbers, saying that &quot;one of the ISIL terrorist suspects who committed the first atrocity against holidaymakers in Tunisia has been seen getting off a boat onto Italian soil&quot;.');
+graph.addNode('brink');
+graph.addNode('burden');
+graph.addNode('creation');
+graph.addNode('irish');
+graph.addNode('islamic');
+graph.addNode('open');
+graph.addNode('outer');
+graph.addNode('prospect');
+graph.addNode(' He prayed for migrants, living and dead and denounced their traffickers.');
+graph.addNode(' He said Europe needs to complete what the European Council has agreed in the past and not to create new plans and proposals.');
+graph.addNode(' Hollande described people traffickers as &quot;terrorists&quot; who put migrant lives at risk.');
+graph.addNode(' In late August 2015 in an interview for radio &quot;Frekvence 1&quot; he said: &quot;The reception of migrants from the Middle East and Northern Africa to the territory of Czech Republic brings with it three major risks – spread of infectious diseases, terrorism of the Islamic state and the creation of new ghettos.');
+graph.addNode(' Several hundred migrants broke the fence between Hungary and Serbia twice on Wednesday, 16 September, and threw chunks of concrete and water bottles over the fence.');
+graph.addNode(' Since April 2015, the European Union has struggled to cope with the crisis, increasing funding for border patrol operations in the Mediterranean, devising plans to fight migrant smuggling , launching Operation Sophia and proposing a new quota system to relocate and resettle asylum seekers among EU states and alleviate the burden on countries on the outer borders of the Union.');
+graph.addNode(' The report also states that only four doctors are present at the refugee camp and that showers and toilets are in a dreadful condition.');
+graph.addNode(' The second phase, called &quot;Operation Sophia&quot;, started in October, and was aimed at disrupting the smugglers&#39; journeys by boarding, searching, seizing and diverting migrant vessels in international waters.');
+graph.addNode(' [109] On 15 September 2015, Hungary announced it would start arresting people crossing the border illegally, and as of early 16 September, Hungary had detained 519 people and pressed criminal charges against 46 for trespassing.');
+graph.addNode(' [14] The influx from states like Nigeria and Pakistan is a mix of economic migrants and refugees fleeing from violence and war such as Boko Haram insurgency in north-east Nigeria and the War in North-West Pakistan .');
+graph.addNode('wars');
+graph.addNode(' [16] The number of deaths at sea rose to record levels in April 2015, when five boats carrying almost 2,000 migrants to Europe sank in the Mediterranean Sea , with a combined death toll estimated at more than 1,200 people.');
+graph.addNode(' [170] After the development of the migrant crisis Germany decided to use the derogation possibility of article 17 of the Dublin III Regulation for humanitarian reasons.');
+graph.addNode(' [171] According to The Wall Street Journal, this &quot; unilateral &quot; open-arms policy [172] triggered both a domestic and an international backlash.');
+graph.addNode('approach');
+graph.addNode('background');
+graph.addNode('due');
+graph.addNode(' [174] In September 2015 the federal states, responsible for accommodation, reached the brink of their capacities and criticised the Government in Berlin for its &quot;inconsiderate&quot; approach to the crisis.');
+graph.addNode(' [181] In January 2016, 18 of 31 men suspected of violent assaults on women in Cologne on New Year&#39;s Eve were identified as asylum seekers, prompting calls by German officials to deport convicted criminals who may be seeking asylum; [182] these sexual attacks brought about a fresh wave of anti-immigrant anxiety and protest across Europe.');
+graph.addNode(' [203] The Association of Greek Tourism Enterprises (SETE) warned about the prospect of another flare-up in the refugee/migrant crisis due to the Turkish political instability.');
+graph.addNode(' [261] Twenty individuals were denied asylum in 2015 due to war crimes .');
+graph.addNode(' [266] Three days later, a Danish cab driver was arrested for human trafficking near the &#216;resund Bridge.');
+graph.addNode(' [271] The law applies retroactively on everyone who arrived 24 November onwards and came into effect 20 July 2016. These measures puts Sweden in line with the minimum line of requirements mandated by the EU. [272] Thirty individuals were denied asylum January–June 2016 due to war crimes .');
+graph.addNode(' [274] 90% of people infected with tuberculosis were born abroad.');
+graph.addNode(' [289] [290] They agreed to call for an emergency meeting of European interior ministers to address the problem of migrant deaths.');
+graph.addNode(' [297] [298] Cameron tweeted on 20 April that he &quot;supported&quot; Renzi&#39;s &quot;call for an emergency meeting of EU leaders to find a comprehensive solution&quot; to the migrant crisis in the Mediterranean.');
+graph.addNode(' [305] On 5 May 2015 it was announced by the Irish Minister of Defence Simon Coveney that the L&#201; Eithne would also take part in the response to the crisis.');
+graph.addNode(' [306] Amnesty International immediately criticised the EU response as &quot;a face-saving not a life-saving operation&quot; and said that &quot;failure to extend Triton&#39;s operational area will fatally undermine today&#39;s commitment&quot;.');
+graph.addNode('derogation');
+graph.addNode(' [338] [339] Many German officials believed a higher level of scrutiny was needed, and criticised the position of German Chancellor Angela Merkel, but the German Vice-Chancellor Sigmar Gabriel defended her stance, and pointed out that a lot of migrants were fleeing terrorism.');
+graph.addNode(' [347] Starting on 7 March 2016, the EU met with Turkey for another summit in Brussels to negotiate further solutions of the crisis.');
+graph.addNode(' [359] Erdoğan said: &quot;We have received lots of thanks for our action on the refugees and in the fight against terrorism.');
+graph.addNode(' [386] Prime Minister Bohuslav Sobotka said the European Commission had failed in solving the crisis and expressed disagreement with proposed quotas saying: We reject the system of quotas.');
+graph.addNode(' [389] After talks with NATO Secretary General Jens Stoltenberg on migrant crisis issue Babiš said: &quot;NATO is not interested in refugees, though Turkey, a NATO member, is their entrance gate to Europe and smugglers operate on Turkish territory&quot;.');
+graph.addNode(' [414] In September 2015, enthusiastic crowds across the country welcomed arriving refugees and migrants.');
+graph.addNode(' [421] The November 2015 Paris attacks prompted reevaluation of German officials&#39; stance on the EU&#39;s policy toward migrants.');
+graph.addNode(' [430] The Mafia Capitale investigation revealed that the Italian Mafia profits from the migrant crisis and exploits refugees.');
+graph.addNode(' [431] [432] Pope Francis thanked the Italian navy for migrant rescue effort.');
+graph.addNode(' [448] British UKIP politician Nigel Farage stated that the exodus from Libya had been caused by NATO military intervention , approved by David Cameron and Nicolas Sarkozy , in the civil war in Libya .');
+graph.addNode(' [454] Amnesty International condemned European governments for &quot;negligence towards the humanitarian crisis in the Mediterranean&quot; which they say led to an increase in deaths at sea.');
+graph.addNode(' [47] Since 2011, and particularly since 2014, instability and the Second Civil War in Libya have made departures from the north-African country to Italy easier, with no central authority controlling Libya&#39;s ports and dealing with European countries, and migrant smuggling networks flourishing.');
+graph.addNode(' [486] Her comments were reported by the German [487] and Austrian press, [488] and were called &quot;abstruse claims&quot; by the online edition of Der Spiegel .');
+graph.addNode(' [489] Centre-right daily Die Welt wrote that she &quot;exploits the refugee crisis for anti-German propaganda&quot;.');
+graph.addNode(' [48] The 2013 Lampedusa migrant shipwreck involved &quot;more than 360&quot; deaths, leading the Italian government to establish Operation Mare Nostrum , a large-scale naval operation that involved search and rescue , with some migrants brought aboard a naval amphibious assault ship .');
+graph.addNode(' [51] The UK government cited fears that the operation was acting as &quot;an unintended &#39;pull factor&#39;, encouraging more migrants to attempt the dangerous sea crossing and thereby leading to more tragic and unnecessary deaths&quot;.');
+graph.addNode(' [52] The operation consisted of two surveillance aircraft and three ships, with seven teams of staff who gathered intelligence and conducted screening/identification processing.');
+graph.addNode(' [54] Overall estimates are that over 22,000 migrants died between 2000 and 2014.');
+graph.addNode(' [87] [95] Wars fueling the crisis are the Syrian Civil War and the Iraq War , the War in Afghanistan , the War in Somalia , and the War in Darfur .');
+graph.addNode(' [88] Data released by Germany&#39;s Federal Office for Migration and Refugees (BAMF) in January 2016 showed that Germany received 476,649 asylum applications in 2015, mainly from Syrians (162,510), Albanians (54,762), Kosovars (37,095), Afghans (31,902), Iraqis (31,379), Serbians (26,945), Macedonians (14,131), Eritreans (10,990) and Pakistanis (8,472).');
+graph.addNode('&quot; [337] The attacks prompted European officials—particularly German officials—to re-evaluate their stance on EU policy toward migrants, especially in light of the ongoing European migrant crisis.');
+graph.addNode('&quot; [465] He also claimed that criminals, extremists and fighters were hiding in the flow of migrants.');
+graph.addNode('&#39;Syrian Refugees Welcome&#39; rally in Vienna , 31 August 2015');
+graph.addNode('. War, poverty and the stark rise in inequality are global, not local problems.');
+graph.addNode('After the migrant shipwreck on 19 April 2015, Italy&#39;s Premier Matteo Renzi spoke by telephone to French President Fran&#231;ois Hollande and to Maltese Prime Minister Joseph Muscat .');
+graph.addNode('During all of 2015, migration authorities reported 500 cases of suspected terrorism links or war criminals to Swedish Security Service .');
+graph.addNode('European Commissioner for Migration, Home Affairs and Citizenship, Dimitris Avramopoulos , said that the European Commission &quot;does not care about the political cost&quot; of its handling of the migration crisis, because it&#39;s there for five years to do its job &quot;with vision, responsibility and commitment&quot; and what drives it &quot;is not to be re-elected&quot;, and invited European national leaders to do likewise and stop worrying about reelection.');
+graph.addNode('Europol , Frontex , EASO and Eurojust will meet regularly and work closely to gather information on smugglers&#39; modus operandi, to trace their funds and to assist in their investigation;');
+graph.addNode('Following the arrival of migrants from Greece to Turkey, they are given medical checks, and are registered and fingerprinted, then bused to &quot;reception and removal&quot; centres [354] in Ankara, Erzurum, İzmir, Gaziantep, Kayseri, Van and Kırklareli, [355] and later deported to their home countries.');
+graph.addNode('Frontex&#39;s Operation Poseidon, aimed at patrolling the Aegean Sea , is badly underfunded and undermanned, with only 11 coastal patrol vessels, one ship, two helicopters, two aircraft and a budget of €18 million.');
+graph.addNode('Germany has been the most sought-after final destination in the EU migrant and refugee crisis.');
+graph.addNode('Global refugee crisis[ edit ]');
+graph.addNode('In April 2015, Amnesty International and Human Rights Watch criticised the funding of search and rescue operations.');
+graph.addNode('In August 2016 four workers at asylum centres for refugee children were reported to have been infected by tuberculosis and health services reported a marked increase in tuberculosis infections due to the crisis.');
+graph.addNode('In June 2016, exiled Cuban journalist Carlos Alberto Montaner suggested that France could establish a refugee state in French Guiana .');
+graph.addNode('In a report released in January 2016, M&#233;decins Sans Fronti&#232;res denounced the EU response to the refugee crisis in 2015, saying that policies of deterrence and a chaotic response to the humanitarian needs of those who fled actively worsened the conditions of refugees and migrants and created a &quot;policy-made humanitarian crisis&quot;.');
+graph.addNode('Lebanon &#39;s Education Minister Elias Bou Saab told British Prime Minister David Cameron that &quot;as many as 2% of the refugees could be jihadis belonging to ISIS &quot;.');
+graph.addNode('Malta – Prime Minister Joseph Muscat called the crisis &quot;an ugly period&quot; for Europe, and said that Malta will take in 75 migrants from Italy and Greece.');
+graph.addNode('Migrant routes, development, and responses in individual countries[ edit ]');
+graph.addNode('Nigel Farage , leader of the British anti-EU United Kingdom Independence Party and co-leader of the eurosceptic Europe of Freedom and Direct Democracy group, blamed the EU &quot;and Germany in particular&quot; for giving &quot;huge incentives for people to come to the European Union by whatever means&quot; and said that this would make deaths more likely.');
+graph.addNode('On 14 September 2015, it was reported that the Hungarian police were blocking the route from Serbia, and that the regular entry-point was heavily manned with officers, soldiers and helicopters hovering above, [215] sealing this border with a razor wire [216] [217] and detaining migrants crossing the border illegally with the threat of arrest and criminal charges.');
+graph.addNode('On 20 April 2015, the European Commission proposed a 10-point plan to tackle the crisis: [301]');
+graph.addNode('On 20 March 2016, the agreement between the EU and Turkey to tackle the migrant crisis came into effect.');
+graph.addNode('On 31 August 2015, according to The New York Times, Angela Merkel , German Chancellor and leader of the Christian Democratic Union , in some of her strongest language theretofore on the immigrant crisis, warned that freedom of travel and open borders among the 28 member states of the EU could be jeopardised if they did not agree on a shared response to this crisis.');
+graph.addNode('On 7 September 2015, France announced that it would accept 24,000 asylum-seekers over two years; Britain announced that it would take in up to 20,000 refugees, primarily vulnerable children and orphans from camps in Jordan, Lebanon, and Turkey; and Germany pledged US$6.7 billion to deal with the migrant crisis.');
+graph.addNode('Refugee and migrant deaths in the Mediterranean Sea, 2011-2016 (2016 data is up to 1 June).');
+graph.addNode('Reinforce the Joint Operations in the Mediterranean, namely Triton and Poseidon, by increasing the financial resources and the number of assets.');
+graph.addNode('inspection');
+graph.addNode('possibility');
+graph.addNode('Russian Prime Minister Dmitry Medvedev said: &quot;It&#39;s quite simply stupid to open Europe&#39;s doors wide and invite in everyone who wants to come to your country.');
+graph.addNode('Some argue that migrants have been seeking to settle preferentially in those national destinations offering more generous social welfare benefits and hosting more established Middle Eastern and African immigrant communities.');
+graph.addNode('Text is available under the Creative Commons Attribution-ShareAlike License ; additional terms may apply.');
+graph.addNode('call');
+graph.addNode('funding');
+graph.addNode('The European migrant crisis [n 2] or European refugee crisis [n 3] began in 2015, [10] when a rising number of refugees and migrants [11] made the journey to the European Union (EU) to seek asylum , traveling across the Mediterranean Sea or through Southeast Europe .');
+graph.addNode('The Russian Federation released an official statement on 2 September 2015 that the United Nations Security Council was working on a draft resolution to address the European migrant crisis, likely by permitting the inspection of suspected migrant ships.');
+graph.addNode('The entry routes through the Balkans have experienced the greatest intensity of border restrictions in the 2015 EU migrant crisis, according to The New York Times [280] and other sources, as follows:');
+
+            graph.addLink(' According to MSF, obstacles placed by EU governments included &quot;not providing any alternative to a deadly sea crossing, erecting razor wire fences, continuously changing administrative and registration procedures, committing acts of violence at sea and at land borders, and providing completely inadequate reception conditions in Italy and Greece&quot;.', 'crisis');
+graph.addLink(' According to MSF, obstacles placed by EU governments included &quot;not providing any alternative to a deadly sea crossing, erecting razor wire fences, continuously changing administrative and registration procedures, committing acts of violence at sea and at land borders, and providing completely inadequate reception conditions in Italy and Greece&quot;.', 'migrant');
+graph.addLink(' According to MSF, obstacles placed by EU governments included &quot;not providing any alternative to a deadly sea crossing, erecting razor wire fences, continuously changing administrative and registration procedures, committing acts of violence at sea and at land borders, and providing completely inadequate reception conditions in Italy and Greece&quot;.', 'plans');
+graph.addLink(' According to MSF, obstacles placed by EU governments included &quot;not providing any alternative to a deadly sea crossing, erecting razor wire fences, continuously changing administrative and registration procedures, committing acts of violence at sea and at land borders, and providing completely inadequate reception conditions in Italy and Greece&quot;.', 'response');
+graph.addLink(' Additionally, he said that the EU&#39;s Schengen agreement on open borders had failed and warned that Islamists could exploit the situation and enter Europe in large numbers, saying that &quot;one of the ISIL terrorist suspects who committed the first atrocity against holidaymakers in Tunisia has been seen getting off a boat onto Italian soil&quot;.', 'crisis');
+graph.addLink(' He said Europe needs to complete what the European Council has agreed in the past and not to create new plans and proposals.', 'crisis');
+graph.addLink(' Since April 2015, the European Union has struggled to cope with the crisis, increasing funding for border patrol operations in the Mediterranean, devising plans to fight migrant smuggling , launching Operation Sophia and proposing a new quota system to relocate and resettle asylum seekers among EU states and alleviate the burden on countries on the outer borders of the Union.', 'crisis');
+graph.addLink(' [170] After the development of the migrant crisis Germany decided to use the derogation possibility of article 17 of the Dublin III Regulation for humanitarian reasons.', 'crisis');
+graph.addLink(' [203] The Association of Greek Tourism Enterprises (SETE) warned about the prospect of another flare-up in the refugee/migrant crisis due to the Turkish political instability.', 'crisis');
+graph.addLink(' [271] The law applies retroactively on everyone who arrived 24 November onwards and came into effect 20 July 2016. These measures puts Sweden in line with the minimum line of requirements mandated by the EU. [272] Thirty individuals were denied asylum January–June 2016 due to war crimes .', 'crisis');
+graph.addLink(' [297] [298] Cameron tweeted on 20 April that he &quot;supported&quot; Renzi&#39;s &quot;call for an emergency meeting of EU leaders to find a comprehensive solution&quot; to the migrant crisis in the Mediterranean.', 'crisis');
+graph.addLink(' [306] Amnesty International immediately criticised the EU response as &quot;a face-saving not a life-saving operation&quot; and said that &quot;failure to extend Triton&#39;s operational area will fatally undermine today&#39;s commitment&quot;.', 'crisis');
+graph.addLink(' [347] Starting on 7 March 2016, the EU met with Turkey for another summit in Brussels to negotiate further solutions of the crisis.', 'crisis');
+graph.addLink(' [386] Prime Minister Bohuslav Sobotka said the European Commission had failed in solving the crisis and expressed disagreement with proposed quotas saying: We reject the system of quotas.', 'crisis');
+graph.addLink(' [430] The Mafia Capitale investigation revealed that the Italian Mafia profits from the migrant crisis and exploits refugees.', 'crisis');
+graph.addLink(' [454] Amnesty International condemned European governments for &quot;negligence towards the humanitarian crisis in the Mediterranean&quot; which they say led to an increase in deaths at sea.', 'crisis');
+graph.addLink(' [47] Since 2011, and particularly since 2014, instability and the Second Civil War in Libya have made departures from the north-African country to Italy easier, with no central authority controlling Libya&#39;s ports and dealing with European countries, and migrant smuggling networks flourishing.', 'crisis');
+graph.addLink(' [489] Centre-right daily Die Welt wrote that she &quot;exploits the refugee crisis for anti-German propaganda&quot;.', 'crisis');
+graph.addLink(' [87] [95] Wars fueling the crisis are the Syrian Civil War and the Iraq War , the War in Afghanistan , the War in Somalia , and the War in Darfur .', 'crisis');
+graph.addLink('&quot; [337] The attacks prompted European officials—particularly German officials—to re-evaluate their stance on EU policy toward migrants, especially in light of the ongoing European migrant crisis.', 'crisis');
+graph.addLink('European Commissioner for Migration, Home Affairs and Citizenship, Dimitris Avramopoulos , said that the European Commission &quot;does not care about the political cost&quot; of its handling of the migration crisis, because it&#39;s there for five years to do its job &quot;with vision, responsibility and commitment&quot; and what drives it &quot;is not to be re-elected&quot;, and invited European national leaders to do likewise and stop worrying about reelection.', 'crisis');
+graph.addLink('Germany has been the most sought-after final destination in the EU migrant and refugee crisis.', 'crisis');
+graph.addLink('Global refugee crisis[ edit ]', 'crisis');
+graph.addLink('In a report released in January 2016, M&#233;decins Sans Fronti&#232;res denounced the EU response to the refugee crisis in 2015, saying that policies of deterrence and a chaotic response to the humanitarian needs of those who fled actively worsened the conditions of refugees and migrants and created a &quot;policy-made humanitarian crisis&quot;.', 'crisis');
+graph.addLink('Nigel Farage , leader of the British anti-EU United Kingdom Independence Party and co-leader of the eurosceptic Europe of Freedom and Direct Democracy group, blamed the EU &quot;and Germany in particular&quot; for giving &quot;huge incentives for people to come to the European Union by whatever means&quot; and said that this would make deaths more likely.', 'crisis');
+graph.addLink('On 20 April 2015, the European Commission proposed a 10-point plan to tackle the crisis: [301]', 'crisis');
+graph.addLink('On 20 March 2016, the agreement between the EU and Turkey to tackle the migrant crisis came into effect.', 'crisis');
+graph.addLink('On 31 August 2015, according to The New York Times, Angela Merkel , German Chancellor and leader of the Christian Democratic Union , in some of her strongest language theretofore on the immigrant crisis, warned that freedom of travel and open borders among the 28 member states of the EU could be jeopardised if they did not agree on a shared response to this crisis.', 'crisis');
+graph.addLink('The European migrant crisis [n 2] or European refugee crisis [n 3] began in 2015, [10] when a rising number of refugees and migrants [11] made the journey to the European Union (EU) to seek asylum , traveling across the Mediterranean Sea or through Southeast Europe .', 'crisis');
+graph.addLink('The entry routes through the Balkans have experienced the greatest intensity of border restrictions in the 2015 EU migrant crisis, according to The New York Times [280] and other sources, as follows:', 'crisis');
+graph.addLink(' Additionally, he said that the EU&#39;s Schengen agreement on open borders had failed and warned that Islamists could exploit the situation and enter Europe in large numbers, saying that &quot;one of the ISIL terrorist suspects who committed the first atrocity against holidaymakers in Tunisia has been seen getting off a boat onto Italian soil&quot;.', 'migrant');
+graph.addLink(' He prayed for migrants, living and dead and denounced their traffickers.', 'migrant');
+graph.addLink(' He said Europe needs to complete what the European Council has agreed in the past and not to create new plans and proposals.', 'migrant');
+graph.addLink(' Hollande described people traffickers as &quot;terrorists&quot; who put migrant lives at risk.', 'migrant');
+graph.addLink(' In late August 2015 in an interview for radio &quot;Frekvence 1&quot; he said: &quot;The reception of migrants from the Middle East and Northern Africa to the territory of Czech Republic brings with it three major risks – spread of infectious diseases, terrorism of the Islamic state and the creation of new ghettos.', 'migrant');
+graph.addLink(' Several hundred migrants broke the fence between Hungary and Serbia twice on Wednesday, 16 September, and threw chunks of concrete and water bottles over the fence.', 'migrant');
+graph.addLink(' Since April 2015, the European Union has struggled to cope with the crisis, increasing funding for border patrol operations in the Mediterranean, devising plans to fight migrant smuggling , launching Operation Sophia and proposing a new quota system to relocate and resettle asylum seekers among EU states and alleviate the burden on countries on the outer borders of the Union.', 'migrant');
+graph.addLink(' The report also states that only four doctors are present at the refugee camp and that showers and toilets are in a dreadful condition.', 'migrant');
+graph.addLink(' The second phase, called &quot;Operation Sophia&quot;, started in October, and was aimed at disrupting the smugglers&#39; journeys by boarding, searching, seizing and diverting migrant vessels in international waters.', 'migrant');
+graph.addLink(' [109] On 15 September 2015, Hungary announced it would start arresting people crossing the border illegally, and as of early 16 September, Hungary had detained 519 people and pressed criminal charges against 46 for trespassing.', 'migrant');
+graph.addLink(' [14] The influx from states like Nigeria and Pakistan is a mix of economic migrants and refugees fleeing from violence and war such as Boko Haram insurgency in north-east Nigeria and the War in North-West Pakistan .', 'migrant');
+graph.addLink(' [16] The number of deaths at sea rose to record levels in April 2015, when five boats carrying almost 2,000 migrants to Europe sank in the Mediterranean Sea , with a combined death toll estimated at more than 1,200 people.', 'migrant');
+graph.addLink(' [170] After the development of the migrant crisis Germany decided to use the derogation possibility of article 17 of the Dublin III Regulation for humanitarian reasons.', 'migrant');
+graph.addLink(' [174] In September 2015 the federal states, responsible for accommodation, reached the brink of their capacities and criticised the Government in Berlin for its &quot;inconsiderate&quot; approach to the crisis.', 'migrant');
+graph.addLink(' [181] In January 2016, 18 of 31 men suspected of violent assaults on women in Cologne on New Year&#39;s Eve were identified as asylum seekers, prompting calls by German officials to deport convicted criminals who may be seeking asylum; [182] these sexual attacks brought about a fresh wave of anti-immigrant anxiety and protest across Europe.', 'migrant');
+graph.addLink(' [203] The Association of Greek Tourism Enterprises (SETE) warned about the prospect of another flare-up in the refugee/migrant crisis due to the Turkish political instability.', 'migrant');
+graph.addLink(' [261] Twenty individuals were denied asylum in 2015 due to war crimes .', 'migrant');
+graph.addLink(' [266] Three days later, a Danish cab driver was arrested for human trafficking near the &#216;resund Bridge.', 'migrant');
+graph.addLink(' [271] The law applies retroactively on everyone who arrived 24 November onwards and came into effect 20 July 2016. These measures puts Sweden in line with the minimum line of requirements mandated by the EU. [272] Thirty individuals were denied asylum January–June 2016 due to war crimes .', 'migrant');
+graph.addLink(' [274] 90% of people infected with tuberculosis were born abroad.', 'migrant');
+graph.addLink(' [289] [290] They agreed to call for an emergency meeting of European interior ministers to address the problem of migrant deaths.', 'migrant');
+graph.addLink(' [297] [298] Cameron tweeted on 20 April that he &quot;supported&quot; Renzi&#39;s &quot;call for an emergency meeting of EU leaders to find a comprehensive solution&quot; to the migrant crisis in the Mediterranean.', 'migrant');
+graph.addLink(' [305] On 5 May 2015 it was announced by the Irish Minister of Defence Simon Coveney that the L&#201; Eithne would also take part in the response to the crisis.', 'migrant');
+graph.addLink(' [306] Amnesty International immediately criticised the EU response as &quot;a face-saving not a life-saving operation&quot; and said that &quot;failure to extend Triton&#39;s operational area will fatally undermine today&#39;s commitment&quot;.', 'migrant');
+graph.addLink(' [338] [339] Many German officials believed a higher level of scrutiny was needed, and criticised the position of German Chancellor Angela Merkel, but the German Vice-Chancellor Sigmar Gabriel defended her stance, and pointed out that a lot of migrants were fleeing terrorism.', 'migrant');
+graph.addLink(' [347] Starting on 7 March 2016, the EU met with Turkey for another summit in Brussels to negotiate further solutions of the crisis.', 'migrant');
+graph.addLink(' [359] Erdoğan said: &quot;We have received lots of thanks for our action on the refugees and in the fight against terrorism.', 'migrant');
+graph.addLink(' [386] Prime Minister Bohuslav Sobotka said the European Commission had failed in solving the crisis and expressed disagreement with proposed quotas saying: We reject the system of quotas.', 'migrant');
+graph.addLink(' [389] After talks with NATO Secretary General Jens Stoltenberg on migrant crisis issue Babiš said: &quot;NATO is not interested in refugees, though Turkey, a NATO member, is their entrance gate to Europe and smugglers operate on Turkish territory&quot;.', 'migrant');
+graph.addLink(' [414] In September 2015, enthusiastic crowds across the country welcomed arriving refugees and migrants.', 'migrant');
+graph.addLink(' [421] The November 2015 Paris attacks prompted reevaluation of German officials&#39; stance on the EU&#39;s policy toward migrants.', 'migrant');
+graph.addLink(' [430] The Mafia Capitale investigation revealed that the Italian Mafia profits from the migrant crisis and exploits refugees.', 'migrant');
+graph.addLink(' [431] [432] Pope Francis thanked the Italian navy for migrant rescue effort.', 'migrant');
+graph.addLink(' [448] British UKIP politician Nigel Farage stated that the exodus from Libya had been caused by NATO military intervention , approved by David Cameron and Nicolas Sarkozy , in the civil war in Libya .', 'migrant');
+graph.addLink(' [454] Amnesty International condemned European governments for &quot;negligence towards the humanitarian crisis in the Mediterranean&quot; which they say led to an increase in deaths at sea.', 'migrant');
+graph.addLink(' [47] Since 2011, and particularly since 2014, instability and the Second Civil War in Libya have made departures from the north-African country to Italy easier, with no central authority controlling Libya&#39;s ports and dealing with European countries, and migrant smuggling networks flourishing.', 'migrant');
+graph.addLink(' [486] Her comments were reported by the German [487] and Austrian press, [488] and were called &quot;abstruse claims&quot; by the online edition of Der Spiegel .', 'migrant');
+graph.addLink(' [489] Centre-right daily Die Welt wrote that she &quot;exploits the refugee crisis for anti-German propaganda&quot;.', 'migrant');
+graph.addLink(' [48] The 2013 Lampedusa migrant shipwreck involved &quot;more than 360&quot; deaths, leading the Italian government to establish Operation Mare Nostrum , a large-scale naval operation that involved search and rescue , with some migrants brought aboard a naval amphibious assault ship .', 'migrant');
+graph.addLink(' [51] The UK government cited fears that the operation was acting as &quot;an unintended &#39;pull factor&#39;, encouraging more migrants to attempt the dangerous sea crossing and thereby leading to more tragic and unnecessary deaths&quot;.', 'migrant');
+graph.addLink(' [52] The operation consisted of two surveillance aircraft and three ships, with seven teams of staff who gathered intelligence and conducted screening/identification processing.', 'migrant');
+graph.addLink(' [54] Overall estimates are that over 22,000 migrants died between 2000 and 2014.', 'migrant');
+graph.addLink(' [88] Data released by Germany&#39;s Federal Office for Migration and Refugees (BAMF) in January 2016 showed that Germany received 476,649 asylum applications in 2015, mainly from Syrians (162,510), Albanians (54,762), Kosovars (37,095), Afghans (31,902), Iraqis (31,379), Serbians (26,945), Macedonians (14,131), Eritreans (10,990) and Pakistanis (8,472).', 'migrant');
+graph.addLink('&quot; [337] The attacks prompted European officials—particularly German officials—to re-evaluate their stance on EU policy toward migrants, especially in light of the ongoing European migrant crisis.', 'migrant');
+graph.addLink('&quot; [465] He also claimed that criminals, extremists and fighters were hiding in the flow of migrants.', 'migrant');
+graph.addLink('&#39;Syrian Refugees Welcome&#39; rally in Vienna , 31 August 2015', 'migrant');
+graph.addLink('After the migrant shipwreck on 19 April 2015, Italy&#39;s Premier Matteo Renzi spoke by telephone to French President Fran&#231;ois Hollande and to Maltese Prime Minister Joseph Muscat .', 'migrant');
+graph.addLink('During all of 2015, migration authorities reported 500 cases of suspected terrorism links or war criminals to Swedish Security Service .', 'migrant');
+graph.addLink('European Commissioner for Migration, Home Affairs and Citizenship, Dimitris Avramopoulos , said that the European Commission &quot;does not care about the political cost&quot; of its handling of the migration crisis, because it&#39;s there for five years to do its job &quot;with vision, responsibility and commitment&quot; and what drives it &quot;is not to be re-elected&quot;, and invited European national leaders to do likewise and stop worrying about reelection.', 'migrant');
+graph.addLink('Europol , Frontex , EASO and Eurojust will meet regularly and work closely to gather information on smugglers&#39; modus operandi, to trace their funds and to assist in their investigation;', 'migrant');
+graph.addLink('Following the arrival of migrants from Greece to Turkey, they are given medical checks, and are registered and fingerprinted, then bused to &quot;reception and removal&quot; centres [354] in Ankara, Erzurum, İzmir, Gaziantep, Kayseri, Van and Kırklareli, [355] and later deported to their home countries.', 'migrant');
+graph.addLink('Frontex&#39;s Operation Poseidon, aimed at patrolling the Aegean Sea , is badly underfunded and undermanned, with only 11 coastal patrol vessels, one ship, two helicopters, two aircraft and a budget of €18 million.', 'migrant');
+graph.addLink('Germany has been the most sought-after final destination in the EU migrant and refugee crisis.', 'migrant');
+graph.addLink('Global refugee crisis[ edit ]', 'migrant');
+graph.addLink('In April 2015, Amnesty International and Human Rights Watch criticised the funding of search and rescue operations.', 'migrant');
+graph.addLink('In August 2016 four workers at asylum centres for refugee children were reported to have been infected by tuberculosis and health services reported a marked increase in tuberculosis infections due to the crisis.', 'migrant');
+graph.addLink('In June 2016, exiled Cuban journalist Carlos Alberto Montaner suggested that France could establish a refugee state in French Guiana .', 'migrant');
+graph.addLink('In a report released in January 2016, M&#233;decins Sans Fronti&#232;res denounced the EU response to the refugee crisis in 2015, saying that policies of deterrence and a chaotic response to the humanitarian needs of those who fled actively worsened the conditions of refugees and migrants and created a &quot;policy-made humanitarian crisis&quot;.', 'migrant');
+graph.addLink('Lebanon &#39;s Education Minister Elias Bou Saab told British Prime Minister David Cameron that &quot;as many as 2% of the refugees could be jihadis belonging to ISIS &quot;.', 'migrant');
+graph.addLink('Malta – Prime Minister Joseph Muscat called the crisis &quot;an ugly period&quot; for Europe, and said that Malta will take in 75 migrants from Italy and Greece.', 'migrant');
+graph.addLink('Migrant routes, development, and responses in individual countries[ edit ]', 'migrant');
+graph.addLink('Nigel Farage , leader of the British anti-EU United Kingdom Independence Party and co-leader of the eurosceptic Europe of Freedom and Direct Democracy group, blamed the EU &quot;and Germany in particular&quot; for giving &quot;huge incentives for people to come to the European Union by whatever means&quot; and said that this would make deaths more likely.', 'migrant');
+graph.addLink('On 14 September 2015, it was reported that the Hungarian police were blocking the route from Serbia, and that the regular entry-point was heavily manned with officers, soldiers and helicopters hovering above, [215] sealing this border with a razor wire [216] [217] and detaining migrants crossing the border illegally with the threat of arrest and criminal charges.', 'migrant');
+graph.addLink('On 20 April 2015, the European Commission proposed a 10-point plan to tackle the crisis: [301]', 'migrant');
+graph.addLink('On 20 March 2016, the agreement between the EU and Turkey to tackle the migrant crisis came into effect.', 'migrant');
+graph.addLink('On 31 August 2015, according to The New York Times, Angela Merkel , German Chancellor and leader of the Christian Democratic Union , in some of her strongest language theretofore on the immigrant crisis, warned that freedom of travel and open borders among the 28 member states of the EU could be jeopardised if they did not agree on a shared response to this crisis.', 'migrant');
+graph.addLink('On 7 September 2015, France announced that it would accept 24,000 asylum-seekers over two years; Britain announced that it would take in up to 20,000 refugees, primarily vulnerable children and orphans from camps in Jordan, Lebanon, and Turkey; and Germany pledged US$6.7 billion to deal with the migrant crisis.', 'migrant');
+graph.addLink('Refugee and migrant deaths in the Mediterranean Sea, 2011-2016 (2016 data is up to 1 June).', 'migrant');
+graph.addLink('Russian Prime Minister Dmitry Medvedev said: &quot;It&#39;s quite simply stupid to open Europe&#39;s doors wide and invite in everyone who wants to come to your country.', 'migrant');
+graph.addLink('Some argue that migrants have been seeking to settle preferentially in those national destinations offering more generous social welfare benefits and hosting more established Middle Eastern and African immigrant communities.', 'migrant');
+graph.addLink('The European migrant crisis [n 2] or European refugee crisis [n 3] began in 2015, [10] when a rising number of refugees and migrants [11] made the journey to the European Union (EU) to seek asylum , traveling across the Mediterranean Sea or through Southeast Europe .', 'migrant');
+graph.addLink('The Russian Federation released an official statement on 2 September 2015 that the United Nations Security Council was working on a draft resolution to address the European migrant crisis, likely by permitting the inspection of suspected migrant ships.', 'migrant');
+graph.addLink('The entry routes through the Balkans have experienced the greatest intensity of border restrictions in the 2015 EU migrant crisis, according to The New York Times [280] and other sources, as follows:', 'migrant');
+graph.addLink(' [171] According to The Wall Street Journal, this &quot; unilateral &quot; open-arms policy [172] triggered both a domestic and an international backlash.', 'plans');
+graph.addLink(' [171] According to The Wall Street Journal, this &quot; unilateral &quot; open-arms policy [172] triggered both a domestic and an international backlash.', 'response');
+graph.addLink('On 31 August 2015, according to The New York Times, Angela Merkel , German Chancellor and leader of the Christian Democratic Union , in some of her strongest language theretofore on the immigrant crisis, warned that freedom of travel and open borders among the 28 member states of the EU could be jeopardised if they did not agree on a shared response to this crisis.', 'response');
+graph.addLink(' Additionally, he said that the EU&#39;s Schengen agreement on open borders had failed and warned that Islamists could exploit the situation and enter Europe in large numbers, saying that &quot;one of the ISIL terrorist suspects who committed the first atrocity against holidaymakers in Tunisia has been seen getting off a boat onto Italian soil&quot;.', 'brink');
+graph.addLink(' Additionally, he said that the EU&#39;s Schengen agreement on open borders had failed and warned that Islamists could exploit the situation and enter Europe in large numbers, saying that &quot;one of the ISIL terrorist suspects who committed the first atrocity against holidaymakers in Tunisia has been seen getting off a boat onto Italian soil&quot;.', 'burden');
+graph.addLink(' Additionally, he said that the EU&#39;s Schengen agreement on open borders had failed and warned that Islamists could exploit the situation and enter Europe in large numbers, saying that &quot;one of the ISIL terrorist suspects who committed the first atrocity against holidaymakers in Tunisia has been seen getting off a boat onto Italian soil&quot;.', 'creation');
+graph.addLink(' Additionally, he said that the EU&#39;s Schengen agreement on open borders had failed and warned that Islamists could exploit the situation and enter Europe in large numbers, saying that &quot;one of the ISIL terrorist suspects who committed the first atrocity against holidaymakers in Tunisia has been seen getting off a boat onto Italian soil&quot;.', 'irish');
+graph.addLink(' Additionally, he said that the EU&#39;s Schengen agreement on open borders had failed and warned that Islamists could exploit the situation and enter Europe in large numbers, saying that &quot;one of the ISIL terrorist suspects who committed the first atrocity against holidaymakers in Tunisia has been seen getting off a boat onto Italian soil&quot;.', 'islamic');
+graph.addLink(' Additionally, he said that the EU&#39;s Schengen agreement on open borders had failed and warned that Islamists could exploit the situation and enter Europe in large numbers, saying that &quot;one of the ISIL terrorist suspects who committed the first atrocity against holidaymakers in Tunisia has been seen getting off a boat onto Italian soil&quot;.', 'open');
+graph.addLink(' Additionally, he said that the EU&#39;s Schengen agreement on open borders had failed and warned that Islamists could exploit the situation and enter Europe in large numbers, saying that &quot;one of the ISIL terrorist suspects who committed the first atrocity against holidaymakers in Tunisia has been seen getting off a boat onto Italian soil&quot;.', 'outer');
+graph.addLink(' Additionally, he said that the EU&#39;s Schengen agreement on open borders had failed and warned that Islamists could exploit the situation and enter Europe in large numbers, saying that &quot;one of the ISIL terrorist suspects who committed the first atrocity against holidaymakers in Tunisia has been seen getting off a boat onto Italian soil&quot;.', 'prospect');
+graph.addLink('Reinforce the Joint Operations in the Mediterranean, namely Triton and Poseidon, by increasing the financial resources and the number of assets.', 'brink');
+graph.addLink(' [306] Amnesty International immediately criticised the EU response as &quot;a face-saving not a life-saving operation&quot; and said that &quot;failure to extend Triton&#39;s operational area will fatally undermine today&#39;s commitment&quot;.', 'burden');
+graph.addLink(' [347] Starting on 7 March 2016, the EU met with Turkey for another summit in Brussels to negotiate further solutions of the crisis.', 'burden');
+graph.addLink('European Commissioner for Migration, Home Affairs and Citizenship, Dimitris Avramopoulos , said that the European Commission &quot;does not care about the political cost&quot; of its handling of the migration crisis, because it&#39;s there for five years to do its job &quot;with vision, responsibility and commitment&quot; and what drives it &quot;is not to be re-elected&quot;, and invited European national leaders to do likewise and stop worrying about reelection.', 'burden');
+graph.addLink('Reinforce the Joint Operations in the Mediterranean, namely Triton and Poseidon, by increasing the financial resources and the number of assets.', 'creation');
+graph.addLink(' [386] Prime Minister Bohuslav Sobotka said the European Commission had failed in solving the crisis and expressed disagreement with proposed quotas saying: We reject the system of quotas.', 'irish');
+graph.addLink('Reinforce the Joint Operations in the Mediterranean, namely Triton and Poseidon, by increasing the financial resources and the number of assets.', 'open');
+graph.addLink(' [306] Amnesty International immediately criticised the EU response as &quot;a face-saving not a life-saving operation&quot; and said that &quot;failure to extend Triton&#39;s operational area will fatally undermine today&#39;s commitment&quot;.', 'outer');
+graph.addLink('Reinforce the Joint Operations in the Mediterranean, namely Triton and Poseidon, by increasing the financial resources and the number of assets.', 'prospect');
+graph.addLink(' [14] The influx from states like Nigeria and Pakistan is a mix of economic migrants and refugees fleeing from violence and war such as Boko Haram insurgency in north-east Nigeria and the War in North-West Pakistan .', 'wars');
+graph.addLink(' [271] The law applies retroactively on everyone who arrived 24 November onwards and came into effect 20 July 2016. These measures puts Sweden in line with the minimum line of requirements mandated by the EU. [272] Thirty individuals were denied asylum January–June 2016 due to war crimes .', 'wars');
+graph.addLink(' [47] Since 2011, and particularly since 2014, instability and the Second Civil War in Libya have made departures from the north-African country to Italy easier, with no central authority controlling Libya&#39;s ports and dealing with European countries, and migrant smuggling networks flourishing.', 'wars');
+graph.addLink(' [87] [95] Wars fueling the crisis are the Syrian Civil War and the Iraq War , the War in Afghanistan , the War in Somalia , and the War in Darfur .', 'wars');
+graph.addLink('. War, poverty and the stark rise in inequality are global, not local problems.', 'wars');
+graph.addLink(' [171] According to The Wall Street Journal, this &quot; unilateral &quot; open-arms policy [172] triggered both a domestic and an international backlash.', 'approach');
+graph.addLink(' [171] According to The Wall Street Journal, this &quot; unilateral &quot; open-arms policy [172] triggered both a domestic and an international backlash.', 'background');
+graph.addLink(' [171] According to The Wall Street Journal, this &quot; unilateral &quot; open-arms policy [172] triggered both a domestic and an international backlash.', 'due');
+graph.addLink(' [306] Amnesty International immediately criticised the EU response as &quot;a face-saving not a life-saving operation&quot; and said that &quot;failure to extend Triton&#39;s operational area will fatally undermine today&#39;s commitment&quot;.', 'derogation');
+graph.addLink('Reinforce the Joint Operations in the Mediterranean, namely Triton and Poseidon, by increasing the financial resources and the number of assets.', 'inspection');
+graph.addLink('Reinforce the Joint Operations in the Mediterranean, namely Triton and Poseidon, by increasing the financial resources and the number of assets.', 'possibility');
+graph.addLink('Text is available under the Creative Commons Attribution-ShareAlike License ; additional terms may apply.', 'call');
+graph.addLink('Text is available under the Creative Commons Attribution-ShareAlike License ; additional terms may apply.', 'funding');
+
+            // Step 3. Customize node appearance.
+            //  Vivagraph can present graph in multiple ways. svgGraphics() - is
+            //  the way to render graph in SVG format:
+            var graphics = Viva.Graph.View.svgGraphics();
+            var clicked
+
+            higlightedEdges = []
+            var lastmouse = 0;
+             
+            document.body.onmousedown = (e) => {
+                lastmouse = (new Date()).getTime();
+            }
+
+            document.body.onmouseup = (e) => {
+                var dur = (new Date()).getTime() - lastmouse;
+                if ((dur < 200) && e.target.nodeName === "svg") {
+                    clicked = false;
+                    graph.forEachNode(node => {
+                        graphics.getNodeUI(node.id).style.opacity = "1"
+                    })
+                }
+            } 
+            
+
+            highlightRelatedNodes = function (nodeId, isOn,isclick) {
+                var n = graph.getLinks(nodeId)
+                var ids = new Set([].concat.apply([], n.map(l =>[l.fromId, l.toId])))
+
+                if (isclick) {
+                    higlightedEdges.forEach(e => e.attr('stroke', 'gray'))
+                    
+                    higlightedEdges.length = 0
+                    clicked = true
+
+                    graph.forEachNode(node => {
+                        if (!ids.has(node.id))
+                            graphics.getNodeUI(node.id).style.opacity = "0"
+                        else
+                            graphics.getNodeUI(node.id).style.opacity = "1"
+                    })
+                }
+                 
+                // just enumerate all realted nodes and update link color:
+                graph.forEachLinkedNode(nodeId, function (node, link) {
+                    var linkUI = graphics.getLinkUI(link.id);
+                    if (linkUI) {
+                        // linkUI is a UI object created by graphics below
+                        linkUI.attr('stroke', isOn ? 'red' : 'gray');
+                        if (isclick) higlightedEdges.push(linkUI)
+                        else if (clicked) { higlightedEdges.forEach(e => e.attr('stroke', 'red')) }
+                    }
+                });
+                
+            };
+
+            var centrals = new Set([])
+            var commons = new Set([])
+            var idc = 0
+            var strlen = 64
+            var ew = 0
+            var eh = 19
+
+             
+            var el = document.createElement('canvas');
+            context = el.getContext("2d");
+
+            function getWidth(txt) {
+                return context.measureText(txt).width * 2.5 
+            }
+
+                 
+             
+            graphics.node(function (node) {
+                // This time it's a group of elements: http://www.w3.org/TR/SVG/struct.html#Groups
+                var ui = Viva.Graph.svg('g');
+                    // Create SVG text element with user id as content 
+
+                var rect = Viva.Graph.svg('rect');
+
+                var txts = wrap(node.id, strlen).reverse()
+
+                var fillcol = "rgb(188, 217, 217)"
+                if (centrals.has(node.id)) { fillcol = "rgb(255, 236, 221)" }
+                else if (commons.has(node.id)) { fillcol = "rgb(204, 236, 204)" }
+
+                rect.attr("width", getWidth(txts[0])).attr("height", txts.length * eh).attr('y', '-10px').attr('x', '-4px').attr('rx', 5).attr('ry', 5);
+                rect.style.stroke = "rgb(100,100,100)"
+                rect.style.fill = fillcol
+                rect.style.strokeWidth = 2
+                rect.style.opacity = "0.9"
+
+                
+                ui.append(rect)
+                 
+                
+
+                for (c = 0; c < txts.length; c ++) {
+                    var svgText = Viva.Graph.svg('text').attr('y', '+' + (4 + c * 15) + 'px').text(decodeHtml(txts[c]))
+                    svgText.style.fill = "rgb(30,30,30)"
+                    ui.append(svgText);
+                }
+                //ui.append(svgText);
+               // ui.append(svgText2);
+
+                ui.addEventListener("click", function (event) {
+                    // highlight the mouseenter target
+                    highlightRelatedNodes(node.id,true,true);
+                }, false);
+
+                ui.addEventListener("mouseenter", function (event) {
+                    // highlight the mouseenter target
+                    highlightRelatedNodes(node.id, true,false);
+                }, false);
+                ui.addEventListener("mouseleave", function (event) {
+                    // highlight the mouseenter target
+                    highlightRelatedNodes(node.id, false,false);
+                }, false); 
+
+                return ui;
+            }).placeNode(function (nodeUI, pos) {
+                // 'g' element doesn't have convenient (x,y) attributes, instead
+                // we have to deal with transforms: http://www.w3.org/TR/SVG/coords.html#SVGGlobalTransformAttribute
+                nodeUI.attr('transform',
+                            'translate(' +
+                                  (pos.x - nodeSize / 2) + ',' + (pos.y - nodeSize / 2) +
+                            ')');
+            });
+
+            if (false) {
+
+                var geom = Viva.Graph.geom();
+
+                graphics.link(function (link) {
+                    var label = Viva.Graph.svg('text').attr('id', 'label_' + idc).text(link.data);//.attr('id', 'label_' + link.data.id).text(link.data.id);
+                    graphics.getSvgRoot().childNodes[0].append(label);
+                    var cc = idc
+                    idc++
+                    return Viva.Graph.svg('path')
+                        .attr('stroke', 'gray')
+                        .attr('id', cc)// link.data.id);
+                }).placeLink(function (linkUI, fromPos, toPos) {
+                    var toNodeSize = nodeSize,
+                    fromNodeSize = nodeSize;
+
+
+                    var from = geom.intersectRect(
+                        fromPos.x - fromNodeSize / 2, // left
+                        fromPos.y - fromNodeSize / 2, // top
+                        fromPos.x + fromNodeSize / 2, // right
+                        fromPos.y + fromNodeSize / 2, // bottom
+                        fromPos.x, fromPos.y, toPos.x, toPos.y)
+                    || fromPos;
+
+                    var to = geom.intersectRect(
+                        toPos.x - toNodeSize / 2, // left
+                        toPos.y - toNodeSize / 2, // top
+                        toPos.x + toNodeSize / 2, // right
+                        toPos.y + toNodeSize / 2, // bottom
+                        // segment:
+                        toPos.x, toPos.y, fromPos.x, fromPos.y)
+                        || toPos;
+
+                    var data = 'M' + from.x + ',' + from.y +
+                        'L' + to.x + ',' + to.y;
+
+                    linkUI.attr("d", data);
+
+                    document.getElementById('label_' + linkUI.attr('id'))
+                        .attr("x", (from.x + to.x + 50) / 2)
+                        .attr("y", (from.y + to.y) / 2);
+                });
+            }
+ 
+
+            // Step 4. Render the graph with our customized graphics object:
+            var renderer = Viva.Graph.View.renderer(graph, {
+                graphics: graphics,
+                layout: layout
+            });
+            renderer.run();
+        }
+    </script>
+
+    <style type="text/css" media="screen">
+        html, body, svg { width: 100%; height: 100%; font-family:"verdana"}
+    </style>
+</head>
+<body onload='main()'>
+  <div style="float:left;display:block" id ="infodiv">asdadadsaasd</div>
+</body>
+</html>
