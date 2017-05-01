@@ -1,0 +1,93 @@
+<meta http-equiv='Content-Type' content='Type=text/html; charset=utf-8'>
+                             <script type='text/javascript' async src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML'></script>
+                             <title>Colloquial Information, Meaning and Fluffy Puff</title>
+                             <link rel='stylesheet' type='text/css' href='style.css'>
+<h1>Colloquial Information, Meaning and Fluffy Puff</h1>
+
+<p>The information in information theory does not capture the concept of meaning. The intuitive notion of information can nonetheless be written using information theory concepts. Information in the everyday sense has some properties it must satisfy. Consider a book.</p>
+
+<p>1) If it is written in a language I do not understand then the book has zero information for me. This tells me that meaningful information ought to have a subjective aspect.</p>
+
+<p>2) If I already know everything in the book then the book has no new information for me.</p>
+
+<p>3) Even if I know the language a book is written in, I need some relevant knowledge before I can understand it.</p>
+
+<p>With some thought, I arrived at the following as a general but computable algorithmic definition of useful information:</p>
+
+<p><code>UsefulInformation I K = if can_decode(I) then relative_entropy(K, patch K (delta_decode K (decode I))) else 0</code></p>
+
+<p><code>decode</code> takes a symbol and returns a complex inner representation in language. <code>delta_decode</code> takes knowledge and the linguistic data and returns a distribution over interpretations in terms of K of the linguistic data.<code>Patch</code> computes a program for integration of the information. Relative entropy compares how much the distribution (or state of knowledge) has changed.</p>
+
+<p>I've mixed and matched corresponding computer science and math concepts such that presentation is clearest (at least it was for me). Just as compression and entropy are related, data differencing and relative entropy are also related. The compression analogue of Patch corresponds to decompression. Patch, relative_entropy, and delta_decode are really different ways of talking about the same thing but their focuses differ. Patch emphasizes a change of state in knowledge, delta_decode emphasizes that it is not so much that new knowledge was gained as the fact that the relatively compressed information has been "relatively decompressed". Relative entropy means we care mostly about comparing our old state to this new state.</p>
+
+<p>Let's expand. K here stands for the probability distribution which represents the reader's state of knowledge. In the brain, it might be a collection of neurons as an ensemble code. In an AI, it might be a factor graph—it doesn't matter—what matters is that one can straightforwardly represent state of knowledge in terms of a complex distribution.</p>
+
+<h2>Decode</h2>
+
+<p>Can Decode means that the sequence of symbols can be understood. In animals it means more than visual modules are activated, and in a non-trivial way, specifically attention is engaged and conscious state is modified. Again, the details of decoding do not matter, only that decoding the symbols affects internal state such that complex associations are triggered. In short, you speak the language the text is written in. Decoding takes the sequence and converts it to a rich inner representation.</p>
+
+<h3>Rel Decoding</h3>
+
+<p>The inner part: <code>delta_decode K I</code> is most interesting (remember, K stands for your state of knowledge). It captures requirement (3). Effectively, it puts forward that the information in books is actually compressed, but relative to some shared or assumed state of knowledge. Take a genome. You can take an arbitrary genome. Then for each new genome, instead of storing it or even compressing it, you can simply tell how it differs from the reference genome. Someone can then patch that genome to get to your genome. Instead of transferring gigabytes of data you can transfer a handful of megabytes. Or if you have ten pictures that are mostly the same then you can take one as a reference and describe the others based on how they differ from it. Doing this well is difficult but that's irrelevant to the main point here. Which is that the information in text is not self-contained. Relevant knowledge is required in order for understanding to even be attempted.</p>
+
+<p>This is seen most in math, where you cant make much progress because there is a huge amount of relative compression per symbol (This is actually common everywhere. Jump in the middle of a soap opera and you will have no clue what you are looking at but math requires much more active maintenance of fine grained information).</p>
+
+<p><em>Conjecture</em>: people's brains barely differ in ability . Instead it's the ability to do decode then patch which depend on attention, that is difficult. Couple this with the multiplicative nature of knowledge (the more you know the easier it is to decode then patch) and we see the seemingly wide gaps of reality. Things which engage attention are conscious activities and despite not using any more energy than watching TV, learning something difficult strongly dominates attention resources and the best our subconscious can do is map it to the feeling of a strenuous activity (when it is certainly not, metabolically).</p>
+
+<p><em>Observation</em>: this is why there is a sweet spot in how well people learn new information. The inner decode must be feasible but the change in state (the outer most relative entropy) needs to be noticeable. Each repetition can be viewed as getting better and better at delta decoding information similar to the given input.</p>
+
+<h3>Patch</h3>
+
+<p>The outer patch: <code>patch K (delta_decode K I)</code> might actually be better considered as solving a transport problem.</p>
+
+<p>The text is essentially a specification and tells or constrains you in how to best modify your knowledge to arrive at the new state. Because there might be different solutions, people don't arrive at the same new state. Most people will be blocked by proper delta decoding but once you've properly expanded you must then modify your state. Although I use patch, it's better thought of as effectively searching for an explicit solution to something similar to a transport problem (or computing a Wasserstein Distance) getting from state probability distribution K to K'.</p>
+
+<p>Of course, simply computing the distance between two distributions cannot be the whole story. There's a further step to be considered.  First, it seems reasonable to assume that not all of knowledge is available per instance of data. The earlier mentioned association cascade from decoding (relative and linguistic) are likely a subset of what is known to the agent. So what does patch do? Unfortunately I cannot say, but I can sketch at two possibilities:</p>
+
+<p><span class="math">\[\textbf{EMD} (\textbf{Decompress} (\textbf{Compress} \ I_{decoded}  K_{sub})) \ I_{decoded}\]</span></p>
+
+<p>This says the knowledge is tested as the discrepancy between the decompressed compression with respect to the current activated knowledge and the external instance. For example, in learning a new topic, the ability to generate a fuller description from a simpler set of facts and comparing it with what is recorded displays a fuller understanding. More concretely, if someone were to say: "<em>there is a haggard man with a flower pot for a hat peering furtively from behind a rosemary shrub</em>" , you might instead relay that as "<em>there is a strange man hiding behind that weird cactusy plant</em>". The telephone game as a distortion from decompression errors.</p>
+
+<p>The other aspect can be illustrated with an example. Suppose I say: <em>John is in the kitchen</em>. Your state of knowledge is updated but the new instance is isolated. But there are associated with it all manner of hypothesis as to John's intention, next action, time of day and so on. The knowledge is backed both by a set of relations over actions and a large number of hypotheses. If I next say, <em>John Closed the cupboard</em>. The hypotheses as to what was probably just done and the previous actions are now slightly more precise. <em>John's Cat mewed impatiently</em>. (<strong>Interesting note</strong>: Given a standard sequence of events, a surprising event is especially favored by human children: "<em>John looked under the puffing stove for Jerry the octopus's favorite chair</em>". And so on.</p>
+
+<p>Compression is a sign of having understood, especially for larger and more complex information but there seems an aspect of a constantly modifying probabilistic model. Better metacognition would mean tracking uncertainty better. How compression is handled and the hypotheses are set, how the action state graph is tuned, is as of now, unknown to me beyond that each is an important aspect of how we learn and predict the things in the world.</p>
+
+<p>The relative entropy between the new and old is the information gain and represents meaningful information. It is subjective but can be approximated objectively by averaging over all valid (exclude rocks but allow simple AI) readers of the book.</p>
+
+<h2>Some examples:</h2>
+
+<p><strong>Watching a movie</strong> involves decoding the visual, audio and symbolics of the viewed scenes. Hypotheses are maintained about each actor's mental state. Knowledge of the world, genre and the story itself inform how to constrain the consumer's hypothesis space. Updates are usually small but a good story might have surprises (higher relative entropy in the local state—with respect to the story) that are easily coded with respect to the knowledge gained from the story so far. A poor movie is not well coded and "random".  However, if the correct prior expectations are set, and there are some interesting long ranging correlations, this random can instead be viewed as funny.</p>
+
+<p><strong>Math</strong> mostly taxes relative decoding. Getting good at this is what some call mathematical maturity. Lots of new base knowledge items must be added  to our knowledge graph but they  mostly form their own clusters. The proper decoding and access is likely taxing on attention and recall. Being able to search long enough to find representations that are well suited to the older powerful modules is why some people are better at math.</p>
+
+<p><em>Aside</em> I say knowledge graph but one can more flexibly state it as a space, many projections and relation operators. Simple to flexible programs could be built in terms of these. It's not as popular now but Pragmatic Reasoning Schemas in humans could be seen as a rough approximation to that kind of symbolic reasoning.</p>
+
+<p><strong>Physics</strong> is actually not difficult in the same sense as mathematics (conjecture). I argue that most of its difficulty is with the patching aspect. It requires competition with an existing, older physics model and requires many, long ranging non-local modifications to be made.</p>
+
+<p><strong>Teaching</strong> or writing involves holding a model of the student and attempting to select a shared code that minimizes rate distortion in the student's decoding and maximizes correct patching probability. Bad teachers simply use themselves as the model.</p>
+
+<p><strong>Elegance and Beauty</strong> first requires the ability to relatively decode. This is why experts and beginner's rarely hook on the same thing as elegant. Elegance is likely something that is easily compressed with minimal effort in terms of an existing code book, basis vectors or similar. This likely applies to many areas, from math to dance to aesthetic and beauty judgements and might explain some of why agreement strongly weights existing background.</p>
+
+<p><strong>A Uniformly Random String of Digits</strong> has high information or leaves you mostly uncertain but it is not informative. There is no relative decoding to do as the string is isolated. Updating too, is isolated and changes do not modify existing structures. If the individual were to incorporate this information there would be surprise but not much. If instead, the number was revealed as your credit card number, you can now code more readily. If the number was revealed to you by the man with a flower pot hat it is all the more surprising (rel entropy). However, you might still only compress the information as the man with the flower pot hat knows your credit card number and the card has a,b,c as the first three digits.</p>
+
+<p>There is a further concept to point out, and that is attention. Attention tells you where to direct computational resources and what to focus on. Incorporating new atoms instead of coding in terms of existing is wasteful, when up keep is considered. Although this formulation does not consider attention, a random string of digits will have close to zero in state changes, due to attention mechanisms diverting away from coding and hence resulting in little meaningful information. More important concepts might also be difficult to code relatively until enough exposure and forced attention are directed towards acquisition. Beyond rel decoding and patching a large subspace, this is another sense in which a subject can be difficult. <em>Conjecture</em> Not only does attention mediate focus and so affects surprise together with expectation, it also affects what is retained by computing why should I store or learn this?</p>
+
+<p>This can be extended to finding <strong>new research</strong>. We can leave out decode and relative entropy.  Instead we are doing recombination of basis with constraints such that EMD from X to X + new combinations is minimal while satisfying various constraints both with respect to old knowledge and new knowledge.</p>
+
+<p>How do we do restricted combinations?</p>
+
+<p>How do we build constraints?</p>
+
+<h4>A Story:</h4>
+
+<p>Veronica jumped over Fluffy Puff and into the pit of lima beans</p>
+
+<p>Fluffy Puff swiped a paw and uprooted a tree.</p>
+
+<p>A bonsai tree.</p>
+
+<p>How big is Fluffy Puff?</p>
+
+<h2>Conclusion</h2>
+
+<p>In this essay I've put forward an algorithm that is a sketch for the colloquial notion of information. It suggests that information is subjective.  While the details are scant, the general form is possibly on the right track—not just for information but also meaning. The method can be used to make predictions and explain some things about not just humans but learning in intelligent agents in general. The lines of thought have even inspired me to come up with some simple algorithms that are surprisingly useful. Nonetheless, this seems all rather obvious, not much more than a restatement in a slightly more formal way. Even given that, it has been useful in compacting a lot of previously disconnected ideas—after having thought up the framework, many things fit neatly within it. Perhaps others might find it interesting too.</p>
