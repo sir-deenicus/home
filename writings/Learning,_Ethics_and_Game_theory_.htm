@@ -1,0 +1,639 @@
+<meta http-equiv='Content-Type' content='Type=text/html; charset=utf-8'>
+                             <script type='text/javascript' async src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML'></script>
+                             <title>Learning, Ethics and Game theory </title>
+                             <link rel='stylesheet' type='text/css' href='style.css'>
+<h1>Learning, Ethics and Game theory</h1>
+
+<link rel="stylesheet" href="atom-one-light.css">
+<script src="highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+ <script src="plotly-latest.min.js"></script>
+
+<p><img src="Images/graph.png" alt="graph" /></p>
+
+<p>In the image above, I've sketched how one can show that evolution, game theory and learning are related. While I'll not talk about natural selection today, I'll discuss how ideas from game theory can be given an easier footing from within the context of computational learning theory. A future post will discuss evolution from the min-regret framework so it's worth following the ideas presented here. Topics: AI Ethics (why everyone gets some part wrong), economics (why capitalism is intractable), games, learning algorithms. I must apologize—ideally, there should have been interactive demos but alas, I hadn't the time for that. Therefore I link to code you can run and modify online.</p>
+
+<h2>Nash Equilibrium</h2>
+
+<p>The Nash Equilibrium (NE) is a solution concept for games. Games are a framework which prescribe how to behave and coordinate optimally in a given situation, assuming some way of ranking outcomes (utility) and effectively infinite computation (among other unreasonable things). Okay to be fair, people have recently been looking into how to operate under the constraints of resource limitations. The min-regret framework has informed some of that work.</p>
+
+<p>A NE can either be pure (where you play only one strategy) or mixed (where you randomize over your strategy set). A strategy is essentially a look up table (or algorithm) telling you how to behave at all decision points.  Not all games have a pure NE but all (finite) games have at least one mixed NE. At a NE, each player gains no utility from switching to a different strategy profile. Although highly celebrated, NEs are actually rarely practical for several reasons. They inhabit the PPAD complexity class (which are conjectured to be intractable), work best in 2 player zero sum (or other simple) scenarios (there can only be one winner) and will not necessarily find a fair solution concept. The utility of the the solution concept for general sum games is also questionable. Finally, although they are in some sense optimal, they do not necessarily provide the "best" results. In particular, for 2 player 0-sum games, NEs have zero expectation.</p>
+
+<h3>Rock Paper Scissors</h3>
+
+<p>As an example, consider Rock Paper Scissors. The mixed NE for this game is to randomize evenly: play one of the pure strategies of always playing one of rock,paper or scissors with 1/3 probability (to be clear, an example of a <em>pure strategy</em> in this game is to always play rock).</p>
+
+<p>If you always play: 📰 then I can switch to a strategy of always playing ✂. It you play a strategy like [👊,70% ;📰, 10%; ✂, 20%; ] then I can play the pure strategy of [📰, 100%] and perform optimally against you. This is because 70% of the time I win, 10% of the time I tie and only 20% of the time am I losing. You can expect to lose -0.5 in expectation (this might not seem like much but on average, if we play 100 rounds and bet 5$/round each, then I'd have taken ~$250 from you). You can try it <a href="game_theory/rps.html">here</a>, other adjustments will do worse than just playing pure paper. Make sure you hit <strong>Compile</strong> after each change. Compilation takes a <em>few seconds</em>.</p>
+
+<pre><code>let regretSum   = [|0.;0.;0.|]
+let strategySum = [|0.;0.;0.|]
+
+let rpsStratDef  = Array.zip [|Rock;Paper;Scissors|] [|0.7;0.1;0.2|] //&lt;== These numbers can be changed. Ensure sums to 1.
+let rpsStratDef2 = Array.zip [|Rock;Paper;Scissors|] [|0.2;0.7;0.1|] //&lt;== These numbers can be changed. Ensure sums to 1.
+let rpsNE = Array.zip [|Rock;Paper;Scissors|] [|1./3.;1./3.;1./3.|]
+                                              //       ___________
+                                              //       |                        |
+                                              //can change this  \|/
+train1 20_000 winner [|Rock;Paper;Scissors|] (Array.map snd rpsStratDef) regretSum strategySum                 
+</code></pre>
+
+<div id="607626b3-1669-410a-977b-1486144eaae2" style="width: 900px; height: 500px;"><!-- Plotly chart will be drawn inside this DIV --></div>
+  <script>
+    var data = [{"type":"bar","x":[270.0,255.0,300.0,290.0,225.0,260.0,165.0,220.0,240.0,310.0,200.0,215.0,265.0,275.0,150.0,235.0,170.0,250.0,315.0,190.0,195.0,205.0,285.0,280.0,210.0,155.0,245.0,335.0,175.0,230.0,330.0,180.0,305.0,295.0,185.0,375.0,320.0,350.0,325.0,160.0,355.0,345.0,135.0,145.0,130.0,340.0,120.0],"y":[0.037,0.046,0.029,0.034,0.045,0.05,0.01,0.035,0.051,0.015,0.017,0.036,0.046,0.038,0.005,0.043,0.006,0.061,0.011,0.013,0.014,0.021,0.039,0.034,0.034,0.007,0.039,0.003,0.011,0.034,0.014,0.011,0.024,0.03,0.01,0.001,0.011,0.003,0.007,0.004,0.005,0.004,0.001,0.005,0.002,0.003,0.001]}];
+    var layout = {"title":"[📰, 100%] vs [👊,70% ;📰, 10%; ✂, 20%]"};
+    Plotly.newPlot('607626b3-1669-410a-977b-1486144eaae2', data, layout);
+  </script>
+If you want to eliminate the chance of ever losing in expectation then of course you will play the NE strategy. In RPS however, while it is impossible to win against a NE strategy, it is also impossible to lose against it. You can play however you like and still break even against someone playing a NE strategy. 
+
+<p>Imagine you always played 📰. Then 1/3 times you'll tie with 📰, 1/3 times you'll win against 👊, and 1/3 times you'll lose vs. ✂.</p>
+
+<p>There might even be runs where it will seem like you're winning. If your goal is to maximize profit against an opponent, then NE might not be the correct strategy for games like RPS.</p>
+
+<p>One thing you might try would be to learn patterns of your opponent and then playing a strategy exploiting that. The problem is this in turn always leaves you vulnerable. The opponent might know what you are doing and mislead you for a bit and then BAM, switch things up and collect some wins before your algorithm notices something is off. A NE has the advantage that even if your opponent knew what you were up to, they still could not (e.g.) take money off of you (in the long run).</p>
+
+<h3>Rock Paper Scissors Telephone?</h3>
+
+<p>Not all 0-sum 2 player games have the interesting quirk where it's impossible to lose against an optimal player. Some games punish you for taking stupid actions. Of course, stupid is relative, and some games such as poker have action spaces so complex that it's very, very difficult to know when you're being stupid. For this example we'll look at a simple extension of Rock, Paper, Scissors. We'll add another move: telephone. How to handle rewards? If we make telephone a duplicate of paper, then we end up with a game that's exactly the same as RPS save that there are now two equilibria: [👊,1/3 ;📰, 1/3; ✂, 1/3;  📠,0%] and [👊,1/3 ;📰, 1/6; ✂, 1/3;  📠,1/6]. The other aspects, where playing any mixed non-equilibrium strategy can be defeated by a pure strategy or where it is impossible to lose against an optimal player remain.</p>
+
+<p>Imagine you played pure paper again. Then a NE player will either play the same mixed strategy as for RPS, with the same results or play the second NE strategy. Then: 1/3 of the time you lose against rock, 1/3 of the time you win against scissors and tie for the other two scenarios.</p>
+
+<h4>The over-powered telephone</h4>
+
+<p>What if we made the telephone over-powered? That is, it ties against everything except paper, which it defeats. What's the best way to play against someone who only plays telephone and what's the equilibrium for this game?</p>
+
+<p>Did you get it? Don't play paper. As long as you don't play paper then you have a zero loss expectation against a pure telephone player, which is also the pure equilibrium strategy for this game. Playing paper is the stupid action, with your loss proportional to the probability with which you play paper. In this game, it is possible to lose against an equilibrium player by playing paper.</p>
+
+<h4>Poker, Donations and Gifts</h4>
+
+<p>Poker is a game like over-powered telephone, rock,paper, scissors. The optimal player only wins because there are stupid actions you can take which act essentially as donations. In our modification to RPS, it's clear that playing paper is dumb. Let's modify the game to make it a bit more complex. A slight mod to RPST such as 📠 loses to ✂ but defeats 👊 and 📰 yields a slightly more interesting result. Once again, playing paper is a stupid action but playing just 📠 means someone else can play just ✂. The NE is: [👊,1/3 ;📰, 0%; ✂, 1/3;  📠,1/3]. With some thought, you should notice that as long as we never play paper, we can't lose against an optimal player. Even playing just 👊 is fine since 1/3 of the time we defeat ✂,1/3 of the time we lose to 📠 and tie with 👊 1/3 of the time. This game has a "stupid" action but offering to play against someone out of the blue, they might not realize that paper is a trap.</p>
+
+<h4>Rock Paper Scissors Telephone with Dice and Coins</h4>
+
+<p>The final modification will be to introduce this game: Telephone ties with telephone, Telephone loses to scissors but 50% of the time it defeats rock and 4/6 of the time it defeats paper. The game is no longer straightforward but it's a lot closer to the original RPS. The NE is  [👊,1/3 ;📰, 1/3; ✂, 1/3;  📠,0%], other mixed strategies have a pure counter. A strategy like  [👊,40% ;📰, 40%; ✂, 10%;  📠,10%] can be countered with [📰,100%]. The expected win rate is ~0.26. This can add up:</p>
+
+<div id="07944c87-9d21-49bd-90dd-34cd15b98498" style="width: 900px; height: 500px;"><!-- Plotly chart will be drawn inside this DIV --></div>
+  <script>
+    var data = [{"type":"bar","x":[-5.0,5.0,10.0,25.0,20.0,0.0,30.0,15.0,-15.0,-10.0,40.0,45.0,35.0,-20.0,-30.0,-25.0],"y":[0.055,0.126,0.168,0.114,0.153,0.066,0.067,0.159,0.012,0.033,0.007,0.006,0.03,0.002,0.001,0.001]}];
+    var layout = {"title":"10 rounds, 5$/round: [📰,100%] vs [👊,40% ;📰, 40%; ✂, 10%;  📠,10%]"};
+    Plotly.newPlot('07944c87-9d21-49bd-90dd-34cd15b98498', data, layout);
+  </script>
+
+<p>This time, the only way to lose against an optimal player is to include telephone in your mix. Although it seems powerful (can defeat paper ~67% of the time and 50% vs rock and only loses to scissors), in the long run it loses (playing pure 📠 has a lose rate of about -0.22). If properly presented, a player can easily be tricked into thinking that 📠 is over powered.</p>
+
+<div id="7a73c291-b350-4894-a42f-f63506c52118" style="width: 900px; height: 500px;"><!-- Plotly chart will be drawn inside this DIV --></div>
+  <script>
+    var data = [{"type":"bar","x":[-110.0,-95.0,-80.0,-70.0,-65.0,-60.0,-55.0,-50.0,-45.0,-40.0,-35.0,-30.0,-25.0,-20.0,-15.0,-10.0,-5.0,0.0,5.0,10.0,15.0,20.0,25.0,30.0,35.0,40.0,45.0,50.0,55.0,60.0,65.0,70.0,75.0,80.0,85.0,90.0,95.0,100.0,105.0,110.0,115.0,120.0,125.0,130.0,135.0,140.0,145.0,150.0,155.0,160.0,180.0],"y":[0.001,0.001,0.001,0.004,0.003,0.001,0.002,0.003,0.003,0.01,0.01,0.008,0.016,0.013,0.016,0.023,0.033,0.021,0.027,0.034,0.043,0.039,0.051,0.04,0.039,0.033,0.04,0.047,0.05,0.042,0.045,0.041,0.02,0.045,0.033,0.029,0.024,0.013,0.028,0.01,0.009,0.008,0.014,0.007,0.007,0.003,0.002,0.002,0.002,0.003,0.001]}];
+    var layout = {"title":"EV of NE vs [👊,30% ;📰, 20%; ✂, 10%;  📠,40%] 100 rounds of 5$/round"};
+    Plotly.newPlot('7a73c291-b350-4894-a42f-f63506c52118', data, layout);
+  </script>
+
+<p>You can experiment with code relevant to this section <a href="game_theory/rps2.html">here</a>.</p>
+
+<h2>Beyond Zero Sum Games</h2>
+
+<p>Well, I think that's about enough of rock, paper scissors. Although zero sum games are well studied, this is because they are one of the few scenarios where computing a Nash Equilibrium is tractable. There are probably not many situations that are 2 player and zero sum, and the concept of zero sum is really only sensible in the two player setting. For example, people might say that markets are zero sum in the short run but that doesn't make sense to me. Firstly, this requires that the traded currency amount is equal to the utility or the value placed by the respective traders. This need not be the case. Secondly, the game can really only be two player if we pretend that other players actions do not affect the available actions and information. This seems unlikely too. Beyond Games and Game Theory exercises, it's hard to think up scenarios that are genuinely two player and zero sum. Sometimes I think people claim zero sum as an excuse for their selfish behavior without any real understanding of what the notion entails.</p>
+
+<p>Even two player general sum games can be intractable—as I mentioned earlier general sum games can have NE that are too difficult to find because finding a NE is in the computational complexity class of PPAD.</p>
+
+<h3>What the heck is PPAD???</h3>
+
+<p>Computational Complexity seems like a subject you'd get if you combined zoology, logic and a guide on how to survive the apocalypse (let's prepare for the worst). There's a lot of taxonomical terminology with strange names that will quickly turn any onlooker dizzy. When reading about Nash Equilibria in the context of poker bots and evolution, I nodded to myself and said "ah yes of course it would be PPAD...😏". I'm still not confident in my understanding—there are lots of fine details—so will welcome any corrections.</p>
+
+<h4>A Quick Rundown on Complexity Classes</h4>
+
+<p>Everyone who has heard of computational complexity has probably heard of polynomial time vs non-deterministic polynomial time (NP). By the way, the unwieldy naming of NP derives from the non-deterministic turing machine (NDTM) which is essentially a psychic computer and should not be confused with a proper probabilistic computer. NDTMs take choices in a way that is not determined by their state and solve NP problems in polynomial time by magic. Polynomial time (P) is in principle efficient but anything that scales faster than a factor of N^2 is truly stretching the meaning of efficient. Many useful algorithms are O(N^3) and unusable in practical settings. O(N log N) is about the limit of what is practically efficient (matrix x vector is O(N^2) but manages due to how well it parallelizes).</p>
+
+<p>Problems that are NP-hard are not tractable to solve and their solutions are not <em>necessarily</em> efficiently verifiable. Problems in NP are efficiently verifiable and NP-complete problems are problems where a solution to one of them yields a solution to all other problems in NP. Of course P is in NP. NP-complete problems are NP-hard problems that are efficiently verifiable. P and NP actually deal with decision problems. My favorite description of the question of whether P=NP is whether search is equal to recognition/calculation. Since we can also view learning as a form of search, the question of whether P=NP can be seen as: Is learning ever necessary? From this frame, P=NP, even with a high polynomial (which would be to say, no, planning and learning are not needed in theory) seems somehow unnatural.</p>
+
+<p>A decision problem is, if I asked "what's the shortest tour through these cities" and you replied "what?". And then I rephrased  it as: "sorry, what I really not really meant to ask, is there a tour through these cities that takes less than N number of steps?" to which you said "yes" and fell silent. As you can see, decision problems are very curt and business like.</p>
+
+<h4>PPAD Complete</h4>
+
+<p>Well, a corresponding class is FP and FNP which deal with <em>function problems</em>. This class is more literate and actually does things, like, returning an example which satisfies my touring question. FNP has the same property as NP of efficient verification. FNP might not always return an answer so there is a subclass, TFNP, dealing with total functions which always return an answer. PPAD is a subset of that class with the further requirement that the proof gadget of totality is by a directed graph. PPAD problems are conjectured as harder than FP problems and this conjecture is bourne out by a lack of any polynomial time algorithms for their solution (although there are exponential lower bounds).</p>
+
+<blockquote>
+  <p>This is the essence of the class PPAD: search problems whose existence of solution is guaranteed by virtue of an exponentially large directed graph, implicitly represented through an algo- rithm, plus one given unbalanced point of the graph. Many problems are known to be PPAD- complete; perhaps the most fundamental such problem is related to Brouwer’s theorem
+...
+And it seems counterintuitive that there is always a way to telescope the search through all points of an exponentially large directed graph, to zero in the other unbalanced node, or the sink, that is sought.</p>
+
+  <p><em>Page 3 | PNAS-2014-Papadimitriou-15881-7</em></p>
+</blockquote>
+
+<h3>Pareto, Nash, Capitalism and Fairness</h3>
+
+<p>Many celebrated concepts of economics rely in some way on Brouwer's fixed point theorem. Actually finding this fixed point is PPAD-complete, in other words, intractable. In addition to Nash Equilibria there is also the Arrow-Debreu theorem, which tells us of the existence of a price equilibrium in free markets (under realistic conditions), where allocation of resources are pareto efficient. Pareto efficiency is a concept of "fairness" which is optimal in the sense that there is no reallocation of resources that doesn't leave someone worse off and unbalanced. "Fairness" because a pareto efficient allocation need not be what we would intuit as fair. In a scenario where you have 99/100 items and I have 1/100, any reallocation will leave one of us worse off.</p>
+
+<p>Common attacks against markets include violations of perfect information, transaction costs, externalities, barriers, assumptions of convexity in preferences and so on.</p>
+
+<p>However, even before looking at those utopian requirements, we find that the very concepts motivating markets require intractable computations to reach their notion of fairness. And these (Nash, Pareto, Arrow) are not even guaranteed to be fair in an intuitive sense. It's informative to contrast these computational issues of markets with those of Planned Economies—which are at least tractable in principle (but not in practice, "merely" requiring O(N^3.5) scaling with problem size). This is not to say that markets lead to worse outcomes than planned economies, merely to point out it is technically more impossible to achieve fair outcomes with them, compared to planned economies.</p>
+
+<p>At this point, the concept of what an economy entails is worth revisiting given what we now know from computational learning theory. We can do better than planned or market economies.</p>
+
+<h2>Correlated Equilibriums</h2>
+
+<p>Although the Nash Equilibrium is much celebrated, the correlated equilibrium concept is more natural in several senses. It's not just tractable but also efficiently computable to high accuracy, the dynamics of many learning algorithms converge on it (or its coarse version) and even agents acting independently can conceivably converge to its equilibrium concept. But what is it? I actually find the definition to be a bit awkward.</p>
+
+<p>The correlated equilibrium is a joint (as opposed to Nash's independent) probability distribution over action profiles where, the expected utility from playing according to a drawn profile, conditioned on seeing its suggested action at least matches that of any other actions' (it is a best response). A coarse correlated equilibrium is similar except there is no suggested action to condition on—they can lead to lame, weakly dominated suggestions however. In math, a correlated equilibrium is:</p>
+
+<p><span class="math">\(E_{a\sim D}[u_i(a)] \ge E_{a \sim D}[u_i(x_i,a_{-i})|a_i]\)</span></p>
+
+<p>for every action <span class="math">\(x_i\)</span>. For the coarse version, there is no <span class="math">\(a_i\)</span> to condition on. Algorithms which minimize external regret converge on coarse equilibria whilst those minimizing swap or internal regret converge on correlated equilibriums.</p>
+
+<p>More clearly, imagine there is some neutral device. This device draws from a joint probability distribution and tells each player to play according to its suggestion: a correlated equilibrium is when there is no incentive to deviate from its suggestion. These outcomes can be better than the Nash concept since CEs act on the joint space of actions while the Nash concept is very solipsistic and self-centered, looking at signals provides no information.</p>
+
+<p>The example everyone gives is a traffic light signal. When it shows GO, you know the other player sees a STOP so there is no incentive to deviate. Here are some other examples I think should count, roughly in order of how well they fit: the non (now dead) Dennard Scaling portion of Moore's Law, the I give up signal in animals (such as when a dog lays on its back—it's better to think of the phenotype and not any specific instantiation as the player), functioning courts and laws, rituals/tradition (punishment can serve to induce equilibriums that are, however, inequitable).</p>
+
+<h2>Regret Minimization</h2>
+
+<p>Regret minimizing algorithms are a class of efficient on-line (meaning learn on the go) learning algorithms which given some reward function and access to some set of experts (which can also be moves such as rock in RPS), which quickly learn what actions to take in order to minimize long term regret. External regret minimizers do this with respect to a fixed strategy while internal regreters do this with respect to any swapped set of actions. The internal regret scenario lets you say when I did this, I should have done that instead. External regret says, I did almost as well as that really good advisor.</p>
+
+<h3>Prediction Market Example</h3>
+
+<p>Prediction markets let people bet on binary propositions. Imagine there was a prediction market with a layer  tracking how well each bettor (expert) did. External regret could do almost as well as the best bettor and perhaps even better with randomization over all bettors, weighted according to how well they did in the past.</p>
+
+<p>I believe, but am not certain, that a scenario where you could match experts to contexts: for example, a technology expert, a sports expert and so on would likely allow you to minimize something like internal regret. From this you could even extract a weighted average over hypotheses.</p>
+
+<p>For more detail on regret algorithms, you can take a look at the demo code. I implement both Multiplicative Weights Update and Regret Matching.</p>
+
+<h3>Least Unique Integer Game Example</h3>
+
+<p>Consider the following game: there are N people, you each choose a number between 0 and 5 and show it with your hand 🖐 on a ready signal. The winner is the person displaying the lowest unique number. The winner gets a score equal to N-1 while everyone else gets a score of -1.  This makes it effectively a 2 player 0-sum game. What's the Nash Equilibrium strategy? I don't know but when I run <a href="game_theory/luniqint.html">this</a> I get the following sequence:</p>
+
+<table>
+<thead>
+<tr class="header">
+<th><p>Move</p></th>
+<th><p>Move Probability</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><p>0</p></td>
+<td><p>0.499</p></td>
+</tr>
+<tr class="even">
+<td><p>1</p></td>
+<td><p>0.25</p></td>
+</tr>
+<tr class="odd">
+<td><p>2</p></td>
+<td><p>0.126</p></td>
+</tr>
+<tr class="even">
+<td><p>3</p></td>
+<td><p>0.063</p></td>
+</tr>
+<tr class="odd">
+<td><p>4</p></td>
+<td><p>0.031</p></td>
+</tr>
+<tr class="even">
+<td><p>5</p></td>
+<td><p>0.03</p></td>
+</tr>
+</tbody>
+</table>
+
+
+<p>Which is a pattern of ~<span class="math">\(0.5^{x+1}\)</span> but with some aliasing at the end. Simulation gives a mean utility of -0.006 ± 1.31 (regret algorithms only get within epsilon of the exact equilibrium). The distribution over means is:  -0.0006 ± 0.01. This corresponds to a win ~28.8% of the time, a loss ~56.9% of the time and a tie ~14.2% of the time. This looks close to what's realistically achievable. It's also interesting that in this game it is both possible to not be able to lose (if playing against two optimal players) or lose while providing donations to a single optimal player (with two off equilibrium players).</p>
+
+<p>What happens when we try for a coarse correlated equilibrium? In <a href="game_theory/luniqint.html">this</a>, I also apply regret matching on 3 players trying to maximize utility while looking at the other players. Sometimes, an interesting strategy emerges which kind of looks like collusion in that two players end up with positive expectation (e.g. 61% win, 39% lose, 0.83 expected utility; 61% lose, 39% win, 0.17 EU) and one is guaranteed losses such that it doesn't matter what they do:</p>
+
+<table>
+<thead>
+<tr class="header">
+<th><p>Move</p></th>
+<th><p>Move Probability</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><p>0</p></td>
+<td><p>0.395</p></td>
+</tr>
+<tr class="even">
+<td><p>1</p></td>
+<td><p>0.289</p></td>
+</tr>
+<tr class="odd">
+<td><p>2</p></td>
+<td><p>0.132</p></td>
+</tr>
+<tr class="even">
+<td><p>3</p></td>
+<td><p>0.079</p></td>
+</tr>
+<tr class="odd">
+<td><p>4</p></td>
+<td><p>0.053</p></td>
+</tr>
+<tr class="even">
+<td><p>5</p></td>
+<td><p>0.053</p></td>
+</tr>
+</tbody>
+</table>
+
+
+<p>GUESS STRATEGY2</p>
+
+<table>
+<thead>
+<tr class="header">
+<th><p>Move</p></th>
+<th><p>Move Probability</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><p>0</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="even">
+<td><p>1</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="odd">
+<td><p>2</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="even">
+<td><p>3</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="odd">
+<td><p>4</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="even">
+<td><p>5</p></td>
+<td><p>0</p></td>
+</tr>
+</tbody>
+</table>
+
+
+<p>GUESS STRATEGY3</p>
+
+<table>
+<thead>
+<tr class="header">
+<th><p>Move</p></th>
+<th><p>Move Probability</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="even">
+<td><p>1</p></td>
+<td><p>0.091</p></td>
+</tr>
+<tr class="odd">
+<td><p>2</p></td>
+<td><p>0.091</p></td>
+</tr>
+<tr class="even">
+<td><p>3</p></td>
+<td><p>0.455</p></td>
+</tr>
+<tr class="odd">
+<td><p>4</p></td>
+<td><p>0.182</p></td>
+</tr>
+<tr class="even">
+<td><p>5</p></td>
+<td><p>0.182</p></td>
+</tr>
+</tbody>
+</table>
+
+
+<p>Usually, a strategy emerges where one dominates: (e.g. 77% win, 23% loss,1.3 expected utility), another has moderate-large losses (23% win, 77% loss,-0.3 expected utility) and the last has guaranteed losses. <em>This is surprisingly reflective of reality 😝😔</em></p>
+
+<p>Another strategy would be if there was some device which sampled uniformly from a joint probability distribution after eliminating any ties. This would have expectation equal to the game for all, that of zero, matching the Nash equilibrium. No one would have any incentive to deviate knowing that everyone was playing according to the suggestions of the device. Note that knowing my number also tells me something about what the others saw: if I get a 2, I know that no one else received that number. Something else worth noting is that part of this game's problem is it's zero sum. If the game was not zero sum, the outcomes could sometimes be even better than Nash.</p>
+
+<p>Code <a href="game_theory/luniqint.html">here</a>:</p>
+
+<pre><code>[|for _ in 0..999 -&gt; runRound()|] 
+ |&gt; Array.groupBy id 
+ |&gt; Array.map (keepLeft (Array.length&gt;&gt;float)) 
+ |&gt; Array.normalizeWeights
+ |&gt; Array.sumBy (joinpair ( * )) 
+ |&gt; round 2  
+ |&gt; printfn "\n=========\nWinrate of Strategy 1: %A"
+</code></pre>
+
+<h3>Driving Game Example</h3>
+
+<p>This example is a simple game where two players are at an intersection. If they both GO 🚙 they both suffer a utility of -100. If one drives and the other STOPs 🛑 then the goer gets a utility of 1 and the other 0. If they both 🛑 then they both get a utility of 0. This is no longer a zero sum game. The regret matching algorithm learns the following strategy:</p>
+
+<table>
+<thead>
+<tr class="header">
+<th><p>Move</p></th>
+<th><p>Move Probability</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><p>A 🛑</p></td>
+<td><p>0.99</p></td>
+</tr>
+<tr class="even">
+<td><p>A 🚙</p></td>
+<td><p>0.01</p></td>
+</tr>
+</tbody>
+</table>
+
+
+<p>This is pretty lame since there is a 0.01% chance of a catastrophic incident. The expected utility is ~zero for both players. If we try regret matching on two players that try to coordinate we get:</p>
+
+<p>DRIVE STRATEGY</p>
+
+<table>
+<thead>
+<tr class="header">
+<th><p>Move</p></th>
+<th><p>Move Probability</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><p>A 🛑</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="even">
+<td><p>A 🚙</p></td>
+<td><p>1</p></td>
+</tr>
+</tbody>
+</table>
+
+
+<p>DRIVE STRATEGY2</p>
+
+<table>
+<thead>
+<tr class="header">
+<th><p>Move</p></th>
+<th><p>Move Probability</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><p>A 🛑</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="even">
+<td><p>A 🚙</p></td>
+<td><p>0</p></td>
+</tr>
+</tbody>
+</table>
+
+
+<p>In this scenario one player always goes and the other always stops.  Thus one player gets a utility of 1 per round while the other always gets 0 but there is a 0% chance of a crash. While not ideal for one player, the situation is overall better than the Nash equilibrium strategy which has an expected utility of 0 for both players. Notice that without some way to independently and reliably coordinate, it is not possible for the pair to do better than the above.</p>
+
+<p>If instead we optimize over the joint space of actions we get:</p>
+
+<p>DRIVE STRATEGY</p>
+
+<table>
+<thead>
+<tr class="header">
+<th><p>Move</p></th>
+<th><p>Move Probability</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><p>(A 🛑, A 🛑)</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="even">
+<td><p>(A 🛑, A 🚙)</p></td>
+<td><p>0.5</p></td>
+</tr>
+<tr class="odd">
+<td><p>(A 🚙, A 🛑)</p></td>
+<td><p>0.5</p></td>
+</tr>
+<tr class="even">
+<td><p>(A 🚙, A 🚙)</p></td>
+<td><p>0</p></td>
+</tr>
+</tbody>
+</table>
+
+
+<p>This is a correlated equilibrium and is fair for all parties, with both experiencing a positive utility. Yet there is a sense in which this result is unsatisfying. It is rare that we can compute or even know what joint probability distribution is being sample from, to speak of how to properly compute a reward on it. But as I mentioned above, agents working independently can sometimes learn to do this.</p>
+
+<h3>Learning Based Example</h3>
+
+<p>In <a href="https://ideone.com/qUXG27">this (scroll down to bottom to see results)</a> modification to the driving game, I use Multiplicative weights update with two layers of weights. The first layer of weights computes the cost of adhering to the signal or listening to an inner expert. The inner expert learns regret from playing either 🛑 or 🚙. Thus the agent has the ability to either heed the signal or do as it pleases. To make things interesting I vary the reliability of the signal. A signal with <strong>90% reliability</strong> does as it pleases 10% of the time. In this case the agents learn to ignore the signal and settle on a strategy equivalent to when there is no signal (one always goes and the other always stops):</p>
+
+<p><strong>Agent1</strong>: ["🚦: 0.0%"; "😏: 100.0% [(A 🛑, 0.0); (A 🚙, 1.0)]"],</p>
+
+<p><strong>Agent2</strong>: ["🚦: 0.0%"; "😏: 100.0% [(A 🛑, 1.0); (A 🚙, 0.0)]"]</p>
+
+<p>Sometimes however, one agent will choose to heed the signal while the other chooses to always stop:</p>
+
+<p>["🚦: 0.0%"; "😏: 100.0% [(A 🛑, 1.0); (A 🚙, 0.0)]"],</p>
+
+<p>["🚦: 99.44%"; "😏: 0.56% [(A 🛑, 0.4); (A 🚙, 0.6)]"]</p>
+
+<p>It takes about 99.9% reliability for the agents to consistently choose a strategy that goes along with the signal, matching the correlated equilibrium.</p>
+
+<p>["🚦: 99.68%"; "😏: 0.32% [(A 🛑, 1.0); (A 🚙, 0.0)]"],</p>
+
+<p>["🚦: 99.72%"; "😏: 0.28% [(A 🛑, 1.0); (A 🚙, 0.0)]"]</p>
+
+<pre><code>let drive =
+    function 
+      | (``Do 🛑``,``Do 🛑``) -&gt; (0.,0.)
+      | (``Do 🛑``,``Do 🚙``)   -&gt; (0.,1.) 
+      | (``Do 🚙``,``Do 🛑``)   -&gt; (1.,0.)
+      | (``Do 🚙``,``Do 🚙``)   -&gt; (-100.,-100.)
+
+let getExpert signal (actions:_[]) (experts:_[]) = 
+    let e = discreteSample (Array.map fst experts)
+    match experts.[e] with
+     | (_,``Do 😏`` es) -&gt; actions.[discreteSample es]
+     | (_,``Do 🚦``)     -&gt; signal
+</code></pre>
+
+<h4>Rule Learning AI</h4>
+
+<p>This result still feels unsatisfactory since one might argue that there is too much hand-holding. Therefore, in <a href="https://ideone.com/Tn3LeS">this version</a>, I decided to make a learner that must learn how to read the signals <em>and</em> how to coordinate. The hand holding is minimal and typical of features in Machine learning algorithms. The system is inefficient in that it tracks all possible combinations—this is clearly untenable for more players,signals, and granularity. However, it doesn't take much work to modify the system to explore adding  and removing rules in an attempt to learn a Set Cover over rules. But generally, one of the hardest parts of machine learning is getting efficient representations of large or complex state spaces.</p>
+
+<pre><code>let inline getExpert2 indicated signal (rules:_[]) = 
+    let cs = [|for (p,_,f) in rules do 
+               match f indicated signal with 
+                | Some c -&gt; yield c,p 
+                | None -&gt; ()|] |&gt; Array.normalizeWeights
+    let ps = Array.map snd cs
+    fst(cs.[discreteSample ps])
+</code></pre>
+
+<p>In this model, any rule that matches the current situation is filtered to, after which weights are normalized for this reduced space. An action is taken and then a reward is used to calculate regret on only the active rules. This system is richer than all the previous and so allows us to explore an interesting few scenarios. The game is also modified as such: a player acts first and then the second player decides what to do based on what the first player does.</p>
+
+<p>If we have the first player choose an action without looking for a signal and then have the second player decide based on the first the following major rule pair is arrived at:</p>
+
+<p>[(1.0, "if signal=Do 🛑 &amp;&amp; other=Do 🛑 then Do 🚙")],
+[(1.0, "if signal=Do 🛑 &amp;&amp; other=Do 🛑 then Do 🚙")]</p>
+
+<p>Essentially, only drive if the other driver stops. Because of how the system filters matching rules, missing values end up such that only one value is looked at but this ends up including rules which don't make sense when the full conjunction is looked at. One fix would be to include an additional state representing <em>none</em>, but that's not necessary for demonstration purposes. Nonetheless, the agents work around that issue and learn a useful set of rules. Sampling some interactions we see that most of the time the first car will do whatever (usually drive) and the second one will drive or stop depending on the other. We see that the situation learned is better than the experts above without access to a signal. The first player dominates but the second player still sees a positive reward.</p>
+
+<p>[((Do 🛑, Do 🛑), 0.1); ((Do 🛑, Do 🚙), 0.36); ((Do 🚙, Do 🛑), 0.54);((Do 🚙, Do 🚙), 0.0)]</p>
+
+<p>If we instead provide a signal for what the other will do as the light they see (the system can't reason after all), the following rule pair is matched:</p>
+
+<p>[(1.0, "if signal=Do 🚙 &amp;&amp; other=Do 🛑 then Do 🚙")],</p>
+
+<p>[(1.0, "if signal=Do 🚙 &amp;&amp; other=Do 🛑 then Do 🚙")]</p>
+
+<p>And we see that their behavior is converging on a correlated equilibrium:</p>
+
+<p>[((Do 🛑, Do 🚙), 0.49); ((Do 🚙, Do 🛑), 0.5); ((Do 🚙, Do 🚙), 0.0)|]</p>
+
+<p>On the other hand, if we take away the ability for the agents to attend to what the others will do they will tend to just stop and learn a more complicated set of rules leading to statistics like:</p>
+
+<p>[((Do 🛑, Do 🛑), 0.97); ((Do 🛑, Do 🚙), 0.03); ((Do 🚙, Do 🛑), 0.0)]</p>
+
+<p>In essence, so long as you can jointly learn to attend to signals, and so long as there is some shared memory to draw upon (history, text) then many learning agents can efficiently converge on a correlated equilibrium, bottom up. Without any top-down enforcement of joint distributions. In the absence of anything to condition and coordinate actions by, coarse equilibria (which I expect many short term—within the life of an individual—scenarios share much in common with) can be subpar.</p>
+
+<p><img src="images/balifarms.jpg" alt="bali farms" /></p>
+
+<p>As an example, I think the historical knowledge of Bali Rice Farmers [1], with insects and weather as the coordination signal lead to a bottom up correlated equilibrium of planting patterns.</p>
+
+<h2>On More Complicated Games</h2>
+
+<p>So far, the focus has only been on Normal Form (no turn taking) games but the story for imperfect information extensive (multiple turns) games is not that much more complicated. And going to repeated or iterated games is no trouble at all. It's only a handful more lines to be able to handle counterfactual scenarios. This is in contrast to the study by game theory where the complexity suddenly ratchets. In fact, the methods are so complicated that only simpler toy problems can be studied. However, with learning algorithms that have been proven to converge on useful equilibria concepts, we can design scenarios and look at what happens to study multiplayer, repeated, stochastic, imperfect information extensive games. As I've not yet had need to venture into those areas, my knowledge there is limited and only of a sketch like nature.</p>
+
+<p><strong>Topical Note:</strong> Blizzard just released a framework for learning custom AI for Starcraft. It's instructive to look at how Starcraft differs from Poker and Go. Unlike Go, Starcraft is an imperfect information game. Both core aspects of AlphaGo, MCTS and RL, struggle to converge in this scenario.</p>
+
+<p>Compared to poker the state space is very large and it's difficult to imagine how the notion of information sets will apply here. Rounds are ill define and there are really no such things as turns. Within each game there are many interactions that aren't zero sum. Learning a precomputed nash equilibrium strategy simply isn't tenable. Especially if we want an AI that can do just as well in multiplayer scenarios with no additional fuss. Starcraft is complex enough that a low power, low data solution stands a chance, I think.</p>
+
+<p>What to expect: Assuming there's no smaller much simpler embedded game in Starcraft: ability to plan, ability to make lots of quick decisions, hierarchical planners which attend to different levels of detail, counter-factual reasoning, efficient representation of multi level state (abstraction). Will Deep Learning bring something new to the table? I don't know, the simple state representation the Starcraft AI framework provides might not advantage them. If I had the chance to work on this, I'd use Neural nets as feature learners for a probabilistic program with some regret type algorithm passing losses across the boundary (from the probabilistic program to the neural network).</p>
+
+<h2>Ethics</h2>
+
+<p>It's common to mock economics as useless and completely detached from reality. Yet, the fact that such simple algorithms converge on various important equilibrium concepts—algorithms we believe frequently occur in some form in nature—tells us that the core ideas of game theory are in fact very useful. The mistake that has been made is confusing the simplifying assumptions selected so human economist could hand wave a defense for flawed policy advice—unrealistic utility functions, simple two player games, zero sum, intractable equilibrium concepts—for proof of a lack of utility of the subject. In actuality, the game theory is extremely natural, merely poorly applied. We should move from boring discussions on 0-sum games, nash equilibria, prisoner's dilemma, tit for tat (which does not scale), to discussions on coordination, cooperation, welfare and fairness. And as it turns out, there has been a lot of recent work done in that area—the only problem is the focus on ad markets and auctions—there is no reason it can't be adapted to improve human lives. Some aspects of modern economics are indistinguishable from online machine learning or computational game theory. It's a large subject deserving of more attention. If we choose this path, the question then arises: is it ethical to turn over important decision making to machines?</p>
+
+<h3>Current Debate on Ethics</h3>
+
+<p>The debate on AI ethics is currently dominated by 3 archetypes. I'll summarize them before arguing for another area that's at least as and possibly more important.</p>
+
+<h3>The Bias and Inequality Crowd</h3>
+
+<p>In this line of work, researchers point out how blind following of algorithms can lead to bad outcomes by amplifying bias and strengthening inequality. Although a few look at how to ensure that AI doesn't end up as yet another tool to suppress humans (by working on energy efficient or decentralized learning algorithms), most of the work is in how algorithms amplify bias.</p>
+
+<p>Text is highly structured, in particular, it crystalizes projections on thought and embeds the way humans use language and thus simple algorithms can display high competence with little understanding. As an example, consider the output of a generative text model (I recently came up with—not a markov chain, not an rnn, similar to both—post coming soon), such that when prompting it with the phrase "<em>the prefrontal cortex is</em>" yields the following (not cherry picked):</p>
+
+<ol>
+<li><p>the prefrontal cortex is the attention to prediction of the world</p></li>
+<li><p>the prefrontal cortex is the control in the mind</p></li>
+<li><p>the prefrontal cortex is the control of the general factor of intelligence</p></li>
+<li><p>the prefrontal cortex is the control attention</p></li>
+<li><p>the prefrontal cortex is the control in the human brain</p></li>
+</ol>
+
+<p>None of these appear anywhere in my corpus of training documents but it's eerie in how good of a summary it is of the relevant literature. Training it on a voat corpus and then prompting it on blacks or jews compared to a wikipedia corpus would yield very different results. This is not reflective of reality, it's reflective of how humans of a culture use language and what they write about. What humans think with their ≤ 10 Watts of conscious cognition (assuming uniform process/energy use, 20 Watts, most processing not conscious) is very limited and can be divorced from reality.</p>
+
+<p>My main criticism of the bias work is with the idea that there can be algorithmic correction. So you've handled race and gender issues. What about the <em>short bus</em>? Rather than play a continuous game of whack a mole, it would be better to create a culture of not blindly deferring to AI judgement in any area that could materially affect a human life. The policy aspect will make a lot more difference than most anything that can be done with algorithms (until we get AI's that aren't blindly performant).</p>
+
+<h3>The AI Risk Crowd</h3>
+
+<p>The general idea here is to slow down work on AI to ensure no one develops AIs which view humans as inconsequential. MIRI leads algorithmic work on the topic and places like the Future of Life Institute lead the policy aspect. However, I do not believe anyone knows how to mitigate these claimed risks or even has any inkling as to how they might come about beyond very vague arguments. Despite this, and while I do not agree with the claimed magnitude of risk nor with the framing, I do not think anyone has prepared a proper counter-argument for why the AI Risk Crowd is mistaken. That said, while I agree that we should build kind, caring AIs which are respectful of living things, I don't particularly care for the value alignment nothing else is as important framing.</p>
+
+<h3>The We Will "Democratize" AI Crowd</h3>
+
+<p>This one is mostly corporations generating slogans to keep humans at ease. Boards are created, names are listed, chants are chanted but nothing meaningful will likely ever come of it. You see, it is difficult to trust an entity that cannot imagine a future in which you are not as thoroughly dependent as possible on it.</p>
+
+<h4>Bandits</h4>
+
+<p>The regret/bandit/expert algorithms which featured heavily in this post are algorithms which already run the (digital) world. Although deep learning gets a lot of public attention, it's some kind of bandit algorithm what places ads, manages auctions or perturbs site designs in order to squeeze money and attention from their human playmates. Although not something I personally agree with, it's a non-issue in comparison to scenarios where such algorithms are turned to subverting and redirecting attention for policy issues instead of merely purchase decisions. What tools can be provided for defense? I don't see anyone moving to democratize that.</p>
+
+<h3>The Neglected but Essential Kind of Ethics</h3>
+
+<p>And yet, as important as the above are, I think what subsumes them all is thinking about the ethics of algorithmic approaches to ensuring welfare of cities, humans, animals and ecosystems. Is it ethical to not use these approaches or is it true that there is some humanity lost by algorithmically deciding on important policy issues? It's clear that algorithms can't yet (maybe never) automatically operate on important decisions which will affect human agency. There's however, a case to be made for a combination approach.</p>
+
+<p>For example, we saw above that Nash Equilibria are hard to reach and might not always be great. We also saw that correlated equilibria can lead to quite fair results but while they are easy to compute, they are not obvious to set up. And even when we can, how will people take to suggestions handed down by faceless algorithms? How do we ensure such a process doesn't end up as something to worship or enslave?</p>
+
+<p>Getting multiple agents with differing goals to cooperate is extremely difficult. There's plenty done on machine and single agent reinforcement learning but not nearly as much done on trying to learn cooperative agents. If you are worried about AI Risk then I think you should also be concerned by this imbalance. With better co-operative agent modelling we might begin to look at methods of approximating policy impact better than everything before. At some point we could design systems where those affected by policy could contribute detailed descriptions of preferences and actions. The system would then use co-operative learning agent modeling to approximately calculate some fair correlated equilibrium or aggregated welfare concept. While superficially similar, this collective decision making differs from a planned economy in that it is ad hoc and only scopes over the collective making and affected by the decisions.</p>
+
+<p>When the issues are too complex for such an approach, a more bottom up approach would be to model complex agents in a scenario approximating the decision conflict. People could search over and test different reward functions in order to guide policy design whose effect will be to get people to behave optimally with respect to some shared goal (and which selfish behaviors could easily thwart). Again, all members affected can give detailed concerns and input and discuss policy in terms of how the model is effected. Remember, though the model will have far from perfect coverage over outcomes, it would still be miles better than the current approach of sparsely sampled scalar votes influenced by ever more sophisticated technologically amplified propaganda. The results will be approximate and imperfect but by making the simulations interactive with the participants, a powerful problem solving capability could be gained. While much of this is probably not near (needing either good language AIs or more people good at programming—also note this isn't calling for laws as programs only for models to help predict outcomes), there are aspects which could be studied today.</p>
+
+<p>One way to set up correlated equilibria is by studying various specifications of problems and noting how different reward functions lead to different results. Auditable, Traceable cryptographic smart contracts are one way to achieve this. Imagine a scenario of contracts between developed and developing cities targeting climate emissions. On the one hand, it's important to reduce CO2 emissions, on the other hand the developing nation might say: "we are tired of being mired in poverty". One way around this would be to search for a policy that would place both actors in a correlated equilibrium or better. Smart contracts allow for this—they are one way to route conditional exchanges such that no corrupt local actors could steal. Additionally: agreements preregistering purchase decisions, and a time gated method tracking proper allocation of any citizen grants, measurable quotas, trades, all separately conditional on future dates and automatically verifiable obligations just might allow for a fairer outcome for all. The contract mechanism then acts as an impartial mediator to ensure a positive correlated outcome.</p>
+
+<p>By setting up mechanism design tested policies we can get favorable results with higher probability. But one distant ethical issue is in ensuring that agents don't get so sophisticated, the issue of their being deserving of rights becomes ascendant. If such a scenario is possible, then there must be a computable theory of consciousness and ethics. We should ensure we figure those out before building anything too sophisticated. Sounds far fetched? Well, I'm not saying it's now, I'm only saying that it would be really terrible if it happened in some distant future and caught us all off guard such that we were then motivated to continue to not notice how horrible a thing we were doing.</p>
+
+<h4>Machines of Loving Grace?</h4>
+
+<p>The other glaring issue is: "would we be losing our humanity by handing off important decision making to algorithms"? For me the answer is clear: the human mind is also just algorithms, if we can design a system to help us arrive at fairer decisions than we otherwise would have, say because due to complexity limiting our brains' ability to <em>as</em> fully traverse the space of consequences, then there's nothing lost in adhering. The inputs, goals and motivations would be human decided. An objection to this, I believe, would be like not living in a house because it was built using Caterpillar heavy machinery or because it was 3D printed or prefabricated by robots. Humans were the designers and architects; the structure is to provide positive utility for the humans contained.</p>
+
+<p>Furthermore, I consider the agency and individuality of humans is mythologized. Most of a person's personality is settled by chance events, genetics and accumulated experience from childhood.  In adulthood, it's a system of cultural expectations and traditions which strongly binds what directions any individual might take. We would not be trading away some glorious past of human agency. Not a past filled with trails of tears, slavery, indentured servitude or conscription into pointless wars. Any kind of literacy was scarce, with only a tiny portion of the population able to indulge in scientific and philosophical thought. Not forgetting that under limited diffusion of ideas, people became echoes of their neighbors and even worshipped their rulers as gods. With some cultures even valuing human sacrifice.</p>
+
+<p>Far from outsourcing ourselves into technology, the extension of our minds into the environment is a defining trait of humanity, ever since the invention of language. A larger portion than ever is improved in their ability to reason and handle abstraction (Flynn effect). We've long outsourced thought into abacuses, tools, books, quipu, tabulating machines and lately, computers. In turn, we've gained access to more readily available knowledge and tools and the ability to administer ever more complex societies.</p>
+
+<h2>Summary</h2>
+
+<p>In this essay I talked about Nash Equilibria and how it is impossible to <em>lose</em> against an optimal player in some zero sum 2 player games. I then talked about why some 0-sum 2 player games allow for losses. I mentioned the likely intractability of Nash Equilibria and many market economy concepts. I also discussed computational complexity and in particular, the PPAD complexity of Nash Equilibria and what that roughly means. I also mentioned correlated equilibria and how they are common, efficiently computable and often lead to more preferable outcomes than Nash Equilibria.</p>
+
+<p>I noted that coarse correlated equilibria are likely most common given the lack of signals to coordinate on in many real world situations. These can lead to positions for many players that are at least weakly dominated and therefore highly not preferable.</p>
+
+<p>Correlated Equilibria can be learned so long as multiple agents can learn to attend to the conjunction of certain patterns, together with some memory or shared history, to reach a point where there is no incentive to deviate. I motivate min-regret learning as a way to achieve correlated equilibria using a modification to prediction markets as an example. I mentioned the difficulty of getting multiple cooperating agents and the benefits of doing more work in this area in order to guide real world policy. And moving beyond the toy, completely unrealistic scenarios favored by traditional economics. I also note that a lot of interesting work <em>has</em> been done in the areas of fairness and welfare, but mostly on how to better place and monetize ads. It seems to be working out well.</p>
+
+<p>I mention that barring a simple hack for Starcraft, it poses a much more difficult problem than Poker or Go. It's interesting to see aspects of Moravec Paradox reflected here too. It takes more effort for a computer to be better than a human in Starcraft than at Chess or <em>Go</em>. Despite Starcraft being considered the less intellectual game.</p>
+
+<p>I also note that done correctly, auditable cryptographic smart contracts could act as neutral mediators to achieve non-trivial correlated equilibria. I give the example of cities cooperating to reduce emissions, that works no matter how corrupt the local government.</p>
+
+<p>I then talk about Ethics in AI, how highlighting bias is important but algorithmically dealing with it is misguided. I mention AI Risk and my skepticism of its urgency but dissatisfaction with <em>all</em> counterarguments. I also mention the case of modeling agents which become too sophisticated.</p>
+
+<p><em>If such a scenario is possible, then there must be a computable theory of consciousness and ethics. We should ensure we figure those out before building anything too sophisticated. Sounds far fetched? Well, I'm not saying it's now, I'm only saying that it would be really terrible if it happened in some distant future and caught us all off guard such that we were then motivated to continue to not notice how horrible a thing we were doing</em>.</p>
+
+<p>I argue that allowing algorithms to play a role in human decision making is no less giving up our humanity than allowing a robot to build a prefabricated home. In both cases, human labor is better applied to design and goal setting and not to energy intensive labor. I also argue that the past was not really some bastion of agency, free thinking or freedom. There's more of that now than ever and augmenting our capabilities with computational devices will likely lead to better welfare outcomes.</p>
+
+<p>The full article contains a link to code that you can run in your browser to explore simple non-deterministic, zero and non-zero sum games. Namely modifications of Rock-Paper-Scissors, a game where two drivers can either both stop or drive or some variation thereof. Finally, a game where 1 of 3 people has to guess a number that's less than or unique compared to what everyone else guesses. I also demonstrate a rule learning AI using regret to learn in matched subspaces, how to use signals and then coordinate under minimal handholding to show how learners might achieve a correlated equilibrium.</p>
+
+<p>Finally, in the below, I do not make any friends. I point out that a computable brain performing sampling based inference as suggested in [3], and a group of humans yields a parallel sampler. Connecting this with the observation in [4] that autocorrelation is minimized by <em>active</em> inference tells us that to get better exploration and representative posterior probability distributions with respect to reality, we want a wider range of physical experiences. As a result, diversity is important. I point out however, that since ideological diversity is cognitive and attentional, it is broader than politics—increasing general diversity must increase ideology. Secondly, it can be negative, due to a reduced shared ability to attend to the same signals and efficiently communicate (coming off such different attentional weights). I argue that it is worth it by pointing out how a scenario like the break-down of the bicameral mind (for which I suggest a modification to make it more plausible) might have been precipitated by trade and cultural diffusion leading to richer stories and hence better and more practicing of theory of mind. I suggest cultural appropriation to counter ideological clashes of diversity.</p>
+
+<p>I bring up the issue of ideology because they are a general human failing which get in the way of coordination and therefore handicap our ability to achieve positive welfare outcomes globally. The issue is tribal in nature and happens in every country with multiple ethnicities. Which is almost every country. I'll note that the <em>EU</em> was a response to one such.</p>
+
+<hr />
+
+<p><strong>Topical Note:</strong> Have you heard of the bicameral mind? If you haven't, it's worth checking out. While I don't think it correct, I think it takes only a slight modification to get us something highly probable. In this view, like in the Bicameral setting, we don't all experience consciousness the same way. The core mediator is the differences in sophistication of theory of mind. The brain is plastic and different percepts affect both attentional priors and how language is used for self-modelling. The more complex stories we told, the better the listeners had to be at modeling those scenarios and the better the brain had to be at representing states at a meta level.</p>
+
+<p>The break-down occurred through diffusion and cultural interchange leading to richer stories which in turn called for more complex modelling. The better you are at modelling others' mental states, the better you will be at modelling your own. <strong>Prediction</strong>: A big part of recent IQ gains is better children's TV programming. The breakdown of the bicameral mind was not one of evolution but due to the brain's plasticity. We know language is linked to consciousness and higher order reasoning (see [2] on how metaphor shapes reasoning for example) and also that it's one area where the brain must learn how to learn. Different exposure to thought patterns might crystalize certain ways of thinking (that can only be unlearned with great difficulty with increasing age).</p>
+
+<p>Why bring this up? Well, differences in ability to predict mental states yields difficulty in collaboration. If two group's mental organization is so different as to make communication very exhaustive then coordination and <em>attending to the same signals, required for positive welfare outcomes will be difficult to achieve</em>.</p>
+
+<p>The answer however, is not less diversity, it's more cooperation. Genetic, ecosystem and hypothesis diversity (<em>Principle of Epicurus</em>) are unequivocally good. Neural nets and even humans [3] suffer from mode collapse, a form of lack of diversity leading to reasoning errors, which can lead to suboptimal exploration and poor decisions. If the human mind is computable then a group of humans is not other than a highly bottlenecked parallel computer.</p>
+
+<p>Again, considering [3], humans which share too much in common will be akin to starting a sampler near similar locations. If we seek to converge on the part of the landscape with peak probability, it pays to sample in parallel (via multiple people) from many start locations. If the brain is a sampling based explorer, with active inference to mitigate autocorrelation, then it's clear that lived experiences leads to richer exploration than any other source of diversity. Ideological diversity should be retained however, since they do provide different attentional weightings—it's just that the gains are not as large as from a diversity of parallel active samplers.</p>
+
+<p>The only sense in which diversity can be considered harmful is when they make coordination more difficult (while I do not agree with their approach, I think China understands this on some level, that and economic protectionism explains many of their policies). Ideological diversity is probably especially prone to this. Ideological diversity, I should point out, is not just what economic policies you adhere to but also, what kind of music and hobbies you like! Focusing on other forms of diversity can only increase ideological diversity.</p>
+
+<p>However, short range correlations (siloing) do not lead to interesting structures. Recall that one plausible way for the phase change in theory of mind to have occurred is from the richness in stories from cultural interaction and sharing. Resulting then in a gain in sophistication on conscious reasoning about agents. Wider experiences leads to richer representations—though each human posesses only a degraded average over encounters—it is yet a comparatatively richer set of examplar states to draw samples from. In essence, a certain group gets the "problem" of diversity <em>exactly</em> backwards. All the kinds of diversity which concerns them are in fact good but the kind which they view as important (as do I), provides the most trouble. So what then? I think the answer is to raise human children emphasizing shared commonalities, more sharing of culture (yes, I'm pro cultural appropriation) and how to empathize (that is, not dehumanizing the <em>other</em>) with other beings.</p>
+
+<p><strong>Prediction</strong>: If children all over the world grow up watching each other's culture's cartoons, this will have a significant ameliorative effect on any ill coordinative effects of cultural diversity. Of course, some might question the extent to which this is a prediction given the broad arch of history.</p>
+
+<p>It is unlikely that humanity cannot learn to cooperate broadly and arbitrarily; this is rather, a problem of learning how to escape pernicious attractor states and achieving positive social utility through mechanism design.</p>
+
+<h2>References</h2>
+
+<p>[1] <a href="http://www.pnas.org/content/114/25/6504.full.pdf">http://www.pnas.org/content/114/25/6504.full.pdf</a></p>
+
+<p>[2] <a href="http://www.sciencedirect.com/science/article/pii/S1364661317301535">http://www.sciencedirect.com/science/article/pii/S1364661317301535</a></p>
+
+<p>[3] <a href="http://www.sciencedirect.com/science/article/pii/S1364661316301565">http://www.sciencedirect.com/science/article/pii/S1364661316301565</a></p>
+
+<p>[4] <a href="http://www.biorxiv.org/content/biorxiv/early/2017/02/17/109355.full.pdf">http://www.biorxiv.org/content/biorxiv/early/2017/02/17/109355.full.pdf</a></p>
+
+<p>[5] <a href="http://www.cis.upenn.edu/~aaroth/courses/slides/agt17/lect08.pdf">http://www.cis.upenn.edu/~aaroth/courses/slides/agt17/lect08.pdf</a></p>
+
+<p>[6] <a href="http://modelai.gettysburg.edu/2013/cfr/cfr.pdf">http://modelai.gettysburg.edu/2013/cfr/cfr.pdf</a></p>
