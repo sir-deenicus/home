@@ -49,7 +49,7 @@ fold ((s, c) -&gt; c + s) "" "123" = "321"
 
 <p>An RNN is:</p>
 
-<p><strong>fold</strong> (<em>(h,x)</em> ⇒ <span class="math">\(W_{xh} x + W_{hh} h + b_h\)</span>) initial_state [<em>list of something</em>].</p>
+<p>(<code>A List of some kind</code>) ▷ <strong>fold</strong> (<em>(h,x)</em> ⇒ <span class="math">\(W_{xh} x + W_{hh} h + b_h\)</span>) [0,0,...,0]</p>
 
 <p><em>Wxh</em> and <em>Whh</em> are matrices which together represent whatever function so far best minimizes the error with respect to some loss function. If the function above was calculated with respect to say dual numbers—automatic differentiation—then one gets derivatives for free, which one can then use to adjust the weights; hence, learning. There is a great deal more plumbing to actually make things work but the above captures the essence.</p>
 
