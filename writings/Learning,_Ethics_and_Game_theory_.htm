@@ -5,7 +5,18 @@
 <h1>Learning, Ethics and Game theory</h1>
 
 <link rel="stylesheet" href="atom-one-light.css">
-<script src="plotly-latest.min.js"></script>
+<script>
+  var script = document.createElement( "script" )
+    script.type = "text/javascript";
+    script.src  = "plotly-latest.min.js";
+    script.setAttribute("async","")
+    script.onload = function() {
+        graph1();
+        graph2();
+        graph3();
+      };
+    document.getElementsByTagName( "head" )[0].appendChild( script );
+</script>
 
 <p><img src="Images/graph.png" alt="graph" /></p>
 
@@ -21,7 +32,7 @@
 
 <p>As an example, consider Rock Paper Scissors. The mixed NE for this game is to randomize evenly: play one of the pure strategies of always playing one of rock,paper or scissors with 1/3 probability (to be clear, an example of a <em>pure strategy</em> in this game is to always play rock).</p>
 
-<p>If you always play: 📰 then I can switch to a strategy of always playing ✂. It you play a strategy like [👊,70% ;📰, 10%; ✂, 20%; ] then I can play the pure strategy of [📰, 100%] and perform optimally against you. This is because 70% of the time I win, 10% of the time I tie and only 20% of the time am I losing. You can expect to lose -0.5 in expectation (this might not seem like much but on average, if we play 100 rounds and bet 5💵/round each, then I'd have taken 💲250 from you). You can try it <a href="game_theory/rps.html">here</a>, other adjustments will do worse than just playing pure paper. Make sure you hit <strong>Compile</strong> after each change. Compilation takes a <em>few seconds</em>.</p>
+<p>If you always play: 📰 then I can switch to a strategy of always playing ✂. It you play a strategy like [👊,70% ;📰, 10%; ✂, 20%; ] then I can play the pure strategy of [📰, 100%] and perform optimally against you. This is because 70% of the time I win, 10% of the time I tie and only 20% of the time am I losing. You can expect to lose -0.5 in expectation (this might not seem like much but on average, if we play 100 rounds and bet 5💵/round each, then I'd have taken 💲250 from you). You can check it <a href="https://gist.github.com/sir-deenicus/e4e19f9a01fb224fecd3ebdcd02c3f71">here</a>, other adjustments will do worse than just playing pure paper. Make sure you hit <strong>Compile</strong> after each change. Compilation takes a <em>few seconds</em>.</p>
 
 <pre><code>let regretSum   = [|0.;0.;0.|]
 let strategySum = [|0.;0.;0.|]
@@ -37,10 +48,12 @@ train1 20_000 winner [|Rock;Paper;Scissors|] (Array.map snd rpsStratDef) regretS
 
 <div id="607626b3-1669-410a-977b-1486144eaae2" style="width: 900px; height: 500px;"><!-- Plotly chart will be drawn inside this DIV --></div>
   <script>
-    var data = [{"type":"bar","x":[270.0,255.0,300.0,290.0,225.0,260.0,165.0,220.0,240.0,310.0,200.0,215.0,265.0,275.0,150.0,235.0,170.0,250.0,315.0,190.0,195.0,205.0,285.0,280.0,210.0,155.0,245.0,335.0,175.0,230.0,330.0,180.0,305.0,295.0,185.0,375.0,320.0,350.0,325.0,160.0,355.0,345.0,135.0,145.0,130.0,340.0,120.0],"y":[0.037,0.046,0.029,0.034,0.045,0.05,0.01,0.035,0.051,0.015,0.017,0.036,0.046,0.038,0.005,0.043,0.006,0.061,0.011,0.013,0.014,0.021,0.039,0.034,0.034,0.007,0.039,0.003,0.011,0.034,0.014,0.011,0.024,0.03,0.01,0.001,0.011,0.003,0.007,0.004,0.005,0.004,0.001,0.005,0.002,0.003,0.001]}];
-    var layout = {"title":"[📰, 100%] vs [👊,70% ;📰, 10%; ✂, 20%]"};
-    Plotly.newPlot('607626b3-1669-410a-977b-1486144eaae2', data, layout);
-  </script>
+    function graph1(){
+      var data = [{"type":"bar","x":[270.0,255.0,300.0,290.0,225.0,260.0,165.0,220.0,240.0,310.0,200.0,215.0,265.0,275.0,150.0,235.0,170.0,250.0,315.0,190.0,195.0,205.0,285.0,280.0,210.0,155.0,245.0,335.0,175.0,230.0,330.0,180.0,305.0,295.0,185.0,375.0,320.0,350.0,325.0,160.0,355.0,345.0,135.0,145.0,130.0,340.0,120.0],"y":[0.037,0.046,0.029,0.034,0.045,0.05,0.01,0.035,0.051,0.015,0.017,0.036,0.046,0.038,0.005,0.043,0.006,0.061,0.011,0.013,0.014,0.021,0.039,0.034,0.034,0.007,0.039,0.003,0.011,0.034,0.014,0.011,0.024,0.03,0.01,0.001,0.011,0.003,0.007,0.004,0.005,0.004,0.001,0.005,0.002,0.003,0.001]}];
+      var layout = {"title":"[📰, 100%] vs [👊,70% ;📰, 10%; ✂, 20%]"};
+      Plotly.newPlot('607626b3-1669-410a-977b-1486144eaae2', data, layout);
+    }    
+</script>
 If you want to eliminate the chance of ever losing in expectation then of course you will play the NE strategy. In RPS however, while it is impossible to win against a NE strategy, it is also impossible to lose against it. You can play however you like and still break even against someone playing a NE strategy. 
 
 <p>Imagine you always played 📰. Then 1/3 times you'll tie with 📰, 1/3 times you'll win against 👊, and 1/3 times you'll lose vs. ✂.</p>
@@ -71,21 +84,25 @@ If you want to eliminate the chance of ever losing in expectation then of course
 
 <div id="07944c87-9d21-49bd-90dd-34cd15b98498" style="width: 900px; height: 500px;"><!-- Plotly chart will be drawn inside this DIV --></div>
   <script>
-    var data = [{"type":"bar","x":[-5.0,5.0,10.0,25.0,20.0,0.0,30.0,15.0,-15.0,-10.0,40.0,45.0,35.0,-20.0,-30.0,-25.0],"y":[0.055,0.126,0.168,0.114,0.153,0.066,0.067,0.159,0.012,0.033,0.007,0.006,0.03,0.002,0.001,0.001]}];
-    var layout = {"title":"10 rounds, 5$/round: [📰,100%] vs [👊,40% ;📰, 40%; ✂, 10%;  📠,10%]"};
-    Plotly.newPlot('07944c87-9d21-49bd-90dd-34cd15b98498', data, layout);
+    function graph2(){
+      var data = [{"type":"bar","x":[-5.0,5.0,10.0,25.0,20.0,0.0,30.0,15.0,-15.0,-10.0,40.0,45.0,35.0,-20.0,-30.0,-25.0],"y":[0.055,0.126,0.168,0.114,0.153,0.066,0.067,0.159,0.012,0.033,0.007,0.006,0.03,0.002,0.001,0.001]}];
+      var layout = {"title":"10 rounds, 5$/round: [📰,100%] vs [👊,40% ;📰, 40%; ✂, 10%;  📠,10%]"};
+      Plotly.newPlot('07944c87-9d21-49bd-90dd-34cd15b98498', data, layout);
+    }
   </script>
 
 <p>This time, the only way to lose against an optimal player is to include telephone in your mix. Although it seems powerful (can defeat paper ~67% of the time and 50% vs rock and only loses to scissors), in the long run it loses (playing pure 📠 has a lose rate of about -0.22). If properly presented, a player can easily be tricked into thinking that 📠 is over powered.</p>
 
 <div id="7a73c291-b350-4894-a42f-f63506c52118" style="width: 900px; height: 500px;"><!-- Plotly chart will be drawn inside this DIV --></div>
   <script>
-    var data = [{"type":"bar","x":[-110.0,-95.0,-80.0,-70.0,-65.0,-60.0,-55.0,-50.0,-45.0,-40.0,-35.0,-30.0,-25.0,-20.0,-15.0,-10.0,-5.0,0.0,5.0,10.0,15.0,20.0,25.0,30.0,35.0,40.0,45.0,50.0,55.0,60.0,65.0,70.0,75.0,80.0,85.0,90.0,95.0,100.0,105.0,110.0,115.0,120.0,125.0,130.0,135.0,140.0,145.0,150.0,155.0,160.0,180.0],"y":[0.001,0.001,0.001,0.004,0.003,0.001,0.002,0.003,0.003,0.01,0.01,0.008,0.016,0.013,0.016,0.023,0.033,0.021,0.027,0.034,0.043,0.039,0.051,0.04,0.039,0.033,0.04,0.047,0.05,0.042,0.045,0.041,0.02,0.045,0.033,0.029,0.024,0.013,0.028,0.01,0.009,0.008,0.014,0.007,0.007,0.003,0.002,0.002,0.002,0.003,0.001]}];
-    var layout = {"title":"EV of NE vs [👊,30% ;📰, 20%; ✂, 10%;  📠,40%] 100 rounds of 5$/round"};
-    Plotly.newPlot('7a73c291-b350-4894-a42f-f63506c52118', data, layout);
+    function graph3(){
+      var data = [{"type":"bar","x":[-110.0,-95.0,-80.0,-70.0,-65.0,-60.0,-55.0,-50.0,-45.0,-40.0,-35.0,-30.0,-25.0,-20.0,-15.0,-10.0,-5.0,0.0,5.0,10.0,15.0,20.0,25.0,30.0,35.0,40.0,45.0,50.0,55.0,60.0,65.0,70.0,75.0,80.0,85.0,90.0,95.0,100.0,105.0,110.0,115.0,120.0,125.0,130.0,135.0,140.0,145.0,150.0,155.0,160.0,180.0],"y":[0.001,0.001,0.001,0.004,0.003,0.001,0.002,0.003,0.003,0.01,0.01,0.008,0.016,0.013,0.016,0.023,0.033,0.021,0.027,0.034,0.043,0.039,0.051,0.04,0.039,0.033,0.04,0.047,0.05,0.042,0.045,0.041,0.02,0.045,0.033,0.029,0.024,0.013,0.028,0.01,0.009,0.008,0.014,0.007,0.007,0.003,0.002,0.002,0.002,0.003,0.001]}];
+      var layout = {"title":"EV of NE vs [👊,30% ;📰, 20%; ✂, 10%;  📠,40%] 100 rounds of $5/round"};
+      Plotly.newPlot('7a73c291-b350-4894-a42f-f63506c52118', data, layout);
+    }
   </script>
 
-<p>You can experiment with code relevant to this section <a href="game_theory/rps2.html">here</a>.</p>
+<p>You can look at the code relevant to this section <a href="https://gist.github.com/sir-deenicus/623e57a88c3321edde2a00c0d1cd7053">here</a>.</p>
 
 <h2>Beyond Zero Sum Games</h2>
 
@@ -139,7 +156,7 @@ And it seems counterintuitive that there is always a way to telescope the search
 
 <p>More clearly, imagine there is some neutral device. This device draws from a joint probability distribution and tells each player to play according to its suggestion: a correlated equilibrium is when there is no incentive to deviate from its suggestion. These outcomes can be better than the Nash concept since CEs act on the joint space of actions while the Nash concept is very solipsistic and self-centered, looking at signals provides no information.</p>
 
-<p>The example everyone gives is a traffic light signal. When it shows GO, you know the other player sees a STOP so there is no incentive to deviate. Here are some other examples I think should count, roughly in order of how well they fit: the non (now dead) Dennard Scaling portion of Moore's Law, the I give up signal in animals (such as when a dog lays on its back—it's better to think of the phenotype and not any specific instantiation as the player), functioning courts and laws, rituals/tradition (punishment can serve to induce equilibriums that are, however, inequitable).</p>
+<p>The example everyone gives is a traffic light signal. When it shows GO, you know the other player sees a STOP so there is no incentive to deviate. Here are some other examples I think should count, roughly in order of how well they fit: the non (now dead) Dennard Scaling portion of Moore's Law, the I give up signal in animals (such as when a dog lays on its back—it's better to think of the phenotype and not any specific instantiation as the player), functioning courts and laws, rituals/tradition (however, as self identity and values shift and change, such systems quickly induce equilibriums that are inequitable).</p>
 
 <h2>Regret Minimization</h2>
 
@@ -155,7 +172,7 @@ And it seems counterintuitive that there is always a way to telescope the search
 
 <h3>Least Unique Integer Game Example</h3>
 
-<p>Consider the following game: there are N people, you each choose a number between 0 and 5 and show it with your hand 🖐 on a ready signal. The winner is the person displaying the lowest unique number. The winner gets a score equal to N-1 while everyone else gets a score of -1.  This makes it effectively a 2 player 0-sum game. What's the Nash Equilibrium strategy? I don't know but when I run <a href="game_theory/luniqint.html">this</a> I get the following sequence:</p>
+<p>Consider the following game: there are N people, you each choose a number between 0 and 5 and show it with your hand 🖐 on a ready signal. The winner is the person displaying the lowest unique number. The winner gets a score equal to N-1 while everyone else gets a score of -1.  This makes it effectively a 2 player 0-sum game. What's the Nash Equilibrium strategy? I don't know but when I run <a href="https://gist.github.com/sir-deenicus/2ac6a2a064f4a82e09d81e60156d8915">this</a> I get the following sequence:</p>
 
 <table>
 <thead>
@@ -195,7 +212,7 @@ And it seems counterintuitive that there is always a way to telescope the search
 
 <p>Which is a pattern of ~<span class="math">\(0.5^{x+1}\)</span> but with some aliasing at the end. Simulation gives a mean utility of -0.006 ± 1.31 (regret algorithms only get within epsilon of the exact equilibrium). The distribution over means is:  -0.0006 ± 0.01. This corresponds to a win ~28.8% of the time, a loss ~56.9% of the time and a tie ~14.2% of the time. This looks close to what's realistically achievable. It's also interesting that in this game it is both possible to not be able to lose (if playing against two optimal players) or lose while providing donations to a single optimal player (with two off equilibrium players).</p>
 
-<p>What happens when we try for a coarse correlated equilibrium? In <a href="game_theory/luniqint.html">this</a>, I also apply regret matching on 3 players trying to maximize utility while looking at the other players. Sometimes, an interesting strategy emerges which kind of looks like collusion in that two players end up with positive expectation (e.g. 61% win, 39% lose, 0.83 expected utility; 61% lose, 39% win, 0.17 EU) and one is guaranteed losses such that it doesn't matter what they do:</p>
+<p>What happens when we try for a coarse correlated equilibrium? In <a href="https://gist.github.com/sir-deenicus/2ac6a2a064f4a82e09d81e60156d8915">this</a>, I also apply regret matching on 3 players trying to maximize utility while looking at the other players. Sometimes, an interesting strategy emerges which kind of looks like collusion in that two players end up with positive expectation (e.g. 61% win, 39% lose, 0.83 expected utility; 61% lose, 39% win, 0.17 EU) and one is guaranteed losses such that it doesn't matter what they do:</p>
 
 <table>
 <thead>
@@ -313,7 +330,7 @@ And it seems counterintuitive that there is always a way to telescope the search
 
 <p>Another strategy would be if there was some device which sampled uniformly from a joint probability distribution after eliminating any ties. This would have expectation equal to the game for all, that of zero, matching the Nash equilibrium. No one would have any incentive to deviate knowing that everyone was playing according to the suggestions of the device. Note that knowing my number also tells me something about what the others saw: if I get a 2, I know that no one else received that number. Something else worth noting is that part of this game's problem is it's zero sum. If the game was not zero sum, the outcomes could sometimes be even better than Nash.</p>
 
-<p>Code <a href="game_theory/luniqint.html">here</a>:</p>
+<p>Code <a href="https://gist.github.com/sir-deenicus/2ac6a2a064f4a82e09d81e60156d8915">here</a>:</p>
 
 <pre><code>[|for _ in 0..999 -&gt; runRound()|] 
  |&gt; Array.groupBy id 
