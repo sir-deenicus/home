@@ -1,0 +1,43 @@
+<meta http-equiv='Content-Type' content='Type=text/html; charset=utf-8'>
+                             <script type='text/javascript' async src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML'></script>
+                             <title>On N Year Floods</title>
+                             <link rel='stylesheet' type='text/css' href='style.css'>
+<h1>On N Year Floods</h1>
+
+<p>I think several things about this <a href="https://www.youtube.com/watch?v=EACkiMRT0pc">video</a>. The first is, a lot of people commit the gambler's fallacy when talking about 100 year or 500 year floods. On twitter, someone thought a 500 year flood was due (100% and guaranteed by the 500th year). But that's not true. A better way is to look in terms of a binomial distribution. This takes each year as a trial of a Bernoulli. For a 500 year span, we compute P = Bin(1/500, 500) in n+1, 1 - P(X ≤ n) for n in 0..3 as:</p>
+
+<p>Chance of 1+ occurrences is ~63%</p>
+
+<p>Chance of 2+ occurrences is ~26%</p>
+
+<p>Chance of 3+ occurrences is ~8%</p>
+
+<p>Chance of 4+ occurrences is ~2%</p>
+
+<p>5+ is negligible. But even for a 500 year flood, a short time interval (better think a few number of trials), say 10 years (trials), the probability of 1+ successes is non-negligible.</p>
+
+<p>Chance of 1+ occurrences is ~1.98%</p>
+
+<p>Chance of 2+ occurrences is ~0.02%</p>
+
+<p>If we look at a "100 year flood" for a span of 10 trials (years), it's:</p>
+
+<p>Chance of 1+ occurrences is ~9.56%</p>
+
+<p>Chance of 2+ occurrences is ~0.43%</p>
+
+<p>Chance of 3+ occurrences is ~0.01%</p>
+
+<p>But I find not specifying any notion of uncertainty really dissatisfying. A better way to do this would be to specify a prior such as <em>Beta(1,499)</em> and then for each year, update with the number of occurrences of 500 year floods for the region. Over time, the distribution will shift, narrow or broaden reflecting changes in our uncertainty about what the parameter for our Bernoulli distribution should be.</p>
+
+<p><img src="Images/flood.png" alt="distribution shift" /></p>
+
+<p>Better yet, would be to model rainfall volumes directly, with say a log normal distribution (the video had a short snippet on normals but I assume this is due to their familiarity, rain fall is probably better modeled as log normal [1]). Then I might ask "what's the probability of seeing such an amount?" Again, I'd specify a prior over possible values for the parameters of the distribution to capture my uncertainty. With another model for the frequency of rain fall, I could then talk about N year floods except I would also be able to <em>cleanly</em> talk about N months, N day floods etc. And most importantly, I'd be able to parameterize my uncertainty. The upper end of the distribution could be used to plan for worst case scenarios instead of misleading people with useless point estimates.</p>
+
+<h2>More Extreme Events Incoming</h2>
+
+<p>I expect that over time, the number of formerly rare events will increase. The link between CO2 and the greenhouse effect has been known since at least the early 1900s. With melting poles, increased moisture and higher ocean temperatures, we can expect better fed hurricanes and tropical storms. Floods, heat waves, droughts and forest fires will be more common too. The general pattern of weather in places will shift as a result of change in the "parameters" deciding climate. This in turn will make weather prediction more difficult.</p>
+
+<p>Tornadoes, hailstorms and even snowstorms—can those be linked to warming? The default answer would be to state or even over-state our uncertainty and bemoan our lack of data. I think that's wrong, optimizing for average case correctness is not always ideal. When lives and livelihoods are at stake, it's better to <em>minimize regret and plan for the worst</em>. Therefore, if ever I'm asked is this because of climate change? My answer will be yes <em>and</em> summarizing the previous recent paragraphs. Then I'd talk about what needs to be done, so people don't forcefully forget about it in hopeless despair.</p>
+
+<p>[1] <a href="http://journals.ametsoc.org/doi/pdf/10.1175/1520-0450%281976%29015&lt;0205%3ACMARS&gt;2.0.CO%3B2">http://journals.ametsoc.org/doi/pdf/10.1175/1520-0450%281976%29015<0205%3ACMARS>2.0.CO%3B2</a></p>
