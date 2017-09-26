@@ -1,0 +1,305 @@
+<!doctype html>
+<html>
+<head>
+  <title>A High Level Introduction to Differential Privacy and Information</title>
+  <meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="plotly-latest.min.js"></script>
+  <script src="PlotlyWrapper.js"></script>  
+  <script type='text/javascript' async src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML'></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.8.3/katex.min.js" integrity="sha384-L9gv4ooDLrYwW0QCM6zY3EKSSPrsuUncpx26+erN0pJX4wv1B1FzVW1SvpcJPx/8" crossorigin="anonymous"></script>
+  <link rel='stylesheet' type='text/css' href='style.css'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.8.3/katex.min.css" integrity="sha384-B41nY7vEWuDrE9Mr+J2nBL0Liu+nl/rBXTdpQal730oTHdlrlXHzYMOhDU60cwde" crossorigin="anonymous">
+  <link rel="stylesheet" href="atom-one-light.css">
+</head>
+<body> 
+  <h1>A High Level Introduction to Differential Privacy and Information</h1>
+  
+  <p>I've known of the term <em>differential privacy</em> for a long while, but only vaguely. Recently, I decided to look a bit more into the topic and also thought it a good place to start/try out interactive explanations. As it turns out, differential privacy is essentially about probabilities and information, which means an excuse to experiment with interactive explanations of relevant areas from probability theory (and an excuse to play with a discrete probability monad).</p>
+   
+  <p>Of course, there is a great deal more to the subject of differential privacy than I can cover (or looked into) but I think I am satisfied with this as providing a decent high level overview.</p>
+  
+  <h2>Initial example</h2>
+  
+  <p>One early precursor to DP is the method of randomized response. Proposed by S. L. Warner in 1965 [1], it's a method of confidentially surveying a population.</p>
+  
+  <p>Suppose you were surveying the population about something controversial and wanted to do so in a manner allowing plausible deniability. You could use the following procedure:</p>
+  
+  <p>Flip a coin, if it's heads, the responder must answer truthfully and if it's tails they must answer <em>yes</em>. Note that this leaks some information about the responder: if they answer <em>no</em> then you know that they definitely have not performed said action. If they answer, <em>yes</em>, however, you have no way (at that instance in time) of distinguishing between whether it was truthful or the result of a coin flip. But across the entire population, since you control the procedure, you can work backwards to get the true distribution.</p>
+  
+  <p>Suppose for example, you were surveying individuals about whether they love or hate bacon🥓. They flip a coin and if it's heads they answer truthfully. If it's tails, they must say they <em>Hate Bacon</em>. Using this procedure, the surveyed number of those that love bacon is always ~half the true number in the population. This is because, for bacon loving responses, all the results are true but only get reached half the time. And for <em>bacon hating</em> answers (the protected class), half the time, the answers were truthful while the other half were <em>I love bacon answers</em> converted to <em>I hate the consumption of bacon</em> answers.</p>
+  
+  <p>In the example below, you can <strong>adjust the slider</strong> to see how the surveyed numbers change.</p>
+  
+  <p>True Proportion of Population that <em>Hates Bacon</em>:</p>
+  
+  <input type="range" name="points" id="points" value="20" min="0" max="100" data-show-value="true" onchange="sliderChanged(this)"> <span name ="rrpercno">20%</span>
+  
+  <div id="rrcorr"></div>
+  <p>In the below, assume <em>p</em> is the true proportion that hates bacon. Then:</p>
+  <input type="range" name="points" id="points" value="20" min="0" max="100" data-show-value="true" onchange="sliderChanged(this)"> <i>p = </i> <span name ="rrpercno">20%</span>
+
+  <p><em>p</em> = <span name = "rrp"></span></p>
+  
+  <p><strong>Like Bacon</strong>: 0.5 * (1 - <span name = "rrp"></span>) = <span id = "rra1"></span></p>
+  
+  <p><strong>Hate Bacon</strong>: 0.5 + 0.5 * <span name = "rrp"></span>  = <span id = "rra2"></span></p>
+  
+  <aside>0.5 + 0.5 * p = q <br/>0.5 * p = q - 0.5<br/>p = 2×(q-0.5)</aside>
+  With some math, we can work out the true numbers: 
+  
+  <p><strong>True Against</strong>: 2 * ((q=<span id = "rrq"></span>) - 0.5) = <span id = "rra3"></span></p>
+  
+  <p>Which you can subtract from 1 to get the proportion that enjoys bacon. If none of this makes sense, play with the slider and it should start to.</p>
+  
+  <p>Something to note is that if some (ahem, barbaric) human says they love bacon, you definitely know they are speaking the truth (the <em>End Bacon Now</em> controversial but clearly more appropriate true belief is protected). Suppose we wanted to adjust this to be more anonymous?</p>
+  
+  <h2>Differential Privacy</h2>
+  
+  <p>Differential Privacy was initially expanded upon and given a solid mathematical footing by the prolific computer scientist/cryptographer Cynthia Dwork. It is a large field so we'll only be taking a broad overview of it.</p>
+  
+  <p>In the example for this section, we'll be surveying people about their favorite sandwich. To keep things simple we'll assume the true preferences of sandwiches are:</p>
+  
+  <table>
+  <thead>
+  <tr class="header">
+  <th><p>Best Sandwich</p></th>
+  <th><p>Share of Favorites</p></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr class="odd">
+  <td><p>Hotdog 🌭</p></td>
+  <td><p>10%</p></td>
+  </tr>
+  <tr class="even">
+  <td><p>Sandwich 🥖</p></td>
+  <td><p>30%</p></td>
+  </tr>
+  <tr class="odd">
+  <td><p>Vegan Hamburger🍔</p></td>
+  <td><p>60%</p></td>
+  </tr>
+  </tbody>
+  </table>  
+  
+  <p>How to tally votes without risking shame or ridicule for your belief that hotdogs are the best sandwich? A simple modification of randomized response allows for this. This time we don't demand a specific answer--if the coin lands heads you speak truthfully but if it lands on tails, you sample uniformly (choose randomly) from among the choices. We can also allow the coin to be loaded or weighted. For example, we can use a coin that comes up heads 1% of the time. As long as we are only interested in population level things, despite the high levels of randomization, we can fully recover the original proportions.</p>
+  
+  <p>With some algebra, I was able to work out that computing the following, for each possible answer recovers the true underlying percentages:
+  <span class="math">\[p_{true} = \frac{p_{survey} - \frac{1}{|C|}(1 - p_{heads})}{p_{heads}}\]</span></p>
+    
+  <p>Where |<em>C</em>| stands for total number of choices in the set <em>C</em> = {choice<sub>1</sub>,..,choice<sub>n</sub>}. This time, the slider will control how biased our coin is.</p>
+  <p><strong>Coin Bias: </strong>
+  <input type="range" name="points2" value="40" min="0" max="100" data-show-value="true"  onchange="foodSliderChanged(this)"> <span name ="fbias">40%</span>
+  </p>
+  <div id="fsurvey"></div> 
+  <p><strong>Coin Bias: </strong>
+  <input type="range" name="points2" value="40" min="0" max="100" data-show-value="true"  onchange="foodSliderChanged(this)"> <span name ="fbias">40%</span>
+  </p>
+  <span name ="coinS" id = "Sandwich🥖"></span>
+  <br/>
+  <span name ="coinS" id = "Vegan Hamburger🍔"></span>
+  <br/>
+  <span name ="coinS" id = "hotdog🌭"></span>
+ 
+  <h2>Leaks</h2>
+  
+  <p>Differential Privacy is not an impenetrable seal of protection; it is possible to introduce leaks. Two ways that I could think of are attacks involving remembering queries and by asking multiple correlated questions.</p>
+  
+  <p>If the queries do not retain any data on what each individual response was, privacy remains protected. If instead the responses were recorded, the collector can revisit the data to make new inferences. For example, suppose we were surveying whether people were for or against some action and that against is the protected class. After the population estimates of the proportions have been worked out, one can condition to just those who said against and work out the probability that those who said against truly are against.</p>
+  
+  <p>In our randomized response scenario, if the proportion of the population that is against is 41%, the probability that those who answered against truly are against is ~59%. With the second differential privacy method, if it were 36% against at the population level, then those responding against are truly against with a 63% chance. This is a large change in probability! However, if a biased coin was instead used, say one that turns up tails 95% of the time, the worst case scenario would only involve going from 49% to 51%. The population level true values are still as precise but the individuals are much more protected.</p>
+  
+  <p>The amount of information leaked depends on the underlying population probability and increases from zero and then decreases. Here's a graph for the randomized response scenario:</p>
+
+  <img src="Images/leak.png" alt="alt text" />
+  
+  <p>As you can see, if the purpose is to secure the privacy of individual responses, then retaining the data of responses is subideal, especially when 30%-60% of the populace is against. If the results are to be retained, we can at least demand a high bias or a low probability of requiring a truthful response (most differential privacy work is biased towards the concerns of the data collector so they might not agree with my suggestion).</p>
+  
+  <p>Another manner where which the implementer can cheat is by retaining responses and querying with either the same or a very similar set of questions. If the survey giver keeps asking the same questions, they can get ever more confident as to the true value of the responses. But that is not the only way to act in bad faith. If the survey process constructs different questions whose responses are correlated, they can become fairly certain about true answers in just two queries (or the first if enough different questions are asked).</p>
+  
+  <h3>Correlated Queries</h3>
+  
+  <p>In our final scenario, we will visit a world of dogs, mice and cats ruled by fat cats. The Fat Cats are performing what is ostensibly a demographic survey. To respect the right to anonymity of the denizens, they tell everyone they're implementing differential privacy. Those extra few probing questions? To provide better services, they say. In actuality, they want to figure out who to increase insurance premiums for (you see, dogs are much too playful and mice keep getting injured by cats).</p>
+  
+  <p>We will take the perspective of a single animal being queried. There is a predictor, a bayesian, that doesn't get to see our selected species. We simulate it asking questions each time the button is pressed (you can also think of it as different phrasings each time). The Fat Cats are sly and their coin is slightly rigged--52% of the time it requires truth and 48% of the time allows randomization. Directly below (for comparison) we will also simulate our change in predicted species from asking the <em>same single</em> question of <em>are you a dog or cat or mouse?</em> a number of times equal to button presses.</p>
+  
+  <p>Click the <em>query</em> button to see how our bayesian changes its confidence in its predictions.</p>
+  
+  <p><strong>Select your species</strong>:
+  <select id = "species" onchange="resetGuesses()">
+    <option value="cat">cat🐈</option>
+    <option value="dog">dog🐶</option>
+    <option value="mouse">mouse🐭</option>
+  </select></p>
+  
+  <p><strong>Relationship between questions:</strong></p>
+  
+  <p><input type="radio" id="corropt1" name="corropt" value="correlated" checked>
+  <label for="corropt1">Correlated</label> | <input type="radio" id="corropt2" name="corropt" value="independent">
+  <label for="corropt2">Independent</label></p>
+  
+  <p>Times asked: <span id ="nqueries">1</span>
+    <input type="button" id="askq" value="Query"  onclick="updateGuesses()"> | <input type="button" id="qreset" value="Reset" onclick="resetGuesses()"></p>
+  <div id ="guesserInf"></div>
+  
+  <p>If you try reset a few times you might notice that mice are hardest to guess (since each of their non-food tastes share a bit with one of the other species). You might also notice that a surprising number of times, the correlator guesses correctly in one try (but can, especially for mice, fixate on the wrong species).</p>
+  
+  <h2>Conclusion</h2>
+  
+  <p>In this article we've covered only a small part of Differential Privacy, there remain many more sophisticated methods to inject noise and protect the user. Nonetheless, we were able to explore its core aspect. While Differential Privacy is a way to maintain privacy when data must be collected, it's no panacea. If there's no way to audit the process, an element of trust will always be needed. A hostile actor might technically be offering privacy but by retaining answers, using weights biased against the user, multiple identical queries (an issue in the digital world where devices can act on your behalf without your knowing the details) or designing queries so as to leverage correlations much more information than naively assumed can be leaked. All that said, properly implemented Differential Privacy strikes a balance between the needs of the user and the polling entity.</p>
+  
+  <h2>Technical Appendix</h2>
+  
+  <p>The following section is a bit more technical and assumes programming knowledge.</p>
+  
+  <h3>The Likelihoods for our Bayesian</h3>
+  
+  <p>The likelihoods for the bayesians were chosen lazily. In particular, the correlator's likelihood is not even properly sensible: it simply uses the joint probability of seeing those particular items together and so is very jumpy. Works well enough for this demonstration's purposes though.</p>
+  
+  <pre><code>update (fun (_,food,toy,catnip) species -&gt; probabilityOf ((=) (food,toy,catnip)) (jointProb species)) prior reqs 
+  </code></pre>
+  
+  <p>For the multiple asker:</p>
+  
+  <pre><code>update (fun species (speciesHypth,p) -&gt; if speciesHypth = species then (1. - p) else p) priorMult animal  
+  </code></pre>
+  
+  <h3>Mutual Information</h3>
+  
+  <p>I'd originally wanted to cover mutual information in the main text but realized I could not do it at the level of detail I preferred and so moved it here. Mutual information is an important concept, it's definition is:</p>
+  
+  <p><span class="math">\[\sum_{(x,y)\in X \times Y} p(x,y) \log\left(\frac{p(x,y)}{p(x)p(y)}\right)\]</span></p>
+  
+  <p>When <em>X</em> and <em>Y</em> are independent we get <strong>log(1) = 0</strong>. But a more motivated definition is: <em>I(X;Y) = H(X) - H(X|Y)</em> where <em>H(X)</em> stands for the entropy or our uncertainty about the random variable <em>X</em>. Mutual information then is, how uncertain we remain about <em>X</em> given that we know <em>Y</em>. If <em>X</em> and <em>Y</em> are independent of each other then knowing <em>Y</em> changes nothing about our uncertainty around <em>X</em>. But when they are correlated, knowing one tells us something and reduces our uncertainty about the other. In our Differential Privacy example, positive mutual information between the subjects of our questions allows us to narrow down and reduce our uncertainty about attributes that in principle, should have been private.</p>
+  
+  <h3><a name = "entropy">Entropy</a></h3>
+  
+  <p>Entropy is roughly, our uncertainty about possible outcomes. We want this concept to be low when the bulk of probability is concentrated on a few outcomes and high when it's diffuse. For a binary proposition, this is a function that's low for low probability and high probability events (i.e. 1% means we are very certain this thing will not happen). Additionally, we want this uncertainty to change smoothly with changes in probability and to not depend on the order in which the probabilities are presented. Finally and most importantly, is the notion of coarse graining or throwing away detail (going from <em>a shiny green toy car</em> to <em>a toy car</em>).</p>
+  
+  <p>If we have that the entropy at the full level of detail is equal to that of our coarse grained level minus the branching distinctions we don't care about, there is essentially only one form entropy can take. That is, the entropy of our coarse graining should be less than or equal to that of the fine grained level. It is less exhausting to communicate at a high level than to finely go over pedantic distinctions (programming can be tedious).</p>
+  
+  <p>If we have a set <em>{a,b,c}</em>, sets <em>A = {a,b}, B = {c}</em> and we want a function <em>H:Distribution -> Real</em> such that H({A,B}) = H({A,B}) + (p<sub>A</sub>H({A}) + p<sub>B</sub>H({B})), the function which solves this is (for discrete systems): -Σ<sub>x</sub>(p(x) * log p(x)). In code:</p>
+  
+  <pre><code>let entropy dist = -Seq.sumBy (fun (_,p) -&gt; p * log p) dist
+  </code></pre>
+  
+  <p>Why this is has been derived in many places but to boost intuition I will expand upon our simple example. Let's define:</p>
+  
+  <pre><code>let conditionWith projectWith f d = Array.filter (fst &gt;&gt; projectWith &gt;&gt; f) d |&gt; Array.normalizeWeights
+  </code></pre>
+  
+  <p>This filters our space to matching conditions and ensures the probabilities sum to one. Let's encode our example.</p>
+  
+  <pre><code>let states = categorical ["a", 0.3; "b",0.5; "c",0.2]
+  
+let coarse = distr {
+     let! state = states
+     return match state with 
+              | "b" 
+              | "a" -&gt; "A"
+              | _   -&gt; "B"
+    }
+  </code></pre>
+  
+  <p>Notice that <em>A</em> has an 80% chance of occurring and <em>B</em>, a 20% chance. The entropy of our full system is ~1.48 bits and our coarse system is 0.72 bits. In code our above requirement is:</p>
+  
+  <pre><code>let statesA = conditionWith id (fun s -&gt; s = "a" || s = "b") (pmf states)
+let statesB = conditionWith id ((=) "c") (pmf states)
+  
+entropyDistr states = entropyDistr coarse + 0.8 * entropy (statesA) + 0.2 * entropy (statesB)
+  </code></pre>
+  
+  <p><img src="Images/system.png" alt="system" /></p>
+  
+  <p>The coarse graining requirements says the fine grained entropy should equal our coarse graining and the entropy of each of the contained subsystems weighted by their probability. This makes sense but a lack of appreciation for this can lead people astray when attempting to define emergence.</p>
+  
+  <h3>Conditional Entropy</h3>
+  
+  <p>We can now move on to conditional entropy. Conditioning effectively means filtering to some condition as we showed above. Thus, the conditional entropy is, given we've filtered to some subspace that matches our condition, what is the entropy of that subspace?</p>
+  
+  <pre><code>let inline conditionEntropyOn projectWith x d = conditionWith projectWith ((=) x) d |&gt; entropy
+  
+  let conditionalEntropy projectWith (joint:Distribution&lt;_&gt;) =
+      Set.map projectWith joint.Support 
+      |&gt; Seq.sumBy (fun x -&gt; 
+            let p = probabilityOf (projectWith &gt;&gt; (=) x) joint
+            let h = conditionEntropyOn projectWith x (pmf joint)
+            p * h)
+  </code></pre>
+  
+  <p><em>projectWith</em> is a function we pass in to select on a tuple. For example, if we have <em>(a,b,c)</em> then <em>projectWith = third</em> will give us <em>c</em> Our conditional entropy is then conditioning on each possible value that the projected variable can take on, calculating the entropy of that space and then multiplying it by the probability of the current value. It's the average entropy from conditioning our random variable of focus across possible values of another random variable. We can now define:</p>
+  
+  <pre><code>mutualInformation = entropyDistr X - (conditionalEntropy snd joint)
+  </code></pre>
+  
+  <p>An explicit example always helps. We define the below joint distribution based on the animal example above and it visualize its joint distribution:</p>
+  
+  <pre><code>let population = categorical ["cat",0.5; "dog",0.4; "mouse",0.1]
+  let joint = distr {
+      let! animal = population
+      let! toy = favtoy animal
+      return (a,toy) 
+  }
+let ce = conditionalEntropy snd joint
+let mi = mutualInformation joint    
+let mi2 = entropyDistr pop - ce
+  </code></pre>
+  
+  <div id = "jointchart"></div>
+  <div id = "entinf"></div>
+  
+  <h3>KL Divergence</h3>
+  
+  <p>Relative entropy or KL Divergence (<em>D<sub>KL</sub>(P||Q)</em>) is a measure of how well one distribution codes another distribution. Or the loss (in bits) incurred from using the wrong distribution to code for another distribution. If <em>D<sub>KL</sub>(Posterior||Prior)</em> represents the change in our distribution after updating with new information, then it can be viewed as surprise. Indeed, the notion probably well matches the colloquial use of the term meaningful information when constrained to state changes the agent experiences in practice.</p>
+  
+  <p><em>D<sub>KL</sub>(P||Q)</em> is related to mutual information. I(X;Y) = <em>D<sub>KL</sub>(P(X,Y)||P(X)P(Y))</em>. Their forms in our discrete space are fairly similar:</p>
+  
+  <pre><code>let mutualInformation (joint:Distribution&lt;_&gt;) =
+      joint.Support |&gt; Seq.sumBy (fun(x,y) -&gt;
+          let px = probabilityOf (fst &gt;&gt; (=) x) joint
+          let py = probabilityOf (snd &gt;&gt; (=) y) joint 
+          let pxy = probabilityOf ((=) (x,y)) joint
+          pxy * log(pxy/(px * py)))
+  
+let kldivergence (pA:Distribution&lt;_&gt;) (pB:Distribution&lt;_&gt;) =
+      pA.Support |&gt; Seq.sumBy (fun x -&gt;
+          let p_a = probabilityOf ((=) x) pA
+          let p_b = probabilityOf ((=) x) pB
+          p_a * log(p_a/ p_b))
+  </code></pre>
+  
+  <h3>Further Motivating Entropy: Addresses, 20 Questions and Labels</h3>
+  
+  <p>Although there are derivations for why entropy should be as it is, they require an uncommon level of mathematical sophistication. The following might be a bit more helpful for a start as an intuition builder.</p>
+  
+  <p>Suppose you had 3 things and wanted to label them. One way to do this would be to number them: e.g. Items #0-#3. If we were to use the base 2 numbering system instead of base 10 we would have the added advantage that our labelling system could also be looked at in terms of addressing each item with respect to some series of yes/no questions. For example:</p>
+  
+  <p>Imagine our labels as the base 2 numbers: #00, #01, #10 and #11.</p>
+  
+  <p><code>Is it green? Then Item #1</code> OR <code>Is it Blue? Then Item #2</code> OR <code>Is It Green AND Blue? Then Item #4</code>. Else It must be Item #0.</p>
+  
+  <p>In terms of base 2, with 3 things, we would need at most 2^2 = 4 labels. With 10 things we would need at most 2^4 = 16 labels. In general N things can be represented with 2 ^(<em>ceil</em> log<sub>2</sub> N) different base 2 numbers, where ceiling rounds up always (5.2 -> 6 or 5.8 -> 6). Essentially, all we're doing is computing the maximum power 2 needs to be raised to in order to be greater than or equal to N. If we have b=<em>ceil</em> log<sub>2</sub> N we can simply say <em>N</em> labels or symbols require <em>b</em> <em>yes, no</em> questions to address them.</p>
+  
+  <p>Intuitively, things that occur rarely should be more surprising and so we should devote more space or attention to them. This can be viewed as difficulty distinguishing that item and requiring many questions to be confident about it. Suppose we have an object that can be in {A,B} and '<em>B</em>' has probability 12.5%, then we should devote -log<sub>2</sub>(0.125) or 3 bits of uncertainty space (technical term is surprisal) to it. Meanwhile 'A', with p = 87.5%, gets about 0.19 bits of surprisal...not as much. Entropy is our (weighted) average surprisal over possible states (0.54 bits for this example).</p>
+  
+  <p><img src="Images/questions.png" alt="alt text" /></p>
+  
+  <h2>Extra</h2>
+  
+  <p>You can most easily play with the probabilistic programming code by copy and pasting code sections in <a href="https://gist.github.com/sir-deenicus/d8183d73ed12c2aa7d57f621c8a99ad1">https://gist.github.com/sir-deenicus/d8183d73ed12c2aa7d57f621c8a99ad1</a> into <a href="http://fable.io/repl/">http://fable.io/repl/</a></p>
+  
+  <h2>References</h2>
+  
+  <p>[1] <a href="https://en.wikipedia.org/wiki/Randomized_response">https://en.wikipedia.org/wiki/Randomized_response</a></p>
+  
+  <p>[2] <a href="https://en.wikipedia.org/wiki/Differential_privacy">https://en.wikipedia.org/wiki/Differential_privacy</a></p>
+  
+  <p>[3] <a href="http://tuvalu.santafe.edu/~simon/it.pdf">http://tuvalu.santafe.edu/~simon/it.pdf</a></p>
+  
+  
+  <script src="bundle.js"></script>
+  <script src="highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
