@@ -6,8 +6,8 @@
   <channel>
     <item>
       <title>The Current Best Hypothesis is that the Brain is Computable</title>
-      <link>The_Current_Best_Hypothesis_is_that_the_Brain_is_Computable.htm</link>
-      <guid>The_Current_Best_Hypothesis_is_that_the_Brain_is_Computable.htm</guid>
+      <link>http://www.metarecursive.com/writings/The_Current_Best_Hypothesis_is_that_the_Brain_is_Computable.htm</link>
+      <guid>http://www.metarecursive.com/writings/The_Current_Best_Hypothesis_is_that_the_Brain_is_Computable.htm</guid>
       <pubDate>Fri, 14 Aug 2015 00:00:00 GMT</pubDate>
       <description>&amp;lt;img src=&amp;quot;http://imgs.xkcd.com/comics/turing_test.png&amp;quot; alt=&amp;quot;turing test&amp;quot;&amp;gt;
 There are many (most?) people who dispute the idea that the brain is computable—there is something different and special about the human brain, they say. It is not possible to dispute this for now, but my own stance is a basic one: You may be right that the brain is somehow magical but my position is simpler and, all things being equal, more likely to end up as the correct one.
@@ -38,8 +38,8 @@ While one cannot directly draw any conclusions on the brain from these, when con
     </item>
     <item>
       <title>Fields as Curried Functions</title>
-      <link>Fields_as_Curried_Functions.html</link>
-      <guid>Fields_as_Curried_Functions.html</guid>
+      <link>http://www.metarecursive.com/writings/Fields_as_Curried_Functions.html</link>
+      <guid>http://www.metarecursive.com/writings/Fields_as_Curried_Functions.html</guid>
       <pubDate>Fri, 01 Jan 2016 22:42:10 GMT</pubDate>
       <description>In a 1994 paper, Gary T Leavens explained, in a wonderfully graspable manner, that Fields in physics can actually be viewed as curried functions. If you understand what curried functions are, then you already have a good idea of what fields are&amp;amp;#8212;these sort of bridges are incredibly helpful to those of us peering in from both sides of the divide (for me, from the CS side). The examples were in scheme and so the syntax inversion might make it a bit difficult for the unpracticed (such as myself) to follow, hence my translating (and hopefully, helpful to you too). My examples here are in F#, where units of measure are especially helpful in making things clearer.
 First, some definitions:
@@ -93,8 +93,8 @@ oscillators,gliders, computation model not reality</description>
     </item>
     <item>
       <title>Colloquial Information, Meaning and Fluffy Puff</title>
-      <link>Colloquial_Information,_Meaning_and_Fluffy_Puff.htm</link>
-      <guid>Colloquial_Information,_Meaning_and_Fluffy_Puff.htm</guid>
+      <link>http://www.metarecursive.com/writings/Colloquial_Information,_Meaning_and_Fluffy_Puff.htm</link>
+      <guid>http://www.metarecursive.com/writings/Colloquial_Information,_Meaning_and_Fluffy_Puff.htm</guid>
       <pubDate>Mon, 01 May 2017 02:16:19 GMT</pubDate>
       <description>The information in information theory does not capture the concept of meaning. The intuitive notion of information can nonetheless be written using information theory concepts. Information in the everyday sense has some properties it must satisfy. Consider a book.
 1) If it is written in a language I do not understand then the book has zero information for me. This tells me that meaningful information ought to have a subjective aspect.
@@ -137,8 +137,8 @@ In this essay I&amp;#39;ve put forward an algorithm that is a sketch for the col
     </item>
     <item>
       <title>Levels of Understanding</title>
-      <link>Levels_of_Understanding.htm</link>
-      <guid>Levels_of_Understanding.htm</guid>
+      <link>http://www.metarecursive.com/writings/Levels_of_Understanding.htm</link>
+      <guid>http://www.metarecursive.com/writings/Levels_of_Understanding.htm</guid>
       <pubDate>Thu, 04 May 2017 23:15:43 GMT</pubDate>
       <description>&amp;lt;img src=&amp;quot;Images/development.png&amp;quot; alt=&amp;quot;alt text&amp;quot;&amp;gt;
 &amp;lt;a href=&amp;quot;http://www.freepik.com&amp;quot;&amp;gt;Freepik CC 3.0 BY&amp;lt;/a&amp;gt;
@@ -169,8 +169,8 @@ Some might imagine there is some kind of hierarchy, that other AIs will be human
     </item>
     <item>
       <title>A bit on Inference and Intelligence</title>
-      <link>A_bit_on_Inference_and_Intelligence.htm</link>
-      <guid>A_bit_on_Inference_and_Intelligence.htm</guid>
+      <link>http://www.metarecursive.com/writings/A_bit_on_Inference_and_Intelligence.htm</link>
+      <guid>http://www.metarecursive.com/writings/A_bit_on_Inference_and_Intelligence.htm</guid>
       <pubDate>Tue, 13 Jun 2017 19:14:37 GMT</pubDate>
       <description>What does it mean for a system to be intelligent. Or Artificially so? The phrase Artificial intelligence is a contentious one, and for me, the cause of a not insignificant amount of frustration in discussions because everyone brings their own special meaning. However, looking closely at what it means to learn, it&amp;#39;s clear that the notion of intelligence is not one of what but instead of what on. What&amp;#39;s important and I believe often missed, is that there is no algorithm for intelligence, instead there are algorithms and whether they yield intelligence or not is task dependent.
 Artificial intelligence is a broad term and according to Markoff [1], was coined by John McCarthy who wanted a name avoiding any association with Norbert Wiener&amp;#39;s &amp;lt;em&amp;gt;cybernetics&amp;lt;/em&amp;gt;. McCarthy also considered Shannon&amp;#39;s preferred term of automata as having too much of a mathematical framing. Of the terms from that era, I personally favor &amp;lt;em&amp;gt;complex information processing&amp;lt;/em&amp;gt;.
@@ -235,8 +235,8 @@ The obsession is even more questionable when we consider that internal higher or
     </item>
     <item>
       <title>On the Breakdown of the Bicameral Mind and the Importance of Diversity </title>
-      <link>On_the_Breakdown_of_the_Bicameral_Mind_and_the_Importance_of_Diversity_.htm</link>
-      <guid>On_the_Breakdown_of_the_Bicameral_Mind_and_the_Importance_of_Diversity_.htm</guid>
+      <link>http://www.metarecursive.com/writings/On_the_Breakdown_of_the_Bicameral_Mind_and_the_Importance_of_Diversity_.htm</link>
+      <guid>http://www.metarecursive.com/writings/On_the_Breakdown_of_the_Bicameral_Mind_and_the_Importance_of_Diversity_.htm</guid>
       <pubDate>Sat, 12 Aug 2017 00:00:00 GMT</pubDate>
       <description>Have you heard of the &amp;lt;a href=&amp;quot;https://en.wikipedia.org/wiki/Bicameralism_(psychology)&amp;quot;&amp;gt;bicameral mind&amp;lt;/a&amp;gt;? If you haven&amp;#39;t, it&amp;#39;s worth checking out. While I don&amp;#39;t think it correct, I think it takes only a slight modification to get us something highly probable. In this view, like in the Bicameral setting, we don&amp;#39;t all experience consciousness the same way. The core mediator is the differences in sophistication of theory of mind. The brain is plastic and different percepts affect both attentional priors and how language is used for self-modelling. The more complex stories we told, the better the listeners had to be at modeling those scenarios and the better the brain had to be at representing states at a meta level.
 The break-down occurred through diffusion and cultural interchange leading to richer stories which in turn called for more complex modelling. The better you are at modelling others&amp;#39; mental states, the better you will be at modelling your own.
@@ -262,8 +262,8 @@ I bring up the issue of ideologies because careful manipulation of attended to s
     </item>
     <item>
       <title>A Sketching Look at AI Ethics</title>
-      <link>A_Sketching_Look_at_AI_Ethics.htm</link>
-      <guid>A_Sketching_Look_at_AI_Ethics.htm</guid>
+      <link>http://www.metarecursive.com/writings/A_Sketching_Look_at_AI_Ethics.htm</link>
+      <guid>http://www.metarecursive.com/writings/A_Sketching_Look_at_AI_Ethics.htm</guid>
       <pubDate>Sat, 12 Aug 2017 00:00:00 GMT</pubDate>
       <description>It&amp;#39;s common to mock economics as useless and completely detached from reality. Yet, the fact that algorithms as simple as regret matching or multiplicative weights update, converge on various important equilibrium concepts—algorithms we believe frequently occur in some form in nature—tells us that the core ideas of game theory are in fact very useful. The mistake that has been made is confusing the simplifying assumptions selected so human economist could hand wave a defense for flawed policy advice—unrealistic utility functions, simple two player games, zero sum, intractable equilibrium concepts—for proof of a lack of utility of the subject. In actuality, the game theory is extremely natural, merely poorly applied. We should move from boring discussions on 0-sum games, nash equilibria, prisoner&amp;#39;s dilemma, tit for tat (which does not scale), to discussions on coordination, cooperation, welfare and fairness. And as it turns out, there has been a lot of recent work done in that area—the only problem is the focus on ad markets and auctions—there is no reason it can&amp;#39;t be adapted to improve human lives. Some aspects of modern economics are indistinguishable from online machine learning or computational game theory. It&amp;#39;s a large subject deserving of more attention. If we choose this path, the question then arises: is it ethical to turn over important decision making to machines?
 The debate on AI ethics is currently dominated by 3 archetypes. I&amp;#39;ll summarize them before arguing for another area that&amp;#39;s at least as and possibly more important.
@@ -300,8 +300,8 @@ I argue that allowing algorithms to play a role in human decision making is no l
     </item>
     <item>
       <title>Learning, Ethics and Game theory </title>
-      <link>Learning,_Ethics_and_Game_theory_.htm</link>
-      <guid>Learning,_Ethics_and_Game_theory_.htm</guid>
+      <link>http://www.metarecursive.com/writings/Learning,_Ethics_and_Game_theory_.htm</link>
+      <guid>http://www.metarecursive.com/writings/Learning,_Ethics_and_Game_theory_.htm</guid>
       <pubDate>Sat, 12 Aug 2017 21:06:14 GMT</pubDate>
       <description>&amp;lt;img src=&amp;quot;Images/graph.png&amp;quot; alt=&amp;quot;graph&amp;quot;&amp;gt;
 In the image above, I&amp;#39;ve sketched how one can show that evolution, game theory and learning are related. While I&amp;#39;ll not talk about natural selection today, I&amp;#39;ll discuss how ideas from game theory can be given an easier footing from within the context of computational learning theory. A future post will discuss evolution from the min-regret framework so it&amp;#39;s worth following the ideas presented here. Topics: AI Ethics (why everyone gets some part wrong), economics (why capitalism is intractable), games, learning algorithms. I must apologize—ideally, there should have been interactive demos but alas, I hadn&amp;#39;t the time for that.
@@ -486,8 +486,8 @@ The full article contains links to code that you can run in your browser to expl
     </item>
     <item>
       <title>RNNs are probably not practically Turing Complete.</title>
-      <link>RNNs_are_probably_not_practically_Turing_Complete..htm</link>
-      <guid>RNNs_are_probably_not_practically_Turing_Complete..htm</guid>
+      <link>http://www.metarecursive.com/writings/RNNs_are_probably_not_practically_Turing_Complete..htm</link>
+      <guid>http://www.metarecursive.com/writings/RNNs_are_probably_not_practically_Turing_Complete..htm</guid>
       <pubDate>Fri, 18 Aug 2017 09:53:45 GMT</pubDate>
       <description>&amp;lt;img src=&amp;quot;Images/Ca110-structures2.png&amp;quot; alt=&amp;quot;Rule 110&amp;quot;&amp;gt;
 Are RNNs Turing Complete? Is a question that has bothered me for some time. I still do not have an air tight resolution but my general belief is no, not really.
@@ -524,8 +524,8 @@ All together, the above highlight my strong skepticism of the Turing completenes
     </item>
     <item>
       <title>On N Year Floods</title>
-      <link>On_N_Year_Floods.htm</link>
-      <guid>On_N_Year_Floods.htm</guid>
+      <link>http://www.metarecursive.com/writings/On_N_Year_Floods.htm</link>
+      <guid>http://www.metarecursive.com/writings/On_N_Year_Floods.htm</guid>
       <pubDate>Mon, 04 Sep 2017 00:00:00 GMT</pubDate>
       <description>I think several things about this &amp;lt;a href=&amp;quot;https://www.youtube.com/watch?v=EACkiMRT0pc&amp;quot;&amp;gt;video&amp;lt;/a&amp;gt;. The first is, a lot of people commit the gambler&amp;#39;s fallacy when talking about 100 year or 500 year floods. On twitter, someone thought a 500 year flood was due (100% and guaranteed by the 500th year). But that&amp;#39;s not true. A better way is to look in terms of a binomial distribution. This takes each year as a trial of a Bernoulli. For a 500 year span, we compute P = Bin(1/500, 500) in n+1, 1 - P(X ≤ n) for n in 0..3 as:
 Chance of 1+ occurrences is ~63%
@@ -548,8 +548,8 @@ Tornadoes, hailstorms and even snowstorms—can those be linked to warming? The 
     </item>
     <item>
       <title>A High Level Introduction to Differential Privacy and Information</title>
-      <link>A_High_Level_Introduction_to_Differential_Privacy_and_Information.html</link>
-      <guid>A_High_Level_Introduction_to_Differential_Privacy_and_Information.html</guid>
+      <link>http://www.metarecursive.com/writings/A_High_Level_Introduction_to_Differential_Privacy_and_Information.html</link>
+      <guid>http://www.metarecursive.com/writings/A_High_Level_Introduction_to_Differential_Privacy_and_Information.html</guid>
       <pubDate>Tue, 26 Sep 2017 22:49:39 GMT</pubDate>
       <description>I&amp;#39;ve known of the term &amp;lt;em&amp;gt;differential privacy&amp;lt;/em&amp;gt; for a long while, but only vaguely. Recently, I decided to look a bit more into the topic and also thought it a good place to start/try out interactive explanations. As it turns out, differential privacy is essentially about probabilities and information, which means an excuse to experiment with interactive explanations of relevant areas from probability theory (and an excuse to play with a discrete probability monad).
 Of course, there is a great deal more to the subject of differential privacy than I can cover (or looked into) but I think I am satisfied with this as providing a decent high level overview.
@@ -644,8 +644,8 @@ You can most easily play with the probabilistic programming code by copy and pas
     </item>
     <item>
       <title>In which I use watching a movie to explain Bayesian Probability. </title>
-      <link>In_which_I_use_watching_a_movie_to_explain_Bayesian_Probability._.htm</link>
-      <guid>In_which_I_use_watching_a_movie_to_explain_Bayesian_Probability._.htm</guid>
+      <link>http://www.metarecursive.com/writings/In_which_I_use_watching_a_movie_to_explain_Bayesian_Probability._.htm</link>
+      <guid>http://www.metarecursive.com/writings/In_which_I_use_watching_a_movie_to_explain_Bayesian_Probability._.htm</guid>
       <pubDate>Fri, 13 Oct 2017 09:59:54 GMT</pubDate>
       <description>(&amp;lt;em&amp;gt;10/13/2017: ~4.5 years ago, I wrote this article to explain bayesianism without invoking any math. Bayes Theorem is not particular to bayesianism although it is true that the rule underpins the technique when you zoom out far enough. But the essence of what bayesian computation consists of has, in my opinion, never been properly explicated at a high level. Looking back, I think I did well but for a few misunderstandings I have corrected in parenthesized italics&amp;lt;/em&amp;gt;).
 &amp;lt;strong&amp;gt;Friday, February 22, 2013&amp;lt;/strong&amp;gt;
