@@ -1,0 +1,283 @@
+
+<!-- saved from url=(0030)http://localhost:8084/exomind# -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+	<link rel="stylesheet" type="text/css" href="./bitcoin.exomind_files/style.css">
+    <link rel="stylesheet" href="./bitcoin.exomind_files/auto-complete.css">
+	<style>
+		#pup {
+		  position:absolute;
+		  z-index:200; /* aaaalways on top*/
+		  padding: 3px;
+		  margin-left: 10px;
+		  margin-top: 5px;
+		  border-radius: 3px;
+		  border: 1px solid black;
+		  background-color: #777;
+		  color: white;
+		}
+
+		.infbox {
+			background-color:#fff9ea;
+			border:1px solid #dfd8c2;
+			color:#555;
+			border-radius:3px;
+			display: inline-block;
+			padding:10px 10px 10px 10px;
+			margin:10px;
+		}
+
+		.resbox {
+			border:1px solid;
+			border-radius:3px;
+			padding:10px 10px 10px 10px;
+			margin:10px;
+		}
+
+		.infbox {
+			animation: fadein 2s;
+			-moz-animation: fadein 2s; /* Firefox */
+			-webkit-animation: fadein 2s; /* Safari and Chrome */
+			-o-animation: fadein 2s; /* Opera */
+		}
+		}
+		@keyframes fadein {
+			from {
+				opacity:0;
+			}
+			to {
+				opacity:1;
+			}
+		}
+		@-moz-keyframes fadein { /* Firefox */
+			from {
+				opacity:0;
+			}
+			to {
+				opacity:1;
+			}
+		}
+		@-webkit-keyframes fadein { /* Safari and Chrome */
+			from {
+				opacity:0;
+			}
+			to {
+				opacity:1;
+			}
+		}
+		@-o-keyframes fadein { /* Opera */
+			from {
+				opacity:0;
+			}
+			to {
+				opacity: 1;
+			}
+		}
+	</style>
+    <script type="text/javascript" src="./bitcoin.exomind_files/popup.js"></script>
+    <script type="text/javascript" src="./bitcoin.exomind_files/auto-complete.js"></script>
+    <script>
+	var wsUri = "ws://localhost:8084/websocket";
+	var responsesdiv = null ;
+	var msgsdiv = null;
+	var thistory = new Set(['pubmed','search','.take','.gene','.startat','.text', '.snp', '.wiki','.topics', 'arxiv', 'last question','.not-reviews','.not-open','yes','no'])
+
+
+	var connected = false;
+	var websocket = null;
+	var inputbox = null;
+	var keepset = new Set([])
+
+	function initWebSocket() {
+		websocket = new WebSocket(wsUri);
+
+		websocket.onopen = (evt) => {
+			connected = true;
+			info ("<i>connection established</i>")
+		};
+
+		websocket.onclose = (evt) => {
+			connected = false;
+		};
+
+		websocket.onerror = (evt) => {
+			info("<b>ERROR</b>");
+			connected = false;
+		};
+
+		websocket.onmessage = (evt) => { display (evt.data); };
+	}
+	function createLink(text, onclick, href = "", float_style = "right"){
+		var a = document.createElement('a');
+		var linkText = document.createTextNode(text);
+		a.appendChild(linkText);
+		a.href = href
+		a.style.float = float_style
+		a.onclick = onclick
+		return a
+	}
+
+	function createDiv(txt, msgId = "",classname = "resbox"){
+		var div = document.createElement("div");
+		div.style.width = "90%";
+		div.innerHTML = txt;
+		div.className = classname;
+		div.msg_id = msgId
+		return div;
+	}
+
+	function info(txt){
+	   var nb = createDiv(txt,"", "infbox")
+	   msgsdiv.insertBefore(nb, msgsdiv.firstChild);
+	   window.setTimeout(() => msgsdiv.removeChild(nb) , 5000);
+	}
+
+	function send(m){
+		websocket.send(JSON.stringify(m));
+	}
+
+	function display(t){
+	  var msg = JSON.parse(t);
+	  if(msg.msg_class === "browser"){
+	      if(msg.msg_type === "INFO")
+	          info(msg.msg_text)
+	      else {
+	          var ndiv = createDiv(msg.msg_text,msg.msg_id)
+
+	          ndiv.insertBefore(
+                     createLink("[x]", (e) => {
+                         responsesdiv.removeChild(ndiv);
+                         if(msg.msg_id !== "")
+                             send({msg_type:"REMOVE", 
+								   msg_id:msg.msg_id, 
+								   msg_text:"", 
+								   msg_class:"browser"})
+                         return false;
+                     }),
+                     ndiv.firstChild)
+
+	          var link = createLink("[keep] ",(e) => {});
+
+	          link.onclick = (e) => {
+	              if(keepset.has(msg.msg_id)) {
+	                  link.innerText = "[keep]"
+					  keepset.delete(msg.msg_id)
+				  }
+	              else {
+	                  link.innerText = "[cancel keep]"; keepset.add(msg.msg_id)
+	              }
+				  return false;
+	          }
+
+	          ndiv.insertBefore(link, ndiv.firstChild)
+
+	          responsesdiv.insertBefore(ndiv, responsesdiv.firstChild);
+	      }
+	  }
+	}
+
+	function send_request(m){
+		if(connected){
+			send({msg_type:"QUERY", 
+				  msg_text:m, 
+				  msg_class:"browser"})
+		}
+		else{
+			info("no connection")
+		}
+	}
+
+	function get_input(){
+	 if(inputbox===null)inputbox = document.getElementById("txt");
+	 return inputbox.value
+	}
+
+	function onenter(e){
+	    if(e.keyCode === 13){
+	        var command = get_input()
+	        if (command.indexOf("download") !== -1)
+	            send({msg_type:"DOWNLOAD", 
+					  msg_text : JSON.stringify(keepset),
+					  msg_class:"browser"})
+					  
+	        else send_request(command);
+
+	        command.split(" ").forEach(t => {if(t !== "") thistory.add(t)})
+	        thistory.add(command.trim())
+		}
+		return false;
+	}
+
+	function norepeats (str) {
+	    var words = str.split(" ");
+	    var wordsset = new Set(words)
+	    return wordsset.size === words.length;
+	}
+
+	function init_autocomplete(){
+	    var autocomp = new autoComplete({
+	        selector: 'input[name="qbox"]',
+	        minChars: 2,
+	        cache:false,
+	        source: function(term, suggest){
+	            var lterm = term.toLowerCase();
+	            var words = lterm.split(" ")
+	            var selterm = words[words.length - 1]
+	            var matches = [];
+
+	            var prefix = words.length > 1 ? (words.slice(0,words.length - 1)).join(" ") + " " : ""
+
+	            thistory.forEach(h => {
+	                if((h.toLowerCase().indexOf(selterm) !== -1) && norepeats(prefix + h)) matches.push(prefix + h)
+	            });
+
+	            suggest(matches);
+	        }
+	    });
+	}
+
+	function init(){
+		responsesdiv = document.getElementById("responses");
+		msgsdiv = document.getElementById("msgs");
+		init_autocomplete();
+	}
+
+	function removeall(){
+		var divs = document.querySelectorAll(".resbox")
+
+		for(var i = 0; i < divs.length; i++){
+			if(!keepset.has(divs[i].msg_id)){
+				divs[i].parentNode.removeChild(divs[i]);
+				if(divs[i].msg_id !== "")
+					 send({msg_type:"REMOVE", 
+						   msg_id:divs[i].msg_id, 
+						   msg_text:"", 
+						   msg_class:"browser"})
+			}
+		}
+	}
+
+	initWebSocket()
+    </script>
+<style type="text/css" id="igtranslator-color"></style></head>
+<body onload="init()">
+	<h1>A Memex 2.0/Project Intex</h1>
+	<div>
+		<input type="text" name="qbox" style="width:90%;height:30px" id="txt" onkeypress="onenter(event)" autocomplete="off">
+        <button onclick="removeall()">Remove all unkept</button> <button>Keep All</button>
+	</div>
+	<div id="msgs"></div>
+	<div id="responses"><div class="resbox" style="width: 90%;"><a href="http://localhost:8084/exomind" style="float: right;">[cancel keep]</a><a href="http://localhost:8084/exomind" style="float: right;">[x]</a><p><b>[$11.20B] Cryptolization — Ethereum (ETH) market capitalization ...</b></p><p>[$11.20B] Cryptolization — Ethereum (ETH) market capitalization ...Total market cap: $11,200,075,924. Created with Highcharts ... 354, WFM, Whole 
+Foods Market, Inc. $11,290M ... Ethereum market cap: $1,163M. Aggregate&nbsp;...https://cryptolization.com/ethereum - 111k - Cached - Similar pages<br><small><a target="_blank" href="https://cryptolization.com/ethereum">https://cryptolization.com/ethereum</a></small></p><p></p></div><div class="resbox" style="width: 90%;"><a href="http://localhost:8084/exomind" style="float: right;">[cancel keep]</a><a href="http://localhost:8084/exomind" style="float: right;">[x]</a><p><b>Total Ether Supply on Ethereum - EtherScan</b></p><p>Total Ether Supply on Ethereum - EtherScanThe Ethereum Block Chain Explorer, API and Analytics Platform. ... 
+80,872,751.44 Ether. Data Source: Total Eth Supply API ... Market Capitalization. 
+Created&nbsp;...https://etherscan.io/stats/supply - 24k - Cached - Similar pages<br><small><a target="_blank" href="https://etherscan.io/stats/supply">https://etherscan.io/stats/supply</a></small></p><p></p></div><div class="resbox" style="width: 90%;"><a href="http://localhost:8084/exomind" style="float: right;">[cancel keep]</a><a href="http://localhost:8084/exomind" style="float: right;">[x]</a><h2> what is spv</h2></div><div class="resbox" style="width: 90%;"><a href="http://localhost:8084/exomind" style="float: right;">[cancel keep]</a><a href="http://localhost:8084/exomind" style="float: right;">[x]</a><p><b>Key Phrases</b> answer site, verify everything, registration required and standard client</p><p><b>Top Sentence:</b>A Bitcoin implementation that does not verify everything, but instead   relies on either connecting to a trusted node, or puts its faith in   high difficulty as a proxy for proof of validity.</p><p></p><p> A Bitcoin implementation that does not verify everything, but instead   relies on either connecting to a trusted node, or puts its faith in   high difficulty as a proxy for proof of validity.</p>
+<p>I've seen SPV client mentioned in several places.</p><p></p><p><i>Sentence ratio: 0.18, Word ratio: 0.62. Summary Count 40.0, Orig count 65.0</i></p></div><div class="resbox" style="width: 90%;"><a href="http://localhost:8084/exomind" style="float: right;">[cancel keep]</a><a href="http://localhost:8084/exomind" style="float: right;">[x]</a><p><b>SPV, Simplified Payment Verification - Bitcoin Glossary</b></p><p>SPV, Simplified Payment Verification - Bitcoin Glossary... the entire block. The method is used by some lightweight Bitcoin clients. 
+Synonyms. SPV. Simplified Payment Verification. Lightweight client. Thin client&nbsp;...https://bitcoin.org/en/glossary/simplified-payment-verification - 12k - Cached - Similar pages<br><small><a target="_blank" href="https://bitcoin.org/en/glossary/simplified-payment-verification">https://bitcoin.org/en/glossary/simplified-payment-verification</a></small></p><p></p></div><div class="resbox" style="width: 90%;"><a href="http://localhost:8084/exomind" style="float: right;">[cancel keep]</a><a href="http://localhost:8084/exomind" style="float: right;">[x]</a><p><b>What is an SPV client? - Bitcoin Stack Exchange</b></p><p>What is an SPV client? - Bitcoin Stack Exchange7 Sep 2012 ... A Bitcoin implementation that does not verify everything, but instead relies on 
+either connecting to a trusted node, or puts its faith in high&nbsp;...bitcoin.stackexchange.com/questions/4649/what-is-an-spv-client - 79k - Cached - Similar pages<br><small><a target="_blank" href="http://bitcoin.stackexchange.com/questions/4649/what-is-an-spv-client">http://bitcoin.stackexchange.com/questions/4649/what-is-an-spv-client</a></small></p><p></p></div><div class="resbox" style="width: 90%;"><a href="http://localhost:8084/exomind" style="float: right;">[cancel keep]</a><a href="http://localhost:8084/exomind" style="float: right;">[x]</a><h2> bitcoin interest drop</h2></div><div class="resbox" style="width: 90%;"><a href="http://localhost:8084/exomind" style="float: right;">[cancel keep]</a><a href="http://localhost:8084/exomind" style="float: right;">[x]</a><p><b>Key Phrases</b> adding ethereum, Ethereum, trading bitcoin and bitcoin ethereum</p><p><b>Top Sentence:</b>Coinbase exchange users will be able to buy and sell ether, the virtual currency unit behind ethereum starting Tuesday, May 24. Ether is currently trading at about $14 USD (bitcoin is trading at around $448 USD).</p><p></p><p></p>
+<p> Coinbase exchange users will be able to buy and sell ether, the virtual currency unit behind ethereum starting Tuesday, May 24. Ether is currently trading at about $14 USD (bitcoin is trading at around $448 USD).  Unlike bitcoin, ethereum natively supports smart contracts. Coinbase will start trading bitcoin rival ethereum on its cryptocurrency exchange</p><p></p><p><i>Sentence ratio: 0.13, Word ratio: 0.23. Summary Count 54.0, Orig count 238.0</i></p></div><div class="resbox" style="width: 90%;"><a href="http://localhost:8084/exomind" style="float: right;">[cancel keep]</a><a href="http://localhost:8084/exomind" style="float: right;">[x]</a>(8) IBM has explored using <b style="border-radius:2px; background-color:orange"> Ethereum</b> to help <b style="border-radius:2px; background-color:orange"> Internet</b> of Things devices interact with <b style="border-radius:2px; background-color:orange"> each</b> other . Microsoft added support for <b style="border-radius:2px; background-color:orange"> ethereum</b> to Azure , its cloud computing <b style="border-radius:2px; background-color:orange"> platform</b> for developers. Marley Gray, director of business <b style="border-radius:2px; background-color:orange"> development</b> for <b style="border-radius:2px; background-color:orange"> blockchain</b> at Microsoft, said that the tech giant has added over 40 <b style="border-radius:2px; background-color:orange"> different</b> partners for Azure platform, 40% of which are based on Ethereum. Earlier this month, the <b style="border-radius:2px; background-color:orange"> New</b> York Department of Financial Services approved Gemini , a virtual currency exchange founded by the <b style="border-radius:2px; background-color:orange"> Winklevoss</b> brothers, to start trading ether. <br><br> <small>61.09</small> </div><div class="resbox" style="width: 90%;"><a href="http://localhost:8084/exomind" style="float: right;">[cancel keep]</a><a href="http://localhost:8084/exomind" style="float: right;">[x]</a><h2> ethereum bitcoin</h2></div><div class="resbox" style="width: 90%;"><a href="http://localhost:8084/exomind" style="float: right;">[cancel keep]</a><a href="http://localhost:8084/exomind" style="float: right;">[x]</a><p><b>Key Phrases</b> adding ethereum, Ethereum, trading bitcoin and bitcoin ethereum</p><p><b>Top Sentence:</b>Coinbase exchange users will be able to buy and sell ether, the virtual currency unit behind ethereum starting Tuesday, May 24. Ether is currently trading at about $14 USD (bitcoin is trading at around $448 USD).</p><p></p><p></p>
+<p> Coinbase exchange users will be able to buy and sell ether, the virtual currency unit behind ethereum starting Tuesday, May 24. Ether is currently trading at about $14 USD (bitcoin is trading at around $448 USD).</p>
+<p>Created by 22-year-old software developer Vitalik Buterin, ethereum has a particular property that’s excited companies: smart contracts.  Unlike bitcoin, ethereum natively supports smart contracts. Coinbase will start trading bitcoin rival ethereum on its cryptocurrency exchange</p><p></p><p><i>Sentence ratio: 0.17, Word ratio: 0.3. Summary Count 71.0, Orig count 238.0</i></p></div><div class="resbox" style="width: 90%;"><a href="http://localhost:8084/exomind" style="float: right;">[cancel keep]</a><a href="http://localhost:8084/exomind" style="float: right;">[x]</a>(5) Coinbase, a bitcoin-only exchange, is planning to add support for ethereum, the <b style="border-radius:2px; background-color:orange"> company</b> said today (May 19). <b style="border-radius:2px; background-color:orange"> Coinbase</b> exchange users will be able to buy and sell ether, the virtual currency unit behind <b style="border-radius:2px; background-color:orange"> ethereum</b> starting Tuesday, May 24. Ether is currently trading at about $14 USD (bitcoin is trading at around $448 USD). Sources say <b style="border-radius:2px; background-color:orange"> Coinbase</b> had been considering adding <b style="border-radius:2px; background-color:orange"> ethereum</b> for some time. Earlier today, a screenshot of a support page for ether was published by a cryptocurrency trader on Twitter, then appeared on social media <b style="border-radius:2px; background-color:orange"> site</b> Reddit . <br><br> <small>63.09</small> </div><div class="resbox" style="width: 90%;"><a href="http://localhost:8084/exomind" style="float: right;">[cancel keep]</a><a href="http://localhost:8084/exomind" style="float: right;">[x]</a>(9) <b style="border-radius:2px; background-color:orange"> Coinbase</b> hasn’t yet gotten regulatory approval in general in <b style="border-radius:2px; background-color:orange"> New</b> York, so <b style="border-radius:2px; background-color:orange"> Coinbase</b> users in <b style="border-radius:2px; background-color:orange"> New</b> York won’t be able to <b style="border-radius:2px; background-color:orange"> trade</b> ethereum. The <b style="border-radius:2px; background-color:orange"> company</b> expects to make <b style="border-radius:2px; background-color:orange"> ethereum</b> and <b style="border-radius:2px; background-color:orange"> new</b> products available to <b style="border-radius:2px; background-color:orange"> New</b> York users once its bitlicense is approved. <b style="border-radius:2px; background-color:orange"> New</b> York <b style="border-radius:2px; background-color:orange"> State</b> residents can <b style="border-radius:2px; background-color:orange"> use</b> the <b style="border-radius:2px; background-color:orange"> Coinbase</b> exchange and the virtual currency wallet. <br><br> <small>41.95</small> </div><div class="resbox" style="width: 90%;"><a href="http://localhost:8084/exomind" style="float: right;">[cancel keep]</a><a href="http://localhost:8084/exomind" style="float: right;">[x]</a><h2> are bitcoin transactions just scripts </h2></div><div class="resbox" style="width: 90%;"><a href="http://localhost:8084/exomind" style="float: right;">[cancel keep]</a><a href="http://localhost:8084/exomind" style="float: right;">[x]</a><p><b>Key Phrases</b> standard transactions types, many transaction types, Transaction Types and standard transaction types</p><p><b>Top Sentence:</b>Although many transaction types can be represented in the scripting language, only a limited number of standard transaction types are actually accepted by the network and the miners.</p><p></p><p>  The most popular m-of-n transaction type is 1-of-3 with uncompressed public-keys: "OP_1 OP_DATA_65 OP_DATA_65 OP_DATA_65 OP_3 OP_CHECK_MULTISIG".  The first instance of this transaction type occurred in transaction 4b72a223007eab8a951d43edc171befeabc7b5dca4213770c88e09ba5b936e17 .  This transaction was also used to upload a Python tool to the block chain that can itself be used to upload and download data to and from the block chain.  "OP_1 OP_DATA_33 OP_DATA_33 OP_2 OP_CHECK_MULTISIG" is the 1-of-2 transaction type where the hashes of the public keys (or Bitcoin addresses) are stored in a compressed formatis. The "OP_HASH160 OP_DATA_20 OP_EQUAL" script is a Pay to Script Hash (P2SH) transaction.  It moves the responsibility for supplying the conditions to redeem a transaction from the creator of the transaction to the payee(s).  The transaction type is described in BIP 16 .  It first occurred in the block chain in transaction 9c08a4d78931342b37fd5f72900fb9983087e6f46c4a097d8a1f52c74e28eaf6 .  The y-axis is the number of transactions that include at least one transaction output with a P2SH transaction type.  However, instead of storing simple addressees, each scriptPubKey expresses the conditions under which the recipient(s) can change their ownership of the corresponding Bitcoins in the future. Interestingly, we can use the block chain to derive a comprehensive list of transaction types that were accepted in the past.  This list includes non-standard transaction types that were accepted by the network at one time but would not be accepted by the network today.  The table below lists the transaction types by the number of times they occurred in the block chain up to and including block 290,000 .  Although many transaction types can be represented in the scripting language, only a limited number of standard transaction types are actually accepted by the network and the miners.  The outputs are unspendable.  It first occurred in the block chain in transaction fa735229f650a8a12bcf2f14cca5a8593513f0aabc52f8687ee148c9f9ab6665 and has occurred 182 times up to and including block 290,000 . The null data scripts begin with the OP_RETURN opcode.  They allow the creator of the transaction to include some arbitrary data in the block chain in exchange for paying a transaction fee.  Their first occurrences in the block chain are the 0e3e2357e806b6cdb1f70b54c3a3a17b6714ee1f0e68bebb44a74b1efd512098 and 0e842d4d66bc1c30a88f17eefa1e3436c6524aca39e9ad358edf380daf7a49ab transactions respectively. There are many other variations of the multi-signature transaction type that feature in the table above. The Most Popular Transaction Types in the Block Chain to Date</p><p></p><p><i>Sentence ratio: 0.33, Word ratio: 0.67. Summary Count 378.0, Orig count 567.0</i></p></div><div class="resbox" style="width: 90%;"><a href="http://localhost:8084/exomind" style="float: right;">[cancel keep]</a><a href="http://localhost:8084/exomind" style="float: right;">[x]</a>(3) But there are <b style="border-radius:2px; background-color:orange"> many</b> <b style="border-radius:2px; background-color:orange"> more</b> cases. <b style="border-radius:2px; background-color:orange"> Bitcoin</b> uses a scripting <b style="border-radius:2px; background-color:orange"> language</b> to <b style="border-radius:2px; background-color:orange"> specify</b> (and satisfy) the encumbrances, thereby allowing a <b style="border-radius:2px; background-color:orange"> whole</b> host of <b style="border-radius:2px; background-color:orange"> transaction</b> types. Although <b style="border-radius:2px; background-color:orange"> many</b> <b style="border-radius:2px; background-color:orange"> transaction</b> types can  <b style="border-radius:2px; background-color:#F7FF91"> be</b> represented in the scripting language, only a limited <b style="border-radius:2px; background-color:orange"> number</b> of <b style="border-radius:2px; background-color:orange"> standard</b> <b style="border-radius:2px; background-color:orange"> transaction</b> types are actually accepted by the <b style="border-radius:2px; background-color:orange"> network</b> and the miners. These are specified on the <b style="border-radius:2px; background-color:orange"> Bitcoin</b> <b style="border-radius:2px; background-color:orange"> Wiki</b> , in the <b style="border-radius:2px; background-color:orange"> Bitcoin</b> Improvement Proposals (BIPs) , and, authoritatively, in the <b style="border-radius:2px; background-color:orange"> logic</b> of the <b style="border-radius:2px; background-color:orange"> Bitcoin</b> clients and mining software. The <b style="border-radius:2px; background-color:orange"> set</b> of <b style="border-radius:2px; background-color:orange"> standard</b> transactions types has and will continue to <b style="border-radius:2px; background-color:orange"> change</b> over time. <br><br> <small>59.65</small> </div><div class="resbox" style="width: 90%;"><a href="http://localhost:8084/exomind" style="float: right;">[cancel keep]</a><a href="http://localhost:8084/exomind" style="float: right;">[x]</a><h2> are bitcoin transactions just scripts </h2></div><div class="resbox" style="width: 90%;"><a href="http://localhost:8084/exomind" style="float: right;">[cancel keep]</a><a href="http://localhost:8084/exomind" style="float: right;">[x]</a>(30) To validate a transaction, the <b style="border-radius:2px; background-color:orange"> bitcoin</b> <b style="border-radius:2px; background-color:orange"> network</b> validates all of its inputs and outputs. To validate an input, the input's <b style="border-radius:2px; background-color:orange"> script</b> is concatenated with the referenced <b style="border-radius:2px; background-color:orange"> output</b> script, and the <b style="border-radius:2px; background-color:orange"> result</b> is executed. If at the <b style="border-radius:2px; background-color:orange"> end</b> of execution the <b style="border-radius:2px; background-color:orange"> stack</b> contains a 'true' value, then the <b style="border-radius:2px; background-color:orange"> transaction</b> is valid. You can do this in bitcore by using the Interpreter class. The entry <b style="border-radius:2px; background-color:orange"> point</b> (and probably the only <b style="border-radius:2px; background-color:orange"> interface</b> you'll need for most applications) is the <b style="border-radius:2px; background-color:orange"> method</b> Interpreter#verify(). <br><br> <small>56.66</small> </div><div class="resbox" style="width: 90%;"><a href="http://localhost:8084/exomind" style="float: right;">[cancel keep]</a><a href="http://localhost:8084/exomind" style="float: right;">[x]</a>(1) When a <b style="border-radius:2px; background-color:orange"> transaction</b> is validated, the <b style="border-radius:2px; background-color:orange"> input</b> scripts are concatenated with the <b style="border-radius:2px; background-color:orange"> output</b> scripts and evaluated. To  <b style="border-radius:2px; background-color:#F7FF91"> be</b> valid, all <b style="border-radius:2px; background-color:orange"> transaction</b> scripts must evaluate to true. A <b style="border-radius:2px; background-color:orange"> good</b> analogy for how this works is that the <b style="border-radius:2px; background-color:orange"> output</b> scripts are puzzles that <b style="border-radius:2px; background-color:orange"> specify</b> in which conditions can <b style="border-radius:2px; background-color:orange"> those</b> bitcoins  <b style="border-radius:2px; background-color:#F7FF91"> be</b> spent. The <b style="border-radius:2px; background-color:orange"> input</b> scripts <b style="border-radius:2px; background-color:orange"> provide</b> the <b style="border-radius:2px; background-color:orange"> correct</b> <b style="border-radius:2px; background-color:orange"> data</b> to make <b style="border-radius:2px; background-color:orange"> those</b> <b style="border-radius:2px; background-color:orange"> output</b> scripts evaluate to true. <br><br> <small>48.95</small> </div><div class="resbox" style="width: 90%;"><a href="http://localhost:8084/exomind" style="float: right;">[cancel keep]</a><a href="http://localhost:8084/exomind" style="float: right;">[x]</a>(37) <b style="border-radius:2px; background-color:orange"> Bitcoin</b> transactions contain scripts. <b style="border-radius:2px; background-color:orange"> Each</b> <b style="border-radius:2px; background-color:orange"> input</b> has a <b style="border-radius:2px; background-color:orange"> script</b> called the scriptSig, and <b style="border-radius:2px; background-color:orange"> each</b> <b style="border-radius:2px; background-color:orange"> output</b> has a <b style="border-radius:2px; background-color:orange"> script</b> called the scriptPubkey. To validate an input, the input's <b style="border-radius:2px; background-color:orange"> script</b> is concatenated with the referenced <b style="border-radius:2px; background-color:orange"> output</b> script, and the <b style="border-radius:2px; background-color:orange"> result</b> is executed. If at the <b style="border-radius:2px; background-color:orange"> end</b> of execution the <b style="border-radius:2px; background-color:orange"> stack</b> contains a "true" value, then the <b style="border-radius:2px; background-color:orange"> transaction</b> is valid. <br><br> <small>46.01</small> </div><div class="resbox" style="width: 90%;"><a href="http://localhost:8084/exomind" style="float: right;">[cancel keep]</a><a href="http://localhost:8084/exomind" style="float: right;">[x]</a>(0) All <b style="border-radius:2px; background-color:orange"> bitcoin</b> transactions have scripts embedded into its inputs and outputs. The scripts <b style="border-radius:2px; background-color:orange"> use</b> a <b style="border-radius:2px; background-color:orange"> very</b> <b style="border-radius:2px; background-color:orange"> simple</b> programming language, which is evaluated from left to <b style="border-radius:2px; background-color:orange"> right</b> using a stack. The <b style="border-radius:2px; background-color:orange"> language</b> is designed such that it guarantees all scripts will execute in a limited <b style="border-radius:2px; background-color:orange"> amount</b> of <b style="border-radius:2px; background-color:orange"> time</b> (it is not Turing-Complete). <br><br> <small>38.44</small> </div><div class="resbox" style="width: 90%;"><a href="http://localhost:8084/exomind" style="float: right;">[cancel keep]</a><a href="http://localhost:8084/exomind" style="float: right;">[x]</a><p><b>A Survey of Bitcoin Transaction Types - QuantaBytes</b></p><p>A Survey of Bitcoin Transaction Types - QuantaBytes13 Apr 2014 ... A Bitcoin transaction is an attempt at changing the ownership of some ... 
+transaction types can be represented in the scripting language, only a&nbsp;...www.quantabytes.com/articles/a-survey-of-bitcoin-transaction-types - 32k - Cached - Similar pages<br><small><a target="_blank" href="http://www.quantabytes.com/articles/a-survey-of-bitcoin-transaction-types">http://www.quantabytes.com/articles/a-survey-of-bitcoin-transaction-types</a></small></p><p></p></div><div class="resbox" style="width: 90%;"><a href="http://localhost:8084/exomind" style="float: right;">[cancel keep]</a><a href="http://localhost:8084/exomind" style="float: right;">[x]</a><p><b>Script | Bitcore</b></p><p>Script | BitcoreAll bitcoin transactions have scripts embedded into its inputs and outputs. .... The 
+entry point (and probably the only interface you'll need for most applications) is&nbsp;...https://bitcore.io/api/lib/script - 44k - Cached - Similar pages<br><small><a target="_blank" href="https://bitcore.io/api/lib/script">https://bitcore.io/api/lib/script</a></small></p><p></p></div><div class="resbox" style="width: 90%;"><a href="http://localhost:8084/exomind" style="float: right;">[cancel keep]</a><a href="http://localhost:8084/exomind" style="float: right;">[x]</a><p><b>Key Phrases</b> spend using, transaction model, the old style bank model and using transactions</p><p><b>Top Sentence:</b>The inputs are the previous transactions it's getting the money from (exception: coinbase) and the outputs are the scripts it's sending the money to.</p><p></p><p></p>
+<p> Money is created with mining, via special transactions that don't have to destroy a previous transaction: coinbase transactions.  The inputs are the previous transactions it's getting the money from (exception: coinbase) and the outputs are the scripts it's sending the money to.  A transaction can be made with a script that doesn't indicate one specific destination address, but instead lets everyone spend it.  Such a transaction does not fit in the old style bank model, but works fine for Bitcoin. What Bitcoin really does is send transactions with scripts that can only be solved by one specific private key, by using the public key to create a script.  If you send money, you basically destroy one or more previous transactions to create a new one. To understand scripts, you probably first need to understand the Bitcoin transaction model. Scripts are used to determine the person who can spend the transaction (at Bitcoin you spend using transactions, not using BTC on an address).</p><p></p><p><i>Sentence ratio: 0.23, Word ratio: 0.62. Summary Count 162.0, Orig count 261.0</i></p></div><div class="resbox" style="width: 90%;"><a href="http://localhost:8084/exomind" style="float: right;">[cancel keep]</a><a href="http://localhost:8084/exomind" style="float: right;">[x]</a>(9) <b style="border-radius:2px; background-color:orange"> One</b> quick <b style="border-radius:2px; background-color:orange"> step</b> <b style="border-radius:2px; background-color:orange"> back</b> to the <b style="border-radius:2px; background-color:orange"> transaction</b> model, so I can give you the full picture. <b style="border-radius:2px; background-color:orange"> Money</b> is created with mining, via special transactions that don't have to destroy a <b style="border-radius:2px; background-color:orange"> previous</b> transaction: <b style="border-radius:2px; background-color:orange"> coinbase</b> transactions. All transactions have inputs and outputs. The inputs are the <b style="border-radius:2px; background-color:orange"> previous</b> transactions it's getting the <b style="border-radius:2px; background-color:orange"> money</b> from (exception: coinbase) and the outputs are the scripts it's sending the <b style="border-radius:2px; background-color:orange"> money</b> to. After <b style="border-radius:2px; background-color:orange"> money</b> is created via mining, it can  <b style="border-radius:2px; background-color:#F7FF91"> be</b> used once as an input, after which the <b style="border-radius:2px; background-color:orange"> money</b> will  <b style="border-radius:2px; background-color:#F7FF91"> be</b> destroyed and re-created in a <b style="border-radius:2px; background-color:orange"> new</b> <b style="border-radius:2px; background-color:orange"> transaction</b> that can then  <b style="border-radius:2px; background-color:#F7FF91"> be</b> used. The <b style="border-radius:2px; background-color:orange"> role</b> that scripts play in this <b style="border-radius:2px; background-color:orange"> whole</b> <b style="border-radius:2px; background-color:orange"> process</b> is to <b style="border-radius:2px; background-color:orange"> verify</b> that you actually have permission to <b style="border-radius:2px; background-color:orange"> spend</b> certain transactions. <br><br> <small>75.2</small> </div><div class="resbox" style="width: 90%;"><a href="http://localhost:8084/exomind" style="float: right;">[cancel keep]</a><a href="http://localhost:8084/exomind" style="float: right;">[x]</a>(8) Because of that <b style="border-radius:2px; background-color:orange"> transaction</b> model, scripting can work. A <b style="border-radius:2px; background-color:orange"> transaction</b> can  <b style="border-radius:2px; background-color:#F7FF91"> be</b> made with a <b style="border-radius:2px; background-color:orange"> script</b> that doesn't indicate <b style="border-radius:2px; background-color:orange"> one</b> <b style="border-radius:2px; background-color:orange"> specific</b> <b style="border-radius:2px; background-color:orange"> destination</b> address, but instead lets everyone <b style="border-radius:2px; background-color:orange"> spend</b> it. Such a <b style="border-radius:2px; background-color:orange"> transaction</b> does not fit in the <b style="border-radius:2px; background-color:orange"> old</b> style <b style="border-radius:2px; background-color:orange"> bank</b> model, but works fine for Bitcoin. There can <b style="border-radius:2px; background-color:orange"> even</b>  <b style="border-radius:2px; background-color:#F7FF91"> be</b> scripts that <b style="border-radius:2px; background-color:orange"> require</b> multiple private keys, or scripts that <b style="border-radius:2px; background-color:orange"> require</b> you to answer a question. <br><br> <small>39.73</small> </div><div class="resbox" style="width: 90%;"><a href="http://localhost:8084/exomind" style="float: right;">[cancel keep]</a><a href="http://localhost:8084/exomind" style="float: right;">[x]</a>(7) What <b style="border-radius:2px; background-color:orange"> Bitcoin</b> really does is <b style="border-radius:2px; background-color:orange"> send</b> transactions with scripts that can only  <b style="border-radius:2px; background-color:#F7FF91"> be</b> solved by <b style="border-radius:2px; background-color:orange"> one</b> <b style="border-radius:2px; background-color:orange"> specific</b> private key, by using the public key to create a script. If you <b style="border-radius:2px; background-color:orange"> send</b> money, you basically destroy <b style="border-radius:2px; background-color:orange"> one</b> or <b style="border-radius:2px; background-color:orange"> more</b> <b style="border-radius:2px; background-color:orange"> previous</b> transactions to create a <b style="border-radius:2px; background-color:orange"> new</b> one. If you're sending less than the <b style="border-radius:2px; background-color:orange"> sum</b> of the transactions you're using,  <b style="border-radius:2px; background-color:#F7FF91"> just</b> <b style="border-radius:2px; background-color:orange"> send</b> a bit <b style="border-radius:2px; background-color:orange"> back</b> to your own account. A <b style="border-radius:2px; background-color:orange"> transaction</b> can only  <b style="border-radius:2px; background-color:#F7FF91"> be</b> used once. <br><br> <small>38.77</small> </div><div class="resbox" style="width: 90%;"><a href="http://localhost:8084/exomind" style="float: right;">[cancel keep]</a><a href="http://localhost:8084/exomind" style="float: right;">[x]</a>(6) To understand scripts, you probably <b style="border-radius:2px; background-color:orange"> first</b> need to understand the <b style="border-radius:2px; background-color:orange"> Bitcoin</b> <b style="border-radius:2px; background-color:orange"> transaction</b> model. Unlike your <b style="border-radius:2px; background-color:orange"> old</b> style bank, where you have accounts with a certain <b style="border-radius:2px; background-color:orange"> amount</b> of <b style="border-radius:2px; background-color:orange"> money</b> on it, <b style="border-radius:2px; background-color:orange"> Bitcoin</b> doesn't actually have accounts. The <b style="border-radius:2px; background-color:orange"> address</b> you <b style="border-radius:2px; background-color:orange"> send</b> <b style="border-radius:2px; background-color:orange"> money</b> to is nothing like an account, <b style="border-radius:2px; background-color:orange"> even</b> though clients show them as such for simplicity. <br><br> <small>36.12</small> </div><div class="resbox" style="width: 90%;"><a href="http://localhost:8084/exomind" style="float: right;">[cancel keep]</a><a href="http://localhost:8084/exomind" style="float: right;">[x]</a><h2> what is a sidechain</h2></div><div class="resbox" style="width: 90%;"><a href="http://localhost:8084/exomind" style="float: right;">[cancel keep]</a><a href="http://localhost:8084/exomind" style="float: right;">[x]</a><p><b>Key Phrases</b> Turing-complete smart contract platform, a very promising smart contracts platform, A general purpose smart contract platform and Smart Contract Platform</p><p><b>Top Sentence:</b>The RSK platform aims to allow smart contracts on the Bitcoin platform, using a token that’s tied to bitcoin, and that can be exchange back to bitcoin at the same rate.</p><p></p><p>  The platform aims for 20 second block times, and claims about 300 transactions per second (tps) at launch, and scalability to 1000 tps.  The RSK platform brings smart contracts to the Bitcoin ecosystem, and hopes to increase miners’ revenues by enabling them to collect transaction fees on RSK contracts. The RSK platform aims to allow smart contracts on the Bitcoin platform, using a token that’s tied to bitcoin, and that can be exchange back to bitcoin at the same rate. Smart Contract Platform</p><p></p><p><i>Sentence ratio: 0.05, Word ratio: 0.12. Summary Count 83.0, Orig count 696.0</i></p></div><div class="resbox" style="width: 90%;"><a href="http://localhost:8084/exomind" style="float: right;">[cancel keep]</a><a href="http://localhost:8084/exomind" style="float: right;">[x]</a>(11) A general purpose smart <b style="border-radius:2px; background-color:orange"> contract</b> <b style="border-radius:2px; background-color:orange"> platform</b> can  <b style="border-radius:2px; background-color:#F7FF91"> be</b> used essentially for anything that developers can come up with. The <b style="border-radius:2px; background-color:orange"> Rootstock</b> whitepaper outlines a <b style="border-radius:2px; background-color:orange"> few</b> obvious cases. Micro-payments are an obvious one as perhaps the <b style="border-radius:2px; background-color:orange"> Bitcoin</b> network is getting too expensive due to rising fees. Fast payments are a <b style="border-radius:2px; background-color:orange"> natural</b> use-case as a <b style="border-radius:2px; background-color:orange"> result</b> of fast <b style="border-radius:2px; background-color:orange"> block</b> times. Escrow services are possible due to the <b style="border-radius:2px; background-color:orange"> smart-contract</b> capability of the platform, so are P2P exchanges, Internet-gambling, and prediction markets. Micro-lending is another possibility and <b style="border-radius:2px; background-color:orange"> Rootstock</b> is said to  <b style="border-radius:2px; background-color:#F7FF91"> be</b> working with the <b style="border-radius:2px; background-color:orange"> World</b> Bank to enable micro-lending on a larger scale [3][4]. Other use cases include Alt-coin creation, asset tokenization, remittances, Intellectual Property registry, Voting systems, supply-chain traceability, online reputation systems, digital identity systems, and in-game global currency. There are many more use-cases, and if the <b style="border-radius:2px; background-color:orange"> platform</b> catches on with developers we will probably see a number of <b style="border-radius:2px; background-color:orange"> very</b> clever uses. <br><br> <small>104.22</small> </div><div class="resbox" style="width: 90%;"><a href="http://localhost:8084/exomind" style="float: right;">[cancel keep]</a><a href="http://localhost:8084/exomind" style="float: right;">[x]</a>(7) <b style="border-radius:2px; background-color:orange"> Rootstock</b> will exist as a <b style="border-radius:2px; background-color:orange"> Bitcoin</b> sidechain. If you haven’t heard of the sidechains <b style="border-radius:2px; background-color:orange"> proposal</b> you can review the whitepaper here , or read our explanation of sidechains here . But in summary a <b style="border-radius:2px; background-color:orange"> sidechain</b> is a blockchain that is separate from the <b style="border-radius:2px; background-color:orange"> main</b> <b style="border-radius:2px; background-color:orange"> Bitcoin</b> Blockchain, but assets can  <b style="border-radius:2px; background-color:#F7FF91"> be</b> transferred back and forth. That is, we can send some BTC to the <b style="border-radius:2px; background-color:orange"> sidechain</b> and then when we no longer need them on the <b style="border-radius:2px; background-color:orange"> sidechain</b> send them back to the <b style="border-radius:2px; background-color:orange"> main</b> chain. This allows innovation without the <b style="border-radius:2px; background-color:orange"> worry</b> that the investment will wither to nothing as it was the <b style="border-radius:2px; background-color:orange"> case</b> with hundreds of alt-coins. As a <b style="border-radius:2px; background-color:orange"> result</b> of being a <b style="border-radius:2px; background-color:orange"> sidechain</b> <b style="border-radius:2px; background-color:orange"> Rootstock</b> will not issue a <b style="border-radius:2px; background-color:orange"> new</b> currency or token. Instead in order to pay for <b style="border-radius:2px; background-color:orange"> Rootstock</b> transactions there will  <b style="border-radius:2px; background-color:#F7FF91"> be</b> a two <b style="border-radius:2px; background-color:orange"> way</b> peg between the <b style="border-radius:2px; background-color:orange"> native</b> <b style="border-radius:2px; background-color:orange"> Rootstock</b> token called RTC, and bitcoin. To transact on the RSK <b style="border-radius:2px; background-color:orange"> platform</b> one simply transfers BTC to the sidechain, which locks them and then unlocks an equivalent <b style="border-radius:2px; background-color:orange"> amount</b> of RTC on the <b style="border-radius:2px; background-color:orange"> Rootstock</b> platform. To <b style="border-radius:2px; background-color:orange"> transfer</b> back the <b style="border-radius:2px; background-color:orange"> process</b> is repeated in reverse. RTC are locked and BTC are unlocked.<br><br> <small>98.95</small> </div><div class="resbox" style="width: 90%;"><a href="http://localhost:8084/exomind" style="float: right;">[cancel keep]</a><a href="http://localhost:8084/exomind" style="float: right;">[x]</a>(5) <b style="border-radius:2px; background-color:orange"> Rootstock</b> promises a <b style="border-radius:2px; background-color:orange"> great</b> deal of innovation. <b style="border-radius:2px; background-color:orange"> First</b> there will  <b style="border-radius:2px; background-color:#F7FF91"> be</b> a Turing-complete Virtual Machine, it will also  <b style="border-radius:2px; background-color:#F7FF91"> be</b> backwards compatible with the Ethereum VM by including Ethereum VM opcodes. This allows Ethereum contracts to  <b style="border-radius:2px; background-color:#F7FF91"> be</b> run on the <b style="border-radius:2px; background-color:orange"> Rootstock</b> VM as well. The <b style="border-radius:2px; background-color:orange"> platform</b> aims for 20 second <b style="border-radius:2px; background-color:orange"> block</b> times, and claims about 300 transactions per second (tps) at launch, and scalability to 1000 tps. This is comparable with PayPal, but not as capable as the <b style="border-radius:2px; background-color:orange"> credit</b> card networks. The biggest advantage of <b style="border-radius:2px; background-color:orange"> Rootstock</b> over other platforms is that while it will  <b style="border-radius:2px; background-color:#F7FF91"> be</b> using its own blockchain, it will  <b style="border-radius:2px; background-color:#F7FF91"> be</b> merge-mined with Bitcoin, giving it a security <b style="border-radius:2px; background-color:orange"> level</b> comparable with Bitcoin. However, this will require convincing miners to merge mine it with Bitcoin. <b style="border-radius:2px; background-color:orange"> Rootstock</b> claims that it can help miners become more profitable, if the fees the miners earn for running <b style="border-radius:2px; background-color:orange"> Rootstock</b> contracts will provide a significant boots to revenue. That is certainly possible if the <b style="border-radius:2px; background-color:orange"> platform</b> becomes popular and the <b style="border-radius:2px; background-color:orange"> volume</b> of contracts being run on it amounts to a sizable number. <br><br> <small>95.42</small> </div><div class="resbox" style="width: 90%;"><a href="http://localhost:8084/exomind" style="float: right;">[cancel keep]</a><a href="http://localhost:8084/exomind" style="float: right;">[x]</a><h2> counterparty</h2></div><div class="resbox" style="width: 90%;"><a href="http://localhost:8084/exomind" style="float: right;">[cancel keep]</a><a href="http://localhost:8084/exomind" style="float: right;">[x]</a>(13) The RSK platform aims to allow smart contracts on the Bitcoin platform, using a token that’s tied to bitcoin, and that can be exchange back to bitcoin at the same rate. There are other smart contract providers like Counterparty, or OMNI that are built on top of the Bitcoin blockchain and therefore are bound by the same drawbacks. What RSK is offering is Bitcoin-like security with Ethereum-like flexibility. If such a platform were to catch on, it is very likely that it would boost the not only the utility, but also the value of the Bitcoin network and bitcoin the currency. Furthermore if Rootstock can provide miners with additional revenue, and relief the Bitcoin blockchain of some transactional volume, the entire ecosystem would benefit. <br><br> <small>69.5</small> </div><div class="resbox" style="width: 90%;"><a href="http://localhost:8084/exomind" style="float: right;">[cancel keep]</a><a href="http://localhost:8084/exomind" style="float: right;">[x]</a><h2> bitcoin transactions</h2></div><div class="resbox" style="width: 90%;"><a href="http://localhost:8084/exomind" style="float: right;">[cancel keep]</a><a href="http://localhost:8084/exomind" style="float: right;">[x]</a>(8) A smart contracts infrastructure can be implemented by replicated asset registries [10] and <b style="border-radius:2px; background-color:orange"> contract</b> execution using cryptographic hash chains and Byzantine fault tolerant replication. Each <b style="border-radius:2px; background-color:orange"> node</b> in the peer-to-peer network acts as a title registry and escrow, executing changes of ownership and automatically checkable rules governing those transactions, and checks the <b style="border-radius:2px; background-color:orange"> same</b> work of other nodes. Askemos implemented this approach in 2002 using Scheme as <b style="border-radius:2px; background-color:orange"> contract</b> script language. Cryptocurrencies such as <b style="border-radius:2px; background-color:orange"> bitcoin</b> have implemented special cases of such registries, where the property is money. <b style="border-radius:2px; background-color:orange"> Bitcoin</b> and many of its spin-offs contain mechanisms to enable more general property titles and <b style="border-radius:2px; background-color:orange"> contract</b> execution. [11] Code supporting this is a latent part of the <b style="border-radius:2px; background-color:orange"> bitcoin</b> protocol, based on <b style="border-radius:2px; background-color:orange"> probabilistic</b> and anonymous ( proof-of-work based) Byzantine replication. One proposal for using <b style="border-radius:2px; background-color:orange"> bitcoin</b> for replicated asset registration and <b style="border-radius:2px; background-color:orange"> contract</b> execution is called "colored coins". [12] A replicated domain name registry is implemented in Namecoin ; replicated titles for potentially arbitrary forms of property, along with replicated <b style="border-radius:2px; background-color:orange"> contract</b> execution, are implemented in Crypti , Ripple , Mastercoin and Ethereum . [13] NXT [14] implements replicated property titles based on proof-of-stake in the underlying currency. <br><br> <small>124.4</small> </div><div class="resbox" style="width: 90%;"><a href="http://localhost:8084/exomind" style="float: right;">[cancel keep]</a><a href="http://localhost:8084/exomind" style="float: right;">[x]</a>(4) The phrase "smart contracts" was coined by legal theorist [3] computer scientist Nick Szabo , probably around 1993, to emphasize the goal of bringing what he calls the "highly evolved" practices of <b style="border-radius:2px; background-color:orange"> contract</b> law and related business practices to the design of electronic commerce protocols between strangers on the Internet. Szabo, inspired by researchers like David Chaum , also had a broader expectation that specification through clear logic, and verification or enforcement through cryptographic protocols and other digital security mechanisms, might constitute a sharp improvement over traditional <b style="border-radius:2px; background-color:orange"> contract</b> law, even for some traditional kinds of contractual clauses (such as automobile security interests that provide for repossession) that could be brought under the dominion of computer protocols. [4] <br><br> <small>61.29</small> </div><div class="resbox" style="width: 90%;"><a href="http://localhost:8084/exomind" style="float: right;">[cancel keep]</a><a href="http://localhost:8084/exomind" style="float: right;">[x]</a>(5) In a 2013 paper, Mark Miller and others have stressed capabilities [5] as the security basis of smart contracts, in contrast to Chaum and other researchers in the financial cryptography community who have emphasized advanced cryptographic protocols to bring security and privacy to digital money, credentials, <b style="border-radius:2px; background-color:orange"> contract</b> signing, auctions, and other commercial mechanisms. Most of the above-cited examples[ which? ] have, however, probably been developed largely independently of these lines of work, and indeed some proponents[ who? ] see smart contracts as the <b style="border-radius:2px; background-color:orange"> inevitable</b> outcome of many independent efforts to improve transactions in various industries using digital technology. <br><br> <small>51.82</small> </div><div class="resbox" style="width: 90%;"><a href="http://localhost:8084/exomind" style="float: right;">[cancel keep]</a><a href="http://localhost:8084/exomind" style="float: right;">[x]</a>(0) Smart contracts are computer protocols that facilitate, verify, or enforce the negotiation or performance of a <b style="border-radius:2px; background-color:orange"> contract</b> , or that make a contractual clause unnecessary. Smart contracts usually also have a user interface and often emulate the <b style="border-radius:2px; background-color:orange"> logic</b> of contractual clauses. Proponents of smart contracts claim that many kinds of contractual clauses may thus be made partially or fully self-executing, self-enforcing, or both. Smart contracts aim to provide security superior to traditional <b style="border-radius:2px; background-color:orange"> contract</b> law and to reduce other <b style="border-radius:2px; background-color:orange"> transaction</b> costs associated with contracting. <br><br> <small>46.99</small> </div><div class="resbox" style="width: 90%;"><a href="http://localhost:8084/exomind" style="float: right;">[cancel keep]</a><a href="http://localhost:8084/exomind" style="float: right;">[x]</a>(9) Applications may include financial instruments such as bonds, shares, and derivatives, assurance contracts , and other instruments and transactions where the nodes can monitor the events on which the smart <b style="border-radius:2px; background-color:orange"> contract</b> rules are conditioned. As of 2015 [update] , UBS was experimenting with "smart bonds" that use the <b style="border-radius:2px; background-color:orange"> bitcoin</b> blockchain [15] in which payment streams could be fully automated, creating a self-paying instrument. [16] <br><br> <small>37.7</small> </div></div>
+
+<div id="pup" class="pup" style="display: none; z-index: 200;"></div><div class="igtranslator-main-div" style="display: none; width: 0px; height: 0px;"><iframe src="./bitcoin.exomind_files/saved_resource.html" class="igtranslator-iframe" scrolling="no" frameborder="0"></iframe></div><div class="igtranslator-activator-icon bounceIn" style="display: none; top: 41px; left: 407px; background-image: url(&quot;chrome-extension://jgnebchahhepphmokjeohhoebakpfggp/./data/icons/home.png&quot;);" title="Click to Show Translation"></div><div class="autocomplete-suggestions " style="display: none; left: 377px; top: 96px; width: 874px;"><div class="autocomplete-suggestion selected" data-val="search ethereum total market valutation capitalization .all"><b>search</b> <b>ethereum</b> <b>total</b> <b>market</b> <b>valutation</b> <b>capitalization</b> <b>.all</b></div></div></body></html>
