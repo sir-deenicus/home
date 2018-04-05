@@ -1,0 +1,264 @@
+<meta http-equiv='Content-Type' content='Type=text/html; charset=utf-8'><style>body{
+    margin: 0 auto;
+    font-family: Georgia, Palatino, serif;
+    color: #444444;
+    line-height: 1.2;
+    max-width: 1080px;
+    padding: 5px;
+}
+h1, h2, h3, h4 {
+    color: #111111;
+    font-weight: 400;
+}
+h1, h2, h3, h4, h5, p {
+    margin-bottom: 16px;
+    padding: 0;
+}
+h1 {
+    font-size: 28px;
+}
+h2 {
+    font-size: 22px;
+    margin: 20px 0 6px;
+}
+h3 {
+    font-size: 21px;
+}
+h4 {
+    font-size: 18px;
+}
+h5 {
+    font-size: 16px;
+}
+a {
+    color: #0099ff;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+a:hover {
+    text-decoration: none;
+    color: #ff6600;
+}
+a:visited {
+    color: purple;
+}
+ul, ol {
+    padding: 0;
+    margin: 0;
+}
+li {
+    line-height: 24px;
+    margin-left: 44px;
+}
+li ul, li ul {
+    margin-left: 24px;
+}
+p, ul, ol {
+    font-size: 14px;
+    line-height: 20px;
+    max-width: 540px;
+}
+pre {
+    padding: 0px 24px;
+    max-width: 800px;
+    white-space: pre-wrap;
+}
+code {
+    font-family: Consolas, Monaco, Andale Mono, monospace;
+    line-height: 1.5;
+    font-size: 13px;
+}
+aside {
+    display: block;
+    float: right;
+    width: 390px;
+}
+blockquote {
+    border-left:.5em solid #eee;
+    padding: 0 2em;
+    margin-left:0;
+    max-width: 476px;
+}
+blockquote  cite {
+    font-size:14px;
+    line-height:20px;
+    color:#bfbfbf;
+}
+blockquote cite:before {
+    content: '\2014 \00A0';
+}
+
+blockquote p {  
+    color: #666;
+    max-width: 460px;
+}
+hr {
+    width: 540px;
+    text-align: left;
+    margin: 0 auto 0 0;
+    color: #999;
+    padding: 1px
+}
+
+button,
+input,
+select,
+textarea {
+  font-size: 100%;
+  margin: 0;
+  vertical-align: baseline;
+  *vertical-align: middle;
+}
+button, input {
+  line-height: normal;
+  *overflow: visible;
+}
+
+input[type=checkbox], input[type=radio] {
+  cursor: pointer;
+}
+/* override default chrome & firefox settings */
+input:not([type="image"]), textarea {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
+
+input[type="search"] {
+  -webkit-appearance: textfield;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+label,
+input,
+select,
+textarea {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: normal;
+  margin-bottom: 18px;
+}
+input[type=checkbox], input[type=radio] {
+  cursor: pointer;
+  margin-bottom: 0;
+}
+input[type=text],
+input[type=password],
+textarea,
+select {
+  display: inline-block;
+  width: 210px;
+  padding: 4px;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 18px;
+  height: 18px;
+  color: #808080;
+  border: 1px solid #ccc;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+select, input[type=file] {
+  height: 27px;
+  line-height: 27px;
+}
+textarea {
+  height: auto;
+}
+
+/* grey out placeholders */
+:-moz-placeholder {
+  color: #bfbfbf;
+}
+::-webkit-input-placeholder {
+  color: #bfbfbf;
+}
+
+input[type=text],
+input[type=password],
+select,
+textarea {
+  -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+  -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+  transition: border linear 0.2s, box-shadow linear 0.2s;
+  -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+div {
+    font-size:medium;
+}
+
+.darken{
+    background-color:#F0F0F0
+}
+.vis { 
+    margin-bottom: 12px;
+    margin-top:12px;
+    padding-bottom: 8px;
+    border-bottom:dashed; 
+    line-height: 1.1;
+    border-width: 1px; 
+    margin-left: 8px;
+}
+/* CSS stylesheet is based on Kevin Burke's Markdown.css project (http://kevinburke.bitbucket.org/markdowncss) */
+#pup {
+  position:absolute;
+  z-index:200; /* aaaalways on top*/
+  padding: 3px;
+  margin-left: 10px;
+  margin-top: 5px;
+  width: 420px;
+  border-radius: 3px;
+  border: 1px solid black;
+  background-color: #777;
+  color: white;
+
+}</style>
+<h1>Distilling <em>meaning</em> to a number between 0 and 65,536</h1>
+
+<p>What is a concept? What does a word mean? A good reader quickly learns that meaning does not come from a word but rather, from the words around it, the words it tends to keep company with. That is the key motivation behind the Distributional hypothesis where:</p>
+
+<blockquote>
+  <p>The basic idea of distributional semantics can be summed up in the so-called Distributional hypothesis: linguistic items with similar distributions have similar meanings.</p>
+</blockquote>
+
+<p>There are many ways to leverage this, one of the oldest is something called Latent Semantic indexing where Singular Value Decomposition (SVD) is used to find the associations between words in similar contexts; words that tend to fill the same idea shaped hole. The problem is that it's slow - for my needs anything slower than linear is almost always unacceptable.</p>
+
+<p>There's another idea, <em>Random Indexing</em> which also has the added benefit of being online - where each new document or word does not start the learning process again from scratch. The idea is to keep extremely high dimensional but sparse random vectors for each word. These word vectors are then used to update a context vector as the model grazes on various sentences. The detailed how of this is something I will save for another post but the same kind of semantic indexing as SVD is achieved but with a many several order of magnitude reduction in cost. There are many ways I use this, including document similarity, summarization, paragraph segmentation and query expansion but the simplest example is in finding similar words. Say I put in 'thus' then it, without explicit training knows similar words from having analyzed text. Then I get a result like: "(thus, 1), (then, 0.95), (therefore, 0.94), (hence, 0.92)". This is useful when dealing with new jargon and you wish to know where to go next (i.e. interactively searching dozens of pages at a time).</p>
+
+<p>Problem is, I now have this 1000 dimensional vector and I'd like to find words which have similar meanings - usages (or contexts) to this new word I've never seen before. Tricks like kd-trees are not going to help here. Random Hyper planes to the rescue.</p>
+
+<p>The idea is a form of local sensitivity hashing (another post) where similar things hash down to the same bucket. So I generate a hash function for my vector by generating a random vector, r, where a bitmap is generated such that presence of a bit is decided by if < r, v > >= 0 then 1 else 0. And with say 16 of these, the probability of collision should also double as a sort of similarity function. 16 of these also means I can represent it as a single 16 bit number. So two things happen here. I store the semantic dictionary with a single 16 bit number as the key, words with similar <em>contexts</em> will tend to fall in the same bucket. That single number represents a particular concept in my dictionary. And also, even with a linear search I can do bit twiddling to get the hamming distance of a 16 or 32 bit number much more quickly than calculating the cosine similarity of two extremely high dimensional vectors.</p>
+
+<p>Then by scanning through and changing just one bit of the bitmap the word's concept vector hashes down to, I also get a pretty good neighborhood of word's similar to my vector. I can then do the more expensive (with magnitude pre-calculated) cosine similarity operation on this much reduced space. My tests show a 95-99% reduction in the space searched and acts as a sort of parameter-less approximate nearest neighbor (not all near neighbors are returned). Reducing the bits in the key so there are more collisions, results in a more thorough but still efficient search. For example, using 8 bit keys results in still surprising sensible divisions - I had to search only 10% of the space. This method allows a very quick use of context to get an idea of what a never before met word might mean - almost like what humans do.</p>
+
+<p>An awesome corollary is that I could then take a document and reduce it to its key topic words, take their average and then hash that down to a single integer. Pretty nifty eh? And now for a twist.</p>
+
+<p>Imagine two entities that have taken this concept to its logical extreme. To communicate entire documents they spit out single numbers with perfect extraction and hashing. Vectors are shared such that each number is decompressed to its topics, the topics are automatically generated to full ideas and expanded out to trees. Communication is really dense, involving code numbers to shared references and compressed thought trees...While the communicating using streams of numbers thing is not really tenable I do think something like communicating thought trees is possible. More on that later.</p>
+
+<h2>Appended</h2>
+
+<p>Examples below use 16 bit keys showing various clusters from: <a href="http://nplusonemag.com/issue-13/essays/stupidity-of-computers/">http://nplusonemag.com/issue-13/essays/stupidity-of-computers/</a> (I have vectors derived from all my papers and notes but it's easier to analyze single pieces of text)</p>
+
+<p>[You can see the full list using an 8 bit key and a hamming distance of 1 at: <a href="http://sir-deenicus.github.io/home/rvec1.htm">http://sir-deenicus.github.io/home/rvec1.htm</a>]</p>
+
+<p>31990 -> ["situations"; "perceptions"; "our"; "ontologies"]
+30948 -> ["facebook"; "degrees"; "and"]
+22775 -> ["pseudocode"; "algorithm"; "aggressive"]</p>
+
+<h2>from a computer go article</h2>
+
+<p>30924 -> ["rematch"; "loses"; "1965"] 
+2910 -> ["winner"; "second"; "favorite"; "event"] 
+52 -> ["tokyo"; "japanese"]</p>
+
+<p>Sometimes the words are not synonyms as in 22778 -> ["remained"; "meaningful"; "ambiguities"]</p>

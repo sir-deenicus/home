@@ -1,0 +1,293 @@
+<meta http-equiv='Content-Type' content='Type=text/html; charset=utf-8'><style>body{
+    margin: 0 auto;
+    font-family: Georgia, Palatino, serif;
+    color: #444444;
+    line-height: 1.2;
+    max-width: 1080px;
+    padding: 5px;
+}
+h1, h2, h3, h4 {
+    color: #111111;
+    font-weight: 400;
+}
+h1, h2, h3, h4, h5, p {
+    margin-bottom: 16px;
+    padding: 0;
+}
+h1 {
+    font-size: 28px;
+}
+h2 {
+    font-size: 22px;
+    margin: 20px 0 6px;
+}
+h3 {
+    font-size: 21px;
+}
+h4 {
+    font-size: 18px;
+}
+h5 {
+    font-size: 16px;
+}
+a {
+    color: #0099ff;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+a:hover {
+    text-decoration: none;
+    color: #ff6600;
+}
+a:visited {
+    color: purple;
+}
+ul, ol {
+    padding: 0;
+    margin: 0;
+}
+li {
+    line-height: 24px;
+    margin-left: 44px;
+}
+li ul, li ul {
+    margin-left: 24px;
+}
+p, ul, ol {
+    font-size: 14px;
+    line-height: 20px;
+    max-width: 540px;
+}
+pre {
+    padding: 0px 24px;
+    max-width: 800px;
+    white-space: pre-wrap;
+}
+code {
+    font-family: Consolas, Monaco, Andale Mono, monospace;
+    line-height: 1.5;
+    font-size: 13px;
+}
+aside {
+    display: block;
+    float: right;
+    width: 390px;
+}
+blockquote {
+    border-left:.5em solid #eee;
+    padding: 0 2em;
+    margin-left:0;
+    max-width: 476px;
+}
+blockquote  cite {
+    font-size:14px;
+    line-height:20px;
+    color:#bfbfbf;
+}
+blockquote cite:before {
+    content: '\2014 \00A0';
+}
+
+blockquote p {  
+    color: #666;
+    max-width: 460px;
+}
+hr {
+    width: 540px;
+    text-align: left;
+    margin: 0 auto 0 0;
+    color: #999;
+    padding: 1px
+}
+
+button,
+input,
+select,
+textarea {
+  font-size: 100%;
+  margin: 0;
+  vertical-align: baseline;
+  *vertical-align: middle;
+}
+button, input {
+  line-height: normal;
+  *overflow: visible;
+}
+
+input[type=checkbox], input[type=radio] {
+  cursor: pointer;
+}
+/* override default chrome & firefox settings */
+input:not([type="image"]), textarea {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
+
+input[type="search"] {
+  -webkit-appearance: textfield;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+label,
+input,
+select,
+textarea {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: normal;
+  margin-bottom: 18px;
+}
+input[type=checkbox], input[type=radio] {
+  cursor: pointer;
+  margin-bottom: 0;
+}
+input[type=text],
+input[type=password],
+textarea,
+select {
+  display: inline-block;
+  width: 210px;
+  padding: 4px;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 18px;
+  height: 18px;
+  color: #808080;
+  border: 1px solid #ccc;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+select, input[type=file] {
+  height: 27px;
+  line-height: 27px;
+}
+textarea {
+  height: auto;
+}
+
+/* grey out placeholders */
+:-moz-placeholder {
+  color: #bfbfbf;
+}
+::-webkit-input-placeholder {
+  color: #bfbfbf;
+}
+
+input[type=text],
+input[type=password],
+select,
+textarea {
+  -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+  -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+  transition: border linear 0.2s, box-shadow linear 0.2s;
+  -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+div {
+    font-size:medium;
+}
+
+.darken{
+    background-color:#F0F0F0
+}
+.vis { 
+    margin-bottom: 12px;
+    margin-top:12px;
+    padding-bottom: 8px;
+    border-bottom:dashed; 
+    line-height: 1.1;
+    border-width: 1px; 
+    margin-left: 8px;
+}
+/* CSS stylesheet is based on Kevin Burke's Markdown.css project (http://kevinburke.bitbucket.org/markdowncss) */
+#pup {
+  position:absolute;
+  z-index:200; /* aaaalways on top*/
+  padding: 3px;
+  margin-left: 10px;
+  margin-top: 5px;
+  width: 420px;
+  border-radius: 3px;
+  border: 1px solid black;
+  background-color: #777;
+  color: white;
+
+}</style>
+<h1>Learning vs Awesomeness by Analysis</h1>
+
+<p>A couple years ago I began (and stopped, now restarting) writing a system whose intended goal was to be able to perform novel deductions based on the natural language text it was given. I could give it English language rules such as (verbatim):</p>
+
+<blockquote>
+<ul>
+<li>a function is at an infinimum when its derivative is equal to zero</li>
+<li>Birds and mammals are animals</li>
+<li>Birds and platypus lay eggs</li>
+<li>pigeons and crows are birds</li>
+<li>mammals breastfeed their young</li>
+<li>Elephants, Horses and cars are big
+animals and chairs have legs</li>
+<li>Elephants, Horses, platypus and Mice are mammals</li>
+</ul>
+</blockquote>
+
+<p>And ask: "<strong>This has legs</strong>"; "<strong>This lays eggs</strong>" to which it would answer with: "<em>birds, crows, pigeons and platypus</em>". If I were to instead ask: "<strong>This lays eggs and these breastfeed their young</strong>", then it would reply with "<em>platypus</em>". It could figure out things it was never told. This was to serve as a prototype for a more robust system able to learn less rigidly from text (although as was, it was already more flexible, language wise, than prolog). But before I can talk more about that, it's worth spending a little time on how modern AIs traded away the ability to think on their feet for the ability to learn.</p>
+
+<iframe width="50%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/195996940&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"></iframe>
+
+<p>Sometimes you'll hear someone, with supreme indignation, say something like: "But that's not intelligence..splutter..it's, it's just...brute force!". There are two ways to respond to that kind of comment. One is to acknowledge the possibility that the search was indeed exhaustive and the next is to point out that those sorts of problems, where exhaustive search actually works, are extremely rare. Thus, if the algorithm is arriving at a good enough solution with high probability, then it almost certainly wasn't just brute forcing anything.</p>
+
+<h2>Exhaustive Search</h2>
+
+<p>Should the fact that the system is quick enough to consider all the possibilities be held against it? Consider this scenario: there are two individuals, one can multiply two digit numbers in their head while the other resorts to memorized short cuts they'd been taught earlier. To most people, the fact that the first individual does not need to resort to any tricks to solve such problems is impressive. Their mind is so quick, they don't need to waste time learning tricks. But suddenly, if it's a computer that's the quick one, it's no longer impressive. It is this sort of double standard that Turing was against so long ago.</p>
+
+<h2>Brute Force</h2>
+
+<p>But focusing on exhaustive search is not productive anyways, since really, the number of interesting problems where brute forcing is a possibility are small. For these, if the system really were brute forcing, i.e. random search, then it would not be able to solve any non-trivial problems before the heat death of the universe. Various heuristics are applied in order to allow the algorithm to exploit structure in problems such that it can get to good enough answers most of the time. It is in that ability to exploit the search space that the, say Chess AI's, intelligence, lies. These systems are so quick, they don't need to learn anything because they can just figure it all out as they go along.</p>
+
+<h2>Learning</h2>
+
+<p>Learning is also search but at the end you end up with a product that should have achieved some compression of the data it was exposed to. Afterwards, it can quickly solve problems from the learned space efficiently. Kind of similar to how decompression is much faster than compression. Learning and pattern recognition is preferable to figuring out things as you go along exactly because it is so much more efficient. You don't have to keep on deducing things from scratch.</p>
+
+<h2>Awesomeness by Analysis</h2>
+
+<p><img src="images/analysis.jpg" alt="Image from TV Tropes" /></p>
+
+<p>So you can think of it this way, in modern machine learning and in humans (mostly), intelligence is essentially backwards looking; you learn a pattern, achieving a compression of the data then matching instances to patterns quickly as you ran into problems. On the other hand, a lot of so called "brute force" methods are forwards looking, they do not bother with compressing patterns, preferring instead, to search out solutions (not so different from the learning process and ultimately) figuring things as they go along. The Chess AI is not just dumb brute force, it intelligently traverses the space in order to make a seemingly intractable problem solvable. All without spending any time learning from experience; instead preferring to work off a very simple theory of Chess. The <a href="http://tvtropes.org/pmwiki/pmwiki.php/Main/AwesomenessByAnalysis">TV tropes</a> page on Awesomeness by Analysis precisely describes these sort of AIs:</p>
+
+<blockquote>
+  <p>Some people learn by flipping pages. Some people must gain knowledge through pain. Some people study by television. And then there are those who just have to observe [think]...</p>
+
+  <p>Need to make a million-to-one shot to stop the Doomsday Device from exploding the world, but have never even fired a gun? Just run off some mental calculations about your gun's firing speed, friction, gravity and the slightly off-kilter scope...</p>
+</blockquote>
+
+<p>As an example, it takes a lot of training and experience for a human stunt driver to pull off some of the amazing parking tricks they do. On the other hand, we can imagine a supreme deducer who--utilizing only knowledge of gravity, it's own plus the car's mass, friction, aerodynamics, the material make up of the gears and engines etc--deduces what sequence of actions and timings are required to perform such tricks after only seeing it done once.</p>
+
+<h2>Limits to Deduction</h2>
+
+<p>But if deduction is so awesome, why did Good Old Fashioned AI fail so spectacularly? There are a number of reasons for this. One of these is that input was brittle, requiring not just experts to provide the core theory but also, someone trained in a logic programming to input. This simply did not scale and so was quickly deemed untenable. Modern supervised learners (including deep learning) also need reams and reams of data, but the upside is that one does not need to be an expert in formal logics as well as in some esoteric subject to prepare the data.</p>
+
+<p>This matters a lot when you consider something like vision, not only is it much more complex than something like Chess, but also, how it's done is not consciously available to us so there are essentially no experts in vision. Further on that, trying to write down as a human, a formal theory of vision, was a no go (computers can finally do this today).</p>
+
+<p>Another and actually, the <em>key</em> limitation is that deducing everything from some base theory is (and will always be) extremely inefficient--especially for machines of the 1980s!</p>
+
+<h2>Deep vs Shallow Reasoners</h2>
+
+<p>In the following, I use deep reasoners not in the sense of the architecture of certain projective functions but instead to talk about the ability to perform long chains of deduction vs. abstraction and learning. Everything but GOFAI, (even neural nets and humans) are shallow reasoners.</p>
+
+<p>You, as a human trying to solve a problem in linear algebra or topolgy, do not have to deduce everything from the axioms of ZF-set theory. However, having learnt say algebra, you can perform only shallow deductions but still get to deep artifacts off the back of all the abstractions you're leveraging. This very productive middle ground (actually it's more like not to so extremely induction only as Machine Learners) is what we humans occupy.</p>
+
+<h3>Humans do Both Deductive and Inductive (actually abductive) learning</h3>
+
+<p>Perhaps you have heard of Google's Deepmind's new game playing robot? Although it was impressively able to learn how to play some Atari games based only on Reinforcement learning signals, it could only reason about situations it had run into before.((as an aside they also talked about a trick the system was able to employ after playing breakout for some time. this simple scenario is also an instructive one to look at as a way to compare evolution to learning. we can just as well say that instead of learning over time, and other system through natural selection across the better plays evolved such a strategy.)</p>
+
+<p>Supervised, unsupervised, transfer and reinforcement Learning. And Deduction.</p>

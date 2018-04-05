@@ -1,0 +1,41 @@
+<meta http-equiv='Content-Type' content='Type=text/html; charset=utf-8'><link rel="stylesheet" type="text/css" href="style2.css"/>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<h1>A simple method for calculating decisions</h1>
+
+<p>In the modern age we are set upon by many decisions with lots of uncertainty. Many of the problems in life in some sense are due to the compounding of many circumstance out of control from the one seemingly minor decision in your control. The days where one can just wing it by gut are coming to a close.</p>
+
+<h2>Current Tools</h2>
+
+<p>Currently, there are a couple tools to aid in this. <strong>Decision matrices</strong> are an age old technique where each option and attribute is compared and the best one taken. Weights can model preference. But truly it is more a tool to clarify your bias than strengthen your decision making.</p>
+
+<p><strong>Decision Trees</strong> allow one to plot out a tree of possibilities and calculate an expected value. But it places to much requirement on knowing probabilities and is very redundant.</p>
+
+<p><strong>Bayesian Networks</strong> are flexible and compact but require again, knowing probabilities.</p>
+
+<h2>A Monte Carlo Possible World Simulation Tool</h2>
+
+<p>A tool that combines aspects of the above would be useful indeed. As a prototype I will work on a language to express this. </p>
+
+<h1>Actions</h1>
+
+<p>To express uncertainty you will have actions or causes. Causes will have an upper and lower probability, a range in cost and a range in expected value. The current model is meant to execute a linear sequence of actions (as most of life is) and so will iterate for as many action levels as there are. Action Levels are so that one can model trees. When an action is taken all actions of the same level are removed - so like cutting of a branch of possibilities. </p>
+
+<p>At each iteration it will randomly set a probability, cost and value from your range for each action and choose the one with the highest expected value. The action level is then removed from the set of possible actions. And the same is repeated until all actions are taken. The sequence taken is recorded and the final expected value is added to a list. This is done a set number of times. And actions with the highest mean, as well as the median less risky one are suggested.</p>
+
+<p>The key thing here is that uncertainty in uncertainty can be modeled. So maybe but not sure would be lower p = 0.2 and upper p = 0.6. Where as confident yes is lower p = 0.85 and upper p = 0.9 </p>
+
+<h2>Effects</h2>
+
+<p>Effects are triggered when an action is taken. Effects have a list of actions they can effect (or ALL) and can alter any of the lower upper values of probability, cost and value.</p>
+
+<h2>Example</h2>
+
+<p>Suppose we wish to apply to American Idol, America's Got Talent and XFactor but don't know what order to do it in. We think we know which best matches our skill and know how applying to one affects the chances of the others. Any person intuitively is able to build that kind of model. Where we fall short is in properly enumerating the consequences. We typically look at one or two then proceed by gut instinct. This tool allows you to encode your uncertainties with more leeway than typical decision theory tools and simulate the </p>
+
+<p>If you apply to Idol first and lose then you become more confident (narrower range) that you will lose the rest. If you apply to Talent it makes you less likely to win Xfactor but doesn't really affect Idol.</p>
+
+<p>type Action = 
+   {actionName : string;
+     actionValue: float<em>float;
+     actionCost: float</em>float
+     actionProbability: float * float}</p>

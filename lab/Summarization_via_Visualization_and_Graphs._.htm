@@ -1,0 +1,366 @@
+<meta http-equiv='Content-Type' content='Type=text/html; charset=utf-8'><style>body{
+    margin: 0 auto;
+    font-family: Georgia, Palatino, serif;
+    color: #444444;
+    line-height: 1.2;
+    max-width: 1080px;
+    padding: 5px;
+}
+h1, h2, h3, h4 {
+    color: #111111;
+    font-weight: 400;
+}
+h1, h2, h3, h4, h5, p {
+    margin-bottom: 16px;
+    padding: 0;
+}
+h1 {
+    font-size: 28px;
+}
+h2 {
+    font-size: 22px;
+    margin: 20px 0 6px;
+}
+h3 {
+    font-size: 21px;
+}
+h4 {
+    font-size: 18px;
+}
+h5 {
+    font-size: 16px;
+}
+a {
+    color: #0099ff;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+a:hover {
+    text-decoration: none;
+    color: #ff6600;
+}
+a:visited {
+    color: purple;
+}
+ul, ol {
+    padding: 0;
+    margin: 0;
+}
+li {
+    line-height: 24px;
+    margin-left: 44px;
+}
+li ul, li ul {
+    margin-left: 24px;
+}
+p, ul, ol {
+    font-size: 14px;
+    line-height: 20px;
+    max-width: 540px;
+}
+pre {
+    padding: 0px 24px;
+    max-width: 800px;
+    white-space: pre-wrap;
+}
+code {
+    font-family: Consolas, Monaco, Andale Mono, monospace;
+    line-height: 1.5;
+    font-size: 13px;
+}
+aside {
+    display: block;
+    float: right;
+    width: 390px;
+}
+blockquote {
+    border-left:.5em solid #eee;
+    padding: 0 2em;
+    margin-left:0;
+    max-width: 476px;
+}
+blockquote  cite {
+    font-size:14px;
+    line-height:20px;
+    color:#bfbfbf;
+}
+blockquote cite:before {
+    content: '\2014 \00A0';
+}
+
+blockquote p {  
+    color: #666;
+    max-width: 460px;
+}
+hr {
+    width: 540px;
+    text-align: left;
+    margin: 0 auto 0 0;
+    color: #999;
+    padding: 1px
+}
+
+button,
+input,
+select,
+textarea {
+  font-size: 100%;
+  margin: 0;
+  vertical-align: baseline;
+  *vertical-align: middle;
+}
+button, input {
+  line-height: normal;
+  *overflow: visible;
+}
+
+input[type=checkbox], input[type=radio] {
+  cursor: pointer;
+}
+/* override default chrome & firefox settings */
+input:not([type="image"]), textarea {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
+
+input[type="search"] {
+  -webkit-appearance: textfield;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+label,
+input,
+select,
+textarea {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: normal;
+  margin-bottom: 18px;
+}
+input[type=checkbox], input[type=radio] {
+  cursor: pointer;
+  margin-bottom: 0;
+}
+input[type=text],
+input[type=password],
+textarea,
+select {
+  display: inline-block;
+  width: 210px;
+  padding: 4px;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 18px;
+  height: 18px;
+  color: #808080;
+  border: 1px solid #ccc;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+select, input[type=file] {
+  height: 27px;
+  line-height: 27px;
+}
+textarea {
+  height: auto;
+}
+
+/* grey out placeholders */
+:-moz-placeholder {
+  color: #bfbfbf;
+}
+::-webkit-input-placeholder {
+  color: #bfbfbf;
+}
+
+input[type=text],
+input[type=password],
+select,
+textarea {
+  -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+  -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+  transition: border linear 0.2s, box-shadow linear 0.2s;
+  -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+div {
+    font-size:medium;
+}
+
+.darken{
+    background-color:#F0F0F0
+}
+.vis { 
+    margin-bottom: 12px;
+    margin-top:12px;
+    padding-bottom: 8px;
+    border-bottom:dashed; 
+    line-height: 1.1;
+    border-width: 1px; 
+    margin-left: 8px;
+}
+/* CSS stylesheet is based on Kevin Burke's Markdown.css project (http://kevinburke.bitbucket.org/markdowncss) */
+#pup {
+  position:absolute;
+  z-index:200; /* aaaalways on top*/
+  padding: 3px;
+  margin-left: 10px;
+  margin-top: 5px;
+  width: 420px;
+  border-radius: 3px;
+  border: 1px solid black;
+  background-color: #777;
+  color: white;
+
+}</style>
+<h1>Summarization via Visualization and Graphs.</h1>
+
+<p><em>Also, there's a typo (okay, at least one) in the Iran Agreement (well, in the version posted on medium and as of this writing...)</em>.</p>
+
+<p>Ah, this is not part of the order of posting I planned, but...it's not everyday you get to analyze (and find a trivial mistake) in a government document. Since May, I've been writing a really fast, thread safe, fully parallel NLP library because everything else I've tried is either too bloated, too slow to run or train, not thread-safe, too academic, too license encumbered or utilizes too much memory.</p>
+
+<p>More pertinently, I've also been on a life-long quest to figure out some way to effectively summarize documents. Unfortunately, technology is as yet, too far away for my dream intelligent abstract summarizer—every single one of my apparently clever ideas have been unmasked as impostors and pretenders, always self-annihilating in exasperating puffs of failure. Sigh.</p>
+
+<p>However, I have been able to combine ideas that work efficiently on today's machines to arrive at a compromise (plenty more on that in the future). One key idea has been representing text at a layer above just strings, think Google's word2vec but requiring orders of magnitude less computation and data for good results (to be more specific, I use reflective random indexing and directional vectors—which go just a bit beyond bag of words).</p>
+
+<p>Once vectors have been generated (it took my machine <em>500 ms</em> to do this) and sentences have been tagged with parts of speech, interesting possibilities open up. For example, the magnitude of a vector is an indication of how important a word is, it's similar to word count but orders words in a way that better reflects a word's importance (counts, once you remove common stopwords, are actually infuriatingly good at this already—infuriating because it can be hard to come up with something both better and less dumb). It can also work when few words are repeated, so it's more flexible. Applying this to the Iran document I get as the top 10 most important nouns:</p>
+
+<blockquote>
+  <p>"iran, iaea, fuel, year, centrifuge, reactor, uranium, enrichment, research, joint"</p>
+</blockquote>
+
+<p>And for verbs:</p>
+
+<blockquote>
+  <p>"include, test, verify, modernise, permit, fabricate, redesign, monitor, intend, store"</p>
+</blockquote>
+
+<p>This is useful and, being able to select a link, press a hot key and get a small window displaying a similar result for any page will, I think, be a useful capability to have in one's daily information processing toolkit. However, such a summary is limited. One idea is to take the top nouns, find their nearest neighbors but limit them to verbs and adjectives. Here's what I get:</p>
+
+<blockquote>
+  <p>"iran: include/produce/keep is...future, subsequent, consistent</p>
+
+  <p>year: keep/conduct/initiate is...more, future, consistent</p>
+
+  <p>iaea: monitor/verify/permit is...necessary, regular, daily</p>
+
+  <p>fuel: fabricate/intend/meet is...non-destructive, ready, international</p>
+
+  <p>uranium: seek/enter/intend is...future, natural, initial</p>
+
+  <p>reactor: modernise/redesign/support is...iranian, international, light</p>
+
+  <p>centrifuge: occur/remain/continue is...single, small, same</p>
+
+  <p>production: include/need/produce is...current, future, consistent</p>
+
+  <p>use: include/produce/meeting is...subsequent, initial, destructive</p>
+
+  <p>arak: modernise/redesign/support is...light, iranian, international</p>
+
+  <p>research: modernise/redesign/support is...international, appropriate, light</p>
+
+  <p>jcpoa: declare/implement/verify is...necessary, consistent, continuous</p>
+</blockquote>
+
+<p>Reading this, I see the results are almost interpretable. There's the IAEA who will monitor Iran and JCPOA too, or something...I'm guessing. There's lots of emphasis on Iran's future and modernization, as well as limitations on uranium production and instruments—centrifuges in particular—in use (at this point, I'd like to point out that I've absolutely not even looked at the original document and don't ever plan to). I don't know if this method will ultimately prove useful; a lot of work involves experimenting with what actually works in day to day use. Some features are simply not worth the cognitive overhead of even just knowing they exist.</p>
+
+<p>It was at this point I decided to graph the result. The basic idea is: connect all the words with the edge weights computed from pairwise cosine similarities but limit connections to be of the type VERB->NOUN->VERB, then apply a maximum spanning tree to prune the edges and make it actually readable. The idea being, instead of just grouping words by similarity we impose some grammatical structure then hopefully, we get something a bit more structured.</p>
+
+<p>It was while browsing that graph I found the typo:</p>
+
+<p><img src="images/chennals_iran.png" alt="alt text" /></p>
+
+<p>I'm fairly certain that "Chennals" is not some fancy Nuclear Engineering jargon.</p>
+
+<p><img src="images/whitehouse-typo.png" alt="alt text" /></p>
+
+<h2>Network Examples</h2>
+
+<p>I also built a graph using an algorithm utilizing inputs from a phrase chunker, which then tries to build short understandable phrases (verb dominant phrases can only link to noun phrases), another on sentences and another from paragraphs. The gray shaded and golden edge nodes tend to be most important and are worth zooming into. Around those will be all the most similar phrases/sentences/paragraphs.</p>
+
+<h2>Click for: <a href="http://sir-deenicus.github.io/home/test_single_word_vbnouns.html">Single Words Example</a></h2>
+
+<p><img src="images/QKy5v9bhf5.gif" alt="alt text" /></p>
+
+<p><em>Although this graph visualization was originally meant to compare and contrast (via orthogonal vectors) two or more documents, it works well enough as a summarization tool</em>.</p>
+
+<p>In case you're curious, the graph visualization toolkit I'm using is the excellent vis.js (I welcome any suggestions that'll improve on the sometimes cluttered layout).</p>
+
+<h2>Click for: <a href="http://sir-deenicus.github.io/home/test_phrases.html">Phrases Example Network</a></h2>
+
+<p>The Phrases example is clearly more comprehensible than the single word approach but is not without flaws—there are incomplete thoughts and redundancies. On the other hand, we see that similar phrases are grouped together. It's worth noting that each phrase is represented by a single (200D) vector, hence the groupings are not based on string similarities. And, despite the algorithm not lowcasing all words, the method still groups different cased words together, suggesting that it captures something more than: these words tend to be near each other. It also groups conjugations and phrases in a non-trivial sense, as seen with higher level groupings like:</p>
+
+<ul>
+<li>produce fuel assemblies/fuel core reloads/fuel will be exhausted/spent fuel</li>
+<li>can be used/future use</li>
+</ul>
+
+<p>Those are not just cherry picked samples, as you can see for yourself in the link above. The method holds generally in all documents I've tried. Additionally, it's worth remembering that nodes aren't just grouped by similarity but also must meet the very basic noun phrase-ish ->verb phrase-ish structure I mentioned. The goal is to get something sufficiently comprehensible while being non-linear and more exploratory. By zooming in and out and hiding irrelevant nodes, I can go into more or less depth as I please. This, together with basic question answering on arbitrary text form my very basic approximation of non-linear reading/knowledge acquisition. You can think of skimming as a far distant ancestor of this approach.</p>
+
+<h2><a href="http://sir-deenicus.github.io/home/test_sents.html">Sentences</a></h2>
+
+<p><a href="http://sir-deenicus.github.io/home/test_paras.html">Paragraphs Example</a></p>
+
+<p>Zooming out is, I've found, important when dealing with longer text items (removes clutter). Then, you can click a node, which disapears anything not in its neighborhood, making it easier to read when zoomed in. Other useful features are: the ability to search for a word as well as the ability to hover over nodes to get at their text.</p>
+
+<p><img src="images/summary_0.png" alt="alt text" /></p>
+
+<h2>Text Summaries</h2>
+
+<p>Similar to connecting verbs and nouns, I tried connecting augmented noun phrases (very, very simple rule on how to join phrases to maximize coherence and the same for) verb phrases. With that, for the top 5 phrases, I got:</p>
+
+<blockquote>
+  <p>"2. Iran will modernise the Arak heavy water research reactor to support peaceful nuclear research and radioisotopes production:
+to be a multi-purpose research reactor comprising radio-isotope production/to support its peaceful nuclear research and production needs and purposes/to monitor Iran ’s production</p>
+
+  <p>Iran ’s uranium isotope separation-related research and development or production activities will be exclusively based:
+to any other future uranium conversion facility which Iran might decide to build/to verify the production/to minimise the production</p>
+
+  <p>Iran ’s enrichment and enrichment R&amp;D activities are:
+to meet the enrichment and enrichment R&amp;D requirements/conducting R&amp;D/to enable future R&amp;D activities</p>
+
+  <p>Iran will maintain no more than 1044 IR-1 centrifuge machines:
+will use no more than 348 IR-1 centrifuges/are only used to replace failed or damaged centrifuges/balancing these IR-1 centrifuges</p>
+
+  <p>Iran will permit the IAEA to implement continuous monitoring:
+will permit the IAEA to implement continuous monitoring/will permit the IAEA to verify the inventory/will allow the IAEA to monitor the quantities</p>
+</blockquote>
+
+<p>This, I think, is actually a pretty decent summary. It's far from perfect but I've got a much better idea of what's in the document despite it being fairly short. It's also not a verbatim extractive summarizer (since it's constructing and combining phrases which incidentally, also ends up compressing sentences. Although...if a proper generalizing summarizer was a human, this would be like the last common ancestor of humans and mice. Or maybe lice. sigh).</p>
+
+<p>Closer to more typical extractive methods is a very simple method I came up with that generates vectors for sentences using RRI. The method takes the largest magnitude sentence and then finds the nearest sentence that get's within x% of its magnitude (I have x=50%). A sum of all met vectors is kept and a sentence must have > 0.7 similarity with this memory vector. This is repeated for all sentence. I've found that this method tends to create far more fluid summaries than is typical for extractive summarizers while working on almost all document types (even doing a fair job on complex papers and Forum threads). For this Agreement, we get the below at 10% the original document length:</p>
+
+<hr />
+
+<h2>More Fluid Extracted Summary:</h2>
+
+<p>"Destructive and non-destructive testing of this fuel including Post-Irradiation-Examination (PIE) will take place in one of the participating countries outside of Iran and that country will work with Iran to license the subsequent fuel fabricated in Iran for the use in the redesigned reactor under IAEA monitoring.</p>
+
+<p>Iran will not produce or test natural uranium pellets, fuel pins or fuel assemblies, which are specifically designed for the support of the originally designed Arak reactor, designated by the IAEA as IR-40. Iran will store under IAEA continuous monitoring all existing natural uranium pellets and IR-40 fuel assemblies until the modernised Arak reactor becomes operational, at which point these natural uranium pellets and IR-40 fuel assemblies will be converted to UNH, or exchanged with an equivalent quantity of natural uranium.</p>
+
+<p>Iran will continue testing of the IR-6 on single centrifuge machines and its intermediate cascades and will commence testing of up to 30 centrifuge machines from one and a half years before the end of year 10. Iran will proceed from single centrifuge machines and small cascades to intermediate cascades in a logical sequence.</p>
+
+<p>Iran will commence, upon start of implementation of the JCPOA, testing of the IR- 8 on single centrifuge machines and its intermediate cascades and will commence the testing of up to 30 centrifuges machines from one and a half years before the end of year 10. Iran will proceed from single centrifuges to small cascades to intermediate cascades in a logical sequence.</p>
+
+<p>In case of future supply of 19.75% enriched uranium oxide (U3O8) for TRR fuel plates fabrication, all scrap oxide and other forms not in plates that cannot be fabricated into TRR fuel plates, containing uranium enriched to between 5% and 20%, will be transferred, based on a commercial transaction, outside of Iran or diluted to an enrichment level of 3.67% or less within 6 months of its production.</p>
+
+<p>Enriched uranium in fabricated fuel assemblies from other sources outside of Iran for use in Iran’s nuclear research and power reactors, including those which will be fabricated outside of Iran for the initial fuel load of the modernised Arak research reactor, which are certified by the fuel supplier and the appropriate Iranian authority to meet international standards, will not count against the 300 kg UF6 stockpile limit.</p>
+
+<p>This Technical Working Group will also, within one year, work to develop objective technical criteria for assessing whether fabricated fuel and its intermediate products can be readily converted to UF6. Enriched uranium in fabricated fuel assemblies and its intermediate products manufactured in Iran and certified to meet international standards, including those for the modernised Arak research reactor, will not count against the 300 kg UF6 stockpile limit provided the Technical Working Group of the Joint Commission approves that such fuel assemblies and their intermediate products cannot be readily reconverted into UF6. This could for instance be achieved through impurities (e.g.  burnable poisons or otherwise) contained in fuels or through the fuel being in a chemical form such that direct conversion back to UF6 would be technically difficult without dissolution and purification.</p>
+
+<p>Iran will permit the IAEA to monitor, through agreed measures that will include containment and surveillance measures, for 25 years, that all uranium ore concentrate produced in Iran or obtained from any other source, is transferred to the uranium conversion facility (UCF) in Esfahan or to any other future uranium conversion facility which Iran might decide to build in Iran within this period.</p>
+
+<p>If the absence of undeclared nuclear materials and activities or activities inconsistent with the JCPOA cannot be verified after the implementation of the alternative arrangements agreed by Iran and the IAEA, or if the two sides are unable to reach satisfactory arrangements to verify the absence of undeclared nuclear materials and activities or activities inconsistent with the JCPOA at the specified locations within 14 days of the IAEA’s original request for access, Iran, in consultation with the members of the Joint Commission, would resolve the IAEA’s concerns through necessary means agreed between Iran and the IAEA. "</p>
+
+<hr />

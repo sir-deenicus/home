@@ -1,0 +1,51 @@
+<meta http-equiv='Content-Type' content='Type=text/html; charset=utf-8'>
+                             <script type='text/javascript' async src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML'></script>
+                             <title>Machine Learning is not Magic: Some useful Intuitions</title>
+                             <link rel='stylesheet' type='text/css' href='style.css'>
+<h1>Machine Learning is not Magic: Some useful Intuitions</h1>
+
+<p>Deen Abiola - 21 Dec 2014</p>
+
+<p>One thing I find amusing is when people talk about Machine Learning as if it's some kind of magic pixie dust you sprinkle over your program thus giving it special intelligence powers. When really, Machine Learned models are, as typically used, scripts in a simple language. The previous sentence needs some unraveling: what I mean by magic and what I mean by scripting.</p>
+
+<h2>Magic</h2>
+
+<p>People often talk as if you can throw machine learning at any problem and have it magically figure things out. This is very much like the zoom-enhance trope.</p>
+
+<aside>
+<img src = "images/EnhancedImage.gif"/>
+</aside>
+
+<p>Actually, it is exactly like zoom-enhance since scaling up is itself a kind of inference. Just as you can't fill in details that aren't there, you can't learn something that is either unapproachably complex (incompressible) or whose dynamics aren't stationary. For example, you can't throw machine learning at market data and think it'll just work. Sure it'll learn something but that something is almost certainly a quirky coincidence of that sample. Even if it tests well out of band, it would only mean the dynamics are as yet unchanged. Another example: you can't throw data at an algorithm and have it figure out how a viral outbreak is going to progress. Similarly, complexity wise, you can't throw a genome at an ML algorithm and have it try to predict physical attributes. In this case, the data just isn't there, or more accurately, each current stage acts as data to feed the next state -- you'd have to literally compute the full organism to get it right. This is the kind of thing Wolfram calls Computational irreducability.</p>
+
+<p>On the other hand, there are lots of useful problems that are stationary or close enough to (speech, image, translation) and lots that even if they aren't stationary, we should in principle be able to build algorithms that can adapt in time (edge of current feasibility). Then there are complex seeming problems that might not be as impossible as they seem. Take protein folding, what trick has evolution figured out? Protein folding is NP-complete, even a quantum computer shouldn't be able to help there. So what's going on, how can biological systems make such short work of it? Would a suitably advanced algorithm -- something beyond deep learning; able reify its abstractions, perform deductions as well as induction -- be able to figure out the hidden pattern, the hidden shortcut? I think so. But once again it's important to remember that AI isn't magic, these are the same sort of computations that happen when you query a database (search) and save a jpeg or mp3 (compression).</p>
+
+<h2>Scripting</h2>
+
+<p>The most important thing to keep in mind is that the amazing 'neural network' or what have you is running on a computer. That is, it is bounded to be no more powerful than a Turing Machine and in particular, is almost always less powerful as a computing substrate than most programming languages. In principle, that Support Vector Machine or Random Forest could have been hand-coded. There is nothing special going on there and in fact, many learning algorithms operate in essentially a propositional calculus, having no quantifiers. The models, being fixed, function exactly as scripts would.</p>
+
+<h2>Tarpits</h2>
+
+<p>Turing Completeness is an attribute (for machines at least) where if you've attained it, then nothing can 'think' things beyond you. Quoting Wiki: "In any Turing complete language, it is possible to write any computer program, so in a very rigorous sense nearly all programming languages are equally capable. Turing tarpits show that theoretical ability is not the same as usefulness in practice".</p>
+
+<p>One can think of various Machine Learning algorithms in an analogical manner. For example, a Neural Network with one hidden layer is universal as an approximation of continuous functions from one finite space to another. But a shallow network dwells in the depths of the computational learning equivalent of  Turing's Tarpit. The big deal about Deep learning is more layers; which lead to large increases in expressivity, much like the difference between <a href="http://en.wikipedia.org/wiki/Brainfuck">Brainfuck</a> and BASIC. Further on that, recent papers have found that shallow networks can in fact represent, with good fidelity, the same functions as deeper ones. This tells us that, if there's anything to be said about deep learning, it's that it is a way to imbue structure to a problem in such a way as to simplify search. Nascent abstractions which improve search by biasing toward more promising paths.</p>
+
+<p>Okay, so the important takeaways are :</p>
+
+<ol>
+<li>paying attention to complexity and especially, how quickly underlying dynamics change is vital -- most modern algorithms, deep learning included, don't do well with rapidly changing problems with (or without) higher order complexity</li>
+<li>Machine Learning Algorithms are really no more than Turing Machines and often are less.</li>
+<li>An e.g., Neural Network that is universal as an approximator is still not very effective due to the lack of expressivity and the big deal of deep learning with respect to NNs can be viewed as providing Neural Nets (which represent programs as tables of numbers) better tools with which to program themselves; like going from Machine Language to Assembly Language.</li>
+</ol>
+
+<p>And so with 3) we hit the utility of Machine Learning. They are a particular form of Auto-programming.  Learned models are functions which compute maps from one space to another in such a way that distances and structures are as close to preserved as possible. What separates a good learner from a bad learner is how complex the sort of regularities it can identify are and how liable it is to get stuck at local optima. Generalization is done by having these functions exploit structure in the problem so that future instances are correctly mapped.</p>
+
+<p>You can imagine a map from pixel intensity values or waveforms to vectors representing words (just numbers!). Maps from sequences to sequences where the elements just happen to capture word senses and contexts: implicit but not deep meaning, though still enough to provide a great deal of utility. Since they do not require a full table be memorized, they can be viewed as computing a particular kind of compression. The compression represents understanding of the patterns in use without caring for a deeper why. This friction actually underlies what people mean when they say AI has no true understanding. It does but its concerns are very narrow.</p>
+
+<p>The incredible philosophical consequences of learning as exactly a form of programming to follow.
+‎
+<img src="images/2010.01.15.enhance.png" alt="alt text" /></p>
+
+<p>comic 1: <a href="http://tvtropes.org/pmwiki/pmwiki.php/Main/EnhanceButton">http://tvtropes.org/pmwiki/pmwiki.php/Main/EnhanceButton</a> source: <a href="http://www.phdcomics.com/comics.php?f=1156">http://www.phdcomics.com/comics.php?f=1156</a></p>
+
+<p>comic 2: <a href="http://www.robcottingham.ca/cartoon/archive/freeze-zoom-in-now-enhance-and-fart-rainbows-and-turn-lead-into-gold">http://www.robcottingham.ca/cartoon/archive/freeze-zoom-in-now-enhance-and-fart-rainbows-and-turn-lead-into-gold</a></p>

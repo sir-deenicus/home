@@ -1,0 +1,413 @@
+<meta http-equiv='Content-Type' content='Type=text/html; charset=utf-8'><style>body{
+    margin: 0 auto;
+    font-family: Georgia, Palatino, serif;
+    color: #444444;
+    line-height: 1.2;
+    max-width: 1080px;
+    padding: 5px;
+}
+h1, h2, h3, h4 {
+    color: #111111;
+    font-weight: 400;
+}
+h1, h2, h3, h4, h5, p {
+    margin-bottom: 16px;
+    padding: 0;
+}
+h1 {
+    font-size: 28px;
+}
+h2 {
+    font-size: 22px;
+    margin: 20px 0 6px;
+}
+h3 {
+    font-size: 21px;
+}
+h4 {
+    font-size: 18px;
+}
+h5 {
+    font-size: 16px;
+}
+a {
+    color: #0099ff;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+a:hover {
+    text-decoration: none;
+    color: #ff6600;
+}
+a:visited {
+    color: purple;
+}
+ul, ol {
+    padding: 0;
+    margin: 0;
+}
+li {
+    line-height: 24px;
+    margin-left: 44px;
+}
+li ul, li ul {
+    margin-left: 24px;
+}
+p, ul, ol {
+    font-size: 14px;
+    line-height: 20px;
+    max-width: 540px;
+}
+pre {
+    padding: 0px 24px;
+    max-width: 800px;
+    white-space: pre-wrap;
+}
+code {
+    font-family: Consolas, Monaco, Andale Mono, monospace;
+    line-height: 1.5;
+    font-size: 13px;
+}
+aside {
+    display: block;
+    float: right;
+    width: 390px;
+}
+blockquote {
+    border-left:.5em solid #eee;
+    padding: 0 2em;
+    margin-left:0;
+    max-width: 476px;
+}
+blockquote  cite {
+    font-size:14px;
+    line-height:20px;
+    color:#bfbfbf;
+}
+blockquote cite:before {
+    content: '\2014 \00A0';
+}
+
+blockquote p {  
+    color: #666;
+    max-width: 460px;
+}
+hr {
+    width: 540px;
+    text-align: left;
+    margin: 0 auto 0 0;
+    color: #999;
+    padding: 1px
+}
+
+button,
+input,
+select,
+textarea {
+  font-size: 100%;
+  margin: 0;
+  vertical-align: baseline;
+  *vertical-align: middle;
+}
+button, input {
+  line-height: normal;
+  *overflow: visible;
+}
+
+input[type=checkbox], input[type=radio] {
+  cursor: pointer;
+}
+/* override default chrome & firefox settings */
+input:not([type="image"]), textarea {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
+
+input[type="search"] {
+  -webkit-appearance: textfield;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+label,
+input,
+select,
+textarea {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: normal;
+  margin-bottom: 18px;
+}
+input[type=checkbox], input[type=radio] {
+  cursor: pointer;
+  margin-bottom: 0;
+}
+input[type=text],
+input[type=password],
+textarea,
+select {
+  display: inline-block;
+  width: 210px;
+  padding: 4px;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 18px;
+  height: 18px;
+  color: #808080;
+  border: 1px solid #ccc;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+select, input[type=file] {
+  height: 27px;
+  line-height: 27px;
+}
+textarea {
+  height: auto;
+}
+
+/* grey out placeholders */
+:-moz-placeholder {
+  color: #bfbfbf;
+}
+::-webkit-input-placeholder {
+  color: #bfbfbf;
+}
+
+input[type=text],
+input[type=password],
+select,
+textarea {
+  -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+  -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+  transition: border linear 0.2s, box-shadow linear 0.2s;
+  -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+div {
+    font-size:medium;
+}
+
+.darken{
+    background-color:#F0F0F0
+}
+.vis { 
+    margin-bottom: 12px;
+    margin-top:12px;
+    padding-bottom: 8px;
+    border-bottom:dashed; 
+    line-height: 1.1;
+    border-width: 1px; 
+    margin-left: 8px;
+}
+/* CSS stylesheet is based on Kevin Burke's Markdown.css project (http://kevinburke.bitbucket.org/markdowncss) */
+#pup {
+  position:absolute;
+  z-index:200; /* aaaalways on top*/
+  padding: 3px;
+  margin-left: 10px;
+  margin-top: 5px;
+  width: 420px;
+  border-radius: 3px;
+  border: 1px solid black;
+  background-color: #777;
+  color: white;
+
+}</style>
+<h2>On Cutting Features</h2>
+
+<p>It is very easy to come up with a feature, test it on a handful of cases or a toy data-set and then declare success. What is difficult and immensely frustrating is throwing away features which ultimately end up being more effort than they're worth. For example, take the case of a summarization; if I find myself spending more time trying to decipher its meaning than it would have taken to read the actual text itself, then the feature has failed. The summary should give a good enough idea of the text, with a high probability, in a manner that doesn't lead to frustration. This is a high threshold that has led to my throwing away the vast majority of ideas.</p>
+
+<h2>The Tiers of a Feature</h2>
+
+<p>I group features into five tiers: Mud, Plastic, Pyrite, Gold and Palladium.</p>
+
+<p><strong>Mud features</strong> are noise, they're the most abundant class of feature I think up; they make everything worse with their mere existence. Testing ideas can sometimes be depressing because most of them will turn out to be mud. They're too numerous to enumerate. On the positive side, I seem to have gained the ability to automatically detect and cut short such ideas.</p>
+
+<p><strong>Pyrite</strong> These are novelty ideas that look promising, showing enormous potential, only to fall flat during practical application. They aren't failures per se, as I for example, count not fast enough, or works but is ultimately a gimmick, amongst these. I'll say the other majority of ideas fall in this category. One example is the phrase based summaries I showcased in the previous article, I will talk about how it fails later in this one.</p>
+
+<p><strong>Plastic features</strong> are borderline useful but not memorable or worth it. They're relatively reliable but likely, you would not care much if they were gone. Another common reason a feature doesn't make the cut is if its runtime is too slow or its algorithmic complexity is too high to work in real-time on an average machine. Many webpages can have tens of thousands of words (as grounding, that's about 80 textbook pages), and there <em>will</em> be instances where you end up eating 3 or 4 such webpages in parallel while browsing normally, and you want results in not more than a second.</p>
+
+<p>Another scenario might be analyzing dozens or more of pages at a time but still not going over a few seconds without results. Meeting those constraints has occupied much of my time, and has been the cause of my throwing away a lot of ideas—getting something that's both fast and actually reliable is difficult. Later in this article, I'll talk about escalation and my approach with UX to get around this where possible.</p>
+
+<p>A different requirement on some algorithms is that they be able to  learn, in realtime, using minimal memory. These last two eliminate both cutting edge ideas such as recurrent neural networks, which I spent a couple weeks experimenting on, and old ideas disguised as new—such as word2vec. Even Conditional Random Fields and my Hidden Markov Model implementation proved too slow for speedy use. A corollary to this is that turn around time on ideas is much slower with say Deep Neural Networks.</p>
+
+<p>This limits the rate of experimentation and since most ideas are mud, and there is a great deal more to do than figure out an appropriate architecture, and the tech is not yet sufficiently better to be worth the cost, I decided to drop that branch of the tree (after 14 hours nursing an RNN—the scenario is not unlike obsessing over a graphics engine when you're trying to build a game). Hopefully, Moore's Law will address this in time but for now, they're useless for the sort of tasks one will encounter in an intelligence amplifier setting.</p>
+
+<p><strong>Gold features</strong> are extremely useful and reliable but perhaps only truly shine in a few contexts. An example would be the graphs of my previous post. It's not often I use such features but when I do, they're very useful for quickly getting some idea of a long and complex piece—papers are one example.</p>
+
+<p><strong>Platinum/Palladium features</strong> are rare and pivotal, they're what make the software something you'd want to incorporate into your daily routine. Some you use everywhere, others are used in only a handful of (but still important) scenarios.</p>
+
+<h2>Escalation</h2>
+
+<p>There are two senses in which I use escalation, both of them inspired by games: a) the software must be useful at all skill levels and most often by b) not overloading the user (or symbiote) with options. As the post has grown too long, I've decided to split the discussion here. A future post will discuss a).</p>
+
+<p>Typically, today, your only choices when given a text are to either read it now, never read it or save it to never read it later. What Project Int.Aug does is introduce layers below and above (or to the side of that). You can get a few words and topics, look into people, places, locations, sections of emphasis and concepts. You can read a summary at different levels of detail, you can read the text or you can explore a network representation of the text. The last one, the network, I am not certain that exploring it in full detail is actually any faster than reading the text but I've (and hopefully you too will) have found it a more enjoyable way to approach texts.</p>
+
+<h2>What Games are Best at</h2>
+
+<p>The best games are really good at escalating difficulty, gradually introducing complexity and well utilizing a contextual interface that responds intelligently to your situation. Most software is not like that. In the next article I'll talk about how I try to emulate that, but here I'll focus on my attempt to escalate and hide away things yet keeping them highly accessible.</p>
+
+<h2>Heads-up</h2>
+
+<p>While using different applications or browsing, you can invoke a ~500x300 transparent window (for single screen folk, annoyingness is still not completely worked out, perhaps shift in favor of pop up). The window is purposely kept small as its meant to be taken in at a glance (there's the option to move analysis to a full window). Then, the easiest to parse features should be most quickly computed and displayed. This includes key word extraction, top nouns, top verbs—but how is this useful? Consider the choice of visiting a link today. It's a very wasteful task that involves invoking a new browser tab or window instance, skimming or looking at the title and then deciding that this was a waste of the last 20 seconds of your life. Trying to predict the content of a link is too inaccurate. However, being able to quickly peek at a handful of words from the text is an excellent compromise. Incidentally—later on, I realized that it's much harder to skim when you're blind, so the ability to extract key sections or query a document—my approximation of non-linear reading—is useful there too.</p>
+
+<p>That last is an example of the guiding principle of this software. If an application is going to have any chance of being part of a larger system of amplified intelligence, then it needs to minimize friction. Minimizing friction is required before the illusion of an extended self can even be considered. There are, I believe, two parts to friction. Latency: things need to happen at speeds below the conscious threshold, or if not possible, meaningful feedback needs to occur at similar speeds. The other important aspect is prediction, but more specifically, preconscious prediction. When interacting with any system in the world, we're constantly making predictions on how it will respond to our actions; in the case of software, features which are difficult to quickly learn to predict at a preconscious level induce too much friction (our brains do not like this). This is <em>not</em> the same as saying the software must be dumbed down, only that it be easy to use, easy to learn and easy to grow with (essentially, be useful at all levels of skill—hard things will have some threshold you can't go below but let there be useful easy things too). Having to constantly guess what the software will do, and only being able to do so with an accuracy of &lt; 100% is an absolute failure.</p>
+
+<p>Less (but still) important than friction is that the cost of utilizing the feature be lower than the gained value, and that it is unambiguously better than what it is replacing. Consider a method that constantly offers irrelevant keywords, misclassifies people as locations at too high a rate or a word similarity function that induces more cognitive noise than clarity (even if it works perfectly). Finding out what is helpful in day to day use has not been easy. Consider that speed and accuracy are at odds with each other (always defer in favor of speed, a few percentage points gain is just not worth it if you're going to lose even more than a hundred milliseconds per instance, because scale).</p>
+
+<h2>Measures are Useless</h2>
+
+<p>In machine learning papers unsupervised methods are typically scored under some measure. In reality, I've found such results as useless for actually gauging the real life utility of a method. The only real way to see how well a method works is to incorporate it into my daily activity and note if it relieves or adds to cognitive overhead.</p>
+
+<h2>The Interface</h2>
+
+<p>In building Project Int.Aug I have roughly 5 key goals:</p>
+
+<ul>
+<li>Augment ability to recall sites, papers, etc. that I have read, visited etc. I should not have to remember the exact wording. This solves the problem of too many tabs and bookmarks.</li>
+<li>Augment association by displaying contextually useful definitions when called upon; can be clippings, parts of a paper etc. to my current document, site or copied selection.</li>
+<li>Augment ability to research and search. Show useful associations between topics of what I'm researching and reduce my ramp up time. Consider a "more like this" feature, across personal documents and search in general. Allow querying of multiple pages and useful search agents to map out a few branches out of a search tree.  For example, someone claims a new mathematical result—is it really? Document and concept vectors across a broad swathe of papers. This system should be able to, with you, interactively refine possible prior work, even if you do not have it on your machine.</li>
+<li>Reduce the amount of reading I have to do (unless I'm reading for entertainment or edification, reading is a waste of time because I'm only going to remember a few words anyways so), get me those words that would be the only things I would have remembered had I read this piece anyways.</li>
+<li>Make use of the data and trails (as well as ability to share these) we all generate while going through our day to day activity, in a way beneficial to us (corporations are already very good at this though mainly for their personal benefit).</li>
+</ul>
+
+<p>I'll focus here on reducing required reading. Sometimes I forget that I'm trying to build an IA and not an AI. This means that spending too much time trying to get some piece perfect is counter-productive in the face of all what needs to be done; finding a high enough rate of signal over noise and UX to filter through these is more important. Our brains should not be passive in this relationship, they have an incredible and so far unique ability to just cut through so much of a search space: <em>this is our form of creativity</em>. On the other hand, we're not very good at considering alternatives that we deem counter-intuitive (I believe this to be a victim of our tendency towards confirmation bias), however computers <em>can</em> be good at this and that <em>is their form of creativity</em>. Combining those two with a good interface creates something formidable indeed.</p>
+
+<p>An example of poor results is the association based summaries; they can be very hit or miss:</p>
+
+<p><strong>Sample 1</strong></p>
+
+<blockquote>
+  <p>Drugs that inhibit this molecule are currently routinely used to protect: attack the parasites that cause them using small molecule drugs/is used/run experiments using laboratory robotics; attack the parasites that cause them using small molecule drugs: make it more economical/to find a new antimalarial that targets DHFR/To improve this process; the robot can help identify promising new drug candidates: demonstrating a new approach/independently discover new scientific knowledge/increases the probability; an anti-cancer drug inhibits a key molecule known: say researchers writing/to automate/can be generated much faster; an artificially-intelligent 'robot scientist' could make drug discovery faster: select compounds that have a high probability/does not have the ability to synthesise such compounds/has the potential to improve the lives;</p>
+</blockquote>
+
+<p><strong>Sample 2</strong>:</p>
+
+<blockquote>
+  <p>The more such Internet users deploy “ do not track ” software: to make their users more valuable/assimilate more learning material/creating more flexible scheduling options and opportunities; is..far fetched Robotic caregiving makes far more sense: to use an adjective that makes sense only/change our sense/would the robotic seal appear a far less comparatively; is..less refined any more humane social order could arise: changing social norms/enables “ social networking ”/making some striking comparisons; one more incremental step: amasses around one person ’s account/want high ones/needs anchors; Data scientists create these new human kinds even: to create it/to create certain kinds/perfecting a new science; is..virtuous or vicious</p>
+</blockquote>
+
+<p>Both of these are distillations of a much longer (with the second being that of a very long and complex) piece. Trying to make sense of these is difficult and ultimately makes this a feature I consider pyrite (the difficulty lies in the fact that the type of similarity it surfaces is not appropriate for this task). However, utility is task dependent; while it is not sufficiently useful for a single article, I have a hypothesis that it will work better, as a kind of broad overview, when searching many multiple pages at a time. The same failing as a single piece summarizer is true for the single word version of the "association" based summaries:</p>
+
+<blockquote>
+  <p>ai develop/comprehend/detect is...specific, good, former
+Similar: ai, researcher, arm, decline, hundred</p>
+
+  <p>facebook hit/publish/answer is...memory-based, good, free
+Similar: facebook, memory-based, weston, arm, boss</p>
+
+  <p>memory use/see/discern is...central, neural, biological
+Similar: memory, use, reason, understanding, over</p>
+
+  <p>google built/modify/think is...specific, free, parallel
+Similar: google, ai, university, baidu, try</p>
+
+  <p>computer give/develop/detect is...implicit, top, brainy
+Similar: computer, world, give, pattern, journal</p>
+</blockquote>
+
+<p>It is easy to get stuck in a track trying to fix this rather than remaining focused on the bigger picture. For example, one option would be to build an n-order markov chain specific to the text and then a general language model of sentences to try to generate the shortest, most likely sentence expansion of these phrases. But why? A big part of this project has been learning how to do the least amount of work to get something good enough for what I want else scrap it—due to how much needs doing. Sometimes the simplest thing is complex but often times, especially if you've made things modular and composable ahead of time, the method might have a surprisingly simple implementation (some might point out that composability hides complexity; which is exactly the point).</p>
+
+<p>On the other hand, there are features which work really rather well: topic and keyword extraction, extracted summaries, concept and directional vectors. The named entity recognition aspect is more a plastic feature, it's okay but will more than serve as the basis of a question answering system (for example it sometimes labels books, papers, websites or genetic loci as locations which actually makes a lot of sense). You can see for yourself the output of the analysis of 7 randomly selected websites of varying complexity. The summaries in particular are surprisingly good; most extractive summaries work best for simple news pieces but completely fall apart with interviews, forums, papers or long narrative reads: this method degrades gracefully from simple news articles to interviews and thread posts. You can see some examples <a href="http://sir-deenicus.github.io/home/nlp.log0.html">in this link</a>, under the Full Summary sections. There are two methods to generate summaries, one using phrases and another sentences. Sometimes the phrases are better (in particular for short or news pieces) but the fuller sentence based summaries are more consistently better:</p>
+
+<p><strong>Example of a better phrase based summary</strong></p>
+
+<blockquote>
+  <p>Artificially intelligent robot scientist 'Eve' could boost search. Drugs that inhibit this molecule are currently routinely used to protect. Eve is designed to automate early-stage drug design. a compound shown to have anti-cancer properties might also be used. an anti-cancer drug inhibits a key molecule known. an artificially-intelligent 'robot scientist' could make drug discovery faster. attack the parasites that cause them using small molecule drugs. new drugs is becoming increasingly more urgent. the robot can help identify promising new drug candidates</p>
+</blockquote>
+
+<p><strong>Example of topics</strong>:</p>
+
+<blockquote>
+  <p>brain-based physiology of creativity, the human cerebellum, monkey cerebellum</p>
+
+  <p>global poverty, AI risk, computer science, effective altruists, effective altruism, billion people, Repugnant Conclusion : the idea</p>
+
+  <p>artificial intelligence, last year, few months, common sense, memory-based AI, Facebook AI researcher, Facebook AI boss, crusade for the thinking machine</p>
+
+  <p>drug discovery, mass screening, machine learning, Robot scientists, robot scientist, fight against malaria</p>
+
+  <p>feedback and control mechanisms of Big Data, Blog Theory : Feedback and Capture in the, sociotechnical system : Particular political economies, effect of “ bombshell ” surveillance</p>
+</blockquote>
+
+<p><strong>Examples from Directional vectors</strong>.</p>
+
+<p>These vectors capture some directionality (which provides some refinements in capturing context), as such you can recover common antecedent or succedent words.</p>
+
+<blockquote>
+  <p>Similar to drug: drug</p>
+
+  <p>Top 3 preceedings for drug: Concepts: exist, choose, early-stage | Index: compound, positives., early-stage</p>
+
+  <p>Top 3 post/next words for drug: Concepts: target., design., discovery | Index: discovery, candidate</p>
+
+  <p>==================</p>
+
+  <p>Similar to scientist: scientist</p>
+
+  <p>Top 3 preceedings for scientist: Concepts: robot | Index: robot, clinical</p>
+
+  <p>Top 3 post/next words for scientist: Concepts: 'eve' | Index: be, them</p>
+
+  <p>==================</p>
+
+  <p>Similar to self: self, tool</p>
+
+  <p>Top 3 preceedings for self: Concepts: construct, ‘data, algorithmic | Index: algorithmic, network, premack</p>
+
+  <p>Top 3 post/next words for self: Concepts: balkinization, commit, comprehensively | Index: setting</p>
+
+  <p>==================</p>
+
+  <p>Similar to risk: risk, researcher, obsession.</p>
+
+  <p>Top 3 preceedings for risk: Concepts: existential, ai, recoil | Index: ai, existential, human</p>
+
+  <p>Top 3 post/next words for risk: Concepts: panel, estimate, charity | Index: of</p>
+
+  <p>==================</p>
+
+  <p>Similar to altruist: altruist, intervention., altruism</p>
+
+  <p>Top 3 preceedings for altruist: Concepts: effective, lethality. | Index: effective, maximum</p>
+
+  <p>Top 3 post/next words for altruist: Concepts: groups., explain, don | Index: potential, though</p>
+
+  <p>==================</p>
+
+  <p>Similar to people: people</p>
+
+  <p>Top 3 preceedings for people: Concepts: serious, marginalize, part | Index:</p>
+
+  <p>Top 3 post/next words for people: Concepts: seek | Index: who, in, seek</p>
+</blockquote>
+
+<p>Sometimes the result is less than ideal but this is where UX can help. For example consider a sentence starting with "They", your first question will no doubt be: who? One way to fix this is to allow one to hover over a text and get an inline display showing the context of the sentence. However, hovering only works when popups are sparse, otherwise the interaction becomes very annoying with things popping up with every mouse move. Instead, I've resorted to selecting text triggering a context search. Another is, sometimes stories are too short and can be improved with length—you don't want too many options, however—so there are two modes, a set of parameters that give good results for long and short for a broad set of articles (the examples are all "short").</p>
+
+<p>The interface consists of three tabs: one for topics, one for gists/summaries and a final one for entities. The gists are further separated into phrase and sentences (though if over the next few days I find phrase induces too much cognitive overhead I'll drop it), entities to people, locations, orgs, etc. (a literal etc.), you can easily use keyboard navigation or have the summaries read to you at high speed. You can select text for more context.</p>
+
+<p>There is lots that needs to be done per text (generate document specific vectors, tokenize, tag parts of speech, generate chunks, extract enitites, extract key words, generate summaries) each of these occur in milliseconds for the average document but can rise up to 1-3 seconds for really long texts (a thread with 1000+ replies) but, updating asynchronously, with the most important (keywords) displayed first works around this speed issue. The important bit is because we are not building AI, we have more room for error so long as signal overwhelms noise and we have good friction removing tools to work around them. In this way you can choose to go into as little or as much depth as you want—escalation—and unlike the case with skimming, the probability of hitting the important bits is significantly better than random.</p>
+
+<p>Sometimes all I can see are the failings and shortfalls, then I feel down because things seem so far from the imagined ideal. But then I ask myself, if two people were trying to learn something new, one with Project Int.Aug and the other with browsers and Google, then without a doubt, I know with certainty that the person using tools like Project Int.Aug is exceedingly better equipped. I might spin in circles, continuously replacing internal algorithms for something better, forever chasing after perfection but if the goal is to move forward to motor and even hoverbikes of the mind, I've got to release something, get outside input.</p>
+
+<p>But right now, In a world of walkers, Project Int.Aug is an electric bicycle for the mind*.</p>
+
+<hr />
+
+<p>*If you're working on something like this too, please let me know!</p>
+
+<p>Here you can look at the performance of the methods across a <a href="http://sir-deenicus.github.io/home/nlp.log0.html">random sample of 7 websites</a></p>
+
+<p>The network for the <a href="http://sir-deenicus.github.io/home/crow_sents.html">sample image</a>:</p>
+
+<p><img src="images/birdbrain.png" alt="alt text" /></p>
