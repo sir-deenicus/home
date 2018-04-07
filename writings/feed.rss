@@ -483,95 +483,6 @@ I have not argued against the soul or that the brain is incomputable or somehow 
 While one cannot directly draw any conclusions on the brain from these, when constructing our prior (beliefs) it perhaps behooves us to take these as evidence suggesting a weighting away from hypotheses reliant on exception and special clauses.</description>
     </item>
     <item>
-      <title>Fields as Curried Functions</title>
-      <link>http://www.metarecursive.com/writings/Fields_as_Curried_Functions.html</link>
-      <guid>http://www.metarecursive.com/writings/Fields_as_Curried_Functions.html</guid>
-      <pubDate>Wed, 13 Jan 2016 23:45:05 GMT</pubDate>
-      <description>In a 1994 paper, Gary T Leavens explained, in a wonderfully graspable manner, that Fields in physics can actually be viewed as curried functions. If you understand what curried functions are, then you already have a good idea of what fields are&amp;amp;#8212;these sort of bridges are incredibly helpful to those of us peering in from both sides of the divide (for me, from the CS side). The examples were in scheme and so the syntax inversion might make it a bit difficult for the unpracticed (such as myself) to follow, hence my translating (and hopefully, helpful to you too). My examples here are in F#, where units of measure are especially helpful in making things clearer.
-
-First, some definitions:
-
-This is a curried function since it&amp;#39;s a function that takes a value and returns a function specialized to the passed in value.
-
-Returning to our function grav_force, when we put it into F# we got the type:
-
-val grav_force &amp;amp;#8712; m1&amp;amp;#8712;float&amp;amp;lt;kg&amp;amp;gt; &amp;amp;#10233; r&amp;amp;#8712;float&amp;amp;lt;m&amp;amp;gt; &amp;amp;#10233; m2&amp;amp;#8712;float&amp;amp;lt;kg&amp;amp;gt; &amp;amp;#10233; float&amp;amp;lt;N&amp;amp;gt;
-
-So everything looks good, it takes a mass (such as Earth) and returns a function that takes a distance (e.g. at the surface) which itself returns a function: one from masses (your mass) to Forces (your weight). This function is in fact the definition of a (scalar) gravitational field but more on that later. We can specialize the function and get earth&amp;#39;s field.
-
-Similarly, we can specialize to the surface (by applying a distance to earth_grav) or we can compute the mass of an object at a particular distance by passing in a distance and a mass. For example, noticing that N = kg m/s&amp;amp;#178;, we can compute Earth&amp;#39;s accelaration at surface simply by passing in 1kg and the Earth&amp;#39;s radius for a value of 9.802877992 N (which is just m/s&amp;amp;#178; for this case). But we can do more interesting things with curried functions. We can flip the field equation to compute the gravitational force at a list of distances from earth&amp;#39;s surface (a bit more flexible than how physics is typically taught isn&amp;#39;t it):
-
-The map applies our function to each distance in the list to get a list of forces. So at a distance of 1000km, the gravitational acceleration is ~7.32 m/sec&amp;amp;#178;.
-
-Below you can look at the gravitational acceleration on the surface of the moon and Mars. The moon has a mere acceleration of 1.62 m/s&amp;amp;#178; and Mars is only just over 2x that&amp;amp;#8212;it is for this reason that many are concerned over the health effects (on skeletomuscular integrity) of an extended mission to Mars.
-
-Additionally, we can look at the Earth/Moon system. The Moon and the Earth both exert a force of $2 \times10^{20}\,N$ on each other. Both are forever falling towards each other, with the condition that&amp;amp;#8212;on the odd chance that&amp;amp;#8212;if ever they should meet, things would not end well for both of them. A tragic love story if ever there was one.
-
-To make things a bit more concrete than a list of numbers, I graph some commonly known locations and the gravitational acceleration felt there. Looking at these, I can&amp;#39;t help but think of the common conception (held by myself for a long time too) that space is &amp;amp;quot;out there&amp;amp;quot; and far away; when really, space (LEO, at least) is literally within walking distance. Most satellites, the International Space Station included, aren&amp;#39;t floating in space; they&amp;#39;re still deep within Earth&amp;#39;s gravitational well!
-
-There is an art, it says, or rather, a knack to flying. The knack lies in learning how to throw yourself at the ground and miss. Pick a nice day, [The Hitchhiker&amp;#39;s Guide to the Galaxy] suggests, and try it.
-
-The first part is easy. All it requires is simply the ability to throw yourself forward with all your weight, and the willingness not to mind that it&amp;#39;s going to hurt.
-
-That is, it&amp;#39;s going to hurt if you fail to miss the ground. Most people fail to miss the ground, and if they are really trying properly, the likelihood is that they will fail to miss it fairly hard.
-
-Clearly, it is the second part, the missing, which presents the difficulties...&amp;amp;quot;
-
---Douglas Adams
-
-Even basic physics has a lot of ideas that grind against intuition. For example, the idea that objects in motion will remain in motion, unless acted on by a force, is one. The idea that gravity and the concept of weight as we feel it in the everyday is fictious is another counter-intuitive notion. Orbits combine these two. Firstly, because of a relative lack of friction, a large horizontal velocity can last a long time (meanwhile, we are used to large velocities requiring a continuous application of force). An object can continue to miss the ground without any extra expenditure of energy. Together with the idea of weightlessness as the more natural concept for two objects interacting in gravitational field, orbits as falling becomes a bit clearer to grasp (as you fall you follow the curvature of the earth&amp;amp;#8212;it also helps to imagine it as an animation, frame by frame; going down the frame makes it look more like falling&amp;amp;#8212;almost like we&amp;#39;re unrolling the interaction through time).
-
-At this point, I can&amp;#39;t help but note that I&amp;#39;ve veered a bit far afield. The original intention of this piece was to connect curried functions from functional programs to fields in physics and yet, here I am talking about how falling is flying with no pesky forces in the way. Nonetheless, I hope the above has been an effective demonstration of the advantage of a computational approach to learning topics commonly thought of as challenging (there&amp;#39;ll be more such demonstrations in the below). In reality, much of the difficulty is incidental instead of necessary: for the student, it is grappling with inconsistent and often unmotivated notation, as well as plain general unfamiliarity or counter-intuitiveness and for the teacher: the baggage of being wedded to centuries old tradition of how subjects must be taught. Much pointless complexity arises from the interaction of all those variables.
-
-Right, on topic. The real world has more than just one dimension. Depending on whom you ask, it can be anywhere from 3 or 4 to 11 to 26 or more or less. Most real world (classical) problems settle on 3 however. And here, again we see the advantage of a computational approach. It takes only a few lines to generalize our methodology to vectors (and though it&amp;#39;s general to N-dimensions, only for 3&amp;amp;#8212;or 2 in a few places&amp;amp;#8212;does it really makes sense for the operations we&amp;#39;re performing).
-
-The function is the same as before except that, instead of returning a single number, we now return a list of numbers, representing our force vector. The input for distance has also been replaced with a vector. Below, we apply random masses at different locations to get force vectors. Everything is working correctly.
-
-The functional way of viewing fields is that they are curried functions; through partial application they can either return more specialized functions or with enough inputs, (e.g.) a vector of forces. For example, the common static field is a function that takes an object of some appropriate type (say, Coulombs or Kg) and returns a function that accepts position vectors which itself returns a function that takes objects (of the same type) and maps them to forces. So by applying (e.g.) a mass, M, to the gravitational field function we specialize to talking about the gravitational field around M. Further specifying a position vector allows us to talk about the force at that distance for various other masses.
-
-In short, fields are really functions. And the way they are used makes them the same as using curried functions with partial application.
-
-In quantum mechanics things known as observables can&amp;#39;t be avoided. They have an exact mathematical definition as self adjoint operators but for our purposes we can think of them as functions. This is tricky because whereas before, our field function simply took a vector of reals (such as $\mathbb{R}^3$) for position, in quantum mechanics, position is an operator and so is instead something like ($ \mathcal{S} \rightarrow \mathbb{R}$ ). Thinking it through, I realized that the most sensible notion of variables as functions are random variables! A quick search reveals that indeed, &amp;amp;quot;real-valued quantum random variables correspond to self-adjoint operators affiliated with $\mathcal{A}$ [a von Neumann algebra on operators over a Hilbert Space], as postulated in quantum mechanics&amp;amp;quot;. One can also apply the notion of Observables to classical mechanics, and there also, they are functions that smell like random variables. And so, measurement can be thought of as an evaluation and hence, computation. Working backwards and having everything fit this way is really nice.
-
-Quantum Field Theory further muddies our picture because there, people talk about fields as if they were a real thing and particles as excitations in this field. If fields are actually curried functions with specializations obtained through partial application, what does it mean for a function to be excited? However, it&amp;#39;s worth remembering that at the bottom of it all, there is a computation that&amp;#39;s carried out; a fluctuating field suggests that there&amp;#39;s a computation unfolding&amp;amp;#8212;in other words, evaluating the field gives different values over time. This is also suggestive of another curiosity&amp;amp;#8212;fields in physics are actually two different things. There is the field as function and then there is the underlying computation that is eventually evaluated (or calculation or phenomenon*, the &amp;#39;real&amp;#39; thing).
-
-In the classical world, measurement yields simple things like vectors, in the quantum realm we get probability distributions. There exist computations whose outputs are also probability distributions: probabilistic programs. Putting all these together, when a physicist says fields are interacting or oscillating, we can think of a probabilistic program (on noncommuting random variables) whose inputs are curried functions and, in some sense, mutually recursive with other &amp;#39;fields&amp;#39;, all of which unfolds some computation (over time).
-
-*If for whatever reason, you do not like the idea of a computable reality, at the least our only interface with it through testable predictions must be.
-
-
-The graph above is a visualization of a portion of the Moon&amp;#39;s, Earth&amp;#39;s and Jupiter&amp;#39;s gravitational fields. 
-It&amp;#39;s not the clearest but stacked like this, we can compare them by zooming in and rotating. 
-The X axis is the distance from the surface, ranging from 0-100,000km. 
-The Y&amp;#39;s are masses, ranging from 10kg - 100,000kg. 
-And the Z axis consists of forces felt in Newtons. 
-Graphed like this, we can sort of get an idea the shape of the different fields.
-
-The graphing package I used (Elegans), didn&amp;#39;t make it 
-obvious how to label or format axes and I didn&amp;#39;t want to waste time hunting for them. Apologies
-for unclear labelling.
-
-Looking at the types for a gravitational and electrostatic field makes it clear that both fields can be represented by a single function parameterized by some Constant! By looking at the types, the similarity between the two fields is really brought into focus (more so than the similarity between the equations IMO) because the ability to specify both fields with a single function really forces one to take notice of the equivalence.
-
-The type tells us that essentially, a static field is &amp;#39;some_constant * &amp;#39;some_quantity&amp;amp;#178;/m&amp;amp;#178;, capturing the inverse square aspect of the relationship. We can then write the gravitational field in terms of static field and all the types work out and the function works as it should:
-
-We can define electric fields in the same manner. From that, it&amp;#39;s clear that mass and charge are similar abstractions. The difference between the two fields is that 1) the applied constants have opposite signs and differ by some 20 orders of magnitude, 2) charges are like masses that are allowed to go negative. That opposite attracts is a mere fact of arithmetic, what is more fundamental is that charges are less restricted in that they can be negative.
-
-At this point, it&amp;#39;s instructive to highlight an example of the unnecessary obtuseness that abounds in physics equations. Given some test charge q, and a set of discrete charges, the electric field felt by q is given by: $$F(r) = q \cdot k \sum\limits_{i=1}^n {q_i\frac{r-r_i}{|r-r_i|^3}}$$
-
-The problem of course, is that the Equation does not make clear that the function $F$ should take a pair of variables: the charge and its vector. It&amp;#39;s assumed implicity, and thus one more thing to be confused about. The same function is given by efield_force where the type makes it clear that the field is parameterized by both a position vector and a charge.
-
-animate gravity
-electric and grav of proton
-negative mass
-
-discrete probability
-conjugate
-information being
-information geometry
-oscillators,gliders, computation model not reality</description>
-    </item>
-    <item>
       <title>Levels of Understanding</title>
       <link>http://www.metarecursive.com/writings/Levels_of_Understanding.htm</link>
       <guid>http://www.metarecursive.com/writings/Levels_of_Understanding.htm</guid>
@@ -1071,7 +982,7 @@ And we see that their behavior is converging on a correlated equilibrium:
 
 [((Do &amp;#128721;, Do &amp;#128665;), 0.49); ((Do &amp;#128665;, Do &amp;#128721;), 0.5); ((Do &amp;#128665;, Do &amp;#128665;), 0.0)|]
 
-On the other hand, if we take away the ability for the agents to attend to what the other will do they will tend to learn either a set of rules that are nearly a Nash Equilibrium or sometimes, nearly a correlated equilibrium (which I find to be surprisingly robust).
+On the other hand, if we take away the ability for the agents to attend to what the other will do they will tend to learn either a set of rules that are either nearly a Nash Equilibrium or sometimes, nearly a correlated equilibrium (something I find to be surprisingly robust).
 
 [((Do &amp;#128721;, Do &amp;#128721;), 0.97); ((Do &amp;#128721;, Do &amp;#128665;), 0.03); ((Do &amp;#128665;, Do &amp;#128721;), 0.0)]
 
@@ -1631,6 +1542,93 @@ And, taking this further you can look at evolution as a type of intelligence1. T
 And there you have it. I&amp;#39;ve taken some liberties but I think this is a comprehensible but still representative explanation.
 
 Deen Abiola</description>
+    </item>
+    <item>
+      <title>Fields as Curried Functions</title>
+      <link>http://www.metarecursive.com/writings/Fields_as_Curried_Functions.html</link>
+      <guid>http://www.metarecursive.com/writings/Fields_as_Curried_Functions.html</guid>
+      <pubDate>Sat, 07 Apr 2018 06:21:29 GMT</pubDate>
+      <description>Wednesday, January 13, 2016
+
+In a 1994 paper, Gary T Leavens explained, in a wonderfully graspable manner, that Fields in physics can actually be viewed as curried functions. If you understand what curried functions are, then you already have a good idea of what fields are&amp;amp;#8212;these sort of bridges are incredibly helpful to those of us peering in from both sides of the divide (for me, from the CS side). The examples were in scheme and so the syntax inversion might make it a bit difficult for the unpracticed (such as myself) to follow, hence my translating (and hopefully, helpful to you too). My examples here are in F#, where units of measure are especially helpful in making things clearer.
+
+First, some definitions:
+
+This is a curried function since it&amp;#39;s a function that takes a value and returns a function specialized to the passed in value.
+
+Returning to our function grav_force, when we put it into F# we got the type:
+
+val grav_force &amp;amp;#8712; m1&amp;amp;#8712;float&amp;amp;lt;kg&amp;amp;gt; &amp;amp;#10233; r&amp;amp;#8712;float&amp;amp;lt;m&amp;amp;gt; &amp;amp;#10233; m2&amp;amp;#8712;float&amp;amp;lt;kg&amp;amp;gt; &amp;amp;#10233; float&amp;amp;lt;N&amp;amp;gt;
+
+So everything looks good, it takes a mass (such as Earth) and returns a function that takes a distance (e.g. at the surface) which itself returns a function: one from masses (your mass) to Forces (your weight). This function is in fact the definition of a (scalar) gravitational field but more on that later. We can specialize the function and get earth&amp;#39;s field.
+
+Similarly, we can specialize to the surface (by applying a distance to earth_grav) or we can compute the mass of an object at a particular distance by passing in a distance and a mass. For example, noticing that N = kg m/s&amp;amp;#178;, we can compute Earth&amp;#39;s accelaration at surface simply by passing in 1kg and the Earth&amp;#39;s radius for a value of 9.802877992 N (which is just m/s&amp;amp;#178; for this case). But we can do more interesting things with curried functions. We can flip the field equation to compute the gravitational force at a list of distances from earth&amp;#39;s surface (a bit more flexible than how physics is typically taught isn&amp;#39;t it):
+
+The map applies our function to each distance in the list to get a list of forces. So at a distance of 1000km, the gravitational acceleration is ~7.32 m/sec&amp;amp;#178;.
+
+Below you can look at the gravitational acceleration on the surface of the moon and Mars. The moon has a mere acceleration of 1.62 m/s&amp;amp;#178; and Mars is only just over 2x that&amp;amp;#8212;it is for this reason that many are concerned over the health effects (on skeletomuscular integrity) of an extended mission to Mars.
+
+Additionally, we can look at the Earth/Moon system. The Moon and the Earth both exert a force of $2 \times10^{20}\,N$ on each other. Both are forever falling towards each other, with the condition that&amp;amp;#8212;on the odd chance that&amp;amp;#8212;if ever they should meet, things would not end well for both of them. A tragic love story if ever there was one.
+
+To make things a bit more concrete than a list of numbers, I graph some commonly known locations and the gravitational acceleration felt there. Looking at these, I can&amp;#39;t help but think of the common conception (held by myself for a long time too) that space is &amp;amp;quot;out there&amp;amp;quot; and far away; when really, space (LEO, at least) is literally within walking distance. Most satellites, the International Space Station included, aren&amp;#39;t floating in space; they&amp;#39;re still deep within Earth&amp;#39;s gravitational well!
+
+There is an art, it says, or rather, a knack to flying. The knack lies in learning how to throw yourself at the ground and miss. Pick a nice day, [The Hitchhiker&amp;#39;s Guide to the Galaxy] suggests, and try it.
+
+The first part is easy. All it requires is simply the ability to throw yourself forward with all your weight, and the willingness not to mind that it&amp;#39;s going to hurt.
+
+That is, it&amp;#39;s going to hurt if you fail to miss the ground. Most people fail to miss the ground, and if they are really trying properly, the likelihood is that they will fail to miss it fairly hard.
+
+Clearly, it is the second part, the missing, which presents the difficulties...&amp;amp;quot;
+
+--Douglas Adams
+
+Even basic physics has a lot of ideas that grind against intuition. For example, the idea that objects in motion will remain in motion, unless acted on by a force, is one. The idea that gravity and the concept of weight as we feel it in the everyday is fictious is another counter-intuitive notion. Orbits combine these two. Firstly, because of a relative lack of friction, a large horizontal velocity can last a long time (meanwhile, we are used to large velocities requiring a continuous application of force). An object can continue to miss the ground without any extra expenditure of energy. Together with the idea of weightlessness as the more natural concept for two objects interacting in gravitational field, orbits as falling becomes a bit clearer to grasp (as you fall you follow the curvature of the earth&amp;amp;#8212;it also helps to imagine it as an animation, frame by frame; going down the frame makes it look more like falling&amp;amp;#8212;almost like we&amp;#39;re unrolling the interaction through time).
+
+At this point, I can&amp;#39;t help but note that I&amp;#39;ve veered a bit far afield. The original intention of this piece was to connect curried functions from functional programs to fields in physics and yet, here I am talking about how falling is flying with no pesky forces in the way. Nonetheless, I hope the above has been an effective demonstration of the advantage of a computational approach to learning topics commonly thought of as challenging (there&amp;#39;ll be more such demonstrations in the below). In reality, much of the difficulty is incidental instead of necessary: for the student, it is grappling with inconsistent and often unmotivated notation, as well as plain general unfamiliarity or counter-intuitiveness and for the teacher: the baggage of being wedded to centuries old tradition of how subjects must be taught. Much pointless complexity arises from the interaction of all those variables.
+
+Right, on topic. The real world has more than just one dimension. Depending on whom you ask, it can be anywhere from 3 or 4 to 11 to 26 or more or less. Most real world (classical) problems settle on 3 however. And here, again we see the advantage of a computational approach. It takes only a few lines to generalize our methodology to vectors (and though it&amp;#39;s general to N-dimensions, only for 3&amp;amp;#8212;or 2 in a few places&amp;amp;#8212;does it really makes sense for the operations we&amp;#39;re performing).
+
+The function is the same as before except that, instead of returning a single number, we now return a list of numbers, representing our force vector. The input for distance has also been replaced with a vector. Below, we apply random masses at different locations to get force vectors. Everything is working correctly.
+
+The functional way of viewing fields is that they are curried functions; through partial application they can either return more specialized functions or with enough inputs, (e.g.) a vector of forces. For example, the common static field is a function that takes an object of some appropriate type (say, Coulombs or Kg) and returns a function that accepts position vectors which itself returns a function that takes objects (of the same type) and maps them to forces. So by applying (e.g.) a mass, M, to the gravitational field function we specialize to talking about the gravitational field around M. Further specifying a position vector allows us to talk about the force at that distance for various other masses.
+
+In short, fields are really functions. And the way they are used makes them the same as using curried functions with partial application.
+
+In quantum mechanics things known as observables can&amp;#39;t be avoided. They have an exact mathematical definition as self adjoint operators but for our purposes we can think of them as functions. This is tricky because whereas before, our field function simply took a vector of reals (such as $\mathbb{R}^3$) for position, in quantum mechanics, position is an operator and so is instead something like ($ \mathcal{S} \rightarrow \mathbb{R}$ ). Thinking it through, I realized that the most sensible notion of variables as functions are random variables! A quick search reveals that indeed, &amp;amp;quot;real-valued quantum random variables correspond to self-adjoint operators affiliated with $\mathcal{A}$ [a von Neumann algebra on operators over a Hilbert Space], as postulated in quantum mechanics&amp;amp;quot;. One can also apply the notion of Observables to classical mechanics, and there also, they are functions that smell like random variables. And so, measurement can be thought of as an evaluation and hence, computation. Working backwards and having everything fit this way is really nice.
+
+Quantum Field Theory further muddies our picture because there, people talk about fields as if they were a real thing and particles as excitations in this field. If fields are actually curried functions with specializations obtained through partial application, what does it mean for a function to be excited? However, it&amp;#39;s worth remembering that at the bottom of it all, there is a computation that&amp;#39;s carried out; a fluctuating field suggests that there&amp;#39;s a computation unfolding&amp;amp;#8212;in other words, evaluating the field gives different values over time. This is also suggestive of another curiosity&amp;amp;#8212;fields in physics are actually two different things. There is the field as function and then there is the underlying computation that is eventually evaluated (or calculation or phenomenon*, the &amp;#39;real&amp;#39; thing).
+
+In the classical world, measurement yields simple things like vectors, in the quantum realm we get (things whose square magnitude are) probability distributions. There exist computations whose outputs are also probability distributions: probabilistic programs. Putting all these together, when a physicist says fields are interacting or oscillating, we can think of a probabilistic program (on noncommuting random variables) whose inputs are curried functions and, in some sense, mutually recursive with other &amp;#39;fields&amp;#39;, all of which unfolds some computation (over time).
+
+*If for whatever reason, you do not like the idea of a computable reality, at the least our only interface with it through testable predictions must be.
+
+
+The graph above is a visualization of a portion of the Moon&amp;#39;s, Earth&amp;#39;s and Jupiter&amp;#39;s gravitational fields. 
+It&amp;#39;s not the clearest but stacked like this, we can compare them by zooming in and rotating. 
+The X axis is the distance from the surface, ranging from 0-100,000km. 
+The Y&amp;#39;s are masses, ranging from 10kg - 100,000kg. 
+And the Z axis consists of forces felt in Newtons. 
+Graphed like this, we can sort of get an idea the shape of the different fields.
+
+The graphing package I used (Elegans), didn&amp;#39;t make it 
+obvious how to label or format axes and I didn&amp;#39;t want to waste time hunting for them. Apologies
+for unclear labelling.
+
+Looking at the types for a gravitational and electrostatic field makes it clear that both fields can be represented by a single function parameterized by some Constant! By looking at the types, the similarity between the two fields is really brought into focus (more so than the similarity between the equations IMO) because the ability to specify both fields with a single function really forces one to take notice of the equivalence.
+
+The type tells us that essentially, a static field is &amp;#39;some_constant * &amp;#39;some_quantity&amp;amp;#178;/m&amp;amp;#178;, capturing the inverse square aspect of the relationship. We can then write the gravitational field in terms of static field and all the types work out and the function works as it should:
+
+We can define electric fields in the same manner. From that, it&amp;#39;s clear that mass and charge are similar abstractions. The difference between the two fields is that 1) the applied constants have opposite signs and differ by some 20 orders of magnitude, 2) charges are like masses that are allowed to go negative. That opposite attracts is a mere fact of arithmetic, what is more fundamental is that charges are less restricted in that they can be negative.
+
+At this point, it&amp;#39;s instructive to highlight an example of the unnecessary obtuseness that abounds in physics equations. Given some test charge q, and a set of discrete charges, the electric field felt by q is given by: $$F(r) = q \cdot k \sum\limits_{i=1}^n {q_i\frac{r-r_i}{|r-r_i|^3}}$$
+
+The problem of course, is that the Equation does not make clear that the function $F$ should take a pair of variables: the charge and its vector. It&amp;#39;s assumed implicity, and thus one more thing to be confused about. The same function is given by efield_force where the type makes it clear that the field is parameterized by both a position vector and a charge.
+
+In this essay, I looked at the connection between fields and currying in functional languages. I used as examples, fields as found in gravity and electrostatics to elucidate the concept with a couple simple visualizations. I also traced where this road leads when followed along through to quantum mechanics. I observed that in quantum field theory, particles can (be loosely) labeled as oscillations of a field, making the field concept more primary. Yet, in what sense is a function—which has been only partially specialized by application of a few parameters—fluctuating? The field concept must have a second meaning here, referring to the space over which the field function can be applied. A further complication is that the field is defined over functions so the issue remains, in what sense is a function fluctuating? It is not clear to me but, these functions corresponding to observables are analogous to random variables, which in turn index a structure, mapping it to some measurable space. A probability distribution can be generated from them and presumably, interactions and measurements must in some sense &amp;quot;sample&amp;quot; from our &amp;quot;random variable&amp;quot;.
+
+Recalling that the fluctuations are periodic, we can dispense with particles to focus on &amp;quot;fields&amp;quot;, a function whose computational representation would have (recursive, because it persists) periodic state changes and defined over an appropriate space. The field would be defined over functions that yield distributions, reminiscent of a function which indexes into a space of probabilistic programs. Virtual particles would themselves be analogized by transitory state changes (in computing terms, imagine values which do not persist once the scope of a function is exited) across message passing persistent computations (our approximation of fields).
+
+I&amp;#39;ve taken many liberties in drawing the analogies above and, beyond the field/curry link, and, while speculation on the nature of quantum fields are not exactly correct, I do think they inhabit a useful plane of accuracy somewhere between precise knowledge and lay intuition.</description>
     </item>
   </channel>
 </rss>
