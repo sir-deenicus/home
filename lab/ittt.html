@@ -1,0 +1,154 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Incomplete Tic-Tac-Toe</title>
+    <meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        /* neat fieldset style */
+        .fieldset-auto-width {
+            display: inline-block;
+            border: 1px solid #c0c0c0;
+            padding: 10px;
+            margin: 10px;
+            /*style text inside fieldset*/
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #c0c0c0;
+        }
+
+        /*grey themed stylish button style */
+        .stylish-button {
+            border: none;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        .flex-container {
+            display: flex;
+            justify-content: center;
+            flex-flow: row wrap;
+        }
+
+        .flex-container-i {
+            display: flex;
+            flex-flow: column wrap;
+        }
+
+        .flex-container>div {
+            margin: 10px;
+            text-align: center;
+            font-size: 30px;
+        }
+
+        .player-card {
+            padding: 20px;
+            margin: 20px;
+            display: inline-block;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        /*inherit from player card but smaller border-radius, lighter box shadow colors and max width is 500px*/
+        .info-card {
+            padding: 15px;
+            display: inline-block;
+            border-radius: 1px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            font: 18px sans-serif;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
+            max-width: 900px;
+        }
+
+        .info-card-i {
+            padding: 20px;
+            border-radius: 2px;
+            font: 16px sans-serif;
+            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+            max-width: 250px;
+        }
+
+        /*disabled text, darker colors*/
+        #Board {
+            background-color: black;
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            grid-template-rows: repeat(3, 100px);
+            grid-gap: 4px;
+            width: 308px;
+        }
+
+        /*center text*/
+        #Board>div {
+            background-color: white;
+            font: bold 80px 'Varela Round', sans-serif;
+            padding-top: 5px;
+            text-align: center;
+        }
+
+        input.tog-btn {
+            display: none;
+        }
+
+        /*add some spacing between buttons*/
+        input.tog-btn+label {
+            border: 1px solid grey;
+            background: ghoswhite;
+            padding: 5px 8px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-right: 5px;
+            color: #4CAF50
+        }
+
+        input.tog-btn:not(:checked)+label:hover {
+            box-shadow: 0px 1px 3px;
+        }
+
+        input.tog-btn+label:active,
+        input.tog-btn:checked+label {
+            box-shadow: 0px 0px 3px inset;
+            background: #eee;
+        }
+
+        input.tog-btn-dis {
+            display: none;
+        }
+
+        /*disabled version */
+        input.tog-btn-dis+label {
+            border: 1px solid grey;
+            background: #eee;
+            padding: 5px 8px;
+            cursor: pointer;
+            margin-right: 5px;
+            border-radius: 5px;
+        }
+
+        /*active, background color should be slightly darker*/
+        input.tog-btn-dis+label:active,
+        input.tog-btn-dis:checked+label {
+            box-shadow: 0px 0px 3px inset;
+            background: #ddd;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <h2>Imperfect Information Tic Tac Toe</h2> -->
+    <p class="info-card">Hi! <b>Imperfect Information</b> or <b>Incomplete Tic-Tac-Toe</b> is like regular Tic-Tac-Toe except you and
+        opponent are given a card, drawn from 3 possible and instructing you on what to do.
+    </p>
+    <div id="elmish-app" class="elmish-app"></div>
+    <script src="bundle.js"></script>
+</body>
+
+</html>
